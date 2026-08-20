@@ -166,7 +166,7 @@ Two decisions that will save the team weeks — please take these seriously (the
 
 **Other ways to reach me:**
 - Your team's channel in the Break Through Tech Discord (fastest for quick questions).
-- Email: **sarita.ritu@gmail.com** — please cc your teammates and your AI Studio Coach.
+- Email: **kazemi.samaneh@gmail.com** — please cc your teammates and your AI Studio Coach.
 - Ad-hoc Zoom / Google Meet check-ins by request when the team is blocked.
 - *I aim to respond within 48 hours. For urgent, time-sensitive blockers, reach out to your AI Studio Coach first.*
 
