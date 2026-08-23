@@ -1,7 +1,8 @@
 # FaithfulMed: A Multi-Agent System for Faithful, Patient-Friendly Medical Explanations
 
 **Company / Org:** Google
-**Challenge Advisor:** Samaneh Kazemi Nafchi   
+**Challenge Advisor:** Samaneh Kazemi Nafchi
+**AI Studio Coach:** Jenna Hunte, jenna.hunte@breakthroughtech.org     
 **Program:** Break Through Tech AI Studio — Fall 2026
 
 ---
