@@ -1,18 +1,18 @@
-# AI Studio Challenge Project Title
+# FaithfulMed: A Multi-Agent System for Faithful, Patient-Friendly Medical Explanations
 
-> 💡 **Note for the team:** This is just a template. Update the above title with your AI Studio Challenge Project name. Remove all guidance notes and example text in this template and populate this README with your own content. You can work on this README throughout AI Studio, and get feedback from your AI Studio Coach and Challenge Advisor before finalizing it.  
+<!-- > 💡 **Note for the team:** This is just a template. Update the above title with your AI Studio Challenge Project name. Remove all guidance notes and example text in this template and populate this README with your own content. You can work on this README throughout AI Studio, and get feedback from your AI Studio Coach and Challenge Advisor before finalizing it.   -->
 
 ---
 
 ### 👥 **Team Members**
 
-| Name             | GitHub Handle | Contribution                                                             |
-|------------------|---------------|--------------------------------------------------------------------------|
-| Jenna Hunte      | @jehunte      | Break Through Tech Coach                                                 |
-|                  | @             |                                                                          |
-|                  | @             |                                                                          |
-|                  | @             |                                                                          |
-|                  | @             |                                                                          |
+| Name             | GitHub Handle  | Contribution                                                             |
+|------------------|----------------|--------------------------------------------------------------------------|
+| Jenna Hunte      | @jehunte       | Break Through Tech Coach                                                 |
+|                  | @              |                                                                          |
+| Hoang Ngo        | @hoangngo-sudo | Break Through Tech Fellow                                                |
+|                  | @              |                                                                          |
+|                  | @              |                                                                          |
 
 ---
 
