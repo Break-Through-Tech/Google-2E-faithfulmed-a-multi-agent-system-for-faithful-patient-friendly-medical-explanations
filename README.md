@@ -11,6 +11,7 @@
 | Jenna Hunte      | @jehunte       | Break Through Tech Coach                                                 |
 |                  | @              |                                                                          |
 | Hoang Ngo        | @hoangngo-sudo | Break Through Tech Fellow                                                |
+| Sarada Varshini  | @saraa-siva    | Break Through Tech Fellow                                                |
 |                  | @              |                                                                          |
 |                  | @              |                                                                          |
 
