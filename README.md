@@ -9,7 +9,7 @@
 | Name             | GitHub Handle  | Contribution                                                             |
 |------------------|----------------|--------------------------------------------------------------------------|
 | Jenna Hunte      | @jehunte       | Break Through Tech Coach                                                 |
-|                  | @              |                                                                          |
+| Claudia Jimenez  | @cjimenez909   | Break Through Tech Fellow                                                |
 | Hoang Ngo        | @hoangngo-sudo | Break Through Tech Fellow                                                |
 | Sarada Varshini  | @saraa-siva    | Break Through Tech Fellow                                                |
 | Katelyn Louie    | @katelynlouie  | Break Through Tech Fellow                                                |
