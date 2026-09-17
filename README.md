@@ -13,7 +13,7 @@
 | Hoang Ngo        | @hoangngo-sudo | Break Through Tech Fellow                                                |
 | Sarada Varshini  | @saraa-siva    | Break Through Tech Fellow                                                |
 | Katelyn Louie    | @katelynlouie  | Break Through Tech Fellow                                                |
-|                  | @              |                                                                          |
+| Tionge Kabwe     | @KettyKay      | Break Through Tech Fellow                                                                         |
 
 ---
 
