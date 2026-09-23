@@ -19,6 +19,7 @@ data/*
 !data/.gitkeep
 !data/README.md
 !data/MedAESQA_methods_M1-M30.xlsx
+!data/retrieval_docs_medquad_medlineplus.jsonl
 
 # Model checkpoints / vector indexes
 *.ckpt
