@@ -105,10 +105,94 @@ def word_count(text: str) -> int:
     return len(text.split()) if text else 0
 
 
+# Four files in 6_NINDS_QA ship in an older MedQuAD schema: a lowercase <doc>
+# root, lowercase element names, and a flat <umls> block that the current schema
+# nests inside <FocusAnnotations>. Every field the parser reads is present, so
+# the names are rewritten in memory instead of directly modify the files.
+LEGACY_TAG_NAMES = {
+    "doctitle-focus": "Focus",
+    "umls": "UMLS",
+    "cui": "CUI",
+    "semanticType": "SemanticType",
+    "semanticGroup": "SemanticGroup",
+    "qaPairs": "QAPairs",
+    "pair": "QAPair",
+    "question": "Question",
+    "answer": "Answer",
+}
+LEGACY_ATTR_NAMES = {"docid": "id", "corpus": "source"}
+
+
+def upgrade_legacy_medquad(root: ET.Element) -> bool:
+    """Reshape an old lowercase MedQuAD document to the current schema.
+
+    Returns True when the document was written in the legacy schema. The
+    rewrite is lossless for those files: docid, corpus, url, doctitle-focus, and
+    the qid, qtype, and pid attributes all map onto fields the parser already
+    reads.
+
+    Their annotation block carries no data. All four files hold a <cui>, a
+    <semanticType>, and a <semanticGroup> element with nothing inside, so the
+    one-to-one mapping of <cui> to <CUI> below is written from the tag names
+    rather than observed on populated values. _text_values drops those blank
+    placeholders, which is what keeps has_umls false for these rows.
+    """
+    if root.tag != "doc":
+        return False
+
+    root.tag = "Document"
+    for element in root.iter():
+        if element is not root:
+            element.tag = LEGACY_TAG_NAMES.get(element.tag, element.tag)
+    for old_name, new_name in LEGACY_ATTR_NAMES.items():
+        if old_name in root.attrib:
+            root.set(new_name, root.attrib.pop(old_name))
+
+    # Lift the top-level UMLS block into FocusAnnotations and restore the CUIs
+    # and SemanticTypes layers the current schema uses.
+    umls = root.find("UMLS")
+    if umls is not None:
+        position = list(root).index(umls)
+        root.remove(umls)
+
+        rebuilt = ET.Element("UMLS")
+        cuis = ET.SubElement(rebuilt, "CUIs")
+        for child in umls.findall("CUI"):
+            cuis.append(child)
+        types = ET.SubElement(rebuilt, "SemanticTypes")
+        for child in umls.findall("SemanticType"):
+            types.append(child)
+        group = umls.find("SemanticGroup")
+        if group is not None:
+            rebuilt.append(group)
+
+        wrapper = ET.Element("FocusAnnotations")
+        wrapper.append(rebuilt)
+        root.insert(position, wrapper)
+
+    return True
+
+
 # MedQuAD
+def _text_values(parent: ET.Element, path: str) -> list[str]:
+    """Every non-empty text value found under a path.
+
+    An empty placeholder element such as <CUI></CUI> and a missing element both
+    read back as "". Blank entries are dropped here, because keeping them would
+    make a file that carries an empty placeholder look annotated.
+    """
+    values = []
+    for element in parent.findall(path):
+        text = normalize_ws(element.text)
+        if text:
+            values.append(text)
+    return values
+
+
 def parse_medquad_file(path: Path, collection: str) -> list[dict]:
     """Return one record per QAPair in a MedQuAD XML file."""
     root = ET.parse(path).getroot()
+    upgrade_legacy_medquad(root)
 
     doc_id = root.get("id", "")
     focus = normalize_ws(root.findtext("Focus"))
@@ -121,13 +205,9 @@ def parse_medquad_file(path: Path, collection: str) -> list[dict]:
     semantic_group = ""
     if annotations is not None:
         category = normalize_ws(annotations.findtext("Category"))
-        synonyms = [
-            normalize_ws(s.text) for s in annotations.findall("Synonyms/Synonym")
-        ]
-        cuis = [normalize_ws(c.text) for c in annotations.findall("UMLS/CUIs/CUI")]
-        semantic_types = [
-            normalize_ws(s.text) for s in annotations.findall("UMLS/SemanticTypes/SemanticType")
-        ]
+        synonyms = _text_values(annotations, "Synonyms/Synonym")
+        cuis = _text_values(annotations, "UMLS/CUIs/CUI")
+        semantic_types = _text_values(annotations, "UMLS/SemanticTypes/SemanticType")
         semantic_group = normalize_ws(annotations.findtext("UMLS/SemanticGroup"))
 
     records = []
