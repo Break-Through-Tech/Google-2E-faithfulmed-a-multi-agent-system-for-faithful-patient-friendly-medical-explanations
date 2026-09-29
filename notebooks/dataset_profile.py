@@ -36,15 +36,26 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-
+# Make the notebooks folder importable, so paths.py is found even when this
+# module is imported by a script running from somewhere else.
 NOTEBOOK_DIR = Path(__file__).resolve().parent
-PROJECT_ROOT = NOTEBOOK_DIR.parent
-DATA_DIR = PROJECT_ROOT / "data"
+if str(NOTEBOOK_DIR) not in sys.path:
+    sys.path.insert(0, str(NOTEBOOK_DIR))
 
-MEDQUAD_DIR = DATA_DIR / "medquad"
-MEDLINEPLUS_DIR = DATA_DIR / "medlineplus"
-MPL_TOPICS = MEDLINEPLUS_DIR / "health_topics" / "mplus_topics_2026-09-10.xml"
-MPL_DEFINITIONS_DIR = MEDLINEPLUS_DIR / "definitions_of_health_terms"
+# Every path comes from paths.py so there is one definition of where the data
+# lives. The imported names match the ones this module used to define itself,
+# so notebooks calling dp.DATA_DIR or dp.MEDQUAD_DIR keep working unchanged.
+from paths import (  # noqa: E402
+    DATA_DIR,
+    MEDLINEPLUS_DIR,
+    MEDQUAD_DIR,
+    MPL_DEFINITIONS_DIR,
+    MPL_TOPICS_XML as MPL_TOPICS,
+    PROFILE_RUNS_DIR,
+    REPO_ROOT,
+)
+
+PROJECT_ROOT = REPO_ROOT
 
 # MedQuAD collection folders that hold QAPairs.
 MEDQUAD_COLLECTIONS = [
@@ -425,6 +436,166 @@ def to_retrieval_docs_medlineplus(topics: pd.DataFrame, definitions: pd.DataFram
     return out[RETRIEVAL_COLUMNS]
 
 
+# Chunking
+#
+# The profile's fourth decision is that a passage longer than the index's
+# target width gets split before it is embedded. These three functions are that
+# split, and they are the only place it is written down.
+
+# A sentence boundary here is a period, question mark, or exclamation mark,
+# followed by whitespace, followed by a capital letter or a digit. The
+# lookarounds matter: the first keeps the punctuation attached to the sentence
+# it ends, and the second stops the split from landing in the middle of a
+# number or a lowercase continuation.
+_SENTENCE_BREAK = re.compile(r"(?<=[.!?])\s+(?=[A-Z0-9])")
+
+
+def split_into_sentences(text: str) -> list[str]:
+    """Cut a passage into sentences, keeping the punctuation.
+
+    The rule is deliberately simple, and it has one known failure worth stating.
+    An abbreviation that ends in a period and sits before a capital letter, such
+    as "Dr." in "Dr. Smith", reads as a sentence end here and produces one extra
+    boundary. That costs a chunk a slightly shorter tail. It does not lose text,
+    because every character still lands in some chunk.
+
+    A stricter boundary needs a tokeniser or an abbreviation list. Neither is
+    worth the dependency while the only job is to bound chunk size.
+    """
+    cleaned = normalize_ws(text)
+    if not cleaned:
+        return []
+    return [sentence for sentence in _SENTENCE_BREAK.split(cleaned) if sentence]
+
+
+def _split_in_half(sentences: list[str]) -> tuple[list[str], list[str]]:
+    """Cut a run of sentences into two parts of roughly equal word count.
+
+    The cut lands on a sentence boundary and keeps the sentences in order, so
+    each part still reads as a consecutive piece of the original passage.
+    """
+    total_words = sum(word_count(sentence) for sentence in sentences)
+    half_words = total_words / 2
+
+    first_half = []
+    running_words = 0
+
+    for sentence in sentences:
+        # Stop before a sentence that would carry the first half past the
+        # midpoint. The guard on first_half keeps the cut from landing at
+        # position zero, which would hand the whole passage to the second half.
+        if first_half and running_words + word_count(sentence) > half_words:
+            break
+        first_half.append(sentence)
+        running_words = running_words + word_count(sentence)
+
+    second_half = sentences[len(first_half):]
+    return first_half, second_half
+
+
+def chunk_text(text: str, target_words: int = 193) -> list[str]:
+    """Pack whole sentences into chunks of about `target_words`.
+
+    Sentences are never cut in half. Half a sentence carries half a fact, and a
+    claim severed from its subject cannot be attributed by the Verifier. A single
+    sentence longer than the target therefore becomes a chunk on its own rather
+    than being trimmed, which is the one way a chunk can run past the target.
+
+    Packing is greedy and in order, so the chunks still read as the original
+    passage. Reordering to balance the sizes would break the provenance that
+    every downstream agent depends on.
+
+    Greedy packing leaves one artifact. When a passage ends just past a target
+    multiple, the final run holds a few words, and a ten-word fragment embeds to
+    almost nothing while still taking a retrieval slot. The final two runs are
+    rebalanced into two even halves. Merging them instead would be simpler, but
+    it can push the last chunk nearly half again past the target.
+    """
+    sentences = split_into_sentences(text)
+    if not sentences:
+        return []
+
+    # Pack whole sentences until the next one would push the run past the target,
+    # then start a new run. The runs stay as sentence lists rather than strings,
+    # because the last one may need rebalancing before anything is joined.
+    grouped_sentences = []
+    current_sentences = []
+    current_words = 0
+
+    for sentence in sentences:
+        sentence_words = word_count(sentence)
+
+        # The guard on current_sentences stops a run from being closed while it is
+        # still empty, which would drop the sentence.
+        if current_sentences and current_words + sentence_words > target_words:
+            grouped_sentences.append(current_sentences)
+            current_sentences = []
+            current_words = 0
+
+        current_sentences.append(sentence)
+        current_words = current_words + sentence_words
+
+    # Whatever is left over after the loop is the final run.
+    if current_sentences:
+        grouped_sentences.append(current_sentences)
+
+    min_words = target_words // 2
+    tail_words = sum(word_count(sentence) for sentence in grouped_sentences[-1])
+
+    if len(grouped_sentences) > 1 and tail_words < min_words:
+        merged = grouped_sentences[-2] + grouped_sentences[-1]
+        first_half, second_half = _split_in_half(merged)
+        grouped_sentences[-2:] = [first_half, second_half]
+
+    return [" ".join(group) for group in grouped_sentences]
+
+
+def chunk_retrieval_documents(df: pd.DataFrame, target_words: int = 193) -> pd.DataFrame:
+    """Split every long document in a retrieval frame and renumber its keys.
+
+    Two rules are enforced here rather than left to the caller:
+
+    - `doc_uid` stays unique. A document that split into more than one chunk gets
+      "#chunk1", "#chunk2", and so on appended, because two rows sharing a key
+      means one silently overwrites the other inside the index. A document that
+      fits in a single chunk keeps its original key, since nothing about it
+      changed and any earlier reference to it still resolves.
+    - `char_len` and `word_len` are measured again from the chunk. The pre-split
+      values describe text that no longer exists in that row, and those two
+      columns are what the chunking decision was based on.
+
+    A document with no text produces no rows at all, since a chunk of zero words
+    has nothing to embed. MedlinePlus has one topic in that state, so the caller
+    can find it by comparing the row count before the call with the number of
+    distinct source documents after it.
+    """
+    rows = []
+
+    for _, document in df.iterrows():
+        # A missing summary arrives as a non-string, and normalize_ws would fail
+        # on it, so it is treated as an empty passage here.
+        text = document["text"] if isinstance(document["text"], str) else ""
+
+        pieces = chunk_text(text, target_words=target_words)
+        if not pieces:
+            continue
+
+        for position, piece in enumerate(pieces, start=1):
+            row = document.to_dict()
+
+            # Only a document that actually split needs the chunk number, and
+            # enumerate() starts at 1 so the first chunk reads "#chunk1".
+            if len(pieces) > 1:
+                row["doc_uid"] = f"{document['doc_uid']}#chunk{position}"
+
+            row["text"] = piece
+            row["char_len"] = len(piece)
+            row["word_len"] = word_count(piece)
+            rows.append(row)
+
+    return pd.DataFrame(rows)[RETRIEVAL_COLUMNS]
+
+
 # Profiling
 
 
@@ -572,7 +743,7 @@ def medquad_by_collection(df: pd.DataFrame) -> pd.DataFrame:
 
 
 # CLI
-DEFAULT_OUT_DIR = NOTEBOOK_DIR / "profile_runs"
+DEFAULT_OUT_DIR = PROFILE_RUNS_DIR
 
 
 class _Tee:
