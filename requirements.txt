@@ -1,27 +1,40 @@
+# FaithfulMed dependencies.
+#
+# Every dependency below is pinned to a version that has been installed and run in
+# this repo. Pinning is what stops three teammates ending up on three different
+# seaborn or pandas versions, which is how one notebook starts printing a
+# deprecation warning that nobody else can reproduce.
+#
+#
+# In Colab, the runtime ships its own numpy, pandas, and matplotlib. If installing
+# this file tries to downgrade something Colab depends on, install the analysis
+# subset on its own rather than fighting the pins.
+
+
 # ── Google GCP-first stack ─────────────────────────────────────────────
-google-genai          # unified Gemini SDK (Google AI Studio + Vertex AI)
-google-adk            # Agent Development Kit — multi-agent orchestration
-litellm               # lets ADK call Gemma / external open models for the leaderboard
+google-genai==2.22.0    # unified Gemini SDK (Google AI Studio + Vertex AI)
+google-adk==2.8.0       # Agent Development Kit — multi-agent orchestration
+litellm==1.99.0         # lets ADK call Gemma / external open models for the leaderboard
 
 # ── RAG / retrieval ────────────────────────────────────────────────────
-chromadb
+chromadb==1.5.9
 # sentence-transformers   # optional offline-embeddings fallback
 # faiss-cpu               # optional offline vector index
 
 # ── Evaluation ─────────────────────────────────────────────────────────
-textstat              # Flesch-Kincaid, SMOG readability
-scikit-learn          # Cohen's kappa, agreement metrics
+textstat==0.7.13        # Flesch-Kincaid, SMOG readability
+scikit-learn==1.7.2     # Cohen's kappa, agreement metrics
 
 # ── Data / analysis ────────────────────────────────────────────────────
-pandas
-numpy
-datasets
-openpyxl              # read the MedAESQA methods .xlsx
-matplotlib
-seaborn
+pandas==2.3.3
+numpy==2.2.6
+datasets==5.0.1
+openpyxl==3.1.5         # reads data/MedAESQA_methods_M1-M30.xlsx
+matplotlib==3.10.9
+seaborn==0.13.2
 
 # ── Demo (December: HF Spaces or Cloud Run) ────────────────────────────
-gradio
+gradio==6.26.0
 # streamlit            # alternative demo framework
 
 # ── Optional alternatives ──────────────────────────────────────────────
