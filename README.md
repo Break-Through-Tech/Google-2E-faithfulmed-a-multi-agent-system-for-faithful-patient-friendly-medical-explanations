@@ -14,7 +14,8 @@
 | Sarada Varshini  | @saraa-siva    | Break Through Tech Fellow                                                |
 | Katelyn Louie    | @katelynlouie  | Break Through Tech Fellow                                                |
 | Tionge Kabwe     | @KettyKay      | Break Through Tech Fellow                                                |
-| Milka Zekarias   | @MilkaZek      | Break Through Tech Fellow                                                                         |
+| Milka Zekarias   | @MilkaZek      | Break Through Tech Fellow                                                |
+| Samuel Tuffour   | @samueltuffour      | Break Through Tech Fellow                                                |
 
 ---
 
