@@ -9,12 +9,11 @@ __pycache__/
 venv/
 env/
 
-# Secrets — never commit API keys (Gemini, Groq, HF, etc.)
+# Secrets
 .env
 *.key
 
 # Data — download locally per data/README.md
-# (keep the folder, its docs, and the small MedAESQA methods reference)
 data/*
 !data/.gitkeep
 !data/README.md
@@ -26,3 +25,6 @@ data/*
 *.pt
 *.faiss
 chroma/
+
+runs
+tests
