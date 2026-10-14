@@ -6,7 +6,10 @@ from faithfulmed.agents.extractor import (
     Atom,
     Extraction,
     attach_topics,
+    check_atom_texts,
+    check_assertion_cues,
     check_quotes,
+    check_quote_context,
     find_topic,
     load_aliases,
     load_extraction,
@@ -30,6 +33,15 @@ class ExtractorHelperTests(unittest.TestCase):
         aliases = load_aliases()
         self.assertTrue(aliases)
         self.assertTrue(all(isinstance(key, str) and isinstance(value, str) for key, value in aliases.items()))
+
+    def test_symptom_is_a_supported_atom_type(self):
+        atom = Atom(
+            text="mild headache",
+            type="symptom",
+            assertion="present",
+            source_quote="mild headache",
+        )
+        self.assertEqual(atom.type, "symptom")
 
     def test_find_topic_prefers_longest_phrase(self):
         aliases = {
@@ -56,6 +68,53 @@ class ExtractorHelperTests(unittest.TestCase):
         source = "No history of asthma."
         extraction = self.make_extraction(quote="no history of asthma.")
         self.assertEqual(check_quotes(source, extraction), extraction.atoms)
+
+    def test_check_atom_texts_rejects_added_words(self):
+        source = "Temperature is 37 C."
+        extraction = self.make_extraction(
+            quote=source,
+            text="Patient temperature is 37 C.",
+        )
+        self.assertEqual(check_atom_texts(source, extraction), extraction.atoms)
+
+    def test_check_assertion_cues_flags_absence_quote_without_negation(self):
+        extraction = self.make_extraction(quote="nausea", text="nausea")
+        self.assertEqual(check_assertion_cues(extraction), extraction.atoms)
+
+    def test_check_assertion_cues_accepts_full_denial_quote(self):
+        extraction = self.make_extraction(
+            quote="The patient denies nausea.",
+            text="The patient denies nausea.",
+        )
+        self.assertEqual(check_assertion_cues(extraction), [])
+
+    def test_check_quote_context_flags_bare_present_symptom(self):
+        extraction = Extraction(atoms=[
+            Atom(
+                text="mild headache",
+                type="symptom",
+                assertion="present",
+                source_quote="mild headache",
+            )
+        ])
+        self.assertEqual(check_quote_context(extraction), extraction.atoms)
+
+    def test_check_quote_context_accepts_complete_symptom_and_diagnosis_quotes(self):
+        extraction = Extraction(atoms=[
+            Atom(
+                text="The patient reports a mild headache.",
+                type="symptom",
+                assertion="present",
+                source_quote="The patient reports a mild headache.",
+            ),
+            Atom(
+                text="The clinician diagnosed migraine.",
+                type="diagnosis",
+                assertion="present",
+                source_quote="The clinician diagnosed migraine.",
+            ),
+        ])
+        self.assertEqual(check_quote_context(extraction), [])
 
     def test_missing_numbers_reports_unrepresented_values(self):
         extraction = self.make_extraction(quote="A1C was 7.2%.", text="A1C was 7.2%.")

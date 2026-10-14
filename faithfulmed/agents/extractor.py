@@ -7,7 +7,7 @@ from typing import List, Literal, Optional
 from pydantic import BaseModel, Field
 
 # Started with 3.8 but kept getting 503s and eventually a 429 limit... 3.6 hasn't been much better on the 503 end...
-MODEL = "gemini-3.6-flash"
+MODEL = "gemini-3.8-flash"
 ALIAS_PATH = Path(__file__).resolve().parent.parent / "medlineplus_aliases.json"
 
 
@@ -29,10 +29,15 @@ def ask(prompt: str) -> str:
 # ---- Step 2: what an atom is ---------------------------------------------
 class Atom(BaseModel):
     text: str = Field(
-        description="A concise statement of one clinically meaningful fact explicitly supported by the source.")
-    type: Literal["diagnosis", "medication", "lab_value", "procedure", "instruction"] = Field(
+        description=(
+            "One clinically meaningful fact copied as a complete source clause, including wording "
+            "that establishes who has the fact and its status."
+        )
+    )
+    type: Literal["diagnosis", "symptom", "medication", "lab_value", "procedure", "instruction"] = Field(
         description=
-            "The category of the extracted fact: diagnosis for a disease, condition, or clinical finding;" \
+            "The category of the extracted fact: diagnosis for a diagnosed disease or condition; " \
+            "symptom for a symptom reported or denied by the patient; " \
             "medication for a drug or its use; lab_value for a test result or clinical measurement;" \
             "procedure for a clinical procedure or intervention; instruction for advice or directions given to the patient."
         )
@@ -42,7 +47,12 @@ class Atom(BaseModel):
             "absent for an explicitly denied or absent fact; possible for an uncertain or suspected fact;" \
             "past for a historical fact that is no longer current; family for a fact about a family member's medical history."
         )
-    source_quote: str = Field(description="The exact words copied from the source text that supports the extracted fact.")
+    source_quote: str = Field(
+        description=(
+            "An exact, contiguous source clause that supports both the fact and its assertion. "
+            "Include the subject and assertion wording, not only the clinical term."
+        )
+    )
 
 
 class Extraction(BaseModel):
@@ -72,14 +82,22 @@ CORE RULES
 6. Every atom must have a source_quote copied exactly from one contiguous
    portion of the source text. Do not paraphrase the quote, combine separate
    excerpts, or insert words that are not present in the source.
+    Include the complete clause that establishes the fact and assertion. For
+    "The patient reports a mild headache," use that complete phrase, not only
+    "mild headache." For "The clinician diagnosed migraine," include
+    "diagnosed," not only the condition name.
+    For an absent fact, quote the denial too: for "The patient denies nausea,"
+    quote that phrase, not just "nausea."
 7. If the source does not provide enough information to determine a fact,
    do not fill in the missing information from medical knowledge.
 8. Do not omit a clinically meaningful fact merely because it is negative,
    uncertain, historical, or related to family history.
 
 FIELD: text
-Write one concise statement expressing the extracted fact.
-Preserve the original meaning and wording as closely as possible.
+Copy the shortest complete source clause that identifies the fact and makes
+its subject and assertion clear. Do not return a bare clinical term when the
+surrounding words identify who has it or how it is asserted.
+Use the same complete excerpt as source_quote. Do not add words not present.
 Do not turn a negative statement into a positive one.
 Do not turn a possible condition into a confirmed condition.
 Do not add a patient, diagnosis, medication, unit, date, or other detail
@@ -133,9 +151,13 @@ Apply these rules:
   Use the closest supported value only when justified by the source.
 
 FIELD: source_quote
-Copy the shortest contiguous excerpt that adequately supports the atom.
+Copy the shortest complete clause that adequately supports the atom.
 The quote must appear verbatim in the source, including its original
 abbreviations, spelling, capitalization, and punctuation.
+The quote must identify the subject and support the assertion as well as the
+fact. Include wording such as "reports" for a reported symptom, "diagnosed"
+for a diagnosis, and "denies" or "no" for an absent fact. Never quote only
+the clinical term when surrounding words establish its context.
 Do not use a paraphrase as a quote.
 Do not combine words from different parts of the source into one quote.
 If a fact cannot be supported by a suitable source excerpt, do not create
@@ -206,6 +228,50 @@ def extract_atoms(source_text: str, model: str = MODEL) -> Extraction:
 def check_quotes(source_text: str, extraction: Extraction) -> List[Atom]:
     """Return atoms whose source quote is not an exact substring of the source."""
     return [atom for atom in extraction.atoms if atom.source_quote not in source_text]
+
+
+def check_atom_texts(source_text: str, extraction: Extraction) -> List[Atom]:
+    """Return atoms whose text is not copied verbatim from the source."""
+    return [atom for atom in extraction.atoms if atom.text not in source_text]
+
+
+NEGATION_CUE_PATTERN = re.compile(
+    r"\b(?:no|not|never|none|den(?:y|ies|ied)|without|negative|absent|free of)\b",
+    flags=re.IGNORECASE,
+)
+
+
+def check_assertion_cues(extraction: Extraction) -> List[Atom]:
+    """Return absent atoms whose quotes omit an explicit negation cue."""
+    return [
+        atom for atom in extraction.atoms
+        if atom.assertion == "absent" and not NEGATION_CUE_PATTERN.search(atom.source_quote)
+    ]
+
+
+SYMPTOM_CUE_PATTERN = re.compile(
+    r"\b(?:report(?:s|ed)?|complain(?:s|ed)?|experienc(?:e|es|ed)|"
+    r"endorse(?:s|d)?|present(?:s|ed) with|has|have)\b",
+    flags=re.IGNORECASE,
+)
+DIAGNOSIS_CUE_PATTERN = re.compile(
+    r"\b(?:diagnos(?:e|ed|is)|impression|assessment|confirmed|consistent with)\b",
+    flags=re.IGNORECASE,
+)
+
+
+def check_quote_context(extraction: Extraction) -> List[Atom]:
+    """Return present symptom/diagnosis atoms whose quotes omit context cues."""
+    invalid_atoms = []
+    for atom in extraction.atoms:
+        if atom.assertion != "present":
+            continue
+        if atom.type == "symptom" and not SYMPTOM_CUE_PATTERN.search(atom.source_quote):
+            invalid_atoms.append(atom)
+        elif atom.type == "diagnosis" and not DIAGNOSIS_CUE_PATTERN.search(atom.source_quote):
+            invalid_atoms.append(atom)
+    return invalid_atoms
+
 
 # ---- Step 6: were facts dropped? -----------------------------------------
 NUMBER_PATTERN = r"\d+(?:\.\d+)?"   # matches 10 and 8.2

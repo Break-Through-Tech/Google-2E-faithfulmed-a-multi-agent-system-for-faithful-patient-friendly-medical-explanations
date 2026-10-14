@@ -19,6 +19,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 from google.adk.agents import LlmAgent, SequentialAgent, LoopAgent
+from faithfulmed.agents.extractor import Extraction
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 load_dotenv(PROJECT_ROOT / ".env")
@@ -30,10 +31,17 @@ extractor = LlmAgent(
     name="Extractor",
     model=MODEL,
     instruction=(
-        "Extract every clinically meaningful fact from the SOURCE as a JSON list of atoms, each "
-        "with {text, type} where type is one of: diagnosis, medication, lab_value, procedure, "
-        "instruction. Do not add facts that are not in the SOURCE."
+        "Extract every clinically meaningful fact from the user's source note as one atom per fact. "
+        "Return only an object matching the required schema. Use symptom for reported symptoms and "
+        "diagnosis only for a diagnosed condition. Preserve negation, uncertainty, history, and "
+        "family context in assertion. Copy text and source_quote as the shortest COMPLETE clause "
+        "from the note that identifies the subject and establishes the fact. For example, quote "
+        "'The patient reports a mild headache,' not only 'mild headache'; quote 'The clinician "
+        "diagnosed migraine,' not only 'migraine'; and quote 'The patient denies nausea,' not only "
+        "'nausea.' Preserve these exact source words. Do not add implied words, infer, or normalize "
+        "clinical facts."
     ),
+    output_schema=Extraction,
     output_key="atoms",
 )
 
