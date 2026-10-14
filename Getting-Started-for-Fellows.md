@@ -22,3 +22,26 @@ To start adding project tasks aligned with your Challenge Project's monthly mile
 | [notebooks](notebooks) | Where your team's Jupyter notebooks for exploration, analysis, and modeling get stored (e.g., `.ipynb`) | Fellows
 | [requirements.txt](requirements.txt) | A place to list Python packages your project uses (e.g., `pandas`, `scikit-learn`) | Fellows
 | [gitignore](.gitignore) | A place to list files Git should ignore (e.g., system files like .DS_Store) | Fellows
+
+---
+
+## Running the Google ADK Pipeline (Windows)
+
+Use Python 3.12 and a short virtual-environment path to avoid Windows path-length issues when installing ADK.
+
+```powershell
+py -3.12 -m venv "$HOME\venvs\faithfulmed-adk"
+& "$HOME\venvs\faithfulmed-adk\Scripts\Activate.ps1"
+python -m pip install -r requirements.txt
+Copy-Item .env.example .env
+```
+
+Open `.env` and replace the placeholder with your own Google AI Studio API key. Keep `.env` private; it is excluded from Git. In VS Code, select the environment at `$HOME\venvs\faithfulmed-adk\Scripts\python.exe` using **Python: Select Interpreter**.
+
+Start the local ADK interface from the repository root:
+
+```powershell
+adk web faithfulmed
+```
+
+Then open `http://127.0.0.1:8000` in your browser. Stop the server with `Ctrl+C`.

@@ -8,16 +8,22 @@ This is a scaffold to react to, not a finished pipeline. Each fellow fleshes out
 instruction, output schema, and tools.
 
 Setup:
-    pip install google-adk
-    export GEMINI_API_KEY=...        # free key from https://aistudio.google.com
+    Create the Python 3.12 environment and configure .env as described in
+    Getting-Started-for-Fellows.md, then run: adk web faithfulmed
 Docs: https://google.github.io/adk-docs
 
 Note: ADK's exact class/kwarg names evolve — check the docs for your installed version. The intent
 (SequentialAgent for the DAG, LoopAgent with a hard iteration cap for the refine step) is the point.
 """
+from pathlib import Path
+
+from dotenv import load_dotenv
 from google.adk.agents import LlmAgent, SequentialAgent, LoopAgent
 
-MODEL = "gemini-2.0-flash"  # start on the free tier; swap per-agent for the leaderboard
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+load_dotenv(PROJECT_ROOT / ".env")
+
+MODEL = "gemini-3.8-flash"  # start on the free tier; swap per-agent for the leaderboard
 
 # 1) Extractor — pull clinical "atoms" (facts + types) from the source document.
 extractor = LlmAgent(
