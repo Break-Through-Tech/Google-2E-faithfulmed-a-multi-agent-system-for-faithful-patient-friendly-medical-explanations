@@ -5,8 +5,6 @@ from pathlib import Path
 from typing import List, Literal, Optional
 
 from pydantic import BaseModel, Field
-from google import genai
-from google.genai import types
 
 # Started with 3.8 but kept getting 503s and eventually a 429 limit... 3.6 hasn't been much better on the 503 end...
 MODEL = "gemini-3.6-flash"
@@ -16,6 +14,8 @@ ALIAS_PATH = Path(__file__).resolve().parent.parent / "medlineplus_aliases.json"
 # ---- Step 1: talking to Gemini -------------------------------------------
 def ask(prompt: str) -> str:
     """Send a prompt to Gemini and return the reply text."""
+    from google import genai
+
     client = genai.Client()
 
     response = client.models.generate_content(
@@ -183,6 +183,9 @@ Do not include explanations, commentary, markdown, or additional fields.
 
 # ---- Step 4: structured extraction ---------------------------------------
 def extract_atoms(source_text: str, model: str = MODEL) -> Extraction:
+    from google import genai
+    from google.genai import types
+
     client = genai.Client()
     resp = client.models.generate_content(
         model=model,
@@ -200,15 +203,9 @@ def extract_atoms(source_text: str, model: str = MODEL) -> Extraction:
 
 
 # ---- Step 5: are the atoms real? -----------------------------------------
-def _norm(s: str) -> str:
-    """Makes two strings comparable by collapsing whitespace and lowercasing everything."""
-    return " ".join(s.split().lower())
-
-
 def check_quotes(source_text: str, extraction: Extraction) -> List[Atom]:
-    """Return the atoms whose quote is NOT found in the source."""
-    source = _norm(source_text)
-    return [atom for atom in extraction.atoms if _norm(atom.source_quote) not in source]
+    """Return atoms whose source quote is not an exact substring of the source."""
+    return [atom for atom in extraction.atoms if atom.source_quote not in source_text]
 
 # ---- Step 6: were facts dropped? -----------------------------------------
 NUMBER_PATTERN = r"\d+(?:\.\d+)?"   # matches 10 and 8.2
@@ -226,38 +223,53 @@ class LinkedAtom(Atom):
 
 
 def load_aliases() -> dict:
-    # TODO: open ALIAS_PATH and return the parsed JSON.
-    raise NotImplementedError
+    """Load and validate the lowercase alias-to-topic mapping."""
+    aliases = json.loads(ALIAS_PATH.read_text(encoding="utf-8"))
+    if not isinstance(aliases, dict) or any(
+        not isinstance(alias, str) or not isinstance(topic, str)
+        for alias, topic in aliases.items()
+    ):
+        raise ValueError(f"Alias file must contain a JSON object of strings: {ALIAS_PATH}")
+    return aliases
 
 
 def find_topic(text: str, aliases: dict) -> Optional[str]:
     """Return the MedlinePlus topic for some text, or None."""
-    # TODO, in this order:
-    #   1. words = lowercase the text, then pull out words with
-    #      re.findall(r"[a-z0-9\-]+", ...)
-    #   2. for n from 4 down to 1 (longest phrase first):
-    #        for each start position i: phrase = " ".join(words[i:i+n])
-    #          if phrase is a key in aliases: return aliases[phrase]
-    #   3. nothing matched -> return None
-    raise NotImplementedError
+    words = re.findall(r"[a-z0-9\-]+", text.lower())
+    for phrase_length in range(4, 0, -1):
+        for start in range(len(words) - phrase_length + 1):
+            phrase = " ".join(words[start:start + phrase_length])
+            if phrase in aliases:
+                return aliases[phrase]
+    return None
 
 
 def attach_topics(extraction: Extraction, aliases: dict) -> List[LinkedAtom]:
-    # TODO: for each atom, build a LinkedAtom with the same fields plus
-    # topic=find_topic(atom.text, aliases).
-    raise NotImplementedError
+    """Return copies of the extracted atoms with matching MedlinePlus topics."""
+    return [
+        LinkedAtom(**atom.model_dump(), topic=find_topic(atom.text, aliases))
+        for atom in extraction.atoms
+    ]
 
 # ---- Step 8: hand-off file ------------------------------------------------
 def save_extraction(doc_id: str, atoms: List[Atom], out_dir: Path) -> Path:
     """Write one document's atoms to <out_dir>/<doc_id>.json and return the path."""
-    # TODO:
-    #   1. make sure out_dir exists (Path.mkdir with parents=True, exist_ok=True)
-    #   2. build a dict: {"doc_id": doc_id, "atoms": [one dict per atom]}
-    #   3. write it to out_dir / f"{doc_id}.json" as indented JSON
-    raise NotImplementedError
+    if not doc_id or Path(doc_id).name != doc_id or doc_id in {".", ".."}:
+        raise ValueError("doc_id must be a non-empty filename stem")
+
+    out_dir.mkdir(parents=True, exist_ok=True)
+    output_path = out_dir / f"{doc_id}.json"
+    payload = {
+        "doc_id": doc_id,
+        "atoms": [atom.model_dump(mode="json") for atom in atoms],
+    }
+    output_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+    return output_path
 
 
 def load_extraction(path: Path) -> dict:
     """Read a saved extraction back into a dict."""
-    # TODO: open the path and return the parsed JSON.
-    raise NotImplementedError
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(payload, dict):
+        raise ValueError("Extraction file must contain a JSON object")
+    return payload
