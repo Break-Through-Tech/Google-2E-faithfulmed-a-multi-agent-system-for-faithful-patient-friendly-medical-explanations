@@ -16,8 +16,7 @@
 | Tionge Kabwe     | @KettyKay      | Break Through Tech Fellow                                                |
 | Milka Zekarias   | @MilkaZek      | Break Through Tech Fellow                                                |
 | Samuel Tuffour   | @samueltuffour      | Break Through Tech Fellow                                                |
-| Jaiden Ha        | @jaidenha      | Break Through Tech 
-Fellow                                                |
+| Jaiden Ha        | @jaidenha      | Break Through Tech Fellow                                                |
 
 ---
 
