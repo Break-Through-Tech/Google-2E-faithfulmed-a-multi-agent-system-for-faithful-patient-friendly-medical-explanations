@@ -21,8 +21,8 @@ data/*
 !data/retrieval_docs_medlineplus_chunked.jsonl
 
 # Baseline 50 samples (mtsamples)
-!data/baseline_50_full.csv
-!data/baseline_50_gemini_outputs.csv
+data/baseline_50_full.csv
+data/baseline_50_gemini_outputs.csv
 
 # Model checkpoints / vector indexes
 *.ckpt
