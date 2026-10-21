@@ -9,18 +9,17 @@ Readability runs before the Verifier, so faithfulness is judged on the patient-f
 would actually read, not on the draft as first written. Verifier <-> Refiner is a bounded loop
 (LoopAgent, max_iterations=2).
 
-The flowchart also draws a dotted "bounded loop?" arrow between Simplifier and Readability. That is
-still an open decision, so it is not built here.
+The bounded loop is not built yet between simplifier agent and readability agent.
 
 State flow: source_note -> atoms -> draft (structured record) + text (working prose) -> verdict ->
 text. `text` is what the reader ends up with; `draft` keeps the Simplifier's citations and coverage.
 
-This is a scaffold: Readability, the Verifier, and the Refiner are still single-prompt agents.
 """
+from asyncio import to_thread
 from typing import AsyncGenerator
 
 from google.adk.agents import BaseAgent, InvocationContext, LlmAgent, LoopAgent, SequentialAgent
-from google.adk.events import Event
+from google.adk.events import Event, EventActions
 
 from faithfulmed.agents.extractor import extract_atoms
 from faithfulmed.agents.simplifier import build_grounding, simplify
@@ -49,14 +48,14 @@ class ExtractAtomsStep(BaseAgent):
                 "Nothing to extract. Send the note as the message, or set source_note in state."
             )
 
-        extraction = extract_atoms(note)
+        extraction = await to_thread(extract_atoms, note)
         yield Event(
             author=self.name,
             invocation_id=ctx.invocation_id,
-            state={
+            actions=EventActions(state_delta={
                 "source_note": note,
                 "atoms": [atom.model_dump() for atom in extraction.atoms],
-            },
+            }),
         )
 
 
@@ -72,16 +71,16 @@ class SimplifyStep(BaseAgent):
         if not atoms:
             raise ValueError("Nothing to simplify. Run the Extractor first.")
 
-        grounding = build_grounding(atoms)
-        draft = simplify(atoms, grounding)
+        grounding = await to_thread(build_grounding, atoms)
+        draft = await to_thread(simplify, atoms, grounding)
         yield Event(
             author=self.name,
             invocation_id=ctx.invocation_id,
-            state={
+            actions=EventActions(state_delta={
                 "grounding": grounding,
                 "draft": draft.model_dump(),
                 "text": draft.simplified_text,
-            },
+            }),
         )
 
 

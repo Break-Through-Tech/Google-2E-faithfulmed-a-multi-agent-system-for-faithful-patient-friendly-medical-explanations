@@ -102,6 +102,7 @@ Include relevant numbers and units exactly as documented.
 
 FIELD: type
 Choose exactly one of the permitted types:
+- symptom: a symptom reported or denied, including its improvement or resolution.
 - diagnosis: a disease, condition, or clinical finding.
 - medication: a named medication or drug, including information about its
   use or discontinuation when stated.
@@ -138,6 +139,9 @@ Apply these rules:
 - If a fact concerns family history, use family even if the condition
   occurred in the relative's past. Do not attribute the relative's condition
   to the patient.
+- Keep uncertainty in the complete family clause. For "Her father has questionable
+    celiac disease", copy that full clause into text and source_quote and use family.
+    Never reduce it to "questionable celiac disease", which loses who it concerns.
 - If a medication is explicitly stated to have been stopped, discontinued,
   or ceased, do not represent it as a current medication. Use past when
   the medication's use is historical and no longer current.
@@ -198,24 +202,89 @@ Do not include explanations, commentary, markdown, or additional fields.
 #   - never infer, add, or correct anything not written in the source
 #   - keep abbreviations as written (don't expand or rename them)
 
+def source_context_issues(source_text: str, extraction: Extraction) -> List[str]:
+    """Check explicit family ownership and symptom-status sentences.
+
+    These narrow checks do not establish complete clinical coverage. They require
+    longer quotes when a short excerpt would hide a relative or a change in symptoms.
+    """
+    sentences = re.split(r"(?<=[.!?])\s+|(?<=,)(?=[A-Z][A-Z /]+:)", source_text)
+    relative_pattern = re.compile(
+        r"\b(?:mother|father|sister|brother|daughter|son|wife|husband|grandmother|grandfather)\b",
+        flags=re.IGNORECASE,
+    )
+    issues = []
+    for position, atom in enumerate(extraction.atoms, start=1):
+        if not atom.source_quote.strip():
+            continue
+        contexts = [sentence for sentence in sentences if atom.source_quote in sentence]
+        family_contexts = [sentence for sentence in contexts if relative_pattern.search(sentence)]
+        if family_contexts and len(family_contexts) == len(contexts):
+            if atom.assertion != "family" or not relative_pattern.search(atom.source_quote):
+                issues.append(
+                    f"Fact {position}: quote the complete family clause with its relative, "
+                    "keep any uncertainty in the wording, and use assertion family."
+                )
+        if atom.assertion == "family" and not relative_pattern.search(atom.source_quote):
+            if "family" not in atom.source_quote.lower():
+                issues.append(f"Fact {position}: family fact needs an explicit relative or family-history context in its quote.")
+    for position, sentence in enumerate(sentences, start=1):
+        has_symptoms = re.search(r"\bsymptoms?\b", sentence, flags=re.IGNORECASE)
+        has_change = re.search(r"\b(?:improved|improving|resolved|worsened|worsening|none of these symptoms)\b", sentence, flags=re.IGNORECASE)
+        if has_symptoms and has_change:
+            if not any(sentence.strip() in atom.source_quote for atom in extraction.atoms):
+                issues.append(
+                    f"Source sentence {position}: preserve the explicit symptom change as a fact "
+                    "with this complete sentence as its quote."
+                )
+    return issues
+
+
 def extract_atoms(source_text: str, model: str = MODEL) -> Extraction:
     from google import genai
     from google.genai import types
 
+    if not source_text.strip():
+        raise ValueError("Source note must not be blank.")
     client = genai.Client()
-    resp = client.models.generate_content(
-        model=model,
-        contents= f"SOURCE:\n{source_text}",
-        config=types.GenerateContentConfig(
-            system_instruction= INSTRUCTION,
-            response_mime_type="application/json",
-            response_schema= Extraction,
-            temperature=0,
-        ),
-    )
-    if resp.parsed is None:
-        raise ValueError(f"Gemini didn't return a parsed result. Raw reply: {resp.text}")
-    return resp.parsed
+    prompt = f"SOURCE:\n{source_text}"
+    for attempt in range(2):
+        response = client.models.generate_content(
+            model=model,
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                system_instruction=INSTRUCTION,
+                response_mime_type="application/json",
+                response_schema=Extraction,
+                temperature=0,
+            ),
+        )
+        extraction = response.parsed
+        invalid_positions = []
+        context_issues = []
+        if isinstance(extraction, Extraction):
+            for position, atom in enumerate(extraction.atoms, start=1):
+                if (
+                    not atom.text.strip()
+                    or not atom.source_quote.strip()
+                    or atom.text not in source_text
+                    or atom.source_quote not in source_text
+                ):
+                    invalid_positions.append(position)
+            context_issues = source_context_issues(source_text, extraction)
+            if extraction.atoms and not invalid_positions and not context_issues:
+                return extraction
+        if attempt == 0:
+            prior = extraction.model_dump_json() if isinstance(extraction, Extraction) else "No valid extraction."
+            prompt = (
+                f"SOURCE:\n{source_text}\n\nPREVIOUS EXTRACTION:\n{prior}\n\n"
+                f"Invalid fact positions: {invalid_positions}. "
+                f"Context and coverage issues: {context_issues}. "
+                "Return a corrected, complete extraction. Every text and source_quote must "
+                "be a nonempty exact excerpt from SOURCE. Preserve the subject, uncertainty, "
+                "and timing. Do not discard facts to make validation pass."
+            )
+    raise ValueError("Extraction failed source validation after one correction attempt.")
 
 
 # Are the atoms real?

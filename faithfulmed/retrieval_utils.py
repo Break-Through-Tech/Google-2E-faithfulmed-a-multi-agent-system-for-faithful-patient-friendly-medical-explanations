@@ -68,7 +68,17 @@ _genai_client: genai.Client | None = None
 def _client() -> genai.Client:
     global _genai_client
     if _genai_client is None:
-        _genai_client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+        _genai_client = genai.Client(
+            api_key=os.environ["GEMINI_API_KEY"],
+            http_options=types.HttpOptions(
+                retry_options=types.HttpRetryOptions(
+                    attempts=3,
+                    initial_delay=0.5,
+                    max_delay=2.0,
+                    http_status_codes=[408, 429, 500, 502, 503, 504],
+                )
+            ),
+        )
     return _genai_client
 
 
@@ -179,6 +189,28 @@ def _tokens_present(query: str, passage: str) -> bool:
     return present >= len(tokens) // 2 + 1
 
 
+def _title_matches_query(query: str, title: str) -> bool:
+    """Require a specific shared title word on the fallback search.
+
+    This deliberately loses some synonym matches. Known names and abbreviations
+    still use the name list first. A symptom list alone must not select a disease.
+    """
+    ignored = {
+        "the", "and", "with", "who", "has", "have", "had", "was", "were",
+        "patient", "mother", "father", "sister", "brother", "family", "history",
+        "health", "good", "problem", "disease", "syndrome", "noted", "notable",
+    }
+    query_words = {
+        word.rstrip("s") for word in _TOKEN_PATTERN.findall(query.lower())
+        if len(word) >= MIN_TOKEN_LENGTH
+    } - ignored
+    title_words = {
+        word.rstrip("s") for word in _TOKEN_PATTERN.findall(title.lower())
+        if len(word) >= MIN_TOKEN_LENGTH
+    } - ignored
+    return bool(query_words & title_words)
+
+
 def _similarity_passages(query: str, limit: int) -> list[dict[str, Any]]:
     """Find similar passages, check their scores and words, then group them by article.
 
@@ -198,6 +230,8 @@ def _similarity_passages(query: str, limit: int) -> list[dict[str, Any]]:
     for document, metadata, distance in zip(documents, metadatas, distances):
         metadata = metadata or {}
         if distance > DISTANCE_CUTOFF:
+            continue
+        if not _title_matches_query(query, metadata.get("title") or ""):
             continue
         if not _tokens_present(query, f"{metadata.get('title', '')} {document}"):
             continue
