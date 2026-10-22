@@ -83,6 +83,32 @@ class SimplifyStep(BaseAgent):
             }),
         )
 
+class VerifyStep(BaseAgent):
+    """
+    Checks the current patient text (after Readability or the Refiner) against the note, the atoms,
+    and the passages the Simplifier used. Writes the report as {verdict} for the Refiner, and ends
+    the loop early when nothing needs revising.
+    """
+ 
+    async def _run_async_impl(self, ctx: InvocationContext) -> AsyncGenerator[Event, None]:
+        state = ctx.session.state
+        atoms = state.get("atoms")
+        if not atoms:
+            raise ValueError("Nothing to verify against. Run the Extractor first.")
+        if not state.get("draft"):
+            raise ValueError("Nothing to verify. Run the Simplifier first.")
+ 
+        # judge the text the reader will see, with the simplifier's citations and coverage.
+        draft = {**state["draft"], "simplified_text": state.get("text") or state["draft"]["simplified_text"]}
+        report = await to_thread(verify, state.get("source_note", ""), atoms, draft)
+        yield Event(
+            author=self.name,
+            invocation_id=ctx.invocation_id,
+            actions=EventActions(
+                state_delta={"verdict": report.model_dump()},
+                escalate=not report.needs_revision,  # stop the loop, skipping the Refiner
+            ),
+        )
 
 # 1) Extractor - pull clinical "atoms" (facts + types) from the source document.
 extractor = ExtractAtomsStep(name="Extractor")
@@ -103,15 +129,7 @@ readability = LlmAgent(
 )
 
 # 4) Verifier - LLM-as-judge over the readability-improved text.
-verifier = LlmAgent(
-    name="Verifier",
-    model=MODEL,
-    instruction=(
-        "Compare {text} against {atoms}. Return JSON: {faithful: bool, unsupported_claims: [...], "
-        "omissions: [...], invented_numbers: [...]}. Be strict: an unsupported clinical claim is a failure."
-    ),
-    output_key="verdict",
-)
+verifier = VerifyStep(name="Verifier")
 
 # 5) Refiner - fix only what the Verifier flagged. No free rewriting.
 refiner = LlmAgent(

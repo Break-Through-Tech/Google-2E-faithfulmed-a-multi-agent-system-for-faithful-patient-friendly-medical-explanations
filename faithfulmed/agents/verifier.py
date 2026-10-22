@@ -1,23 +1,58 @@
-from typing import AsyncGenerator, Literal
+"""Verifier agent: source + extracted facts + Simplifier draft -> faithfulness report.
+
+Scores the draft with the advisor's four metrics (faithfulness, omission, addition,
+hallucination) and tells the Refiner whether the draft needs revision.
+"""
+import json
+from pathlib import Path
+from typing import AsyncGenerator, List, Literal, Optional, Union
 
 from pydantic import BaseModel, Field
-from google.genai import Client, types
-from google.adk.agents import BaseAgent, LlmAgent
-from google.adk.agents.invocation_context import InvocationContext
-from google.adk.events import Event, EventActions
+
+from faithfulmed.simplifier import SimplifiedOutput, format_atoms
 
 MODEL = "gemini-3.5-flash-lite"
 
-# Shared-state keys used in the ADK pipeline.
-SOURCE_KEY = "source"                  
-FACTS_KEY = "atoms"                    
-SIMPLIFIED_KEY = "draft"               
-PASSAGES_KEY = "retrieved_passages"    
-OUTPUT_KEY = "verdict"               
-REPORT_KEY = "verifier_report"         
+
+# Define what the model returns, and what we hand back
+Severity = Literal["minor", "major"]
 
 
-VERIFIER_INSTRUCTION = """
+class ClaimCheck(BaseModel):
+    claim: str = Field(description="One specific statement from the patient explanation")
+    label: Literal["supported", "background", "unsupported", "distorted"] = Field(
+        description="supported: the source states it; background: not in the source but backed by the "
+                    "reference material; unsupported: backed by neither; distorted: changes a fact from the source")
+    evidence: str = Field(description="Exact quote from the source or reference passage, or '' if none")
+    severity: Severity = Field(description="The clinical importance of claim being incorrect.")
+
+
+class Omission(BaseModel):
+    fact_number: int = Field(description="Number of the fact in FACTS that the explanation leaves out or states incorrectly")
+    fact: str = Field(description="The text of that fact")
+    severity: Severity = Field(description="The clinical importance of omission being made.")
+
+
+class VerifierJudgment(BaseModel):
+    """What the model returns."""
+
+    claims: List[ClaimCheck] = Field(description="Every claim in the explanation, including supported ones")
+    omissions: List[Omission] = Field(description="Every fact the explanation leaves out or states incorrectly")
+
+
+class VerifierReport(VerifierJudgment):
+    """What we hand back: the judgment plus metrics computed in code."""
+
+    faithfulness_score: float = Field(description="Fraction of claims that are supported or background")
+    omission_count: int = Field(description="Facts missing")
+    total_facts: int = Field(description="Number of Extractor facts")
+    addition_count: int = Field(description="Claims labelled background or unsupported")
+    hallucination: bool = Field(description="At least one major unsupported or distorted claim.")
+    needs_revision: bool = Field(description="Hallucination, or any major omission. Sent to refiner agent.")
+    false_coverage: List[int] = Field(description="Fact numbers the Simplifier reported as covered but are missing")
+
+
+INSTRUCTION = """
 You are a medical verification agent.
 
 Your task is to compare a patient-friendly medical
@@ -43,11 +78,13 @@ unsupported, or distorted.
 A claim that changes a fact from the source (a number,
 unit, timing, or a hedge turned into certainty) is
 distorted. General information not in the source is
-background only if a RETRIEVED BACKGROUND passage backs it.
+background only if a REFERENCE MATERIAL passage backs it.
 
-If KEY FACTS are given, go through them one by one and
-list every key fact the explanation leaves out or states
-incorrectly as an omission, using its fact_id.
+Each numbered fact is tagged with its type and assertion
+(for example present, absent, possible, family). Go through
+the FACTS one by one and list every fact the explanation
+leaves out or states incorrectly as an omission, using its
+number as fact_number.
 
 Pay special attention to negation errors.
 
@@ -59,6 +96,9 @@ If the source reports a symptom or finding,
 but the explanation says it is absent,
 mark the claim as distorted.
 
+A family member's condition stated as the patient's,
+or a possible condition stated as confirmed, is distorted.
+
 Check each part of a sentence separately when
 it contains multiple medical facts.
 
@@ -69,47 +109,31 @@ If the source does not mention the claim, clearly state:
 "Not mentioned in the original source."
 
 Important rules:
-- Use only the original medical source and the retrieved background to verify facts.
+- Use only the original medical source and the reference material to verify facts.
 - Do not invent medical information.
 - Do not treat suspected conditions as confirmed diagnoses.
 - Prioritize errors that could affect patient safety.
 - Check the entire explanation, not just a few claims.
 - Do not overlook a contradiction just because most
   of the explanation is accurate.
+- Return only the structured output that matches the schema.
 """
 
-# Output schema
-Severity = Literal["minor", "major"]
 
-class ClaimCheck(BaseModel):
-    claim: str = Field(description="One specific statement from the patient explanation")
-    label: Literal["supported", "background", "unsupported", "distorted"] = Field(
-        description="supported: the source states it; background: not in the source but backed by the "
-                    "retrieved background; unsupported: backed by neither; distorted: changes a fact from the source")
-    evidence: str = Field(description="Exact quote from the source or background passage, or '' if none")
-    severity: Severity = Field(description="The clinical importance of claim being incorrect.")
-
-class Omission(BaseModel):
-    fact_id: str = Field(description="fact_id from KEY FACTS, or '' if no key facts were given")
-    fact: str = Field(description="An important fact from the source that the explanation leaves out")
-    severity: Severity = Field(description="The clinical importance of omission being made.")
-
-class VerifierJudgment(BaseModel):
-    claims: list[ClaimCheck]
-    omissions: list[Omission]
-
-class VerifierReport(VerifierJudgment):
-    faithfulness_score: float = Field(description="Fraction of claims that are supported or background")
-    omission_count: int = Field(description="Key facts missing")
-    total_key_facts: int = Field(description="Number of Extractor key facts (0 if none given)")
-    addition_count: int = Field(description="Claims labelled background or unsupported")
-    hallucination: bool = Field(description="At least one major unsupported or distorted claim.")
-    needs_revision: bool = Field(description="Hallucination, or any major omission. Sent to refiner agent.")
-    false_coverage: list[str] = Field(description="fact_ids the Simplifier claimed to cover but are missing")
+def as_draft(draft: Union[SimplifiedOutput, dict]) -> SimplifiedOutput:
+    """Accept the Simplifier's output either as the model or as a dict from load_draft."""
+    return draft if isinstance(draft, SimplifiedOutput) else SimplifiedOutput.model_validate(draft)
 
 
-def build_report(judgment: VerifierJudgment, facts: list[dict] | None = None,
-                 facts_covered: list[str] | None = None) -> VerifierReport:
+def format_references(draft: SimplifiedOutput) -> str:
+    """Join the MedlinePlus passages the draft used into one reference section."""
+    if not draft.source_metadata:
+        return "No reference passages were used."
+    return "\n\n---\n\n".join(f"{p.title}\n{p.text}" for p in draft.source_metadata)
+
+
+def build_report(judgment: VerifierJudgment, atom_count: int,
+                 atoms_covered: Optional[List[int]] = None) -> VerifierReport:
     """Computes the advisor's metrics in code from the model's judgment."""
     supported = [c for c in judgment.claims if c.label in ("supported", "background")]
     additions = [c for c in judgment.claims if c.label in ("background", "unsupported")]
@@ -118,131 +142,166 @@ def build_report(judgment: VerifierJudgment, facts: list[dict] | None = None,
 
     n = len(judgment.claims)
     hallucination = len(hallucinated) > 0
-    omitted_ids = {o.fact_id for o in judgment.omissions}
+    omitted = {o.fact_number for o in judgment.omissions}
 
     return VerifierReport(
         **judgment.model_dump(),
         faithfulness_score=len(supported) / n if n else 1.0,
         omission_count=len(judgment.omissions),
-        total_key_facts=len(facts or []),
+        total_facts=atom_count,
         addition_count=len(additions),
         hallucination=hallucination,
         needs_revision=hallucination or len(serious_omissions) > 0,
-        false_coverage=sorted(omitted_ids & set(facts_covered or [])),
+        false_coverage=sorted(omitted & set(atoms_covered or [])),
     )
 
 
-# testing: call gemini directly
-_client = None
+def verify(
+    source: str,
+    atoms: List[dict],
+    draft: Union[SimplifiedOutput, dict],
+    model: str = MODEL,
+) -> VerifierReport:
+    """Check the Simplifier's draft against the source, the numbered facts and its references."""
+    if not atoms:
+        raise ValueError("No facts to verify against. Run the Extractor first, or pass the atoms in.")
+    draft = as_draft(draft)
 
-def build_message(source: str, explanation: str, facts: list[dict] | None = None,
-                  passages: list[str] | None = None) -> str:
-    """Puts the inputs into labelled sections. Each fact needs a 'text' key; 'fact_id' is used if present."""
-    message = f"SOURCE:\n{source}\n\n"
-    if facts:
-        message += "KEY FACTS:\n" + "\n".join(
-            f"{f.get('fact_id', f'F{i}')}: {f['text']}" for i, f in enumerate(facts, 1)) + "\n\n"
-    if passages:
-        message += "RETRIEVED BACKGROUND:\n" + "\n\n".join(passages) + "\n\n"
-    message += f"EXPLANATION:\n{explanation}"
-    return message
+    from google import genai
+    from google.genai import types
 
-
-def create_verifier_chat():
-    global _client
-    if _client is None:
-        _client = Client()   # reads GOOGLE_API_KEY from the environment
-    config = types.GenerateContentConfig(
-        system_instruction=VERIFIER_INSTRUCTION,
-        response_mime_type="application/json",
-        response_schema=VerifierJudgment,
-        temperature=0,
+    prompt = (
+        f"SOURCE:\n{source}\n\n"
+        f"FACTS:\n{format_atoms(atoms)}\n\n"
+        f"REFERENCE MATERIAL:\n{format_references(draft)}\n\n"
+        f"EXPLANATION:\n{draft.simplified_text}"
     )
-    return _client.chats.create(model=MODEL, config=config)
+
+    client = genai.Client()
+    response = client.models.generate_content(
+        model=model,
+        contents=prompt,
+        config=types.GenerateContentConfig(
+            system_instruction=INSTRUCTION,
+            response_mime_type="application/json",
+            response_schema=VerifierJudgment,
+            temperature=0,
+        ),
+    )
+
+    if response.parsed is None:
+        raise ValueError("Verifier did not return a structured judgment.")
+    judgment = response.parsed
+
+    issues = []
+    if not judgment.claims:
+        issues.append("no claims listed")
+    if check_fact_numbers(judgment, len(atoms)):
+        issues.append("omissions reference unknown fact numbers")
+    if issues:
+        raise ValueError("Verifier validation failed: " + ", ".join(issues))
+
+    return build_report(judgment, len(atoms), draft.atoms_covered)
 
 
-def run_verifier_agent(source: str, explanation: str, facts: list[dict] | None = None,
-                       passages: list[str] | None = None, facts_covered: list[str] | None = None,
-                       verbose: bool = True) -> VerifierReport:
-    """Checks one explanation and returns the full Verifier report."""
-    # new chat for every check, so the judge never sees earlier drafts
-    chat = create_verifier_chat()
-    response = chat.send_message(build_message(source, explanation, facts, passages))
-
-    judgment = VerifierJudgment.model_validate_json(response.text)
-    report = build_report(judgment, facts, facts_covered)
-
-    if verbose:
-        print_report(report)
-    return report
+# Is the judgment usable?
+def check_fact_numbers(judgment: VerifierJudgment, atom_count: int) -> List[int]:
+    """Return omission fact numbers that are not in the fact list."""
+    return [o.fact_number for o in judgment.omissions if o.fact_number < 1 or o.fact_number > atom_count]
 
 
 def print_report(report: VerifierReport) -> None:
     print("Verifier Report")
     print(f"Faithfulness score: {report.faithfulness_score:.2f}")
-    if report.total_key_facts:
-        print(f"Omissions: {report.omission_count} of {report.total_key_facts} | Additions: {report.addition_count}")
-    else:
-        print(f"Omissions: {report.omission_count} | Additions: {report.addition_count}")
+    print(f"Omissions: {report.omission_count} of {report.total_facts} | Additions: {report.addition_count}")
     print(f"Hallucination: {report.hallucination} | Needs revision: {report.needs_revision}")
     if report.false_coverage:
-        print(f"Simplifier claimed but missing: {report.false_coverage}")
+        print(f"Simplifier reported as covered but missing: {report.false_coverage}")
     for c in report.claims:
         if c.label != "supported":
             print(f"  [{c.label}, {c.severity}] {c.claim}")
     for o in report.omissions:
-        print(f"  [omitted {o.fact_id}, {o.severity}] {o.fact}")
+        print(f"  [omitted fact {o.fact_number}, {o.severity}] {o.fact}")
 
 
-# ADK pipeline: LlmAgent that reads inputs from shared state
-# {key?} means optional: the run continues if that key is not in state yet.
-PIPELINE_INSTRUCTION = VERIFIER_INSTRUCTION + f"""
+# Hand off the file
+def save_report(doc_id: str, report: VerifierReport, out_dir: Path) -> Path:
+    """Write one document's report to <out_dir>/<doc_id>.verdict.json and return the path."""
+    if not doc_id or Path(doc_id).name != doc_id or doc_id in {".", ".."}:
+        raise ValueError("doc_id must be a non-empty filename stem")
+
+    out_dir.mkdir(parents=True, exist_ok=True)
+    output_path = out_dir / f"{doc_id}.verdict.json"
+    output_path.write_text(
+        json.dumps(report.model_dump(mode="json"), indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    return output_path
+
+
+def load_report(path: Path) -> dict:
+    """Read a saved report back into a dict."""
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(payload, dict):
+        raise ValueError("Report file must contain a JSON object")
+    return payload
+
+
+# ADK pipeline (optional): only needed if the team wires agents with ADK state.
+# Names match the team's adk_pipeline.py skeleton.
+SOURCE_KEY = "source"                  # set when the session is created
+ATOMS_KEY = "atoms"                    # Extractor output_key
+DRAFT_KEY = "draft"                    # Simplifier output_key (Refiner overwrites it)
+OUTPUT_KEY = "verdict"                 # Refiner reads {verdict}
+REPORT_KEY = "verifier_report"
+
+
+def build_adk_agents():
+    """Return (verifier_agent, verifier_stop_check) for a LoopAgent with the Refiner:
+    LoopAgent(sub_agents=[verifier_agent, verifier_stop_check, refiner], max_iterations=2)
+    """
+    from google.adk.agents import BaseAgent, LlmAgent
+    from google.adk.agents.invocation_context import InvocationContext
+    from google.adk.events import Event, EventActions
+    from google.genai import types
+
+    pipeline_instruction = INSTRUCTION + f"""
 SOURCE:
 {{{SOURCE_KEY}}}
 
-KEY FACTS:
-{{{FACTS_KEY}?}}
+FACTS:
+{{{ATOMS_KEY}}}
 
-RETRIEVED BACKGROUND:
-{{{PASSAGES_KEY}?}}
-
-EXPLANATION (if this is JSON, check its simplified_text field):
-{{{SIMPLIFIED_KEY}}}
+EXPLANATION AND REFERENCE MATERIAL (if this is JSON, check simplified_text against source_metadata):
+{{{DRAFT_KEY}}}
 """
 
+    def save_adk_report(callback_context):
+        """Runs after the agent: turns the raw judgment in state into the full report."""
+        state = callback_context.state
+        judgment = VerifierJudgment.model_validate(state[OUTPUT_KEY])
+        atoms = state.get(ATOMS_KEY)
+        draft = state.get(DRAFT_KEY)
+        atoms_covered = draft.get("atoms_covered", []) if isinstance(draft, dict) else []
+        report = build_report(judgment, len(atoms) if isinstance(atoms, list) else 0, atoms_covered)
+        state[REPORT_KEY] = report.model_dump()
+        state["needs_revision"] = report.needs_revision   # the stop check reads this
+        return None
 
-def _save_report(callback_context):
-    """Runs after the agent: turns the raw judgment in state into the full report."""
-    state = callback_context.state
-    judgment = VerifierJudgment.model_validate(state[OUTPUT_KEY])
-    simplified = state.get(SIMPLIFIED_KEY) or {}
-    facts_covered = simplified.get("facts_covered", []) if isinstance(simplified, dict) else []
-    facts = state.get(FACTS_KEY) if isinstance(state.get(FACTS_KEY), list) else None
+    class StopIfNoRevision(BaseAgent):
+        """Ends the loop when the Verifier found nothing to fix."""
+        async def _run_async_impl(self, ctx: InvocationContext) -> AsyncGenerator[Event, None]:
+            done = ctx.session.state.get("needs_revision") is False
+            yield Event(author=self.name, actions=EventActions(escalate=done))
 
-    report = build_report(judgment, facts, facts_covered)
-    state[REPORT_KEY] = report.model_dump()
-    state["needs_revision"] = report.needs_revision   # the LoopAgent stop check reads this
-    return None
-
-
-verifier_agent = LlmAgent(
-    name="Verifier",
-    model=MODEL,
-    description="Checks patient-friendly medical explanations for accuracy and completeness.",
-    instruction=PIPELINE_INSTRUCTION,
-    output_schema=VerifierJudgment,
-    output_key=OUTPUT_KEY,
-    generate_content_config=types.GenerateContentConfig(temperature=0),
-    after_agent_callback=_save_report,
-)
-
-
-# Loop stop check: put between the Verifier and the Refiner in the LoopAgent
-class StopIfNoRevision(BaseAgent):
-    """Ends the loop when the Verifier found nothing to fix."""
-    async def _run_async_impl(self, ctx: InvocationContext) -> AsyncGenerator[Event, None]:
-        done = ctx.session.state.get("needs_revision") is False
-        yield Event(author=self.name, actions=EventActions(escalate=done))
-
-
-verifier_stop_check = StopIfNoRevision(name="VerifierStopCheck")
+    verifier_agent = LlmAgent(
+        name="Verifier",
+        model=MODEL,
+        description="Checks patient-friendly medical explanations for accuracy and completeness.",
+        instruction=pipeline_instruction,
+        output_schema=VerifierJudgment,
+        output_key=OUTPUT_KEY,
+        generate_content_config=types.GenerateContentConfig(temperature=0),
+        after_agent_callback=save_adk_report,
+    )
+    return verifier_agent, StopIfNoRevision(name="VerifierStopCheck")
