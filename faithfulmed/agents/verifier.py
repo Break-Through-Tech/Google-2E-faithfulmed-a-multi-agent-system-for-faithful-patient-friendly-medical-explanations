@@ -9,12 +9,14 @@ from typing import AsyncGenerator, List, Literal, Optional, Union
 
 from pydantic import BaseModel, Field
 
-from faithfulmed.simplifier import SimplifiedOutput, format_atoms
+from faithfulmed.agents.simplifier import SimplifiedOutput, format_atoms
 
 MODEL = "gemini-3.5-flash-lite"
 
 
-# Define what the model returns, and what we hand back
+# A claim is one statement in the explanation. An omission is an extracted fact
+# that the explanation leaves out or states incorrectly. The model judges these,
+# then Python calculates the report numbers from those judgments.
 Severity = Literal["minor", "major"]
 
 
@@ -135,15 +137,23 @@ def format_references(draft: SimplifiedOutput) -> str:
 def build_report(judgment: VerifierJudgment, atom_count: int,
                  atoms_covered: Optional[List[int]] = None) -> VerifierReport:
     """Computes the advisor's metrics in code from the model's judgment."""
+    # The categories overlap on purpose: reference-backed background counts as
+    # faithful, but also as an addition because it is not stated in the patient note.
     supported = [c for c in judgment.claims if c.label in ("supported", "background")]
     additions = [c for c in judgment.claims if c.label in ("background", "unsupported")]
+    # Only major unsupported or distorted claims set the hallucination flag.
+    # A major omission can also require revision even when no claim was invented.
     hallucinated = [c for c in judgment.claims if c.label in ("unsupported", "distorted") and c.severity == "major"]
     serious_omissions = [o for o in judgment.omissions if o.severity == "major"]
 
     n = len(judgment.claims)
     hallucination = len(hallucinated) > 0
+    # These numbers are one-based fact positions, not IDs such as F007.
+    # Set intersection below finds facts claimed as covered but judged missing.
     omitted = {o.fact_number for o in judgment.omissions}
 
+    # Scores summarize the model's labels. They are not human-verified accuracy.
+    # With no claims the formula returns 1.0, but verify rejects an empty judgment.
     return VerifierReport(
         **judgment.model_dump(),
         faithfulness_score=len(supported) / n if n else 1.0,
@@ -193,6 +203,8 @@ def verify(
         raise ValueError("Verifier did not return a structured judgment.")
     judgment = response.parsed
 
+    # A correctly shaped JSON reply can still refer to facts that do not exist.
+    # Reject those references before calculating metrics or asking for a repair.
     issues = []
     if not judgment.claims:
         issues.append("no claims listed")
@@ -247,11 +259,12 @@ def load_report(path: Path) -> dict:
     return payload
 
 
-# ADK pipeline (optional): only needed if the team wires agents with ADK state.
-# Names match the team's adk_pipeline.py skeleton.
+# Optional ADK integration, separate from the active VerifyStep in adk_pipeline.py.
+# Callers of this builder must supply the state keys below. In particular, it uses
+# "source", while the active pipeline uses "source_note" and a separate working "text".
 SOURCE_KEY = "source"                  # set when the session is created
 ATOMS_KEY = "atoms"                    # Extractor output_key
-DRAFT_KEY = "draft"                    # Simplifier output_key (Refiner overwrites it)
+DRAFT_KEY = "draft"                    # explanation and references for this optional builder
 OUTPUT_KEY = "verdict"                 # Refiner reads {verdict}
 REPORT_KEY = "verifier_report"
 
@@ -278,6 +291,8 @@ EXPLANATION AND REFERENCE MATERIAL (if this is JSON, check simplified_text again
 
     def save_adk_report(callback_context):
         """Runs after the agent: turns the raw judgment in state into the full report."""
+        # A callback runs after the model reply. It saves the Python-computed report
+        # separately from the raw judgment, then leaves a flag for the stop-check agent.
         state = callback_context.state
         judgment = VerifierJudgment.model_validate(state[OUTPUT_KEY])
         atoms = state.get(ATOMS_KEY)
@@ -291,6 +306,8 @@ EXPLANATION AND REFERENCE MATERIAL (if this is JSON, check simplified_text again
     class StopIfNoRevision(BaseAgent):
         """Ends the loop when the Verifier found nothing to fix."""
         async def _run_async_impl(self, ctx: InvocationContext) -> AsyncGenerator[Event, None]:
+            # Only an explicit False means no revision is needed. An absent flag
+            # does not count as success. Escalation tells the surrounding loop to stop.
             done = ctx.session.state.get("needs_revision") is False
             yield Event(author=self.name, actions=EventActions(escalate=done))
 

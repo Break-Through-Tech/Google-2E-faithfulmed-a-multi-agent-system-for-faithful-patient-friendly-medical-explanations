@@ -23,9 +23,11 @@ from google.adk.events import Event, EventActions
 
 from faithfulmed.agents.extractor import extract_atoms
 from faithfulmed.agents.simplifier import build_grounding, simplify
+from faithfulmed.agents.verifier import verify
 
+# Session state is a shared dictionary: each step reads earlier results and publishes
+# its own results. Agent definitions at the bottom set the order, not these class names.
 MODEL = "gemini-3.5-flash-lite"
-
 
 def _note_from_message(ctx: InvocationContext) -> str:
     content = ctx.user_content
@@ -48,7 +50,11 @@ class ExtractAtomsStep(BaseAgent):
                 "Nothing to extract. Send the note as the message, or set source_note in state."
             )
 
+        # The model call waits for a network reply. to_thread does that waiting on
+        # another thread so it does not block ADK's asynchronous event loop.
         extraction = await to_thread(extract_atoms, note)
+        # yield publishes an event. state_delta contains only the state entries
+        # this step updates, so the next agent can read the accepted atoms.
         yield Event(
             author=self.name,
             invocation_id=ctx.invocation_id,
@@ -71,8 +77,12 @@ class SimplifyStep(BaseAgent):
         if not atoms:
             raise ValueError("Nothing to simplify. Run the Extractor first.")
 
+        # Fetch reference passages before writing. The Simplifier receives these
+        # same passages, and the state keeps them available for later inspection.
         grounding = await to_thread(build_grounding, atoms)
         draft = await to_thread(simplify, atoms, grounding)
+        # Keep two versions: draft is the original structured record, while text
+        # is the working prose that Readability and Refiner are allowed to replace.
         yield Event(
             author=self.name,
             invocation_id=ctx.invocation_id,
@@ -98,7 +108,9 @@ class VerifyStep(BaseAgent):
         if not state.get("draft"):
             raise ValueError("Nothing to verify. Run the Simplifier first.")
  
-        # judge the text the reader will see, with the simplifier's citations and coverage.
+        # Build a temporary dictionary with current prose and original draft metadata.
+        # ** copies the draft fields, then simplified_text replaces that one field.
+        # This does not change state["draft"] or certify its citations for later edits.
         draft = {**state["draft"], "simplified_text": state.get("text") or state["draft"]["simplified_text"]}
         report = await to_thread(verify, state.get("source_note", ""), atoms, draft)
         yield Event(
@@ -143,14 +155,16 @@ refiner = LlmAgent(
     output_key="text",  # overwrites the working text so the loop re-verifies the corrected version
 )
 
-# Bounded refine loop: Verifier -> Refiner, at most twice.
+# Each iteration runs Verifier, then Refiner unless Verifier stops the loop early.
+# The cap prevents endless repairs. At the cap, the last Refiner output may leave
+# without another Verifier check. Loop completion alone does not mean approval.
+# Nothing in this loop measures the final reading grade after a Refiner rewrite.
 refine_loop = LoopAgent(
     name="RefineLoop",
     sub_agents=[verifier, refiner],
     max_iterations=2,
 )
 
-# The agreed DAG: Extractor -> Simplifier -> Readability -> (Verifier <-> Refiner, bounded).
 faithfulmed = SequentialAgent(
     name="FaithfulMed",
     sub_agents=[extractor, simplifier, readability, refine_loop],

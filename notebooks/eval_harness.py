@@ -1,5 +1,5 @@
 """
-FaithfulMed — starter evaluation harness.
+FaithfulMed evaluation harness.
 
 Build this out in Week 1-2, BEFORE the agents. You can't improve what you can't measure.
 Run: python notebooks/eval_harness.py  (expects data/medaesqa_v1.json — see data/README.md)

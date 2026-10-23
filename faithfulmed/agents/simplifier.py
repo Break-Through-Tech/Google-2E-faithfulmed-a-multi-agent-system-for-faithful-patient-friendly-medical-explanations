@@ -1,41 +1,68 @@
-"""Simplifier agent: extracted facts plus MedlinePlus grounding -> patient-friendly draft."""
-import json
+"""Simplifier agent: extracted atoms plus MedlinePlus grounding -> patient-friendly draft."""
 import re
-from pathlib import Path
-from typing import List, Optional
+from typing import Callable, Dict, List, Optional, Tuple
 
 from pydantic import BaseModel, Field
 
+from faithfulmed.agents.extractor import (
+    NEGATION_CUE_PATTERN,
+    NUMBER_PATTERN,
+    RELATIVE_PATTERN,
+)
 from faithfulmed.retrieval_utils import format_passages, retrieve_passages
 
+# Reading path: build_grounding finds reference passages, then simplify writes and
+# checks a draft. The small helper functions below handle each part of that process.
+# Grounding means reference text for explaining terms, not new facts about the patient.
 MODEL = "gemini-3.5-flash-lite"
-TARGET_GRADE = 8
+MAX_ATTEMPTS = 2
+PASSAGES_PER_FACT = 3
+
+UNCERTAINTY_CUE_PATTERN = re.compile(
+    r"\b(?:possible|possibly|may|might|could|suspected|suspicion|questionable|"
+    r"unclear|uncertain|not sure|likely|appears)\b",
+    flags=re.IGNORECASE,
+)
+PAST_CUE_PATTERN = re.compile(
+    r"\b(?:was|were|had|has had|previously|past|history|earlier|ago|used to|"
+    r"no longer|in \d{4})\b",
+    flags=re.IGNORECASE,
+)
 
 
-# Define what the model returns, and what we hand back
+class SimplifierError(Exception):
+    """A failure the Simplifier can name, instead of a raw SDK or validation traceback."""
+
+
 class FactRewrite(BaseModel):
-    fact_number: int
-    text: str
+    """One plain-language rewrite of one fact, addressed by the fact's id."""
+
+    fact_id: str = Field(description="The fact_id copied exactly from the FACTS block.")
+    text: str = Field(
+        description=(
+            "The patient-friendly wording for this fact. It must stand alone, keep the "
+            "subject, assertion, numbers and units, and add nothing the fact does not say."
+        )
+    )
+    ungrounded_terms: List[str] = Field(
+        default_factory=list,
+        description="Terms explained without a reference block, so no definition was invented.",
+    )
 
 
 class SimplifierReply(BaseModel):
-    """What the model returns: the prose, plus which supplied blocks it used."""
+    """What the model returns: one rewrite per fact, plus the reference titles it used."""
 
-    fact_rewrites: List[FactRewrite] = Field(
-        description="Exactly one plain-language rewrite per numbered fact, preserving its owner and status."
-    )
+    fact_rewrites: List[FactRewrite]
     sources_used: List[str] = Field(
-        description="The title of every MedlinePlus reference block the draft actually used."
-    )
-    glossary_terms_used: List[str] = Field(
-        description="Every term that was explained from a MedlinePlus reference block."
-    )
-    ungrounded_terms: List[str] = Field(
-        description="Every term that had no reference block and was explained from the facts alone."
+        default_factory=list,
+        description="The exact title of every reference block the draft actually used.",
     )
 
 
 class SourcePassage(BaseModel):
+    """A MedlinePlus passage copied from the store, not from the model."""
+
     title: str
     url: Optional[str] = None
     section: Optional[str] = None
@@ -43,184 +70,149 @@ class SourcePassage(BaseModel):
 
 
 class SimplifiedOutput(BaseModel):
+    """What simplify() returns: the prose, its provenance, and what needs review."""
+
     simplified_text: str
-    fact_rewrites: List[FactRewrite] = Field(default_factory=list)
-    sources_used: List[str]
-    source_metadata: List[SourcePassage] = Field(
-        description="The full text of every supplied passage the draft used, filled in by the caller."
+    source_metadata: List[SourcePassage]
+    atoms_covered: List[int] = Field(
+        default_factory=list,
+        description="One-based positions of the facts that appear in the prose, for the Verifier.",
     )
-    glossary_terms_used: List[str]
-    ungrounded_terms: List[str]
-    atoms_covered: List[int]
+    fact_ids_covered: List[str] = Field(
+        default_factory=list,
+        description="The same facts by id, so a draft can be traced back to an extraction.",
+    )
+    review_warnings: List[str] = Field(default_factory=list)
 
 
 INSTRUCTION = """
 ROLE
-You are a patient-education writer. You turn a numbered list of clinical facts about one
-patient into a short explanation that the patient can read and understand.
+You explain one patient's clinical facts in plain language that the patient can read.
 You are not a clinician: you do not diagnose, advise, prescribe, or reassure.
 
 THE ONLY SOURCE OF TRUTH
-The numbered facts are the only source of truth about this patient.
-Never add a fact, diagnosis, symptom, medicine, dose, date, number, unit, or cause that the
-facts do not state. Never correct, soften, or upgrade what the facts say.
+The facts below are the only source of truth about this patient.
+Never add a fact, symptom, medicine, dose, date, number, unit, or cause the facts do not state.
+Never soften, upgrade, or correct what a fact says.
 Never drop a fact because it is negative, uncertain, historical, or about a family member.
 
-READING LEVEL
-Write at an 8th-grade reading level or below.
-- Keep sentences short: one idea per sentence, about 15 words or fewer.
-- Use everyday words. Explain a medical term the first time it appears, in the same sentence.
-- Use active voice, and address the patient as "you" only when the fact is about the patient.
-- Keep paragraphs short: two to four sentences each.
-- Do not use tables or long headings.
-
-REFERENCE MATERIAL
+REFERENCE BLOCKS
 Reference blocks are MedlinePlus definitions supplied for this draft. They explain words.
 They never describe this patient.
-- Use a definition only to explain a term that the facts already contain.
-- Do not copy clinical detail from a definition into this patient's situation.
-- Do not use a definition to fill a gap that the facts leave.
-- Do not import numerical thresholds, frequencies, durations, or advice from references.
-    This includes numbers written as words, such as "three bowel movements a week".
-- If a term has no reference block, explain it in the plainest words the facts support,
-  invent no definition, and list that term in ungrounded_terms.
-- List every term you explained from a block in glossary_terms_used, and list the title of each
-  block you actually used in sources_used, copied exactly.
+- Use a definition only to explain a term that the fact already contains.
+- Never copy a number, threshold, frequency, duration, dose, or piece of advice from a block.
+- If a term has no block, explain it in the plainest words the facts support, invent no
+  definition, and list the term in that entry's ungrounded_terms.
 
-PRESERVE MEANING
-- Keep negations: a denied symptom stays denied.
-- Keep uncertainty: "possible" or "suspected" never becomes confirmed.
-- Keep timing: a past fact or a stopped medicine stays in the past.
-- Keep the owner: a family member's condition never becomes the patient's condition.
-- Read each supporting quote for the subject and uncertainty. A father's possible
-    condition must remain the father's possible condition, never "you have" it.
-- Keep numbers and units exactly as written. Do not convert, round, or restate them loosely.
+KEEP THE MEANING
+- A denied symptom stays denied.
+- "possible" or "suspected" never becomes certain.
+- A past fact or a stopped medicine stays in the past.
+- A relative's condition never becomes the patient's condition.
+- Keep numbers and units exactly as written. Do not convert, round, or restate them.
 
-COVERAGE AND OUTPUT
-Return exactly one fact_rewrites entry for each numbered fact. Copy its number into
-fact_number and put its patient-friendly explanation in text. Do not merge or omit entries.
-Each entry must stand alone: name the relative instead of depending on an earlier sentence.
-Keep improvement, resolution, and timing explicit, not just the fact that a diet started.
-Explain terms in that entry only when a supplied reference supports the explanation.
-Do not list a reference or glossary term as used unless you actually explained a term from it.
+WRITING
+- Eighth-grade reading level or below: short sentences, everyday words, active voice.
+- Address the patient as "you" only for that patient's own facts; name the relative otherwise.
+- Explain a medical term in the same sentence where it first appears.
+- Each entry must stand alone. Do not rely on an earlier entry for the subject.
+
+OUTPUT
+Return one fact_rewrites entry for every fact, copying its fact_id exactly.
+List in sources_used the exact title of every reference block you actually used.
 Return only the structured output that matches the schema: no markdown, no commentary.
 """
 
 
-def distinct_texts(atoms: List[dict]) -> List[str]:
-    """Return each fact's text once, keeping the order of the fact list."""
-    texts = []
-    for atom in atoms:
-        text = atom["text"].strip()
-        if text not in texts:
-            texts.append(text)
-    return texts
+def simplify_error(message: str) -> SimplifierError:
+    """Build the module's error with a message that carries no patient text."""
+    return SimplifierError(message)
 
 
-def build_grounding(atoms: List[dict]) -> dict:
-    """Look up MedlinePlus once per distinct fact and keep the passages, not just their text."""
-    grounding = {}
-    for text in distinct_texts(atoms):
-        passages = retrieve_passages(text)
-        if passages:
-            grounding[text] = passages
+def normalize_atoms(atoms) -> List[dict]:
+    """Accept atoms as dicts from session state or as model objects, and index them."""
+    normalized = []
+    for position, atom in enumerate(atoms, start=1):
+        # ADK state holds dictionaries, while direct callers may pass Pydantic objects.
+        # Give both forms the same fields before any later function uses them.
+        data = atom.model_dump() if hasattr(atom, "model_dump") else dict(atom)
+        # position is this fact's place in the input list, starting at 1.
+        # fact_id is its name, such as F007. After extraction drops, these can differ.
+        normalized.append(
+            {
+                "position": position,
+                "fact_id": str(data.get("fact_id") or f"F{position:03d}"),
+                "text": str(data.get("text", "")).strip(),
+                "type": str(data.get("type", "")),
+                "assertion": str(data.get("assertion", "")),
+                "source_quote": str(data.get("source_quote", "")),
+            }
+        )
+    return normalized
+
+
+def numbers_in(text: str) -> set:
+    """Every numeric value in the text, with O2 and A1C digits excluded."""
+    return set(re.findall(NUMBER_PATTERN, text))
+
+
+def build_grounding(atoms) -> Dict[str, List[dict]]:
+    """Fetch the reference passages for every fact, keyed by fact_id.
+
+    A store or embedding failure raises, because a draft built without grounding would
+    look the same as a draft whose terms genuinely have no definition.
+    """
+    # Each fact ID gets its own list, including an empty list for a genuine no-match.
+    # An outage is different: stop here so missing references are not silently hidden.
+    grounding: Dict[str, List[dict]] = {}
+    for atom in normalize_atoms(atoms):
+        try:
+            grounding[atom["fact_id"]] = retrieve_passages(atom["text"], limit=PASSAGES_PER_FACT)
+        except Exception as error:
+            raise simplify_error(
+                f"MedlinePlus retrieval failed for {atom['fact_id']}; "
+                "the draft was not produced."
+            ) from error
     return grounding
 
 
-def format_atoms(atoms: List[dict]) -> str:
-    """Number the facts so the draft can report which ones it covered."""
+def format_atoms(atoms) -> str:
+    """Render the facts with a number, an id, and the assertion the rewrite must keep."""
     lines = []
-    for position, atom in enumerate(atoms, start=1):
-        lines.append(f"{position}. [{atom['type']}, {atom['assertion']}] {atom['text']}")
-        if atom.get("source_quote"):
-            lines.append(f"   Supporting quote: {atom['source_quote']}")
+    for atom in normalize_atoms(atoms):
+        lines.append(
+            f"{atom['position']}. {atom['fact_id']} [{atom['type']}/{atom['assertion']}] "
+            f"{atom['text']}"
+        )
     return "\n".join(lines)
 
 
-def format_grounding(grounding: dict) -> str:
-    """Join the MedlinePlus blocks into one reference section, each labelled with its term."""
-    if not grounding:
-        return "No reference blocks were found for these facts."
+def format_grounding(atoms, grounding: Dict[str, List[dict]]) -> str:
+    """Render each fact's own passages, and say plainly when there are none."""
     blocks = []
-    for text, passages in grounding.items():
-        blocks.append(f"Term: {text}\n{format_passages(passages)}")
-    return "\n\n---\n\n".join(blocks)
+    for atom in normalize_atoms(atoms):
+        passages = grounding.get(atom["fact_id"]) or []
+        if passages:
+            blocks.append(f"[{atom['fact_id']}]\n{format_passages(passages)}")
+        else:
+            blocks.append(f"[{atom['fact_id']}]\nNo reference block is available for this fact.")
+    return "\n\n".join(blocks)
 
 
-def collect_sources(grounding: dict, sources_used: List[str]) -> List[SourcePassage]:
-    """Return the exact passages behind the titles the draft used, once each."""
-    wanted = {title.strip().lower() for title in sources_used}
-    sources = []
-    seen = set()
+def supplied_titles(grounding: Dict[str, List[dict]]) -> set:
+    """Every article title the draft was allowed to cite."""
+    titles = set()
     for passages in grounding.values():
         for passage in passages:
-            if passage["title"].strip().lower() not in wanted:
-                continue
-            key = (passage["title"], passage["text"])
-            if key in seen:
-                continue
-            seen.add(key)
-            sources.append(
-                SourcePassage(
-                    title=passage["title"],
-                    url=passage["url"],
-                    section=passage["section"],
-                    text=passage["text"],
-                )
-            )
-    return sources
+            if passage.get("title"):
+                titles.add(str(passage["title"]))
+    return titles
 
 
-def rewrite_context_issues(atom: dict, text: str) -> List[str]:
-    """Flag lost explicit context in one fact's rewrite, without claiming semantic verification."""
-    source = atom.get("source_quote") or atom["text"]
-    issues = []
-    if atom["assertion"] == "absent":
-        if not re.search(r"\b(?:no|not|none|never|without|denies|resolved|gone|free of)\b", text, flags=re.IGNORECASE):
-            issues.append("lost negation")
-    if atom["assertion"] == "family":
-        relatives = re.findall(
-            r"\b(?:mother|father|sister|brother|daughter|son|wife|husband|grandmother|grandfather)\b",
-            source, flags=re.IGNORECASE,
-        )
-        if not relatives:
-            relatives = ["family"]
-        if any(not re.search(r"\b" + relative + r"\b", text, flags=re.IGNORECASE) for relative in relatives):
-            issues.append("lost family ownership")
-        if re.search(r"\byou (?:have|had|may have|might have)\b", text, flags=re.IGNORECASE):
-            issues.append("family fact attributed to patient")
-    uncertainty = r"\b(?:possible|possibly|questionable|suspected|uncertain|may|might)\b"
-    if atom["assertion"] == "possible" or re.search(uncertainty, source, flags=re.IGNORECASE):
-        if not re.search(uncertainty, text, flags=re.IGNORECASE):
-            issues.append("lost uncertainty")
-    if re.search(r"\bsymptoms?\b", source, flags=re.IGNORECASE):
-        if re.search(r"\b(?:improved|resolved|none of these symptoms)\b", source, flags=re.IGNORECASE):
-            if not re.search(r"\b(?:improved|better|resolved|gone|no longer|none|stopped)\b", text, flags=re.IGNORECASE):
-                issues.append("lost symptom improvement or resolution")
-    if numeric_values(text) - numeric_values(atom["text"]):
-        issues.append("unsupported quantities in fact rewrite")
-    return issues
-
-
-def simplify(
-    atoms: List[dict],
-    grounding: Optional[dict] = None,
-    model: str = MODEL,
-) -> SimplifiedOutput:
-    """Write the patient-friendly draft for a numbered fact list, grounded in MedlinePlus."""
-    if not atoms:
-        raise ValueError("No facts to simplify. Run the Extractor first, or pass the atoms in.")
-
+def live_send(prompt: str, model: str) -> str:
+    """Send one prompt to Gemini and return the raw reply text."""
     from google import genai
     from google.genai import types
-
-    if grounding is None:
-        grounding = build_grounding(atoms)
-
-    prompt = (
-        f"FACTS:\n{format_atoms(atoms)}\n\n"
-        f"REFERENCE MATERIAL:\n{format_grounding(grounding)}"
-    )
 
     client = genai.Client()
     response = client.models.generate_content(
@@ -233,130 +225,260 @@ def simplify(
             temperature=0,
         ),
     )
+    return response.text or ""
 
-    if response.parsed is None:
-        raise ValueError("Simplifier did not return a structured draft.")
 
-    reply = response.parsed
-    rewrites = sorted(reply.fact_rewrites, key=lambda rewrite: rewrite.fact_number)
-    if [rewrite.fact_number for rewrite in rewrites] != list(range(1, len(atoms) + 1)):
-        raise ValueError("Simplifier validation failed: invalid reported coverage")
-    for rewrite, atom in zip(rewrites, atoms):
-        issues = rewrite_context_issues(atom, rewrite.text)
-        if not rewrite.text.strip():
-            issues.append("blank fact rewrite")
-        if issues:
-            raise ValueError(
-                f"Simplifier validation failed: fact {rewrite.fact_number}: " + ", ".join(issues)
-            )
-    paragraphs = []
-    for start in range(0, len(rewrites), 3):
-        paragraphs.append(" ".join(rewrite.text.strip() for rewrite in rewrites[start:start + 3]))
-    draft = SimplifiedOutput(
-        simplified_text="\n\n".join(paragraphs),
-        fact_rewrites=rewrites,
-        sources_used=reply.sources_used,
-        source_metadata=collect_sources(grounding, reply.sources_used),
-        glossary_terms_used=reply.glossary_terms_used,
-        ungrounded_terms=reply.ungrounded_terms,
-        atoms_covered=[rewrite.fact_number for rewrite in rewrites],
+def parse_reply(reply_text: str) -> Optional[SimplifierReply]:
+    """Validate a reply against the schema, returning None when it does not parse."""
+    try:
+        return SimplifierReply.model_validate_json(reply_text)
+    except Exception:
+        return None
+
+
+def assess_fact_rewrite(atom: dict, rewrite: FactRewrite) -> List[str]:
+    """The problems this one rewrite has, as sentences a repair can act on."""
+    text = rewrite.text.strip()
+    if not text:
+        return ["the rewrite is empty"]
+
+    # Set subtraction finds values that appear in the rewrite but not in its fact.
+    # A value being allowed does not prove its unit, owner or clinical use is correct.
+    problems = []
+    allowed_numbers = numbers_in(atom["text"] + " " + atom["source_quote"])
+    invented = numbers_in(text) - allowed_numbers
+    if invented:
+        problems.append(f"unsupported quantities in the rewrite: {', '.join(sorted(invented))}")
+
+    # These patterns look for cue words such as "no", "possible" and "previously".
+    # They catch selected wording mistakes, not every possible change in meaning.
+    has_negation = bool(NEGATION_CUE_PATTERN.search(text))
+    fact_has_negation = bool(NEGATION_CUE_PATTERN.search(atom["text"]))
+    assertion = atom["assertion"]
+
+    if assertion == "absent" and not has_negation:
+        problems.append("lost the absence: the rewrite does not say the fact is absent")
+    if assertion == "present" and has_negation and not fact_has_negation:
+        problems.append("added a negation the fact does not have")
+    if assertion == "possible" and not UNCERTAINTY_CUE_PATTERN.search(text):
+        problems.append("lost the uncertainty: a possible fact became certain")
+    if assertion == "past" and not PAST_CUE_PATTERN.search(text):
+        problems.append("lost the timing: a past fact reads as current")
+    if assertion == "family" and not RELATIVE_PATTERN.search(text):
+        problems.append("lost the owner: the rewrite does not name the relative")
+    if assertion != "family" and RELATIVE_PATTERN.search(text) and not RELATIVE_PATTERN.search(atom["text"]):
+        problems.append("added a relative the fact does not have")
+    return problems
+
+
+def assess(reply: SimplifierReply, atoms: List[dict]) -> Tuple[Dict[str, List[str]], List[str]]:
+    """Split the reply's problems into per-fact problems and unknown fact ids."""
+    # First find repeated IDs. Then check each expected fact, including missing ones.
+    # Unknown IDs are reported separately because they do not belong in this draft.
+    problems: Dict[str, List[str]] = {}
+    seen = set()
+    for rewrite in reply.fact_rewrites:
+        if rewrite.fact_id in seen:
+            problems.setdefault(rewrite.fact_id, []).append("returned more than one rewrite for this fact")
+            continue
+        seen.add(rewrite.fact_id)
+
+    # A dictionary keeps the last entry for a repeated ID. The duplicate issue above
+    # still marks that fact for repair, even if this particular entry reads correctly.
+    by_id = {rewrite.fact_id: rewrite for rewrite in reply.fact_rewrites}
+    for atom in atoms:
+        rewrite = by_id.get(atom["fact_id"])
+        if rewrite is None:
+            problems.setdefault(atom["fact_id"], []).append("no rewrite was returned for this fact")
+            continue
+        for message in assess_fact_rewrite(atom, rewrite):
+            problems.setdefault(atom["fact_id"], []).append(message)
+
+    known_ids = {atom["fact_id"] for atom in atoms}
+    unknown_ids = sorted({rewrite.fact_id for rewrite in reply.fact_rewrites if rewrite.fact_id not in known_ids})
+    return problems, unknown_ids
+
+
+def build_repair_prompt(
+    atoms: List[dict],
+    grounding: Dict[str, List[dict]],
+    reply: SimplifierReply,
+    problems: Dict[str, List[str]],
+) -> str:
+    """Ask for the failing facts only, with the wording to beat and the exact complaint."""
+    previous = [
+        f"[{rewrite.fact_id}] {rewrite.text}"
+        for rewrite in reply.fact_rewrites
+        if rewrite.fact_id in problems
+    ]
+    complaints = [
+        f"- {fact_id}: {'; '.join(messages)}"
+        for fact_id, messages in sorted(problems.items())
+    ]
+    return (
+        f"FACTS:\n{format_atoms(atoms)}\n\n"
+        f"REFERENCE BLOCKS:\n{format_grounding(atoms, grounding)}\n\n"
+        "REPAIR MODE\n"
+        "You are fixing a draft that failed a meaning check. Fix only the facts listed."
+        "\n\nYOUR PREVIOUS WORDING:\n" + "\n".join(previous) +
+        "\n\nPROBLEMS:\n" + "\n".join(complaints) +
+        "\n\nReturn one fact_rewrites entry for every fact listed above, and no others. "
+        "Fix the reported problem and change as little else as possible. Never fix a "
+        "complaint by deleting the fact, softening it, or moving it to another person. "
+        "Never invent a number. Return only the structured output that matches the schema."
     )
-    issues = []
-    if not draft.simplified_text.strip():
-        issues.append("blank text")
-    if check_coverage(draft, len(atoms)) or missing_atoms(draft, len(atoms)):
-        issues.append("invalid reported coverage")
-    if check_citations(draft, grounding):
-        issues.append("unknown citation titles")
-    if invented_numbers(draft, atoms):
-        issues.append("unsupported quantities")
-    if issues:
-        raise ValueError("Simplifier validation failed: " + ", ".join(issues))
-    return draft
 
 
-# Are the citations and the coverage real?
-def check_coverage(draft: SimplifiedOutput, atom_count: int) -> List[int]:
-    """Return reported fact numbers that are not in the fact list."""
-    return [
-        position for position in draft.atoms_covered
-        if position < 1 or position > atom_count
-    ]
-
-
-def missing_atoms(draft: SimplifiedOutput, atom_count: int) -> List[int]:
-    """Return the numbers of facts that the draft did not report as covered."""
-    return [
-        position for position in range(1, atom_count + 1)
-        if position not in draft.atoms_covered
-    ]
-
-
-def check_citations(draft: SimplifiedOutput, grounding: dict) -> List[str]:
-    """Return cited titles that appear in none of the supplied passages."""
-    supplied = {
-        passage["title"].strip().lower()
-        for passages in grounding.values()
-        for passage in passages
+def merge_repair(
+    original: SimplifierReply,
+    repair: SimplifierReply,
+    problems: Dict[str, List[str]],
+) -> SimplifierReply:
+    """Keep the original rewrite for every fact the repair did not need to touch."""
+    # Accept replacements only for facts that failed. A repair must not rewrite facts
+    # that already passed. Final assembly below restores the original input order.
+    replacements = {
+        rewrite.fact_id: rewrite
+        for rewrite in repair.fact_rewrites
+        if rewrite.fact_id in problems
     }
-    return [
-        title for title in draft.sources_used
-        if title.strip().lower() not in supplied
-    ]
+    kept = [rewrite for rewrite in original.fact_rewrites if rewrite.fact_id not in replacements]
+    titles = list(original.sources_used) + list(repair.sources_used)
+    return SimplifierReply(fact_rewrites=kept + list(replacements.values()), sources_used=titles)
 
 
-NUMBER_PATTERN = r"(?<![A-Za-z0-9])\d+(?:[.,]\d+)?"
+def prune_sources(sources_used: List[str], grounding: Dict[str, List[dict]]) -> Tuple[List[str], List[str]]:
+    """Keep the citations the draft was entitled to make, and report the rest."""
+    allowed = supplied_titles(grounding)
+    kept: List[str] = []
+    unknown: List[str] = []
+    for title in sources_used:
+        if title in kept:
+            continue
+        if title in allowed:
+            kept.append(title)
+        else:
+            unknown.append(title)
+    return kept, unknown
 
 
-def numeric_values(text: str) -> set[str]:
-    """Recognize digits and English whole numbers from zero through ninety-nine.
+def collect_sources(titles: List[str], grounding: Dict[str, List[dict]]) -> List[SourcePassage]:
+    """Copy the store's passage text for the titles the draft used."""
+    # The model names article titles, but the saved text comes from supplied passages.
+    # Different chunks of an article may share a title, so deduplicate by title AND text.
+    collected: List[SourcePassage] = []
+    seen = set()
+    for title in titles:
+        for passages in grounding.values():
+            for passage in passages:
+                if str(passage.get("title")) != title:
+                    continue
+                key = (title, passage.get("text"))
+                if key in seen:
+                    continue
+                seen.add(key)
+                collected.append(
+                    SourcePassage(
+                        title=title,
+                        url=passage.get("url"),
+                        section=passage.get("section"),
+                        text=str(passage.get("text", "")),
+                    )
+                )
+    return collected
 
-    This is a quantity warning, not proof that a number belongs to the right fact.
-    Larger written numbers, fractions, and ordinals still need review.
+
+def assemble(texts: List[str]) -> str:
+    """Join the rewrites into one text, in fact order."""
+    joined = " ".join(text.strip() for text in texts if text.strip())
+    return " ".join(joined.split())
+
+
+def simplify(
+    atoms,
+    grounding: Dict[str, List[dict]],
+    send: Optional[Callable[[str, str], str]] = None,
+    model: str = MODEL,
+) -> SimplifiedOutput:
+    """Write the patient text, or fall back to source wording and say which facts did.
+
+    `send` is injected so the tests can run with no API key and no network.
     """
-    names = [
-        "zero", "one", "two", "three", "four", "five", "six", "seven", "eight",
-        "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
-        "sixteen", "seventeen", "eighteen", "nineteen",
-    ]
-    values = {name: str(position) for position, name in enumerate(names)}
-    tens = ["twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
-    for position, name in enumerate(tens, start=2):
-        values[name] = str(position * 10)
-        for unit in range(1, 10):
-            values[f"{name} {names[unit]}"] = str(position * 10 + unit)
-    alternatives = sorted(values, key=len, reverse=True)
-    pattern = r"\b(?:" + "|".join(re.escape(name).replace(r"\ ", r"[ -]") for name in alternatives) + r")\b"
-    found = set(re.findall(NUMBER_PATTERN, text))
-    for match in re.finditer(pattern, text.lower()):
-        found.add(values[match.group().replace("-", " ")])
-    return found
+    normalized = normalize_atoms(atoms)
+    if not normalized:
+        raise simplify_error("Nothing to simplify: no atoms were supplied.")
 
+    # Step 1: request one rewrite per fact, using the passages already fetched.
+    # A scripted sender lets tests exercise the same path without an API request.
+    sender = send or live_send
+    prompt = f"FACTS:\n{format_atoms(normalized)}\n\nREFERENCE BLOCKS:\n{format_grounding(normalized, grounding)}"
+    reply = parse_reply(sender(prompt, model))
+    if reply is None:
+        raise simplify_error("The model reply was not a valid simplification.")
 
-def invented_numbers(draft: SimplifiedOutput, atoms: List[dict]) -> List[str]:
-    """Return numbers that appear in the draft and in none of the facts."""
-    fact_numbers = numeric_values(" ".join(atom["text"] for atom in atoms))
-    return sorted(numeric_values(draft.simplified_text) - fact_numbers)
+    # Step 2: check IDs and selected meaning rules before accepting the wording.
+    problems, unknown_ids = assess(reply, normalized)
+    review_warnings: List[str] = []
+    if unknown_ids:
+        review_warnings.append(f"dropped rewrites for unknown facts: {', '.join(unknown_ids)}")
 
+    if problems:
+        # Step 3: allow one correction, naming the exact problems. If it parses,
+        # merge the failing facts only and check the combined reply again.
+        repair = parse_reply(sender(build_repair_prompt(normalized, grounding, reply, problems), model))
+        if repair is not None:
+            reply = merge_repair(reply, repair, problems)
+            problems, unknown_ids = assess(reply, normalized)
+            if unknown_ids:
+                review_warnings.append(f"dropped rewrites for unknown facts: {', '.join(unknown_ids)}")
 
-# Hand off the file
-def save_draft(doc_id: str, draft: SimplifiedOutput, out_dir: Path) -> Path:
-    """Write one document's draft to <out_dir>/<doc_id>.draft.json and return the path."""
-    if not doc_id or Path(doc_id).name != doc_id or doc_id in {".", ".."}:
-        raise ValueError("doc_id must be a non-empty filename stem")
+    # Keep the first returned rewrite for each ID during assembly. Duplicate IDs
+    # still count as problems unless the repair removed them.
+    rewrites = {}
+    for rewrite in reply.fact_rewrites:
+        rewrites.setdefault(rewrite.fact_id, rewrite)
 
-    out_dir.mkdir(parents=True, exist_ok=True)
-    output_path = out_dir / f"{doc_id}.draft.json"
-    output_path.write_text(
-        json.dumps(draft.model_dump(mode="json"), indent=2, ensure_ascii=False),
-        encoding="utf-8",
+    texts: List[str] = []
+    covered_positions: List[int] = []
+    covered_ids: List[str] = []
+
+    for atom in normalized:
+        # Step 4: walk the facts, not the model's reply order. Every fact gets text:
+        # either its checked rewrite or its original wording with a review warning.
+        # Coverage therefore includes source-wording fallbacks, not just easy rewrites.
+        fact_id = atom["fact_id"]
+        rewrite = rewrites.get(fact_id)
+        covered_positions.append(atom["position"])
+        covered_ids.append(fact_id)
+
+        if rewrite is None:
+            texts.append(atom["text"])
+            review_warnings.append(f"{fact_id}: no rewrite returned; source wording used.")
+            continue
+
+        for term in rewrite.ungrounded_terms:
+            review_warnings.append(f"{fact_id}: '{term}' had no reference block and was paraphrased.")
+
+        if fact_id in problems:
+            texts.append(atom["text"])
+            review_warnings.append(
+                f"{fact_id}: {'; '.join(problems[fact_id])}. Source wording used."
+            )
+        else:
+            texts.append(rewrite.text)
+
+    # Step 5: remove titles that were never supplied. Keeping a supplied title proves
+    # availability, not that the model used its passage correctly. That needs review.
+    kept_titles, unknown_titles = prune_sources(reply.sources_used, grounding)
+    if unknown_titles:
+        review_warnings.append(
+            f"dropped citations to passages that were not supplied: {', '.join(unknown_titles)}"
+        )
+
+    return SimplifiedOutput(
+        simplified_text=assemble(texts),
+        source_metadata=collect_sources(kept_titles, grounding),
+        atoms_covered=covered_positions,
+        fact_ids_covered=covered_ids,
+        review_warnings=review_warnings,
     )
-    return output_path
-
-
-def load_draft(path: Path) -> dict:
-    """Read a saved draft back into a dict."""
-    payload = json.loads(path.read_text(encoding="utf-8"))
-    if not isinstance(payload, dict):
-        raise ValueError("Draft file must contain a JSON object")
-    return payload

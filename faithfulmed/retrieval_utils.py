@@ -37,7 +37,9 @@ from google.genai import types
 
 logger = logging.getLogger(__name__)
 
-# Lookup settings
+# Reading path: retrieve_passages tries a known name first, then similarity search.
+# An alias is another name for an article. A passage is one saved chunk of its text.
+# Environment settings let a caller choose a store without changing this source file.
 REPO_ROOT = Path(__file__).resolve().parents[1]
 CHROMA_PATH = Path(os.getenv("FAITHFULMED_CHROMA_PATH") or REPO_ROOT / "chroma")
 COLLECTION_NAME = os.getenv("FAITHFULMED_COLLECTION", "medical_docs")
@@ -85,12 +87,17 @@ def _client() -> genai.Client:
 @lru_cache(maxsize=1)
 def _collection() -> chromadb.Collection:
     """Open the saved database once. Report an error if the collection is missing."""
+    # lru_cache remembers a return value for the same arguments. With no arguments,
+    # this function opens the collection once per process instead of once per fact.
     return chromadb.PersistentClient(path=str(CHROMA_PATH)).get_collection(COLLECTION_NAME)
 
 
 @lru_cache(maxsize=256)
 def _embedding(query: str) -> tuple[float, ...]:
     """Reuse a query's saved number representation to avoid repeating API requests."""
+    # An embedding is a list of numbers representing text for similarity comparison.
+    # Its length must match the saved passage embeddings. Cache up to 256 queries
+    # in this process so repeated identical query strings avoid another API request.
     response = _client().models.embed_content(
         model=EMBED_MODEL,
         contents=query,
@@ -137,6 +144,9 @@ def _known_term(query: str) -> str | None:
     if exact is not None:
         return exact
 
+    # Surround both strings with spaces to match whole normalized names, not parts
+    # of words. Of the allowed names inside the query, prefer the longest one.
+    # This chooses one article, even if the sentence mentions several medical terms.
     padded = f" {normalized} "
     contained = [key for key in terms if _containable(key) and f" {key} " in padded]
     if not contained:
@@ -158,6 +168,8 @@ def _passage(
 
 def _article_passages(title: str, limit: int) -> list[dict[str, Any]]:
     """Read up to the requested number of passages from a known article, in order."""
+    # A known title bypasses embedding search. Read its chunks in article order,
+    # rather than assuming the database returns them in a useful reading order.
     stored = _collection().get(where={"title": title}, include=["documents", "metadatas"])
     documents = stored.get("documents") or []
     metadatas = stored.get("metadatas") or []
@@ -184,6 +196,9 @@ def _tokens_present(query: str, passage: str) -> bool:
     }
     if not tokens:
         return False
+    # A set counts each query word once. The formula requires a strict majority:
+    # with four query words, at least three must appear somewhere in the passage.
+    # This is a substring check, not a test of medical meaning or word boundaries.
     folded = passage.lower()
     present = sum(1 for token in tokens if token in folded)
     return present >= len(tokens) // 2 + 1
@@ -195,6 +210,8 @@ def _title_matches_query(query: str, title: str) -> bool:
     This deliberately loses some synonym matches. Known names and abbreviations
     still use the name list first. A symptom list alone must not select a disease.
     """
+    # Common words such as "patient" must not make an unrelated title look relevant.
+    # Removing trailing s characters is a simple approximation for plural words.
     ignored = {
         "the", "and", "with", "who", "has", "have", "had", "was", "were",
         "patient", "mother", "father", "sister", "brother", "family", "history",
@@ -217,6 +234,8 @@ def _similarity_passages(query: str, limit: int) -> list[dict[str, Any]]:
     Put the closest article first and keep its accepted passages in reading order.
     Return each passage only once, up to the requested limit.
     """
+    # Ask for more candidates than we plan to return because some will fail filters.
+    # Chroma compares the query's embedding with the saved passage embeddings.
     result = _collection().query(
         query_embeddings=[list(_embedding(query))],
         n_results=CANDIDATE_COUNT,
@@ -226,6 +245,8 @@ def _similarity_passages(query: str, limit: int) -> list[dict[str, Any]]:
     metadatas = (result.get("metadatas") or [[]])[0]
     distances = (result.get("distances") or [[]])[0]
 
+    # Each accepted row keeps: title, distance, chunk number, metadata, passage text.
+    # Lower distance means a closer match. All three filters below must pass.
     accepted: list[tuple[str, float, int, dict[str, Any], str]] = []
     for document, metadata, distance in zip(documents, metadatas, distances):
         metadata = metadata or {}
@@ -240,12 +261,16 @@ def _similarity_passages(query: str, limit: int) -> list[dict[str, Any]]:
             (metadata.get("title") or "", float(distance), chunk_index, metadata, document)
         )
 
+    # Rank articles by their best accepted match, then put their accepted chunks in
+    # reading order. This does not fill in chunks that failed the filters.
     best_distance = {}
     for title, distance, _, _, _ in accepted:
         if title not in best_distance or distance < best_distance[title]:
             best_distance[title] = distance
     accepted.sort(key=lambda row: (best_distance[row[0]], row[2]))
 
+    # A set prevents the same article chunk appearing twice in the returned list.
+    # Stop at the caller's limit, which can be smaller than the candidate count.
     passages: list[dict[str, Any]] = []
     seen: set[tuple[str, int]] = set()
     for title, distance, chunk_index, metadata, document in accepted:
@@ -284,6 +309,8 @@ def retrieve_passages(query: str, limit: int = MAX_PASSAGES) -> list[dict[str, A
         return []
     title = _known_term(query)
     if title is not None:
+        # A recognized name returns that article directly, even if it has no chunks.
+        # This path does not try a different article through similarity search.
         return _article_passages(title, limit)
     return _similarity_passages(query, limit)
 
@@ -306,6 +333,8 @@ def retrieve_medical_context(query: str) -> str:
     try:
         passages = retrieve_passages(query.strip())
     except Exception:
+        # The text interface reports failure with a distinct message. The structured
+        # retrieve_passages interface lets the error reach its caller instead.
         logger.exception("Retrieval failed for query=%r", query)
         return RETRIEVAL_ERROR_MSG
     if not passages:
