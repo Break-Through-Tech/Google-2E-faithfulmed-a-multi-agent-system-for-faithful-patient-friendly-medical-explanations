@@ -17,7 +17,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-import textstat
+from textstat import textstat
 from sklearn.metrics import cohen_kappa_score, accuracy_score
 
 DATA = Path(__file__).resolve().parent.parent / "data" / "medaesqa_v1.json"
