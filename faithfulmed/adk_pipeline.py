@@ -9,15 +9,18 @@ Readability runs before the Verifier, so faithfulness is judged on the patient-f
 would actually read, not on the draft as first written. Verifier <-> Refiner is a bounded loop
 (LoopAgent, max_iterations=2).
 
-The bounded loop is not built yet between simplifier agent and readability agent.
+The bounded loop is not built yet between simplifier agent and readability agent. (NOTE: not needed)
 
 State flow: source_note -> atoms -> draft (structured record) + text (working prose) -> verdict ->
 text. `text` is what the reader ends up with; `draft` keeps the Simplifier's citations and coverage.
 
 """
 from asyncio import to_thread
-from typing import AsyncGenerator
+from typing import AsyncGenerator, List, Dict
+from pydantic import BaseModel, Field
+import textstat
 
+from google.genai import types
 from google.adk.agents import BaseAgent, InvocationContext, LlmAgent, LoopAgent, SequentialAgent
 from google.adk.events import Event, EventActions
 
@@ -28,6 +31,15 @@ from faithfulmed.agents.verifier import verify
 # Session state is a shared dictionary: each step reads earlier results and publishes
 # its own results. Agent definitions at the bottom set the order, not these class names.
 MODEL = "gemini-3.5-flash-lite"
+
+
+# output for Readability agent -> pydantic model for structured output -> Flesch-Kincaid score and SMOG score (before and after rewriting), simplified text
+class ReadabilityEvaluation(BaseModel):
+    pre_flesch_kincaid_grade: float = Field(description="Calculated Flesch-Kincaid grade level score before revision")
+    post_flesch_kincaid_grade: float = Field(description="Calculated Flesch-Kincaid grade level score after revision")
+    pre_smog: float = Field(description="SMOG readability score before revision")
+    post_smog: float = Field(description="SMOG readability score after revision")
+    revised_text: str = Field(description="Text rewritten at or below target grade level")
 
 def _note_from_message(ctx: InvocationContext) -> str:
     content = ctx.user_content
@@ -129,15 +141,25 @@ extractor = ExtractAtomsStep(name="Extractor")
 simplifier = SimplifyStep(name="Simplifier")
 
 # 3) Readability - grade-level pass before faithfulness is judged, per the agreed flowchart.
-readability = LlmAgent(
-    name="Readability",
+readability_agent = LlmAgent(
+    name="readability_agent",
     model=MODEL,
-    instruction=(
-        "Rewrite {text} to reach a Flesch-Kincaid grade level of 8 or below: shorter sentences, everyday "
-        "words, active voice. Keep every fact, number, unit, negation, and uncertainty exactly as written. "
-        "Add no clinical content and drop none. Return only the rewritten text."
-    ),
-    output_key="text",
+    description="Rewrites clinical text to make it readable for patients at or below an 8th-grade reading level",
+    instruction="""
+        You are an expert at evaluating the readability of clinical text and rewriting the text to be more readable.
+        Evaluate the input text's readability using the Flesch-Kincaid grade level and SMOG metrics.
+        Then, if the reading level required for the text is above the target grade level, rewrite the text
+        to make it readable at the target grade level or below while maintaining the text's original meaning.
+    
+        Follow these guidelines:
+        1) Do not insert new information, change the meaning of existing information, or remove significant pieces of information
+        from the input text.
+        2) You can replace complex medical terms with plain language equivalents or keep the medical term followed by
+        a plain language definition.
+        3) Your output must match the defined schema.
+    """,
+    output_schema=ReadabilityEvaluation,
+    output_key="readability_result"
 )
 
 # 4) Verifier - LLM-as-judge over the readability-improved text.

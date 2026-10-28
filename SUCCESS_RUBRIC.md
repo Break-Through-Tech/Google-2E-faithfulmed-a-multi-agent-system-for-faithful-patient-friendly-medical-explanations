@@ -1,22 +1,22 @@
-**Success Rubric**
+# Success Rubric and Task Spec
 
-Quantitative system performance from challenge overview document: 
+## Task Spec
+
+* The system must be readable at an 8th-grade reading level or below.
+* The system must be faithful to the sources of truth. This means the system must not add information, change existing information, or delete significant information. 
+* The system must not hallucinate or add clinically meaningful unsupported claims, which can be potentially harmful.
+* The system must show improvement over the single-agent baseline.
+
+## Quantitative system performance from challenge overview document: 
 
 * Readability: ≥80% of outputs at ≤8th-grade reading level (Flesch-Kincaid).  
 * Faithfulness: ≥85% factual fidelity on the human-annotated test set, verified against human labels.  
 * Hallucination rate: \<10% of outputs contain a clinically meaningful unsupported claim.  
 * Multi-agent vs. single-agent baseline: ≥15% absolute improvement in faithfulness score.
 
-Verifier agent quality:
+### Verifier agent quality:
 
 * Verifier agrees with human annotators ≥80% of the time on faithfulness labels (target Cohen's κ ≥ 0.6).
-
-Other metrics to consider: 
-
-* Medical jargon density  
-  * Build Jargon Density Scorer: Implement a tokenizer and medical dictionary look-up to calculate the percentage of complex clinical terms per text passage.  
-* Output length  
-* Refusal criteria
 
 | Criteria | Good | Moderate | Poor |
 | :---- | :---- | :---- | :---- |
