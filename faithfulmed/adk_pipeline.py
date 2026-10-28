@@ -27,6 +27,7 @@ from google.adk.events import Event, EventActions
 from faithfulmed.agents.extractor import extract_atoms
 from faithfulmed.agents.simplifier import build_grounding, simplify
 from faithfulmed.agents.verifier import verify
+from faithfulmed.agents.refiner import refine
 
 # Session state is a shared dictionary: each step reads earlier results and publishes
 # its own results. Agent definitions at the bottom set the order, not these class names.
@@ -134,6 +135,23 @@ class VerifyStep(BaseAgent):
             ),
         )
 
+class RefineStep(BaseAgent):
+    """Fixes what {verdict} flagged and overwrites {text}, so the loop checks it again."""
+
+    async def _run_async_impl(self, ctx: InvocationContext) -> AsyncGenerator[Event, None]:
+        state = ctx.session.state
+        if not state.get("verdict"):
+            raise ValueError("Nothing to refine. Run the Verifier first.")
+
+        result = await to_thread(
+            refine, state.get("source_note", ""), state["text"], state["verdict"], state.get("atoms") or []
+        )
+        yield Event(
+            author=self.name,
+            invocation_id=ctx.invocation_id,
+            actions=EventActions(state_delta={"text": result.refined_text, "refiner_changes": result.changes}),
+        )
+
 # 1) Extractor - pull clinical "atoms" (facts + types) from the source document.
 extractor = ExtractAtomsStep(name="Extractor")
 
@@ -166,16 +184,7 @@ readability_agent = LlmAgent(
 verifier = VerifyStep(name="Verifier")
 
 # 5) Refiner - fix only what the Verifier flagged. No free rewriting.
-refiner = LlmAgent(
-    name="Refiner",
-    model=MODEL,
-    instruction=(
-        "Given {text} and {verdict}, remove every claim the verdict lists as unsupported and restore "
-        "every omission it lists, changing nothing else. Keep the reading level at or below grade 8. "
-        "If the verdict reports no problems, return {text} unchanged."
-    ),
-    output_key="text",  # overwrites the working text so the loop re-verifies the corrected version
-)
+refiner = RefineStep(name="Refiner")
 
 # Each iteration runs Verifier, then Refiner unless Verifier stops the loop early.
 # The cap prevents endless repairs. At the cap, the last Refiner output may leave
