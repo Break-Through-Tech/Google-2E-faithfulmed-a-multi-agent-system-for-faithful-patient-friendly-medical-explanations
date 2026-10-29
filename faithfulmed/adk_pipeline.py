@@ -200,7 +200,7 @@ refine_loop = LoopAgent(
 
 faithfulmed = SequentialAgent(
     name="FaithfulMed",
-    sub_agents=[extractor, simplifier, readability, refine_loop],
+    sub_agents=[extractor, simplifier, readability_agent, refine_loop],
 )
 
 if __name__ == "__main__":
