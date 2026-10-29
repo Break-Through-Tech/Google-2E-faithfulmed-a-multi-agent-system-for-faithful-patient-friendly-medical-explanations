@@ -31,6 +31,26 @@ python3.11 -m venv .venv
 ./.venv/bin/python -m pip install -r requirements.txt
 ```
 
+### Git Bash on Windows
+
+Use forward slashes and the `Scripts` folder:
+
+```bash
+py -3.11 -m venv .venv
+./.venv/Scripts/python.exe -m pip install -r requirements.txt
+```
+
+### Windows path-length errors
+
+If installation fails with `No such file or directory` for a very long path, the repository's long folder name is exceeding the Windows path limit.
+Either clone the repository to a short path such as `C:\fm`, or create the environment in a short location and use its executables instead:
+
+```powershell
+py -3.11 -m venv C:\fm-venv
+& "C:\fm-venv\Scripts\python.exe" -m pip install -r requirements.txt
+& "C:\fm-venv\Scripts\adk.exe" web --host 127.0.0.1 --port 8000
+```
+
 If you already have a working environment, reuse it and adjust the executable paths below.
 For example, an environment one folder above the repository uses `..\.venv\Scripts\adk.exe` on Windows.
 These commands do not require environment activation.
@@ -48,7 +68,8 @@ Enter your own Google AI Studio key locally. Do not commit it, paste it into cha
 ## 4. Get the retrieval database
 
 Ask the team for the prepared Chroma database and extract the entire folder into `Google-2E/chroma/`.
-Keep `chroma.sqlite3` and its companion folders together. The database is separate from the Python source code.
+Keep `chroma.sqlite3` and its companion folders together.
+A tiny `chroma.sqlite3` (a few hundred KB) with no collections is an empty database that Chroma created automatically. The prepared one is about 31 MB and contains `medical_docs` with 2,403 embeddings (3072 dimensions). The database is separate from the Python source code.
 
 Expected layout:
 
@@ -85,6 +106,12 @@ From `Google-2E`, use the command for your operating system.
 
 ```bash
 ./.venv/bin/adk web --host 127.0.0.1 --port 8000
+```
+
+### Git Bash on Windows
+
+```bash
+./.venv/Scripts/adk.exe web --host 127.0.0.1 --port 8000
 ```
 
 Keep the terminal running. Open `http://127.0.0.1:8000` and select **faithfulmed** in the agent menu.
@@ -160,7 +187,8 @@ Record missing facts, changed values, unsupported additions and run errors for t
 | PowerShell blocks activation | Activation is unnecessary with these commands. Call the executables directly. |
 | `faithfulmed` is missing from the menu | Start in `Google-2E`. Confirm `faithfulmed/agent.py` and `__init__.py` exist. Read import errors in the terminal. |
 | Missing key or authentication error | Check your local `.env` and existing environment variables. Restart the server after changing credentials. |
-| Missing collection or retrieval error | Check the Chroma folder, companion files and `medical_docs` collection. Use the team's prepared database. |
+| Missing collection or retrieval error (`Collection [medical_docs] does not exist`, or `MedlinePlus retrieval failed for F001`) | Check the Chroma folder, companion files and `medical_docs` collection. Use the team's prepared database. |
+| `NameError: readability` when the agent loads | Pull the latest code. The Sequential agent must list `readability_agent`. |
 | 429 or 503 response | The API is rate-limited or unavailable. Pause and retry later. Do not repeatedly submit the same note. |
 | `ExtractionValidationError` | The reply failed source checks. Read the named checks in the error. It is not automatically an installation problem. |
 | `SimplifierError` | Read the message to distinguish a retrieval failure from a draft problem. |
