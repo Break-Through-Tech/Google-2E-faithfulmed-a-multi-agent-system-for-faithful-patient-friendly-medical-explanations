@@ -33,13 +33,14 @@ from faithfulmed.agents.verifier import verify
 MODEL = "gemini-3.5-flash-lite"
 
 
+
 # output for Readability agent -> pydantic model for structured output -> Flesch-Kincaid score and SMOG score (before and after rewriting), simplified text
-class ReadabilityEvaluation(BaseModel):
-    pre_flesch_kincaid_grade: float = Field(description="Calculated Flesch-Kincaid grade level score before revision")
-    post_flesch_kincaid_grade: float = Field(description="Calculated Flesch-Kincaid grade level score after revision")
-    pre_smog: float = Field(description="SMOG readability score before revision")
-    post_smog: float = Field(description="SMOG readability score after revision")
-    revised_text: str = Field(description="Text rewritten at or below target grade level")
+# class ReadabilityEvaluation(BaseModel):
+#    pre_flesch_kincaid_grade: float = Field(description="Calculated Flesch-Kincaid grade level score before revision")
+#    post_flesch_kincaid_grade: float = Field(description="Calculated Flesch-Kincaid grade level score after revision")
+#    pre_smog: float = Field(description="SMOG readability score before revision")
+#    post_smog: float = Field(description="SMOG readability score after revision")
+#    revised_text: str = Field(description="Text rewritten at or below target grade level")
 
 def _note_from_message(ctx: InvocationContext) -> str:
     content = ctx.user_content
@@ -142,24 +143,25 @@ simplifier = SimplifyStep(name="Simplifier")
 
 # 3) Readability - grade-level pass before faithfulness is judged, per the agreed flowchart.
 readability_agent = LlmAgent(
-    name="readability_agent",
+    name="readability",
     model=MODEL,
     description="Rewrites clinical text to make it readable for patients at or below an 8th-grade reading level",
     instruction="""
         You are an expert at evaluating the readability of clinical text and rewriting the text to be more readable.
-        Evaluate the input text's readability using the Flesch-Kincaid grade level and SMOG metrics.
-        Then, if the reading level required for the text is above the target grade level, rewrite the text
-        to make it readable at the target grade level or below while maintaining the text's original meaning.
+        Evaluate the draft's readability using the Flesch-Kincaid grade level and SMOG metrics.
+        Then, if the reading level required for the text is above the 8th-grade level, rewrite the text
+        to make it readable at the 8th-grade level or below while maintaining the text's original meaning.
     
         Follow these guidelines:
         1) Do not insert new information, change the meaning of existing information, or remove significant pieces of information
         from the input text.
         2) You can replace complex medical terms with plain language equivalents or keep the medical term followed by
         a plain language definition.
-        3) Your output must match the defined schema.
+        3) Output only the simplified text.
+
+        Draft: {draft}
     """,
-    output_schema=ReadabilityEvaluation,
-    output_key="readability_result"
+    output_key="text"
 )
 
 # 4) Verifier - LLM-as-judge over the readability-improved text.
