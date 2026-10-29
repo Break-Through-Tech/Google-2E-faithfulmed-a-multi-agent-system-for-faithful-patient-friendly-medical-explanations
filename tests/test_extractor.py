@@ -19,6 +19,7 @@ from faithfulmed.agents.extractor import (
 
 
 class ExtractorHelperTests(unittest.TestCase):
+    # Keep each helper test focused by starting from a valid, reusable atom.
     def make_extraction(self, quote="No history of asthma.", text="No history of asthma."):
         return Extraction(atoms=[
             Atom(
@@ -43,6 +44,19 @@ class ExtractorHelperTests(unittest.TestCase):
         )
         self.assertEqual(atom.type, "symptom")
 
+    def test_note_specific_categories_are_supported(self):
+        categories = [
+            ("No known allergies.", "allergy", "absent"),
+            ("Past medical history is unremarkable.", "history", "absent"),
+            ("CT imaging was normal.", "clinical_finding", "present"),
+            ("The patient is NPO.", "diet", "present"),
+        ]
+        atoms = [
+            Atom(text=text, type=atom_type, assertion=assertion, source_quote=text)
+            for text, atom_type, assertion in categories
+        ]
+        self.assertEqual([atom.type for atom in atoms], [item[1] for item in categories])
+
     def test_find_topic_prefers_longest_phrase(self):
         aliases = {
             "heart": "Heart",
@@ -57,6 +71,7 @@ class ExtractorHelperTests(unittest.TestCase):
     def test_find_topic_returns_none_without_match(self):
         self.assertIsNone(find_topic("No matching phrase here", {}))
 
+    # Topic attachment must preserve the original evidence and assertion fields.
     def test_attach_topics_preserves_atom_fields(self):
         extraction = self.make_extraction(text="History of asthma")
         linked = attach_topics(extraction, {"asthma": "Asthma"})
@@ -77,6 +92,7 @@ class ExtractorHelperTests(unittest.TestCase):
         )
         self.assertEqual(check_atom_texts(source, extraction), extraction.atoms)
 
+    # Evidence checks keep negation and the subject/diagnosis context in each quote.
     def test_check_assertion_cues_flags_absence_quote_without_negation(self):
         extraction = self.make_extraction(quote="nausea", text="nausea")
         self.assertEqual(check_assertion_cues(extraction), extraction.atoms)
@@ -86,6 +102,29 @@ class ExtractorHelperTests(unittest.TestCase):
             quote="The patient denies nausea.",
             text="The patient denies nausea.",
         )
+        self.assertEqual(check_assertion_cues(extraction), [])
+
+    def test_check_assertion_cues_flags_possible_quote_without_uncertainty(self):
+        extraction = Extraction(atoms=[
+            Atom(
+                text="polyp",
+                type="diagnosis",
+                assertion="possible",
+                source_quote="polyp",
+            )
+        ])
+        self.assertEqual(check_assertion_cues(extraction), extraction.atoms)
+
+    def test_check_assertion_cues_accepts_possible_with_uncertainty_context(self):
+        quote = "Possibilities include a polyp."
+        extraction = Extraction(atoms=[
+            Atom(
+                text=quote,
+                type="diagnosis",
+                assertion="possible",
+                source_quote=quote,
+            )
+        ])
         self.assertEqual(check_assertion_cues(extraction), [])
 
     def test_check_quote_context_flags_bare_present_symptom(self):
@@ -120,6 +159,7 @@ class ExtractorHelperTests(unittest.TestCase):
         extraction = self.make_extraction(quote="A1C was 7.2%.", text="A1C was 7.2%.")
         self.assertEqual(missing_numbers("A1C was 7.2%; glucose was 105.", extraction), ["105"])
 
+    # The JSON handoff should round-trip the same fields and reject unsafe filenames.
     def test_save_and_load_round_trip(self):
         extraction = self.make_extraction()
         with tempfile.TemporaryDirectory() as temp_dir:

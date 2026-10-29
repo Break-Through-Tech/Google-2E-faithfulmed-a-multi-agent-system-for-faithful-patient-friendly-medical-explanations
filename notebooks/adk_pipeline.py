@@ -24,7 +24,7 @@ from faithfulmed.agents.extractor import Extraction
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 load_dotenv(PROJECT_ROOT / ".env")
 
-MODEL = "gemini-3.8-flash"  # start on the free tier; swap per-agent for the leaderboard
+MODEL = "gemini-3.5-flash-lite"  # start on the free tier; swap per-agent for the leaderboard
 
 # 1) Extractor — pull clinical "atoms" (facts + types) from the source document.
 extractor = LlmAgent(
@@ -32,13 +32,18 @@ extractor = LlmAgent(
     model=MODEL,
     instruction=(
         "Extract every clinically meaningful fact from the user's source note as one atom per fact. "
-        "Return only an object matching the required schema. Use symptom for reported symptoms and "
-        "diagnosis only for a diagnosed condition. Preserve negation, uncertainty, history, and "
+        "Return only an object matching the required schema. Use the most specific type: diagnosis "
+        "for a confirmed condition, symptom for a reported symptom, medication for a drug, allergy "
+        "for allergy status, lab_value for labs or vitals, clinical_finding for exam or imaging results, "
+        "history for medical/family/social history, diet for food or fasting status, procedure for "
+        "tests or interventions, and instruction for advice. Preserve negation, uncertainty, history, and "
         "family context in assertion. Copy text and source_quote as the shortest COMPLETE clause "
         "from the note that identifies the subject and establishes the fact. For example, quote "
         "'The patient reports a mild headache,' not only 'mild headache'; quote 'The clinician "
         "diagnosed migraine,' not only 'migraine'; and quote 'The patient denies nausea,' not only "
-        "'nausea.' Preserve these exact source words. Do not add implied words, infer, or normalize "
+        "'nausea.' For uncertain findings, include cues such as 'possible' or 'possibilities include' "
+        "in the quote. Preserve these exact source words. Do not add implied words, infer, or normalize "
+        "clinical facts."
         "clinical facts."
     ),
     output_schema=Extraction,

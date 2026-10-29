@@ -7,8 +7,10 @@ from typing import List, Literal, Optional
 from pydantic import BaseModel, Field
 
 # Started with 3.8 but kept getting 503s and eventually a 429 limit... 3.6 hasn't been much better on the 503 end...
-MODEL = "gemini-3.8-flash"
-ALIAS_PATH = Path(__file__).resolve().parent.parent / "medlineplus_aliases.json"
+MODEL = "gemini-3.5-flash-lite"
+PACKAGE_ALIAS_PATH = Path(__file__).resolve().parent.parent / "medlineplus_aliases.json"
+NOTEBOOK_ALIAS_PATH = Path(__file__).resolve().parents[2] / "notebooks" / "medlineplus_aliases.json"
+ALIAS_PATH = PACKAGE_ALIAS_PATH if PACKAGE_ALIAS_PATH.exists() else NOTEBOOK_ALIAS_PATH
 
 
 # ---- Step 1: talking to Gemini -------------------------------------------
@@ -27,6 +29,7 @@ def ask(prompt: str) -> str:
 
 
 # ---- Step 2: what an atom is ---------------------------------------------
+# This schema constrains Gemini's response and is also reused as the ADK output schema.
 class Atom(BaseModel):
     text: str = Field(
         description=(
@@ -34,13 +37,26 @@ class Atom(BaseModel):
             "that establishes who has the fact and its status."
         )
     )
-    type: Literal["diagnosis", "symptom", "medication", "lab_value", "procedure", "instruction"] = Field(
-        description=
-            "The category of the extracted fact: diagnosis for a diagnosed disease or condition; " \
-            "symptom for a symptom reported or denied by the patient; " \
-            "medication for a drug or its use; lab_value for a test result or clinical measurement;" \
-            "procedure for a clinical procedure or intervention; instruction for advice or directions given to the patient."
+    type: Literal[
+        "diagnosis",
+        "symptom",
+        "medication",
+        "allergy",
+        "lab_value",
+        "clinical_finding",
+        "history",
+        "diet",
+        "procedure",
+        "instruction",
+    ] = Field(
+        description=(
+            "Choose diagnosis for a confirmed condition; symptom for a patient-reported symptom; "
+            "medication for a drug or its use; allergy for allergy status; lab_value for a lab or vital measurement; "
+            "clinical_finding for exam or imaging findings; history for medical, surgical, family, or social history; "
+            "diet for documented food or fasting status; procedure for a test or intervention; "
+            "instruction for patient advice or directions."
         )
+    )
     assertion: Literal["present", "absent", "possible", "past", "family"] = Field(
         description=
             "The assertion status of the fact: present for an affirmed current fact; " \
@@ -60,6 +76,7 @@ class Extraction(BaseModel):
 
 
 # ---- Step 3: the instruction ---------------------------------------------
+# Keep the prompt aligned with Atom: it defines the clinical rules the schema cannot express.
 INSTRUCTION = """
 ROLE & OVERVIEW
 You are a clinical information extraction agent. Extract every clinically meaningful fact from the input, with one fact per atom.
@@ -87,7 +104,9 @@ CORE RULES
     "mild headache." For "The clinician diagnosed migraine," include
     "diagnosed," not only the condition name.
     For an absent fact, quote the denial too: for "The patient denies nausea,"
-    quote that phrase, not just "nausea."
+    quote that phrase, not just "nausea." For a possible fact, include its
+    uncertainty cue: for "Possibilities include a polyp," quote that phrase,
+    not just "polyp."
 7. If the source does not provide enough information to determine a fact,
    do not fill in the missing information from medical knowledge.
 8. Do not omit a clinically meaningful fact merely because it is negative,
@@ -95,12 +114,17 @@ CORE RULES
 
 FIELD: text
 Copy the shortest complete source clause that identifies the fact and makes
-its subject and assertion clear. Do not return a bare clinical term when the
+- diagnosis: a condition explicitly diagnosed as present.
 surrounding words identify who has it or how it is asserted.
 Use the same complete excerpt as source_quote. Do not add words not present.
 Do not turn a negative statement into a positive one.
+- allergy: an allergy or explicit allergy-status statement.
 Do not turn a possible condition into a confirmed condition.
 Do not add a patient, diagnosis, medication, unit, date, or other detail
+- clinical_finding: an objective physical-exam or imaging finding that is not
+    itself a diagnosis.
+- history: medical, surgical, family, social, or travel history.
+- diet: documented food, feeding, or fasting status.
 unless it is supported by the source.
 Include relevant numbers and units exactly as documented.
 
@@ -115,9 +139,10 @@ Choose exactly one of the permitted types:
   in the source.
 - instruction: advice, directions, or instructions given to the patient.
 
-Choose the most appropriate type based on the source. Do not invent a type
-of fact that the source does not support. Do not classify a medication
-as current merely because its name appears in the source.
+Choose the most specific type supported by the source. Do not label a normal
+exam or imaging result as a diagnosis, diet as medication, or history as a
+diagnosis. Do not classify a medication as current merely because its name
+appears in the source.
 
 FIELD: assertion
 Choose exactly one permitted value:
@@ -225,6 +250,7 @@ def extract_atoms(source_text: str, model: str = MODEL) -> Extraction:
 
 
 # ---- Step 5: are the atoms real? -----------------------------------------
+# These checks enforce literal source grounding; they flag suspicious output but cannot prove clinical correctness.
 def check_quotes(source_text: str, extraction: Extraction) -> List[Atom]:
     """Return atoms whose source quote is not an exact substring of the source."""
     return [atom for atom in extraction.atoms if atom.source_quote not in source_text]
@@ -239,13 +265,23 @@ NEGATION_CUE_PATTERN = re.compile(
     r"\b(?:no|not|never|none|den(?:y|ies|ied)|without|negative|absent|free of)\b",
     flags=re.IGNORECASE,
 )
+POSSIBILITY_CUE_PATTERN = re.compile(
+    r"\b(?:possible|possibilities|possibly|may|might|suspected|suspect|consider|could be)\b",
+    flags=re.IGNORECASE,
+)
 
 
 def check_assertion_cues(extraction: Extraction) -> List[Atom]:
-    """Return absent atoms whose quotes omit an explicit negation cue."""
+    """Return absent or possible atoms whose quotes omit their assertion cue."""
     return [
         atom for atom in extraction.atoms
-        if atom.assertion == "absent" and not NEGATION_CUE_PATTERN.search(atom.source_quote)
+        if (
+            atom.assertion == "absent"
+            and not NEGATION_CUE_PATTERN.search(atom.source_quote)
+        ) or (
+            atom.assertion == "possible"
+            and not POSSIBILITY_CUE_PATTERN.search(atom.source_quote)
+        )
     ]
 
 
@@ -260,6 +296,7 @@ DIAGNOSIS_CUE_PATTERN = re.compile(
 )
 
 
+# Cue checks catch common missing-context errors, but their results still need clinical review.
 def check_quote_context(extraction: Extraction) -> List[Atom]:
     """Return present symptom/diagnosis atoms whose quotes omit context cues."""
     invalid_atoms = []
@@ -284,6 +321,7 @@ def missing_numbers(source_text: str, extraction: Extraction) -> List[str]:
 
 
 # ---- Step 7: Attaching relevant aliases or abbreviations ------------------------------------------
+# Matching longest phrases first avoids a broad alias overriding a more specific clinical topic.
 class LinkedAtom(Atom):
     topic: Optional[str] = None
 
@@ -318,6 +356,7 @@ def attach_topics(extraction: Extraction, aliases: dict) -> List[LinkedAtom]:
     ]
 
 # ---- Step 8: hand-off file ------------------------------------------------
+# Persist JSON so downstream agents can consume the same typed facts without rerunning extraction.
 def save_extraction(doc_id: str, atoms: List[Atom], out_dir: Path) -> Path:
     """Write one document's atoms to <out_dir>/<doc_id>.json and return the path."""
     if not doc_id or Path(doc_id).name != doc_id or doc_id in {".", ".."}:
