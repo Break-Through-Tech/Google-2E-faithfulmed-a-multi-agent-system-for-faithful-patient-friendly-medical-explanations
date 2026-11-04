@@ -1,0 +1,52 @@
+1. Int J Environ Res Public Health. 2019 Jan 29;16(3):383. doi: 
+10.3390/ijerph16030383.
+
+Vitamin D Status and Mortality: A Systematic Review of Observational Studies.
+
+Heath AK(1), Kim IY(2)(3), Hodge AM(4)(5), English DR(6)(7), Muller DC(8).
+
+Author information:
+(1)School of Public Health, Imperial College London, London W2 1PG, UK. 
+a.heath@imperial.ac.uk.
+(2)Department of Epidemiology, Harvard T.H. Chan School of Public Health, 
+Boston, MA 02115, USA. iris.kim@ndph.ox.ac.uk.
+(3)Nuffield Department of Population Health, University of Oxford, Oxford OX3 
+7LF, UK. iris.kim@ndph.ox.ac.uk.
+(4)Centre for Epidemiology and Biostatistics, Melbourne School of Population and 
+Global Health, University of Melbourne, Melbourne, Victoria 3010, Australia. 
+Allison.Hodge@cancervic.org.au.
+(5)Cancer Epidemiology & Intelligence Division, Cancer Council Victoria, 
+Melbourne, Victoria 3004, Australia. Allison.Hodge@cancervic.org.au.
+(6)Centre for Epidemiology and Biostatistics, Melbourne School of Population and 
+Global Health, University of Melbourne, Melbourne, Victoria 3010, Australia. 
+d.english@unimelb.edu.au.
+(7)Cancer Epidemiology & Intelligence Division, Cancer Council Victoria, 
+Melbourne, Victoria 3004, Australia. d.english@unimelb.edu.au.
+(8)School of Public Health, Imperial College London, London W2 1PG, UK. 
+david.muller@imperial.ac.uk.
+
+Epidemiological evidence suggests that vitamin D deficiency is associated with 
+increased mortality, but it is unclear whether this is explained by reverse 
+causation, and if there are specific causes of death for which vitamin D might 
+be important. We conducted a systematic review of observational studies 
+investigating associations between circulating 25-hydroxyvitamin D (25(OH)D) 
+concentration and all-cause or cause-specific mortality in generally healthy 
+populations. Relevant studies were identified using PubMed and EMBASE searches. 
+After screening 722 unique records and removing those that were ineligible, 84 
+articles were included in this review. The vast majority of studies reported 
+inverse associations between 25(OH)D concentration and all-cause mortality. This 
+association appeared to be non-linear, with progressively lower mortality with 
+increasing 25(OH)D up to a point, beyond which there was no further decrease. 
+There is moderate evidence that vitamin D status is inversely associated with 
+cancer mortality and death due to respiratory diseases, while for cardiovascular 
+mortality, there is weak evidence of an association in observational studies, 
+which is not supported by the data from intervention or Mendelian randomization 
+studies. The relationship between vitamin D status and other causes of death 
+remains uncertain due to limited data. Larger long-term studies are required to 
+clarify these associations.
+
+DOI: 10.3390/ijerph16030383
+PMCID: PMC6388383
+PMID: 30700025 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare no conflict of interest.

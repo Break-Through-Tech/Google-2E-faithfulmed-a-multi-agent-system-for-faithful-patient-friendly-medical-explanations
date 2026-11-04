@@ -1,0 +1,32 @@
+1. J Rehabil Res Dev. 2012;49(5):703-15. doi: 10.1682/jrrd.2011.09.0183.
+
+Pharmacotherapy for posttraumatic stress disorder: review with clinical 
+applications.
+
+Jeffreys M(1), Capehart B, Friedman MJ.
+
+Author information:
+(1)South Texas Veterans Health Care System-Psychiatry, 5788 Eckhert Rd, San 
+Antonio, TX 78240, USA. Matthew.Jeffreys@va.gov
+
+Posttraumatic stress disorder (PTSD) is a prevalent psychiatric diagnosis among 
+veterans and has high comorbidity with other medical and psychiatric conditions. 
+This article reviews the pharmacotherapy recommendations from the 2010 revised 
+Department of Veterans Affairs/Department of Defense Clinical Practice Guideline 
+(CPG) for PTSD and provides practical PTSD treatment recommendations for 
+clinicians. While evidence-based, trauma-focused psychotherapy is the preferred 
+treatment for PTSD, pharmacotherapy is also an important treatment option. 
+First-line pharmacotherapy agents include selective serotonin reuptake 
+inhibitors and the selective serotonin-norepinephrine reuptake inhibitor 
+venlafaxine. Second-line agents have less evidence for their usefulness in PTSD 
+and carry a potentially greater side effect burden. They include nefazodone, 
+mirtazapine, tricyclic antidepressants, and monoamine oxidase inhibitors. 
+Prazosin is beneficial for nightmares. Benzodiazepines and antipsychotics, 
+either as monotherapy or used adjunctively, are not recommended in the treatment 
+of PTSD. Treating co-occurring disorders, such as major depressive disorder, 
+substance use disorders, and traumatic brain injury, is essential in maximizing 
+treatment outcomes in PTSD. The CPG provides evidence-based treatment 
+recommendations for treating PTSD with and without such co-occurring disorders.
+
+DOI: 10.1682/jrrd.2011.09.0183
+PMID: 23015581 [Indexed for MEDLINE]

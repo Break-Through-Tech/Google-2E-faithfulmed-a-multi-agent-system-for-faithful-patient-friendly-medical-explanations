@@ -1,0 +1,59 @@
+1. Cannabis Cannabinoid Res. 2023 Feb;8(1):148-154. doi: 10.1089/can.2021.0114. 
+Epub 2021 Dec 16.
+
+Observed Impact of Long-Term Consumption of Oral Cannabidiol on Liver Function 
+in Healthy Adults.
+
+Kaufmann R(1)(2), Aqua K(3), Lombardo J(4), Lee M(5).
+
+Author information:
+(1)Midwest Allergy Sinus Asthma PC, Springfield, Illinois, USA.
+(2)Valid Care LLC, Denver, Colorado, USA.
+(3)Syzygy Research Solutions, LLC, Wellington, Florida, USA.
+(4)University of Buffalo, Buffalo, New York, USA.
+(5)UCLA Fielding School of Public Health, Los Angeles, California, USA.
+
+Comment in
+    Cannabis Cannabinoid Res. 2022 Dec;7(6):896-897. doi: 10.1089/can.2022.0191.
+
+Introduction: Previous studies have suggested that prescribed cannabidiol (CBD) 
+products may cause elevations in liver tests (LT). This study compared the 
+prevalence of elevated LT in an adult population self-administering CBD with the 
+normal and general adult population prevalences. Materials and Methods: Adults 
+18-75 years of age across the United States taking CBD orally for a minimum of 
+30 days were recruited from 12 individual CBD product companies in this 
+decentralized, observational study and sent their standard CBD regimen from the 
+company of their choice. An app-based, 21CFR Part 11 decentralized clinical 
+study platform (ValidCare Study) was used to securely automate consent 
+inclusion/exclusion criteria and collect all the data for this study, including: 
+demographic information, medical history, reasons for taking, dosage, current 
+medications dosage, adverse effects, and efficacy. At the end of 30 days, LTs 
+were obtained. Follow-up LTs were offered to all individuals with elevated 
+alanine transaminase (ALT) values. Results: A total of 28,121 individuals were 
+invited to participate in this study, 1475 enrolled, and 839 (female: 65.3%, 
+male: 34.7%) completed the study. Full-spectrum hemp oil was used by 55.7%, 
+CBD-isolate by 40.5%, and broad spectrum by 3.8%. The mean±SD daily dose of CBD 
+was 50.3+40.7 mg. The prevalence of elevated ALT was 9.1%, aspartate 
+aminotransferase (AST) 4.0%, alkaline phosphatase 1.9%, total bilirubin 1.7%, 
+with 85.5% of the ALT elevations <2×the upper limit of normal (ULN) with only 
+0.3% having ALT levels >3× ULN. The prevalence of ALT and AST elevations (9.1% 
+and 4.0%) were not significantly different from known adult general population 
+prevalences (8.9% and 4.9%). There was no significant association between CBD 
+dosage and LT values. Thirty-three individuals with elevated ALT levels had 
+follow-up LT performed with 21 having normal LT, 8 having the same severity of 
+ALT elevation, and 4 having an increase in severity, 1 of which ultimately 
+became normal. Conclusions: Self-medication of CBD does not appear to be 
+associated with an increased prevalence of LT elevation and most of the LT 
+elevations are likely due to the conditions/medications for which the 
+individuals are taking CBD.
+
+DOI: 10.1089/can.2021.0114
+PMCID: PMC9940803
+PMID: 34918948 [Indexed for MEDLINE]
+
+Conflict of interest statement: R.K. has served as a consultant for Shaman 
+Botanicals, LLC and Valid Care, LLC and as a speaker for Shaman Botanicals, LLC. 
+M.L. has served as a consultant for Valid Care, LLC and Shaman Botanicals, LLC 
+and received support from Valid Care for statistical analysis for this study. 
+K.A. has no conflicts of interest to report. J.L. has served as a consultant for 
+Charlottes Web, Inc.

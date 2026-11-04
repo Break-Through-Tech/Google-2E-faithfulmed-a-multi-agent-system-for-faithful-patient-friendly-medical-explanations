@@ -1,0 +1,49 @@
+1. Am J Hypertens. 2018 Nov 13;31(12):1324-1331. doi: 10.1093/ajh/hpy118.
+
+Use of Prescription Medications That Potentially Interfere With Blood Pressure 
+Control in New-Onset Hypertension and Treatment-Resistant Hypertension.
+
+Hwang AY(1), Dave CV(2), Smith SM(3)(4).
+
+Author information:
+(1)Department of Clinical Sciences, Fred Wilson School of Pharmacy, High Point 
+University, High Point, North Carolina, USA.
+(2)Department of Pharmaceutical Outcomes & Policy, College of Pharmacy, 
+University of Florida, Gainesville, Florida, USA.
+(3)Department of Pharmacotherapy and Translational Research, College of 
+Pharmacy, University of Florida, Gainesville, Florida, USA.
+(4)Department of Community Health and Family Medicine, College of Medicine, 
+University of Florida, Gainesville, Florida, USA.
+
+BACKGROUND: Withdrawing medications that interfere with blood pressure (BP) is 
+recommended in patients with uncontrolled BP, yet real-world use of such agents 
+is not well characterized among individuals with hypertension. We aimed to 
+evaluate the use of BP-interfering prescription medications among US patients 
+with hypertension.
+METHODS: This retrospective drug utilization study used medical and prescription 
+claims (January 2008 to December 2014) in the MarketScan commercial claims 
+database. We included adults, aged 18-65 years, with a hypertension diagnosis 
+(International Classification of Diseases, Ninth Revision, code 401) and ≥1 
+antihypertensive medication fill. Two hypertension cohorts were examined-new 
+antihypertensive drug users (incident hypertension) and patients requiring 
+titration to a fourth antihypertensive (incident treatment-resistant 
+hypertension [TRH]). Patient-level exposure to BP-interfering medications was 
+assessed 6 months before and after the index date, defined as the first 
+prescription fill of an antihypertensive drug or the first occurrence of 
+overlapping use of ≥4 antihypertensive drugs.
+RESULTS: We identified 521,028 patients with incident hypertension and 131,764 
+patients with incident TRH. The most prevalent BP-interfering prescription 
+medications were nonsteroidal anti-inflammatory drugs (NSAIDs), acetaminophens, 
+and hormones. Overall, 18.3% of the incident hypertension cohort and 17.6% of 
+the incident TRH cohort initiated a BP-interfering medication following 
+antihypertensive titration. Among patients previously taking a BP-interfering 
+medication, 57.6% with incident hypertension and 64.9% with incident TRH 
+refilled that medication after antihypertensive intensification.
+CONCLUSIONS: The use of prescription BP-interfering medications, especially 
+NSAIDs, is prevalent among patients requiring intensification of their 
+antihypertensive regimen. Greater efforts to limit the use of these medications, 
+where feasible, may be required among patients with uncontrolled hypertension.
+
+DOI: 10.1093/ajh/hpy118
+PMCID: PMC6233674
+PMID: 30052747 [Indexed for MEDLINE]

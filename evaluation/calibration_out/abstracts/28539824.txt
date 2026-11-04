@@ -1,0 +1,70 @@
+1. Int J Med Sci. 2017 Apr 9;14(5):477-483. doi: 10.7150/ijms.18054. eCollection 
+2017.
+
+Effect of Metoprolol Succinate in Patients with Stable Angina and Elevated Heart 
+Rate Receiving Low-Dose β-Blocker Therapy.
+
+Jiang J(1), Cong H(2), Zhang Y(1), Li Z(3), Tao G(4), Li X(5), Qing L(6), Tan 
+N(7), Zhao Z(8), Dong Y(9), Ji Z(10), Chen Y(11), Ge J(12), He B(13), Sun Y(14), 
+Cao K(15), Huo Y(1).
+
+Author information:
+(1)Peking University First Hospital, 8 Xishiku Street., Xicheng District, 
+Beijing, 100034.
+(2)Tianjin Chest Hospital, 93 Xian Road, Heping District, Tianjin, 30051.
+(3)The People's Hospital of Liaoning Province, 33 Wenyi Road, Shenhe District, 
+Shenyang, Liaoning, 110016.
+(4)The First Affiliated Hospital of Liaoning Medical University, 2 Renmin 
+Street, Jinzhou, Liaoning, 121004.
+(5)Shengjing Hospital of China Medical University, 36 Sanhao street, Heping 
+District, Shenyang, Liaoning, 110004.
+(6)Taiyuan Chaoyang Hospital, 7 Youdianqian Street, Yingze District, Taiyuan, 
+Shanxi, 030001.
+(7)Guangdong General Hospital, 106 Zhongshan 2nd Road, Guangzhou, Guangdong, 
+510080.
+(8)Zhengzhou Central Hospital, 195 Tongbai Road, Zhongyuan District, Zhengzhou, 
+Henan, 450007.
+(9)The First Affiliated Hospital, Sun Yat-sen University, 58 Zhongshan 2nd Road, 
+Guanzhou, Guangdong, 510080.
+(10)Tangshan Gongren Hospital, 27 Wenhua Road, Lubei District, Tangshan, Hebei, 
+63000.
+(11)Chinese PLA General Hospital, 28 Fuxing Road, Haidian District, Beijing, 
+100039.
+(12)Zhongshan Hospital Fudan University, 180 Fenglin Road, Xuhui 
+District,Shanghai, 200032.
+(13)Renji Hospital Shanghai Jiaotong University School of Medicine, 786 Yuyuan 
+Road, Changning District, Shanghai, 200240.
+(14)The First Hospital of China Medical University, 155 Nanjing North Street, 
+Shenyang, Liaoning, 110001.
+(15)Jiangsu Province Hospital, 300 Guangzhou Road, Gulou District, Nanjing, 
+Jiangsu, 210029.
+
+Aims: β-blockers are underused in Chinese patients with coronary heart disease. 
+The prescribed dose is often low. The aim of this study was to investigate the 
+effect of metoprolol succinate doses of 95 mg and 190 mg on heart rate (HR) 
+control, as well as drug tolerance, in Chinese patients with stable angina, 
+low-dose β-blocker use and unsatisfactory HR control. Methods: This was a 
+multicenter, randomized, open-label, parallel-group trial in 15 clinical sites. 
+Patients with stable angina, taking low-dose β-blockers (equivalent to 
+metoprolol succinate 23.75-47.5 mg/day), and having a resting HR of ≥ 65 bpm 
+were enrolled and randomized to either the metoprolol 95-mg group or the 190-mg 
+group. The change in 24-h average HR from baseline recorded by Holter monitoring 
+and the percentages of patients with resting HR controlled to ≤ 60 bpm were 
+compared between the two groups. Results: Two hundred thirty-one patients 
+entered the intent-to-treat population for the main analysis. The change in 24-h 
+average HR from baseline was -0.62 ± 0.66 bpm in the 95 mg group and -2.99 ± 
+0.62 bpm in the 190 mg group (p = 0.0077) after 8 weeks of treatment. The 
+percentages of patients with resting HR controlled to ≤ 60 bpm were 24.1% (95% 
+CI: 16.35%, 31.93%) and 40.0% (95% CI: 31.05%, 48.95%), respectively (p = 
+0.0019). Only 4 and 2 of the patients, respectively, discontinued the study 
+drugs because of hypotension or bradycardia. Conclusions: The metoprolol 
+succinate dose of 190 mg is superior to the 95 mg dose in terms of HR control, 
+in Chinese patients with stable angina, low-dose β-blocker use and 
+unsatisfactory HR control. Both doses were well tolerated.
+
+DOI: 10.7150/ijms.18054
+PMCID: PMC5441040
+PMID: 28539824 [Indexed for MEDLINE]
+
+Conflict of interest statement: Competing Interests: The study is supported by 
+AstraZeneca and there is no other competing interest.

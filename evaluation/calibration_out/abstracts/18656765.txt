@@ -1,0 +1,36 @@
+1. J Hand Surg Am. 2008 Jul-Aug;33(6):909-19. doi: 10.1016/j.jhsa.2008.02.004.
+
+Injection of dexamethasone versus placebo for lateral elbow pain: a prospective, 
+double-blind, randomized clinical trial.
+
+Lindenhovius A(1), Henket M, Gilligan BP, Lozano-Calderon S, Jupiter JB, Ring D.
+
+Author information:
+(1)Harvard Medical School, Boston, MA, USA.
+
+PURPOSE: We tested the hypothesis that there is no difference in disability, 
+pain, and grip strength 1 and 6 months after corticosteroid and lidocaine 
+injection compared with lidocaine injection alone (placebo).
+METHODS: Sixty-four patients were randomly assigned to dexamethasone (n = 31) or 
+placebo (n = 33) injection. At enrollment, disability (Disabilities of the Arm, 
+Shoulder, and Hand [DASH] questionnaire), pain on a visual analog scale, grip 
+strength, depression (the Center for Epidemiologic Studies Depression Scale; 
+CESD), and ineffective coping skills (the Pain Catastrophizing Scale; PCS) were 
+comparable between treatment groups. At 1 and 6 months, DASH, pain, and grip 
+strength measures were repeated. Univariate and multivariate analyses were used 
+to determine predictors of disability. Analysis was by intention to treat.
+RESULTS: One month after injection, DASH scores averaged 24 versus 27 points 
+(dexamethasone vs placebo), pain 3.7 versus 4.3 cm, and grip strength 83% versus 
+87%. At 6 months, DASH scores averaged 18 versus 13 points, pain 2.4 versus 1.7 
+cm, and grip strength 98% versus 97%. CESD and PCS scores correlated with 
+disability as measured by the DASH questionnaire. The best multivariate models 
+included CESD at 1 month and PCS scores at 6 months and explained the majority 
+of variability in DASH scores.
+CONCLUSIONS: Corticosteroid injection did not affect the apparently self-limited 
+course of lateral elbow pain. In secondary analyses in a subset of patients, 
+perceived disability associated with lateral elbow pain correlated with 
+depression and ineffective coping skills.
+TYPE OF STUDY/LEVEL OF EVIDENCE: Therapeutic I.
+
+DOI: 10.1016/j.jhsa.2008.02.004
+PMID: 18656765 [Indexed for MEDLINE]

@@ -1,0 +1,42 @@
+1. Sci Rep. 2022 Jul 19;12(1):12334. doi: 10.1038/s41598-022-16775-2.
+
+Efficacy of salmeterol and magnesium isoglycyrrhizinate combination treatment in 
+rats with chronic obstructive pulmonary disease.
+
+Yang Y(1), Huang L(1), Tian C(1), Qian B(2).
+
+Author information:
+(1)Department of Pharmacology and Medicinal Chemistry, Jiangsu Vocational 
+College of Medicine, Yancheng, 224005, Jiangsu, People's Republic of China.
+(2)Department of Pharmacology and Medicinal Chemistry, Jiangsu Vocational 
+College of Medicine, Yancheng, 224005, Jiangsu, People's Republic of China. 
+bjqianfd@jsmc.edu.cn.
+
+The most classic treatment recommended in the current chronic obstructive 
+pulmonary disease (COPD) guidelines is glucocorticoid and β2 receptor agonist 
+combination, such as salmeterol xinafoate and fluticasone propionate (Sal/Flu), 
+causing many adverse reactions due to hormones. Magnesium isoglycyrrhizinate 
+(MgIG) is an anti-inflammatory glycyrrhizic acid preparation for treating 
+chronic inflammation, contributing to its structure is similar to steroidal 
+anti-inflammatory drugs. In this study, we successfully established COPD rat 
+model by endotracheal-atomized lipopolysaccharide exposure and cigarette smoke 
+induction, as characterized by lung function decline. We discovered that 
+salmeterol xinafoate/MgIG combination could alleviated lung inflammation 
+infiltration, airway wall thickness (AWT) and the secretion of bronchial mucin 
+MUC5AC of COPD rats more than salmeterol xinafoate, MgIG, or salmeterol 
+xinafoate and fluticasone propionate treatment did, as well as reduced 
+inflammatory cells (white blood cells, neutrophils and lymphocytes) accumulation 
+in bronchoalveolar lavage fluid and decreased TNF-α, IL-6 and IL-1β production 
+in the serum of COPD rats. Finally, we found that Moreover, the mechanism 
+involved might be related to the suppression of JAK/STAT signaling pathway. 
+Overall, our studies suggested that MgIG might be a potential alternative 
+adjuvant drug for fluticasone propionate for the clinical treatment of patients 
+with COPD.
+
+© 2022. The Author(s).
+
+DOI: 10.1038/s41598-022-16775-2
+PMCID: PMC9296643
+PMID: 35853985 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare no competing interests.

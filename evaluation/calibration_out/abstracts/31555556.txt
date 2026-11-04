@@ -1,0 +1,55 @@
+1. Transl Androl Urol. 2019 Aug;8(4):329-338. doi: 10.21037/tau.2019.07.02.
+
+Tamsulosin dispensation patterns in the United States: a real-world, 
+longitudinal, population claims database analysis.
+
+Kava BR(1), Verbeek AE(2), Wruck JM(2), Gittelman M(3).
+
+Author information:
+(1)Department of Urology, University of Miami Miller School of Medicine, Miami, 
+FL, USA.
+(2)Boehringer Ingelheim Pharmaceuticals, Inc., Ridgefield, CT, USA.
+(3)South Florida Medical Research, Uromedix/Division of 21st Century Oncology, 
+Aventura, FL, USA.
+
+BACKGROUND: Tamsulosin remains the single most popular uroselective alpha 
+adrenoceptor antagonist approved for the treatment of lower urinary tract 
+symptoms (LUTS) attributable to benign prostatic hyperplasia (BPH). Over the 
+last 3 decades, the utilization of tamsulosin has extended to conditions beyond 
+its original indication. To identify potential changes to prescribing patterns 
+and the extent of tamsulosin use for conditions beyond its original indication, 
+we evaluated tamsulosin dispensing patterns in the United States using a large, 
+multi-payer claims database.
+METHODS: We conducted a retrospective analysis using IMS PharMetrics Plus™. 
+Patients with a tamsulosin dispensation/BPH diagnosis code (index dates), 
+identified during a 12-month selection period (October 2012-September 2013), 
+were included if continuously enrolled in a health plan during the 18-month 
+analysis period (12 months pre-index-6 months post-index). Patient and provider 
+characteristics were evaluated using descriptive statistics and were contrasted 
+with previously reported data from the literature.
+RESULTS: Of 133,977 patients dispensed tamsulosin during the analysis period, 
+72,583 (54.2%) were new users [59,197 (81.6%) men; 13,386 (18.4%) women]. 
+Tamsulosin was newly initiated in men and women mostly by primary care 
+physicians (PCPs; 31.6%) and emergency medicine physicians (21.6%). During the 
+analysis period, 35,071 (59.2%) male new tamsulosin users did not receive a BPH 
+diagnosis code during the analysis period. Of 199,468 men with a BPH diagnosis 
+code, 143,444 (71.9%) were newly diagnosed, mostly [70,412 (49.1%)] by 
+urologists. Few men received hypotension diagnosis: 252 (0.4%) new tamsulosin 
+users within 1 month of starting tamsulosin and 640 (0.4%) within 1 month of a 
+new BPH diagnosis.
+CONCLUSIONS: Tamsulosin was prescribed in patients without a recorded diagnosis 
+of BPH and in women. Physicians were comfortable prescribing tamsulosin in the 
+presence of comorbidity and polypharmacy, and PCPs and emergency medicine 
+physicians were the primary prescribers. These results have important 
+implications for future retrospective research for tamsulosin.
+
+DOI: 10.21037/tau.2019.07.02
+PMCID: PMC6732091
+PMID: 31555556
+
+Conflict of interest statement: Conflicts of Interest: BR Kava serves as a 
+consultant for Merit Pharmaceuticals and Endo Pharmaceuticals outside the 
+submitted work. M Gittelman is a consultant for Boehringer Ingelheim. JM Wruck 
+is an employee of Boehringer Ingelheim. AE Verbeek was an employee of Boehringer 
+Ingelheim at the time the study was conducted and is currently an employee of 
+Sanofi.

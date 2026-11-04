@@ -1,0 +1,55 @@
+1. Am J Hosp Palliat Care. 2022 Aug;39(8):977-985. doi:
+10.1177/10499091211056327.  Epub 2021 Dec 4.
+
+Relieving from Breathlessness in the Wind: A Meta-Analysis and Subjective Report 
+of Effectiveness of Fan Blowing in Patients with Cardiorespiratory Diseases or 
+Cancer.
+
+Tsai JJ(1)(2), Chen KH(3)(4)(5), Fang HF(6)(7)(8), Huang TW(1)(4)(5).
+
+Author information:
+(1)School of Nursing, College of Nursing, 38032Taipei Medical University, 
+Taipei, Taiwan.
+(2)Department of Nursing, Hualien Tzu Chi Hospital, Buddhist Tzu Chi Medical 
+Foundation, Hualien, Taiwan.
+(3)Post-Baccalaureate Program in Nursing, College of Nursing, 38032Taipei 
+Medical University, Taipei, Taiwan.
+(4)Center for Nursing and Healthcare Research in Clinical Practice Application, 
+Wan Fang Hospital, 38032Taipei Medical University, Taipei, Taiwan.
+(5)Cochrane Taiwan, 38032Taipei Medical University, Taipei, Taiwan.
+(6)Deputy Director of Nursing Department, Taipei Cancer Center, 38032Taipei 
+Medical University, Taipei, Taiwan.
+(7)Deputy Director of Cancer Center, 63474Taipei Medical University Hospital, 
+Taipei, Taiwan.
+(8)Deputy Director of Nursing Service, 63474Taipei Medical University Hospital, 
+Taipei, Taiwan.
+
+OBJECTIVES: Breathlessness is common among terminally ill patients with 
+cardiorespiratory disease or cancer. The experience may induce secondary 
+physiological and behavioral responses that limit patient well-being and 
+independence and cause emotional distress.
+METHODS: We conducted a meta-analysis on randomized controlled trials (RCTs) 
+that examined the effectiveness of fan blowing on breathlessness among patients 
+with cardiorespiratory diseases or cancer. The PubMed, Cochrane Library, Embase, 
+SCOPUS, and CINAHL databases were searched to retrieve potential articles. The 
+primary outcome was breathlessness severity. The secondary outcomes were SpO2, 
+anxiety, depression, and quality of life. Also, we presented the changes of 
+vital signs and subjective feeling of a male patient who used fan blowing for 
+relieving his breathlessness.
+RESULTS: Eight RCTs were available for analysis. The pooled results demonstrated 
+no significant difference in breathlessness severity between fan-to-face blowing 
+and control methods (standard mean difference: -0.21, 95% confidence interval: 
+-.59 to .17); however, a significant reduction in breathlessness severity was 
+observed in the short-time intervention compared with long-time intervention. A 
+trend occurred toward significance in the reduction of respiratory rate in 
+fan-to-face blowing compared with control methods (MD: -.64, 95% CI: -1.37 to 
+.09). No differences were observed between groups in oxygen saturation, anxiety, 
+depression, or QoL. The male patient who used fan blowing showed an improved 
+vital signs and a satisfied subjective feeling.
+CONCLUSIONS: Consistent short-time fan-to-face blowing is effective for 
+relieving breathlessness among conscious terminally ill patients with 
+cardiorespiratory diseases or cancer. The use of this convenient method for 
+relieving breathlessness symptoms in terminally ill patients is recommended.
+
+DOI: 10.1177/10499091211056327
+PMID: 34866434 [Indexed for MEDLINE]

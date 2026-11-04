@@ -1,0 +1,40 @@
+1. Nutrients. 2023 Jan 1;15(1):209. doi: 10.3390/nu15010209.
+
+Real-World Intake of Dietary Sugars Is Associated with Reduced Cortisol 
+Reactivity Following an Acute Physiological Stressor.
+
+Di Polito N(1)(2), Stylianakis AA(1), Richardson R(1), Baker KD(1).
+
+Author information:
+(1)School of Psychology, UNSW Sydney, Sydney, NSW 2052, Australia.
+(2)Department of General Psychology, University of Padova, Via Venezia 8, 35131 
+Padova, Italy.
+
+There is increasing academic and clinical interest in understanding the nature 
+of the relation between diet and response to stress exposure as a risk factor 
+for mental illness. Cross-species evidence shows that conditions of chronic and 
+acute stress increase the intake of, and preference for, caloric-dense palatable 
+foods, a phenomenon thought to be explained by the mitigating effects of comfort 
+foods on the activity of the stress-response network. It is largely unknown 
+whether and how real-world dietary intake of saturated fat and sugars impacts 
+stress responsivity in humans. Therefore, here we examined whether real-world 
+dietary intake of saturated fat and sugars predicted salivary cortisol 
+reactivity following an acute physiological stressor. Multilevel modelling of 
+four salivary cortisol measures collected up to 65 min after the stressor on 54 
+participants (18-49 years old) were analyzed using a quadratic growth curve 
+model. Sugar intake significantly predicted a weaker cortisol response following 
+the Cold Pressor Test (CPT) controlling for BMI and gender, revealing an 
+inhibitory effect of caloric-dense diets on cortisol reactivity to stress. As 
+the consumption of sugar rose individuals had lower post-stressor cortisol 
+levels, a smaller rate of increase in cortisol 20 and 35 min after the CPT, a 
+lower cortisol peak, and an overall weaker quadratic effect. These observations 
+add to a growing body of evidence reporting suppressive effects of high-energy 
+foods on stress-associated glucocorticoids reactivity and are consistent with 
+the comfort food hypothesis, where people are seen as motivated to eat palatable 
+foods to alleviate the detrimental repercussions of stressor exposure.
+
+DOI: 10.3390/nu15010209
+PMCID: PMC9823716
+PMID: 36615866 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare no conflict of interest.

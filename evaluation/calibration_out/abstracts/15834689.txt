@@ -1,0 +1,29 @@
+1. Internist (Berl). 2005 May;46(5):538-47. doi: 10.1007/s00108-005-1405-x.
+
+[New guidelines for treatment of hypertension].
+
+[Article in German]
+
+Haller H(1).
+
+Author information:
+(1)Abteilung Nephrologie, Zentrum Innere Medizin der Medizinischen Hochschulen 
+Hannover. Nephrologie@MH-Hannover.de
+
+Treatment of high blood pressure is a central element in prevention of 
+cardiovascular diseases. The new classification of hypertension takes into 
+consideration the close association between blood pressure level and 
+cardiovascular risk and designates blood pressure between 140/90 and 130/80 mmHg 
+as high-normal so that blood pressure <140/90 mmHg should always be the goal. 
+The targeted blood pressure levels are also defined by the extent of end-organ 
+damage already present. The therapeutic objective in patients with diabetes 
+mellitus is a blood pressure level of 130/80 mmHg and in patients with kidney 
+disease and proteinuria 125/75 mmHg. The five substance groups of diuretics, 
+beta-blockers, calcium antagonists, ACE inhibitors, and angiotensin receptor 
+blockers are recommended for primary treatment. In addition to the 
+antihypertensive properties, substance-specific effects of ACE inhibitors and 
+angiotensin receptor blockers have been described. Primarily, instead of 
+monotherapy low-dose combination therapy can also be judicious.
+
+DOI: 10.1007/s00108-005-1405-x
+PMID: 15834689 [Indexed for MEDLINE]

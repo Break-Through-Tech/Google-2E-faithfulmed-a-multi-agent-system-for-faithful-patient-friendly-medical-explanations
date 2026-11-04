@@ -1,0 +1,40 @@
+1. Curr Hypertens Rep. 2021 Mar 5;23(3):14. doi: 10.1007/s11906-021-01131-y.
+
+Drug Interactions with Antihypertensives.
+
+Fravel MA(1), Ernst M(2).
+
+Author information:
+(1)University of Iowa College of Pharmacy, 167 CB, 180 S. Grand Ave, Iowa City, 
+IA, 52242, USA. michelle-fravel@uiowa.edu.
+(2)Department of Family Medicine, University of Iowa Hospitals and Clinics, 200 
+Hawkins Drive, Iowa City, IA, 52242, USA.
+
+PURPOSE OF REVIEW: Hypertension is remarkably prevalent, affecting an estimated 
+1.13 billion people worldwide. It often requires the use of multi-drug regimens 
+and is commonly associated with a myriad of other comorbidities which increase 
+medication use. The pervasive use of antihypertensive medications combined with 
+the presence of polypharmacy in many hypertensive patients results in 
+significant risk of drug interactions. This review will summarize the relevant 
+literature to assist clinicians in mitigating drug interaction risks when 
+prescribing antihypertensives.
+RECENT FINDINGS: Pharmacokinetic interactions affect drug disposition in the 
+body and can occur at the steps of absorption, distribution, metabolism, or 
+elimination of involved medications. Data has established the calcium channel 
+blockers, namely, diltiazem and verapamil, as potent inhibitors of CYP3A4, and 
+the majority of significant drug interactions involving antihypertensives are 
+attributable to these two agents. Although less common, pharmacokinetic drug 
+interactions with other antihypertensive classes have also been identified. 
+Pharmacodynamic drug interactions with antihypertensives lead to synergy or 
+antagonism of blood pressure lowering effects and can increase or mitigate 
+adverse effects depending on the agents involved. Knowledge is emerging about 
+drug-induced phenoconversion, a phenomenon whereby a drug interaction results in 
+a drug metabolizing phenotype that is different than that predicted by an 
+individual's genotype. Antihypertensive use in patients with comorbidities and 
+polypharmacy increases the likelihood of encountering important drug-drug 
+interactions. Dedicated efforts to better understand the relationship between 
+pharmacokinetic drug interactions and pharmacogenomic information is important 
+to advance efforts related to personalized medicine.
+
+DOI: 10.1007/s11906-021-01131-y
+PMID: 33666764 [Indexed for MEDLINE]

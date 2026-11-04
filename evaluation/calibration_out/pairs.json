@@ -1,0 +1,1442 @@
+[
+  {
+    "id": "134|M3|4|24997032",
+    "question_id": "134",
+    "sentence": "The exact cause is unknown, but it is believed to be related to a combination of factors, including genetic predisposition, sensomotoric dysfunction, altered enteric inflammation, and immune activation, as well as disturbance of the brain-gut interaction.",
+    "pmid": "24997032",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "153|M11|1|21985048",
+    "question_id": "153",
+    "sentence": "A hematocrit (Hct) level of less than 25% is generally considered low and the patient may benefit from a blood transfusion.",
+    "pmid": "21985048",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "135|M18|1|38015369",
+    "question_id": "135",
+    "sentence": "If you are prescribed thyroid medications but don't take them, you may experience a range of negative consequences, including poor growth and development, compromised brain and physical function, increased risk of cardiovascular disease, obesity, hypertension, poor physical capacity, and poor quality of life.",
+    "pmid": "38015369",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "117|M10|6|23289840",
+    "question_id": "117",
+    "sentence": "Thus, future implications of RUNX2 mutations include ongoing skeletal and dental issues that may necessitate medical and dental interventions.",
+    "pmid": "23289840",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "128|M24|4|21821735",
+    "question_id": "128",
+    "sentence": "CBD's inhibition of CYP2D6 is competitive, not metabolism-dependent, and occurs with K(i) values of 1.16 to 2.69 \u03bcM.",
+    "pmid": "21821735",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "140|M19|3|21409500",
+    "question_id": "140",
+    "sentence": "Additionally, conditions like avascular necrosis, which can be caused by steroid ingestion or other factors, can lead to fractures without trauma.",
+    "pmid": "21409500",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "139|M13|5|28341321",
+    "question_id": "139",
+    "sentence": "Untreated anorexia can also lead to persistent psychiatric health problems, such as anxiety and depression, which often persist after the eating disorder symptoms are resolved.",
+    "pmid": "28341321",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "134|M20|6|28403981",
+    "question_id": "134",
+    "sentence": "A stepwise management approach is often advocated, starting with general management principles and progressing to pharmacotherapy and combination therapies as needed.",
+    "pmid": "28403981",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "154|M24|8|25607119",
+    "question_id": "154",
+    "sentence": "Overall, incorporating these breathing exercises can provide significant symptomatic relief and improve respiratory function.",
+    "pmid": "25607119",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "130|M26|6|26066290",
+    "question_id": "130",
+    "sentence": "Furthermore, OS is implicated in the increased cardiovascular risk and metabolic complications seen in PCOS, highlighting its significant role in the syndrome's pathophysiology.",
+    "pmid": "26066290",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "139|M4|5|15478133",
+    "question_id": "139",
+    "sentence": "Untreated anorexia is associated with a significant increase in the risk of death.",
+    "pmid": "15478133",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "133|M3|4|37900072",
+    "question_id": "133",
+    "sentence": "However, the impact of surgery on fertility can be minimized by selecting the appropriate surgery for the patient, careful tissue handling, limited use of electrosurgery, and employing microsurgical techniques with advanced laparoscopic or robotic surgery, which can simplify complex minimally invasive fertility-sparing procedures.",
+    "pmid": "37900072",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "144|M9|7|20148501",
+    "question_id": "144",
+    "sentence": "Treatment should be gradual and involve appropriate follow-up over weeks to months to reach desired blood pressure goals.",
+    "pmid": "20148501",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "127|M8|5|35537048",
+    "question_id": "127",
+    "sentence": "It can be delivered safely and effectively to multiple organs, providing long-lasting benefits without significant side effects.",
+    "pmid": "35537048",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "140|M6|4|21409500",
+    "question_id": "140",
+    "sentence": "Additionally, avascular necrosis, which can be induced by steroid use or systemic diseases, may also contribute to spontaneous fractures.",
+    "pmid": "21409500",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "122|M24|3|17897130",
+    "question_id": "122",
+    "sentence": "These abnormalities are prevalent in non-ST-segment elevation acute coronary syndromes and are linked to sudden cardiac death risk.",
+    "pmid": "17897130",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "130|M10|5|36786429",
+    "question_id": "130",
+    "sentence": "Furthermore, oxidative stress negatively impacts ovarian function, leading to issues such as abnormal follicular development and ovulation disorders.",
+    "pmid": "36786429",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "122|M24|5|18606329",
+    "question_id": "122",
+    "sentence": "T-wave abnormalities can result from noncardiac pathophysiology and are associated with subclinical atherosclerosis.",
+    "pmid": "18606329",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "152|M30|3|26432745",
+    "question_id": "152",
+    "sentence": "The decision to stop should consider the patient's overall health status and any potential side effects experienced during treatment, such as gingival hypertrophy.",
+    "pmid": "26432745",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "120|M10|3|29381971",
+    "question_id": "120",
+    "sentence": "In some cases, it can be associated with cranial nerve deficits, which may include hearing loss.",
+    "pmid": "29381971",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "145|M29|4|31650952",
+    "question_id": "145",
+    "sentence": "Immune-related adverse events (irAEs) can also occur, affecting various organs, including the skin, gastrointestinal tract, liver, endocrine system, and other organ systems.",
+    "pmid": "31650952",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "128|M14|5|36912195",
+    "question_id": "128",
+    "sentence": "Overall, monitoring liver function tests is recommended for individuals using CBD, especially at higher doses or in combination with other drugs.",
+    "pmid": "36912195",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "142|M2|4|33666764",
+    "question_id": "142",
+    "sentence": "Calcium channel blockers, particularly diltiazem and verapamil, are significant inhibitors of cytochrome P450 3A4, leading to potential drug interactions with various antihypertensives.",
+    "pmid": "33666764",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "150|M3|1|17762803",
+    "question_id": "150",
+    "sentence": "Research suggests that conventional physical therapy with lumbar traction can be effective in the treatment of patients with subacute lumbar disc herniation, resulting in significant reductions in pain, disability, and improvements in lumbar movements.",
+    "pmid": "17762803",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "145|M6|5|27373241",
+    "question_id": "145",
+    "sentence": "Early recognition and management of these irAEs are crucial to mitigate risks and improve patient outcomes.",
+    "pmid": "27373241",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "123|M6|5|18435798",
+    "question_id": "123",
+    "sentence": "Molecular analysis of FBN1 is essential for confirming the diagnosis and guiding clinical management.",
+    "pmid": "18435798",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "131|M9|1|22779932",
+    "question_id": "131",
+    "sentence": "Formoterol, a long-acting beta2-agonist, can cause various side effects, including hoarseness, dry mouth, headache, and dizziness.",
+    "pmid": "22779932",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "120|M18|2|32007456",
+    "question_id": "120",
+    "sentence": "It can also be a symptom of a more serious underlying condition such as multiple sclerosis, malignancy, stroke, cervical artery dissection, rupture of a normal spleen, or other conditions that can cause cough-induced complications affecting various systems of the body.",
+    "pmid": "32007456",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "151|M2|5|34716992",
+    "question_id": "151",
+    "sentence": "Dry skin conditions can also result from various endogenous or exogenous factors, leading to a rough and scaly skin surface.",
+    "pmid": "34716992",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "119|M8|4|24249758",
+    "question_id": "119",
+    "sentence": "Roflumilast has been shown to reduce exacerbations and improve lung function, particularly in patients with chronic bronchitis.",
+    "pmid": "24249758",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "148|M20|2|16634245",
+    "question_id": "148",
+    "sentence": "In some cases, easy bruising may be a sign of an underlying condition that requires medical attention.",
+    "pmid": "16634245",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "132|M6|2|18852718",
+    "question_id": "132",
+    "sentence": "Deficiency in vitamin D impairs calcium absorption, leading to conditions such as osteomalacia, osteoporosis, and increased fracture risk due to weakened bones and muscle weakness.",
+    "pmid": "18852718",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "139|M1|2|23706279",
+    "question_id": "139",
+    "sentence": "Women with anorexia may experience complications during pregnancy, such as hyperemesis gravidarum, anemia, and obstetric complications.",
+    "pmid": "23706279",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "143|M12|5|36970913",
+    "question_id": "143",
+    "sentence": "Advance care planning, including discussions about end-of-life care and placement, can help individuals with Huntington's disease to make informed decisions about their care.",
+    "pmid": "36970913",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "120|M20|3|29404361",
+    "question_id": "120",
+    "sentence": "Additionally, it can be a manifestation of lateral medullary syndrome, also known as Wallenberg syndrome, which is caused by a stroke in the lateral part of the medulla oblongata.",
+    "pmid": "29404361",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "132|M26|6|18020534",
+    "question_id": "132",
+    "sentence": "Supplementation with vitamin D, often in combination with calcium, is recommended to mitigate these risks and improve overall health outcomes.",
+    "pmid": "18020534",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "136|M16|3|21253755",
+    "question_id": "136",
+    "sentence": "However, in refractory cases, surgical interventions like arthroscopic release with debridement  or percutaneous release of the common extensor origin may be necessary.",
+    "pmid": "21253755",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "131|M17|3|15707858",
+    "question_id": "131",
+    "sentence": "High doses of formoterol can cause a decrease in plasma potassium levels, increased serum glucose levels, and small increases in mean QTc interval.",
+    "pmid": "15707858",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "145|M17|2|25993145",
+    "question_id": "145",
+    "sentence": "Immune-related adverse events (irAEs) can also occur, affecting the skin, gastrointestinal tract, liver, endocrine system, and other organ systems.",
+    "pmid": "25993145",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "146|M19|2|30450043",
+    "question_id": "146",
+    "sentence": "Evidence-based psychotherapies, such as trauma-focused cognitive behavioral therapy (TF-CBT), prolonged exposure (PE), and eye movement desensitization and reprocessing (EMDR), are recommended as first-line treatments for PTSD.",
+    "pmid": "30450043",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "126|M18|4|18369452",
+    "question_id": "126",
+    "sentence": "The causes of nondisjunction are not fully understood, but research suggests that it can be influenced by various factors, including advanced maternal age, altered recombination patterns, and genetic mutations.",
+    "pmid": "18369452",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "143|M6|3|26098083",
+    "question_id": "143",
+    "sentence": "Rehabilitation tailored to disease stages, such as aerobic and resistance exercises in early stages and task-specific training in middle stages, can mitigate symptom severity and improve functional status.",
+    "pmid": "26098083",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "139|M6|1|23706279",
+    "question_id": "139",
+    "sentence": "Untreated anorexia nervosa (AN) can lead to severe long-term outcomes, including a significantly increased risk of mortality, with an almost 18-fold increase in death rates, often due to cardiac complications and suicide.",
+    "pmid": "23706279",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "136|M24|8|20003341",
+    "question_id": "136",
+    "sentence": "Cetylated fatty acid cream with menthol and transcutaneous electrical nerve stimulation can alleviate pain in conditions like tennis elbow.",
+    "pmid": "20003341",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "141|M9|3|33268494",
+    "question_id": "141",
+    "sentence": "These severe forms manifest as hemorrhagic fever, causing significant damage to internal organs.",
+    "pmid": "33268494",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "128|M29|1|33022751",
+    "question_id": "128",
+    "sentence": "Cannabidiol (CBD) may cause elevations in liver tests, including alanine aminotransferase (ALT) and aspartate aminotransferase (AST), in some individuals, particularly at high doses.",
+    "pmid": "33022751",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "118|M6|3|31598519",
+    "question_id": "118",
+    "sentence": "However, factors such as age, underlying health conditions, and the presence of foreign bodies can influence healing time.",
+    "pmid": "31598519",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "143|M2|6|23480977",
+    "question_id": "143",
+    "sentence": "Additionally, intensive neurorehabilitation may lessen disability and delay motor dysfunction progression, contributing positively to life quality.",
+    "pmid": "23480977",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "116|M13|4|33659106",
+    "question_id": "116",
+    "sentence": "Quitting smoking and alcohol consumption can also be beneficial.",
+    "pmid": "33659106",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "120|M7|1|24799517",
+    "question_id": "120",
+    "sentence": "Left-sided facial numbness can be caused by various conditions, including viral infections like varicella-zoster virus reactivation, which can lead to facial pain, swelling, and rash.",
+    "pmid": "24799517",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "150|M18|3|37116180",
+    "question_id": "150",
+    "sentence": "A structured physiotherapy treatment model, including Mechanical Diagnosis and Therapy (MDT) and graded trunk stabilization training, can provide rapid relief to patients who qualify for lumbar disc surgery.",
+    "pmid": "37116180",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "134|M15|2|35869354",
+    "question_id": "134",
+    "sentence": "The pathophysiology of IBS includes disordered gut motility, alterations in gut microbiota, neural-hormonal system abnormalities, immune reactivity, and visceral hypersensitivity.",
+    "pmid": "35869354",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "150|M8|5|25763584",
+    "question_id": "150",
+    "sentence": "Physical therapy interventions, including low-level laser therapy and pulsating magnetic field therapy, have shown effectiveness in reducing pain and improving mobility in patients with lumbar disc herniation.",
+    "pmid": "25763584",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "154|M26|5|22460377",
+    "question_id": "154",
+    "sentence": "For patients with paradoxical vocal fold motion or dysfunctional breathing, respiratory retraining exercises can effectively reduce symptoms and improve breathing patterns.",
+    "pmid": "22460377",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "147|M21|1|25312729",
+    "question_id": "147",
+    "sentence": "Treatment options for atherosclerosis include lifestyle modifications, lipid-lowering therapy, anti-platelet drugs, and revascularization strategies such as percutaneous coronary intervention or coronary artery bypass grafting.",
+    "pmid": "25312729",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "146|M6|5|23015581",
+    "question_id": "146",
+    "sentence": "For residual symptoms, adjunctive medications such as atypical antipsychotics and prazosin, particularly for sleep disturbances, may be beneficial.",
+    "pmid": "23015581",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "116|M1|5|28126502",
+    "question_id": "116",
+    "sentence": "Furthermore, alternative treatments such as hypoglossal nerve stimulation, body positioning, and oxygen treatment may also be effective.",
+    "pmid": "28126502",
+    "human": "supported",
+    "split": "dev"
+  },
+  {
+    "id": "145|M19|2|27085692",
+    "question_id": "145",
+    "sentence": "Common adverse effects include skin rash, toxic epidermal necrolysis, thyroid dysfunction, hepatitis, pneumonia, colitis, and encephalitis.",
+    "pmid": "27085692",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "139|M21|2|30819332",
+    "question_id": "139",
+    "sentence": "Some individuals may experience persistent negative effects on bone health, even after weight recovery.",
+    "pmid": "30819332",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "132|M8|4|33897181",
+    "question_id": "132",
+    "sentence": "It also plays a crucial role in calcium homeostasis, affecting calcium absorption in the gut.",
+    "pmid": "33897181",
+    "human": "supported",
+    "split": "test"
+  },
+  {
+    "id": "130|M20|3|21667435",
+    "question_id": "130",
+    "sentence": "PCOS patients have higher levels of oxidative stress markers, such as malondialdehyde, and lower levels of antioxidants, such as glutathione, compared to healthy women.",
+    "pmid": "21667435",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "154|M11|4|27220949",
+    "question_id": "154",
+    "sentence": "The article does not provide a specific breathing technique to help slow down breathing and make it more relaxed.",
+    "pmid": "27220949",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "131|M26|6|16303295",
+    "question_id": "131",
+    "sentence": "While formoterol is generally well-tolerated, its safety profile necessitates careful monitoring, especially at higher doses or in vulnerable populations.",
+    "pmid": "16303295",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "153|M21|2|36727962",
+    "question_id": "153",
+    "sentence": "However, the decision to transfuse blood is not solely based on the Hct level, but also on the patient's overall clinical condition, symptoms, and other laboratory values.",
+    "pmid": "36727962",
+    "human": "contradicted",
+    "split": "test"
+  },
+  {
+    "id": "121|M4|3|21749556",
+    "question_id": "121",
+    "sentence": "Additionally, activities such as focusing on positive characteristics, art/music therapies, and engaging with nature and/or physical activity have been shown to reduce stress and enhance well-being.",
+    "pmid": "21749556",
+    "human": "contradicted",
+    "split": "test"
+  },
+  {
+    "id": "128|M18|1|34918948",
+    "question_id": "128",
+    "sentence": "Cannabidiol (CBD) may cause elevations in liver tests, including alanine aminotransferase (ALT) and aspartate aminotransferase (AST), in some individuals, particularly at high doses.",
+    "pmid": "34918948",
+    "human": "contradicted",
+    "split": "test"
+  },
+  {
+    "id": "144|M12|2|20845760",
+    "question_id": "144",
+    "sentence": "If your blood pressure is 130/80 mmHg or higher, your doctor may consider starting you on medication, especially if you have other risk factors for cardiovascular disease, such as diabetes, kidney disease, or a history of cardiovascular disease.",
+    "pmid": "20845760",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "129|M18|3|34854616",
+    "question_id": "129",
+    "sentence": "Stopping metoprolol abruptly is not particularly associated with emergent bradycardia.",
+    "pmid": "34854616",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "130|M16|5|36279177",
+    "question_id": "130",
+    "sentence": "Furthermore, oxidative stress has been linked to insulin resistance, a common feature of PCOS, and may contribute to the development of cardiovascular disease and other metabolic complications.",
+    "pmid": "36279177",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "127|M23|2|16143811",
+    "question_id": "127",
+    "sentence": "However, there has been no significant breakthrough in these two forms of therapy.",
+    "pmid": "16143811",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "142|M20|1|30052747",
+    "question_id": "142",
+    "sentence": "Nonsteroidal anti-inflammatory drugs (NSAIDs), steroids, phenylpropanolamines, some antidepressants, and sibutramine can often be avoided, as they raise blood pressure in a significant proportion of those who take them.",
+    "pmid": "30052747",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "136|M24|8|23999980",
+    "question_id": "136",
+    "sentence": "Cetylated fatty acid cream with menthol and transcutaneous electrical nerve stimulation can alleviate pain in conditions like tennis elbow.",
+    "pmid": "23999980",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "121|M19|5|36687684",
+    "question_id": "121",
+    "sentence": "It is also important to note that a healthy diet and lifestyle, including a balanced eating window and avoiding skipping breakfast, can also help regulate cortisol levels.",
+    "pmid": "36687684",
+    "human": "contradicted",
+    "split": "test"
+  },
+  {
+    "id": "121|M17|2|23696104",
+    "question_id": "121",
+    "sentence": "These interventions have been shown to reduce cortisol levels in various studies, with mindfulness and meditation being the most effective.",
+    "pmid": "23696104",
+    "human": "contradicted",
+    "split": "test"
+  },
+  {
+    "id": "131|M24|4|23722615",
+    "question_id": "131",
+    "sentence": "Life-threatening asthma episodes are a serious risk associated with formoterol use.",
+    "pmid": "23722615",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "140|M18|1|37278060",
+    "question_id": "140",
+    "sentence": "Acute fractures in both hands without injury or trauma can be caused by various conditions, including osteogenesis imperfecta, primary hyperparathyroidism, and non-traumatic fractures following seizures.",
+    "pmid": "37278060",
+    "human": "contradicted",
+    "split": "test"
+  },
+  {
+    "id": "138|M17|2|23375990",
+    "question_id": "138",
+    "sentence": "Prolonged use of Afrin can lead to rebound congestion, a condition where the nasal passages become dependent on the medication to stay open.",
+    "pmid": "23375990",
+    "human": "contradicted",
+    "split": "test"
+  },
+  {
+    "id": "125|M7|1|31555556",
+    "question_id": "125",
+    "sentence": "Tamsulosin is primarily used to treat lower urinary tract symptoms (LUTS) associated with benign prostatic hyperplasia (BPH) as it is the most popular uroselective alpha adrenoceptor antagonist for this condition.",
+    "pmid": "31555556",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "131|M18|3|16892777",
+    "question_id": "131",
+    "sentence": "Actually the text does not mention that the side effects are not significant.",
+    "pmid": "16892777",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "142|M24|8|32918434",
+    "question_id": "142",
+    "sentence": "Rifampin interacts with antihypertensive drugs, potentially altering their effectiveness.",
+    "pmid": "32918434",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "131|M7|1|23744625",
+    "question_id": "131",
+    "sentence": "The side effects of using formoterol include an increased number of asthma-related events in children, although this finding was not statistically significant.",
+    "pmid": "23744625",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "126|M12|4|16192705",
+    "question_id": "126",
+    "sentence": "The causes of nondisjunction are not fully understood, but research suggests that it can be influenced by various factors, including advanced maternal age, altered recombination patterns, and genetic mutations.",
+    "pmid": "16192705",
+    "human": "contradicted",
+    "split": "test"
+  },
+  {
+    "id": "142|M21|1|25618128",
+    "question_id": "142",
+    "sentence": "Nonsteroidal anti-inflammatory drugs (NSAIDs), steroids, oestroprogestinic agents, immunosuppressants, erythropoietin, inhibitors of angiogenesis, anti-HIV agents, and some high-density lipoprotein-raising agents can cause hypertension and/or blunt the effect of antihypertensive treatment.",
+    "pmid": "25618128",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "132|M18|3|30700025",
+    "question_id": "132",
+    "sentence": "Additionally, vitamin D deficiency is associated with all-cause mortality.",
+    "pmid": "30700025",
+    "human": "contradicted",
+    "split": "test"
+  },
+  {
+    "id": "142|M20|1|30052747",
+    "question_id": "142",
+    "sentence": "Nonsteroidal anti-inflammatory drugs (NSAIDs), steroids, phenylpropanolamines, some antidepressants, and sibutramine can often be avoided, as they raise blood pressure in a significant proportion of those who take them.",
+    "pmid": "30052747",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "128|M26|5|37458709",
+    "question_id": "128",
+    "sentence": "Therefore, monitoring liver function is crucial when administering high doses of CBD, especially in patients with pre-existing liver conditions or those taking other medications metabolized by CYP enzymes.",
+    "pmid": "37458709",
+    "human": "contradicted",
+    "split": "test"
+  },
+  {
+    "id": "149|M15|1|23091677",
+    "question_id": "149",
+    "sentence": "The best test to rule out a lumbar disc herniation is likely an MRI.",
+    "pmid": "23091677",
+    "human": "contradicted",
+    "split": "test"
+  },
+  {
+    "id": "150|M21|3|28505956",
+    "question_id": "150",
+    "sentence": "Some studies have also found that physical therapy can reduce the size of the herniated disc and improve spinal mobility.",
+    "pmid": "28505956",
+    "human": "contradicted",
+    "split": "test"
+  },
+  {
+    "id": "148|M24|8|24426797",
+    "question_id": "148",
+    "sentence": "Bruising can sometimes be a sign of physical abuse in children and the elderly.",
+    "pmid": "24426797",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "131|M7|1|23744625",
+    "question_id": "131",
+    "sentence": "The side effects of using formoterol include an increased number of asthma-related events in children, although this finding was not statistically significant.",
+    "pmid": "23744625",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "136|M23|1|25213605",
+    "question_id": "136",
+    "sentence": "The guidelines suggest that rehabilitation clinicians can use transcutaneous electrical nerve stimulation (TENS) as a patient-controlled adjunct to primary care management for tennis elbow to provide superior pain relief.",
+    "pmid": "25213605",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "153|M17|2|25475817",
+    "question_id": "153",
+    "sentence": "In fact, a study found that patients with a low Hct were more likely to have hypotension, more advanced shock, higher blood loss, and increased transfusion requirements.",
+    "pmid": "25475817",
+    "human": "contradicted",
+    "split": "test"
+  },
+  {
+    "id": "149|M11|1|20166095",
+    "question_id": "149",
+    "sentence": "The best test to rule out a lumbar disc herniation is the Straight Leg Raise (SLR) test, which has a high sensitivity of 0.92 and specificity of 0.28.",
+    "pmid": "20166095",
+    "human": "contradicted",
+    "split": "test"
+  },
+  {
+    "id": "133|M16|5|26213861",
+    "question_id": "133",
+    "sentence": "The complexity of the surgery, including the use of advanced techniques such as single-port access laparoscopy, may also impact ovarian reserve.",
+    "pmid": "26213861",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "153|M1|1|23537850",
+    "question_id": "153",
+    "sentence": "A hematocrit (Hct) level of 34% is generally considered low, and the patient may benefit from a blood transfusion.",
+    "pmid": "23537850",
+    "human": "contradicted",
+    "split": "test"
+  },
+  {
+    "id": "145|M19|4|36428923",
+    "question_id": "145",
+    "sentence": "Specific side effects reported in the literature include gastritis pneumonitis , and autoimmune diabetes.",
+    "pmid": "36428923",
+    "human": "contradicted",
+    "split": "test"
+  },
+  {
+    "id": "154|M8|6|16281658",
+    "question_id": "154",
+    "sentence": "Controlled breathing techniques, including PLB and DB, are often included in rehabilitation programs for COPD patients.",
+    "pmid": "16281658",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "150|M30|3|35602348",
+    "question_id": "150",
+    "sentence": "The specific studies mentioned do not provide conclusive evidence regarding the effectiveness of physical therapy interventions.",
+    "pmid": "35602348",
+    "human": "contradicted",
+    "split": "test"
+  },
+  {
+    "id": "128|M17|3|34918948",
+    "question_id": "128",
+    "sentence": "The risk of liver enzyme elevations appears to be higher in individuals taking high doses of CBD, and the incidence is also increased in individuals taking CBD in combination with other medications.",
+    "pmid": "34918948",
+    "human": "contradicted",
+    "split": "test"
+  },
+  {
+    "id": "153|M26|5|25475817",
+    "question_id": "153",
+    "sentence": "Therefore, the decision to transfuse should consider the patient's clinical condition, evidence of blood loss, and potential for ongoing hemorrhage rather than relying solely on Hct levels.",
+    "pmid": "25475817",
+    "human": "contradicted",
+    "split": "test"
+  },
+  {
+    "id": "149|M20|2|18391677",
+    "question_id": "149",
+    "sentence": "However, the Slump test is more sensitive (0.84) than the SLR (0.52) in patients with lumbar disc herniations, but the SLR is a slightly more specific test (0.89) than the Slump test (0.83).",
+    "pmid": "18391677",
+    "human": "contradicted",
+    "split": "test"
+  },
+  {
+    "id": "118|M24|5|33662355",
+    "question_id": "118",
+    "sentence": "In rabbits, corneal re-epithelialization is observed within 5 days, and tear protein profiles correlate with wound closure in a similar timeframe.",
+    "pmid": "33662355",
+    "human": "contradicted",
+    "split": "test"
+  },
+  {
+    "id": "130|M26|1|23303572",
+    "question_id": "130",
+    "sentence": "Polycystic ovary syndrome (PCOS) is strongly linked to oxidative stress (OS), with numerous studies indicating elevated levels of oxidative biomarkers in affected women.",
+    "pmid": "23303572",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "137|M29|5|38006799",
+    "question_id": "137",
+    "sentence": "Additionally, the ketogenic diet has been shown to improve lipid profiles, reduce blood pressure, and increase insulin sensitivity, all of which can contribute to better overall health outcomes for individuals with type 2 diabetes.",
+    "pmid": "38006799",
+    "human": "contradicted",
+    "split": "test"
+  },
+  {
+    "id": "121|M6|3|33870573",
+    "question_id": "121",
+    "sentence": "Additionally, maintaining a consistent sleep schedule and ensuring sufficient sleep duration can help regulate cortisol rhythms.",
+    "pmid": "33870573",
+    "human": "contradicted",
+    "split": "test"
+  },
+  {
+    "id": "121|M19|4|33870573",
+    "question_id": "121",
+    "sentence": "Furthermore, getting enough sleep and maintaining a consistent sleep schedule can also help regulate cortisol levels, as sleep deprivation can lead to increased cortisol production.",
+    "pmid": "33870573",
+    "human": "contradicted",
+    "split": "test"
+  },
+  {
+    "id": "126|M26|4|19008956",
+    "question_id": "126",
+    "sentence": "Increased maternal age is a significant risk factor, likely due to age-related deterioration of cohesion proteins that maintain chromosome structure.",
+    "pmid": "19008956",
+    "human": "contradicted",
+    "split": "test"
+  },
+  {
+    "id": "128|M1|1|34918948",
+    "question_id": "128",
+    "sentence": "Cannabidiol (CBD) may cause elevations in liver tests, including alanine aminotransferase (ALT) and aspartate aminotransferase (AST), in some individuals, particularly at high doses.",
+    "pmid": "34918948",
+    "human": "contradicted",
+    "split": "test"
+  },
+  {
+    "id": "119|M30|3|35853985",
+    "question_id": "119",
+    "sentence": "The snippets mention salmeterol, but do not provide enough information to determine its popularity or effectiveness in stage 4 COPD specifically.",
+    "pmid": "35853985",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "153|M16|2|15294196",
+    "question_id": "153",
+    "sentence": "However, the decision to transfuse red blood cells (RBCs) is not solely based on Hct levels, but also on clinical patient variables like symptoms of anemia, oxygen delivery, and underlying medical conditions.",
+    "pmid": "15294196",
+    "human": "contradicted",
+    "split": "test"
+  },
+  {
+    "id": "150|M17|3|20227641",
+    "question_id": "150",
+    "sentence": "The evidence suggests that exercise therapy is effective at reducing pain and function in the treatment of chronic low back pain, with small effects and unclear subgroups of patients benefiting most from a specific type of treatment.",
+    "pmid": "20227641",
+    "human": "contradicted",
+    "split": "test"
+  },
+  {
+    "id": "133|M19|4|23768623",
+    "question_id": "133",
+    "sentence": "Long-term effects are less clear, with some studies suggesting a sustained reduction in ovarian reserve , while others indicate some recovery over time.",
+    "pmid": "23768623",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "142|M11|1|30052747",
+    "question_id": "142",
+    "sentence": "Nonsteroidal anti-inflammatory drugs (NSAIDs), steroids, phenylpropanolamines, some antidepressants, and sibutramine can often be avoided, as they raise blood pressure in a significant proportion of those who take them.",
+    "pmid": "30052747",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "131|M4|2|18321744",
+    "question_id": "131",
+    "sentence": "High doses of formoterol may cause systemic effects such as decreased plasma potassium, increased serum glucose, and small increases in mean QTc interval.",
+    "pmid": "18321744",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "142|M11|1|30052747",
+    "question_id": "142",
+    "sentence": "Nonsteroidal anti-inflammatory drugs (NSAIDs), steroids, phenylpropanolamines, some antidepressants, and sibutramine can often be avoided, as they raise blood pressure in a significant proportion of those who take them.",
+    "pmid": "30052747",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "130|M16|1|37337194",
+    "question_id": "130",
+    "sentence": "Polycystic ovary syndrome (PCOS) is indeed linked to oxidative stress, as evidenced by multiple studies.",
+    "pmid": "37337194",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "129|M17|1|16223079",
+    "question_id": "129",
+    "sentence": "Abrupt cessation of metoprolol can cause various side effects, including central nervous system complications such as confusion, fatigue, lightheadedness, nightmares, sleep disturbance, and gait problems.",
+    "pmid": "16223079",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "134|M4|3|34128613",
+    "question_id": "134",
+    "sentence": "Diagnosis is typically made on clinical grounds, using symptom-based criteria such as the Rome criteria, and excluding organic disease.",
+    "pmid": "34128613",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "142|M18|2|17028488",
+    "question_id": "142",
+    "sentence": "Sibutramine is unlikely to cause a critical increase in blood pressure, but blood pressure and heart rate should be monitored closely.",
+    "pmid": "17028488",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "136|M29|1|18656765",
+    "question_id": "136",
+    "sentence": "For severe elbow pain, initial treatment should be conservative and may include rest, nonsteroidal anti-inflammatory drugs (NSAIDs), physical therapy, use of splints, and local injections.",
+    "pmid": "18656765",
+    "human": "contradicted",
+    "split": "dev"
+  },
+  {
+    "id": "148|M2|3|27177185",
+    "question_id": "148",
+    "sentence": "Additionally, bleeding disorders, which are prevalent in the elderly, can lead to an increased tendency to bruise.",
+    "pmid": "27177185",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "139|M3|6|16134111",
+    "question_id": "139",
+    "sentence": "Untreated anorexia is associated with a significant increase in the risk of death.",
+    "pmid": "16134111",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "121|M24|1|18312945",
+    "question_id": "121",
+    "sentence": "Exercise and mindfulness-based programs can help lower cortisol levels by reducing stress.",
+    "pmid": "18312945",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "136|M7|2|30658050",
+    "question_id": "136",
+    "sentence": "Both interventions have shown to result in clinically meaningful improvements in pain intensity and function over time.",
+    "pmid": "30658050",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "155|M24|5|22582516",
+    "question_id": "155",
+    "sentence": "Patients should follow their ophthalmologist's instructions closely regarding the frequency and duration of eye drop use.",
+    "pmid": "22582516",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "123|M20|1|27437668",
+    "question_id": "123",
+    "sentence": "FBN1 mutation refers to a change in the fibrillin-1 gene, which encodes a protein essential for the formation of elastic fibers found in connective tissue.",
+    "pmid": "27437668",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "147|M24|2|34251531",
+    "question_id": "147",
+    "sentence": "Statin therapy is widely used to lower cholesterol levels, while the combination of ezetimibe and simvastatin can provide additional lipid-lowering effects.",
+    "pmid": "34251531",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "154|M11|6|34866434",
+    "question_id": "154",
+    "sentence": "Additionally, you can try using a handheld fan to blow air on your face, which can help reduce the sensation of breathlessness.",
+    "pmid": "34866434",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "137|M11|2|19490828",
+    "question_id": "137",
+    "sentence": "The ketogenic diet has been shown to improve glycemic control, reduce body weight, and decrease the need for antidiabetic medications.",
+    "pmid": "19490828",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "127|M20|4|18337227",
+    "question_id": "127",
+    "sentence": "It has been used to treat various diseases, including genetic disorders, cancer, and cardiovascular diseases.",
+    "pmid": "18337227",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "131|M1|1|20477219",
+    "question_id": "131",
+    "sentence": "Common side effects of formoterol include tremors, palpitations, and increased heart rate.",
+    "pmid": "20477219",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "117|M11|1|27177937",
+    "question_id": "117",
+    "sentence": "Mutations in RUNX2 can cause cleidocranial dysplasia (CCD), a skeletal disorder characterized by delayed closure of fontanels, dental abnormalities, and hypoplastic clavicles.",
+    "pmid": "27177937",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "133|M12|2|36499748",
+    "question_id": "133",
+    "sentence": "Short-term effects include damage to the ovarian reserve, which can lead to a decrease in the number of eggs available for fertilization.",
+    "pmid": "36499748",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "123|M21|3|21976953",
+    "question_id": "123",
+    "sentence": "The mutation can result in a range of symptoms, from mild to severe, including tall stature, arachnodactyly, ectopia lentis, and thoracic aortic aneurysm and dissection.",
+    "pmid": "21976953",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "129|M17|4|28539824",
+    "question_id": "129",
+    "sentence": "In some cases, it can also lead to a rapid increase in blood pressure to pre-treatment levels or above, or both, and/or myocardial ischemia.",
+    "pmid": "28539824",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "140|M3|4|28131138",
+    "question_id": "140",
+    "sentence": "Primary hyperparathyroidism can cause osteoporosis and osteoporotic fractures, even in young patients.",
+    "pmid": "28131138",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "126|M21|2|14742700",
+    "question_id": "126",
+    "sentence": "This can occur during meiosis, the process by which gametes (sperm or egg cells) are formed, or during mitosis, the process by which somatic cells divide.",
+    "pmid": "14742700",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "136|M30|1|24784124",
+    "question_id": "136",
+    "sentence": "Severe elbow pain can be addressed through various therapeutic strategies, including evaluation for potential underlying causes such as arthritis or injury.",
+    "pmid": "24784124",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "143|M30|2|37038822",
+    "question_id": "143",
+    "sentence": "While the provided context does not directly address specific strategies for living with the disease, it highlights the importance of support systems, such as family and clinical trials, which can provide resources and community for those affected.",
+    "pmid": "37038822",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "120|M19|1|21614764",
+    "question_id": "120",
+    "sentence": "Left-sided facial numbness can be caused by various conditions, including aneurysms of the vertebral artery cerebellopontine angle meningiomas congenital absence of the internal carotid artery and adenoid cystic carcinoma of the maxillary sinus.",
+    "pmid": "21614764",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "122|M21|5|26718348",
+    "question_id": "122",
+    "sentence": "The presence and type of T wave abnormality can provide important information about the underlying heart condition and can be used to guide diagnosis and treatment.",
+    "pmid": "26718348",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "125|M15|1|31469636",
+    "question_id": "125",
+    "sentence": "Tamsulosin is used for the treatment of benign prostatic hyperplasia (BPH).",
+    "pmid": "31469636",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "129|M17|1|29381909",
+    "question_id": "129",
+    "sentence": "Abrupt cessation of metoprolol can cause various side effects, including central nervous system complications such as confusion, fatigue, lightheadedness, nightmares, sleep disturbance, and gait problems.",
+    "pmid": "29381909",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "119|M24|6|27576232",
+    "question_id": "119",
+    "sentence": "Triple therapy is particularly recommended for COPD patients with persistent symptoms, moderate to severe COPD, and clinically significant symptoms and exacerbations.",
+    "pmid": "27576232",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "153|M21|2|18513518",
+    "question_id": "153",
+    "sentence": "However, the decision to transfuse blood is not solely based on the Hct level, but also on the patient's overall clinical condition, symptoms, and other laboratory values.",
+    "pmid": "18513518",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "150|M29|5|20638039",
+    "question_id": "150",
+    "sentence": "However, the effectiveness of physical therapy may vary depending on the specific intervention, the severity of the condition, and the individual patient's characteristics.",
+    "pmid": "20638039",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "155|M8|5|27843229",
+    "question_id": "155",
+    "sentence": "However, the duration of anti-inflammatory treatment can vary depending on the individual's healing progress and the type of eye drops used.",
+    "pmid": "27843229",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "121|M8|2|32635830",
+    "question_id": "121",
+    "sentence": "Mindfulness-based stress reduction (MBSR) programs have been shown to significantly reduce cortisol levels in both patients and caregivers.",
+    "pmid": "32635830",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "118|M2|4|33662355",
+    "question_id": "118",
+    "sentence": "While some injuries may show a tendency to self-heal, timely assessment is crucial to ensure proper recovery and avoid complications.",
+    "pmid": "33662355",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "124|M3|5|34487597",
+    "question_id": "124",
+    "sentence": "In asymptomatic patients, there is no established indication for any tests apart from calculation of a global cardiovascular risk based on traditional risk factors and initiation of primary preventive measures if appropriate.",
+    "pmid": "34487597",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "127|M18|3|15881698",
+    "question_id": "127",
+    "sentence": "Gene therapy can be used to repair or replace a faulty gene, introduce a new function, or interfere with an existing function.",
+    "pmid": "15881698",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "155|M16|4|34936061",
+    "question_id": "155",
+    "sentence": "In some cases, a follow-up visit after 1 week may be necessary to determine whether to stop or continue treatment in patients still experiencing symptoms or inflammation.",
+    "pmid": "34936061",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "153|M24|5|15460551",
+    "question_id": "153",
+    "sentence": "Individualized decisions are recommended, as restrictive transfusion strategies may reduce adverse outcomes.",
+    "pmid": "15460551",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "123|M28|4|37994127",
+    "question_id": "123",
+    "sentence": "Additionally, mutations in genes like FBN1 can have variable effects depending on the specific mutation and other genetic factors, which may influence the severity and range of symptoms.",
+    "pmid": "37994127",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "141|M20|1|34106838",
+    "question_id": "141",
+    "sentence": "Possible complications for a person with yellow fever include severe liver dysfunction, coagulopathy, jaundice, bleeding diathesis, renal impairment, neurological impairment, and multiorgan failure.",
+    "pmid": "34106838",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "122|M12|1|24276094",
+    "question_id": "122",
+    "sentence": "A T wave abnormality is an irregularity in the T wave of an electrocardiogram (ECG), which is a test that measures the electrical activity of the heart.",
+    "pmid": "24276094",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "139|M29|5|15478133",
+    "question_id": "139",
+    "sentence": "Untreated anorexia is associated with a significant increase in the risk of death.",
+    "pmid": "15478133",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "123|M20|3|28442527",
+    "question_id": "123",
+    "sentence": "The mutation can result in a range of symptoms, including tall stature, long limbs and fingers, heart problems, and eye issues.",
+    "pmid": "28442527",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "118|M26|1|23317075",
+    "question_id": "118",
+    "sentence": "Minor corneal injuries, such as superficial abrasions, typically heal within 24 to 72 hours without medical intervention, as the corneal epithelium rapidly regenerates to restore the protective barrier.",
+    "pmid": "23317075",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "155|M14|4|37903818",
+    "question_id": "155",
+    "sentence": "However, other protocols may extend the use of eye drops for up to two weeks or longer, depending on individual recovery and symptoms.",
+    "pmid": "37903818",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "117|M21|4|37500953",
+    "question_id": "117",
+    "sentence": "In some cases, the mutations can result in a gain-of-function effect, leading to increased expression of RUNX2 and altered subcellular localization of the protein.",
+    "pmid": "37500953",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "127|M24|7|18294288",
+    "question_id": "127",
+    "sentence": "It can inhibit cellular proliferation and migration, contributing to its anti-cancer properties.",
+    "pmid": "18294288",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "127|M11|4|18337227",
+    "question_id": "127",
+    "sentence": "It has been used to treat various diseases, including genetic disorders, cancer, and cardiovascular diseases.",
+    "pmid": "18337227",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "124|M3|4|34487597",
+    "question_id": "124",
+    "sentence": "Non-invasive tests are typically used in patients with intermediate pre-test probability, and in patients with high pre-test probability, they are helpful for risk stratification.",
+    "pmid": "34487597",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "147|M16|4|19898577",
+    "question_id": "147",
+    "sentence": "Endovascular therapies, including angioplasty and stent placement, are available for treating peripheral arterial disease and intracranial carotid artery atherosclerosis.",
+    "pmid": "19898577",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "128|M22|3|35631242",
+    "question_id": "128",
+    "sentence": "CBD accumulation in gastrocnemius muscle, liver and adipose tissue in adult rats following oral gavage was investigated.",
+    "pmid": "35631242",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "120|M18|1|18280947",
+    "question_id": "120",
+    "sentence": "Left-sided facial numbness can be caused by various conditions, including neoplastic pathology, infection, and compression of the trigeminal nerve.",
+    "pmid": "18280947",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "117|M23|1|29058294",
+    "question_id": "117",
+    "sentence": "Mutation in runx2 may affect the future development of cleidocranial dysplasia (CCD).",
+    "pmid": "29058294",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "151|M24|3|17414434",
+    "question_id": "151",
+    "sentence": "Seborrheic dermatitis, a chronic inflammatory condition, also causes erythematous scaly skin.",
+    "pmid": "17414434",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "143|M29|4|35193564",
+    "question_id": "143",
+    "sentence": "Coping strategies, such as acceptance, emotional support, planning, and active coping, can be effective in managing the condition.",
+    "pmid": "35193564",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "122|M24|2|22179535",
+    "question_id": "122",
+    "sentence": "T-wave inversion is common in myocardial infarction and can be a sign of silent myocardial ischemia.",
+    "pmid": "22179535",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "132|M8|1|20136908",
+    "question_id": "132",
+    "sentence": "Low vitamin D levels, also known as vitamin D deficiency, can have significant effects on various aspects of health.",
+    "pmid": "20136908",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "120|M26|3|31723507",
+    "question_id": "120",
+    "sentence": "Neoplastic causes such as meningiomas, adenoid cystic carcinoma, and metastatic tumors can also compress cranial nerves or brain structures, resulting in facial numbness.",
+    "pmid": "31723507",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "129|M18|3|34854616",
+    "question_id": "129",
+    "sentence": "Stopping metoprolol abruptly is not particularly associated with emergent bradycardia.",
+    "pmid": "34854616",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "121|M2|6|36615866",
+    "question_id": "121",
+    "sentence": "Lastly, maintaining a balanced diet with controlled sugar intake may help modulate cortisol responses to stress.",
+    "pmid": "36615866",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "134|M26|7|26491416",
+    "question_id": "134",
+    "sentence": "Emerging therapies and probiotics show promise but require further validation.",
+    "pmid": "26491416",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "138|M24|2|15236629",
+    "question_id": "138",
+    "sentence": "Sudafed contains pseudoephedrine, an oral decongestant, while Afrin contains oxymetazoline, a topical nasal decongestant.",
+    "pmid": "15236629",
+    "human": "not_supported",
+    "split": "test"
+  },
+  {
+    "id": "144|M24|4|15834689",
+    "question_id": "144",
+    "sentence": "For diabetics and those with chronic kidney disease (CKD), treatment is recommended for BP \u2265130/80 mmHg.",
+    "pmid": "15834689",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "127|M4|2|17577203",
+    "question_id": "127",
+    "sentence": "It involves the transfer of genetic material into a cell, tissue, or whole organ to cure or alleviate a disease.",
+    "pmid": "17577203",
+    "human": "not_supported",
+    "split": "dev"
+  },
+  {
+    "id": "148|M28|3|29851199",
+    "question_id": "148",
+    "sentence": "This is because such conditions may involve factors that affect the blood vessels, skin, or the body's ability to repair itself.",
+    "pmid": "29851199",
+    "human": "not_supported",
+    "split": "dev"
+  }
+]

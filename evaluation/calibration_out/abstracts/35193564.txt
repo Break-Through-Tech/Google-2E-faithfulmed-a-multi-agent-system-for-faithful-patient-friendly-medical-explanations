@@ -1,0 +1,56 @@
+1. BMC Med Educ. 2022 Feb 23;22(1):121. doi: 10.1186/s12909-022-03185-1.
+
+Effective coping strategies utilised by medical students for mental health 
+disorders during undergraduate medical education-a scoping review.
+
+Sattar K(1), Yusoff MSB(2), Arifin WN(3), Yasin MAM(4), Nor MZM(1).
+
+Author information:
+(1)Department of Medical Education, School of Medical Sciences, Universiti Sains 
+Malaysia, Kelantan, Malaysia.
+(2)Department of Medical Education, School of Medical Sciences, Universiti Sains 
+Malaysia, Kelantan, Malaysia. msaiful_bahri@usm.my.
+(3)Biostatistics and Research Methodology Unit, School of Medical Sciences, 
+Universiti Sains Malaysia, Kelantan, Malaysia.
+(4)Department of Psychiatry, School of Medical Sciences, Universiti Sains 
+Malaysia, Health Campus, Kelantan, Malaysia.
+
+Erratum in
+    BMC Med Educ. 2022 Mar 10;22(1):164. doi: 10.1186/s12909-022-03223-y.
+
+BACKGROUND: Coping denotes cognitive, emotional and behavioural struggles to 
+tackle a troubled person-environment association. Therefore, coping strategies 
+(CSs) are vital for mental well-being. Widespread research studies have explored 
+this domain, targeting caregivers, nurses, physicians and medical teachers, but 
+limited research has been done to explore the common CSs utilised by medical 
+students at the undergraduate medical education level. Therefore, we aimed to 
+identify the frequently occurring CSs and their effects on mental health 
+disorders (MHDs) through the evidence available in the existing literature.
+METHODS: For this scoping review, we searched the available literature (articles 
+published from January 1, 1986, to March 31, 2021) on CSs at Google Scholar, 
+PubMed and Scopus using the terms coping, medical students and undergraduate 
+medical education. We included in our search all peer-reviewed journal articles 
+whose central topics were the CSs employed by undergraduate medical students of 
+any age, nationality, race and gender.
+RESULTS: From among the 2,134 articles that were found, 24 were ultimately 
+included in the study. The articles were authored in 14 countries, allowing us 
+to gather broader data to answer our research question. The first identified 
+theme (MHDs) had four subthemes: stress (55% of the articles), depression (30%), 
+anxiety (25%) and burnout (15%). The second theme (CSs), on the other hand, had 
+eight subthemes: support seeking (60%), active coping (40%), acceptance (40%), 
+avoidance/denial (40%), substance abuse (35%), faith/religion (25%), sports 
+(25%) and miscellaneous (40%).
+CONCLUSIONS: Themes and subthemes were identified about the most common CSs 
+utilised by undergraduate medical students to tackle common MHDs in the context 
+of medical education. Among the most used CSs was support (social and emotional) 
+seeking. Teaching medical students how to cope with challenging times is 
+essential.
+
+© 2022. The Author(s).
+
+DOI: 10.1186/s12909-022-03185-1
+PMCID: PMC8863569
+PMID: 35193564 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare that they have no competing 
+interests.

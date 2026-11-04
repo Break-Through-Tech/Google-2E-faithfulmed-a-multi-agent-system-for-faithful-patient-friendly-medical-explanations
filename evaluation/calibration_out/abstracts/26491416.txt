@@ -1,0 +1,37 @@
+1. Gastroenterol Hepatol (N Y). 2015 Apr;11(4 Suppl 2):1-19.
+
+New and Emerging Treatment Options for Irritable Bowel Syndrome.
+
+Lacy BE(1), Chey WD(2), Lembo AJ(3).
+
+Author information:
+(1)Professor of Medicine Geisel School of Medicine at Dartmouth Chief of 
+Gastroenterology and Hepatology Dartmouth-Hitchcock Medical Center Lebanon, New 
+Hampshire.
+(2)Timothy T. Nostrant Professor of Medicine Division of Gastroenterology 
+Director, GI Physiology Laboratory Co-director, Michigan Bowel Control Program 
+University of Michigan Health System Ann Arbor, Michigan.
+(3)Associate Professor of Medicine Harvard Medical School Boston, Massachusetts.
+
+Irritable bowel syndrome (IBS) is a functional gastrointestinal disorder 
+associated with abdominal pain, diarrhea, constipation, or a mix of symptoms. 
+The pathophysiology of IBS is not completely understood but appears to involve 
+genetics, the gut microbiome, immune activation, altered intestinal 
+permeability, and brain-gut interactions. There is no gold standard for 
+diagnosis. Several sets of symptom-based guidelines exist. Treatment strategies 
+for IBS may include both nonpharmacologic and pharmacologic approaches. 
+Lifestyle modifications that aim to improve exercise, sleep, diet, and stress 
+may be warranted. Recent data suggest that a gluten-free diet and a diet low in 
+fermentable oligosaccharides, disaccharides, monosaccharides, and polyols 
+(FODMAPs) may benefit some patients. For patients with diarrhea-predominant IBS, 
+treatment options include the synthetic peripheral μ-opioid receptor agonist 
+loperamide, antispasmodic agents, antidepressants, serotonin 5-HT3 antagonists, 
+and the gut-specific antibiotic rifaximin. Ongoing research is evaluating the 
+use of probiotics. For patients with constipation-predominant IBS, therapeutic 
+strategies may include dietary fiber, laxatives, and the prosecretory agents 
+lubiprostone and linaclotide. Research is continuing to optimize the use of 
+available agents and evaluating new approaches to further improve the care of 
+patients with IBS.
+
+PMCID: PMC4612133
+PMID: 26491416

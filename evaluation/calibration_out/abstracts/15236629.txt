@@ -1,0 +1,27 @@
+1. Clin Exp Pharmacol Physiol. 2004 Jul;31(7):429-32. doi: 
+10.1111/j.1440-1681.2004.04013.x.
+
+A randomized, double-blind, placebo-controlled trial of pseudoephedrine in 
+coryza.
+
+Latte J(1), Taverner D, Slobodian P, Shakib S.
+
+Author information:
+(1)Rhinometrica Cold Study Unit, Adelaide Research & Innovation, Department of 
+Clinical and Experimental Pharmacology, University of Adelaide, Adelaide, South 
+Australia, Australia.
+
+1. The aim of the present study was to assess the efficacy of pseudoephedrine in 
+coryza. 2. In a double-blind, randomized, placebo-controlled design, 48 adults 
+with acute coryza received a single oral dose of 60 mg pseudoephedrine (Sudafed; 
+Pfizer Consumer HealthCare Group, Caringbah, NSW, Australia) or matching 
+placebo. Before and after dosing, nasal airway resistance (NAR), nasal volume, 
+the minimum intranasal cross-sectional area (MCA) and the symptom of nasal 
+congestion were measured. 3. Pseudoephedrine produced a significant decrease in 
+NAR (P = 0.005; 95% confidence interval (CI) 0.073, 0.383). Nasal volume 
+increased, but this did not reach significance (P = 0.07; 95% CI -0.842, 0.034). 
+There was no change in MCA and symptoms. 4. In conclusion, pseudoephedrine has a 
+moderate effect in decreasing objective measures of nasal congestion in coryza.
+
+DOI: 10.1111/j.1440-1681.2004.04013.x
+PMID: 15236629 [Indexed for MEDLINE]

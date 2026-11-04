@@ -1,0 +1,27 @@
+1. J Huazhong Univ Sci Technolog Med Sci. 2017 Oct;37(5):772-776. doi: 
+10.1007/s11596-017-1803-z. Epub 2017 Oct 20.
+
+A novel gene mutation of Runx2 in cleidocranial dysplasia.
+
+Peng YJ(1), Chen QY(1), Fu DJ(1), Liu ZM(1), Mao TT(1), Li J(1), She WT(2).
+
+Author information:
+(1)Department of Stomatology, Renmin Hospital of Wuhan University, Wuhan, 
+430060, China.
+(2)Department of Stomatology, Renmin Hospital of Wuhan University, Wuhan, 
+430060, China. Wentingdy_ortho@hotmail.com.
+
+Haploinsufficiency of the runt-related transcription factor 2 (Runx2) gene is 
+widely known to be responsible for cleidocranial dysplasia (CCD). To date, more 
+than 190 mutations in Runx2 gene have been reported to be related to CCD. In 
+this study, a novel mutation of Runx2 gene was observed in a female with CCD. 
+Genomic DNA was extracted from peripheral venous blood of the proband and eleven 
+members of her family. Genetic testing on these twelve people identified a novel 
+missense mutation (c.895 T>C, Y299H) in exon 5 of the RUNX2 gene in the proband. 
+This mutation results in an amino acid change at codon 895 (P.Tyr 299 His.) from 
+a tryptophan codon (TAT) to a histidine codon (CAT). Our finding may further 
+extend the known mutation spectrum of the RUNX2 gene, and facilitate prenatal 
+genetic diagnosis of CCD in the future.
+
+DOI: 10.1007/s11596-017-1803-z
+PMID: 29058294 [Indexed for MEDLINE]

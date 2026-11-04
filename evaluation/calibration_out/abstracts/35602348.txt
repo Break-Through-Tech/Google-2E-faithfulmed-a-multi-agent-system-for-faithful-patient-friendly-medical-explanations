@@ -1,0 +1,45 @@
+1. Comput Math Methods Med. 2022 May 11;2022:4799248. doi: 10.1155/2022/4799248. 
+eCollection 2022.
+
+Logistic Model and Gradient Boosting Machine Model for Physical Therapy of 
+Lumbar Disc Herniation.
+
+Zhao P(1), Xue J(2), Xu X(2), Wang L(2), Chen D(3).
+
+Author information:
+(1)Nursing Department, The Third People's Hospital of Hefei, Hefei Third 
+Clinical College of Anhui Medical University, Hefei 230022, China.
+(2)Department of Orthopaedics, The Third People's Hospital of Hefei, Hefei Third 
+Clinical College of Anhui Medical University, Hefei 230022, China.
+(3)Department of Neurosurgery, The Third People's Hospital of Hefei, Hefei Third 
+Clinical College of Anhui Medical University, Hefei 230022, China.
+
+OBJECTIVE: Physical therapy is a common clinical treatment for patients with 
+lumbar disc herniation. The study is aimed at exploring the feasibility of 
+mathematical expression and curative effect prediction of physical therapy in 
+patients with lumbar disc herniation using a logistic model and gradient 
+boosting machine (GBM).
+METHODS: A total of 142 patients with lumbar disc herniation were treated with 
+physical therapy. The pain was evaluated by the visual analogue scale (VAS) 
+before each treatment. The logistic model was used to conduct a global 
+regression analysis on patients with lumbar disc herniation. The final results 
+of the whole course of treatment were predicted by the measured values of 2-9 
+times of treatment. The GBM model was used to predict and analyze the curative 
+effect of physical therapy.
+RESULTS: The mathematical expression ability of the logistic regression model 
+for patients with lumbar disc herniation undergoing physical therapy was 
+sufficient, and the global determination coefficient was 0.721. The results 
+would be better for more than five measurements. The AUC of GBM mode logistic 
+regression analysis was 0.936 and 0.883, and the prediction effect is 
+statistically significant.
+CONCLUSION: Both the logistic and GBM model can fully express the changes in 
+patients with lumbar disc herniation during physical therapy.
+
+Copyright © 2022 Ping Zhao et al.
+
+DOI: 10.1155/2022/4799248
+PMCID: PMC9117053
+PMID: 35602348 [Indexed for MEDLINE]
+
+Conflict of interest statement: All authors declare no conflicts of interest in 
+this paper.

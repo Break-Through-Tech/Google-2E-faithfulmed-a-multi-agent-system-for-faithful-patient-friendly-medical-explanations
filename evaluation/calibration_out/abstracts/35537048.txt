@@ -1,0 +1,66 @@
+1. RETRACTED ARTICLE
+
+Proc Natl Acad Sci U S A. 2022 May 17;119(20):e2121499119. doi: 
+10.1073/pnas.2121499119. Epub 2022 May 10.
+
+New intranasal and injectable gene therapy for healthy life extension.
+
+Jaijyan DK(1), Selariu A(2), Cruz-Cosme R(3), Tong M(4), Yang S(5), Stefa 
+A(1)(6), Kekich D(2), Sadoshima J(4), Herbig U(1)(6), Tang Q(3), Church G(7), 
+Parrish EL(2), Zhu H(1).
+
+Author information:
+(1)Department of Microbiology, Biochemistry, and Molecular Genetics, Rutgers New 
+Jersey Medical School, Newark, NJ 07103.
+(2)BioViva USA, Inc., Bainbridge Island, WA 98110.
+(3)Department of Microbiology, Howard University College of Medicine, 
+Washington, DC 20059.
+(4)Department of Cell Biology and Molecular Medicine, Rutgers New Jersey Medical 
+School, Newark, NJ 07103.
+(5)Department of Pain Medicine and Shenzhen Municipal Key Laboratory for Pain 
+Medicine, Shenzhen Nanshan People's Hospital, The 6th Affiliated Hospital of 
+Shenzhen University Health Science Center, Shenzhen 518000, China.
+(6)New Jersey Medical School, Cancer Institute of New Jersey-Newark, Rutgers 
+Biomedical and Health Sciences, Newark, NJ 07103.
+(7)Department of Genetics, Harvard Medical School, Boston, MA 02115.
+
+Erratum in
+    Proc Natl Acad Sci U S A. 2022 Aug 30;119(35):e2212836119. doi: 
+10.1073/pnas.2212836119.
+    Proc Natl Acad Sci U S A. 2023 Aug 8;120(32):e2311483120. doi: 
+10.1073/pnas.2311483120.
+
+Retraction in
+    Proc Natl Acad Sci U S A. 2025 Aug 19;122(33):e2519570122. doi: 
+10.1073/pnas.2519570122.
+
+As the global elderly population grows, it is socioeconomically and medically 
+critical to provide diverse and effective means of mitigating the impact of 
+aging on human health. Previous studies showed that the adeno-associated virus 
+(AAV) vector induced overexpression of certain proteins, which can suppress or 
+reverse the effects of aging in animal models. In our study, we sought to 
+determine whether the high-capacity cytomegalovirus vector (CMV) can be an 
+effective and safe gene delivery method for two such protective factors: 
+telomerase reverse transcriptase (TERT) and follistatin (FST). We found that the 
+mouse cytomegalovirus (MCMV) carrying exogenous TERT or FST (MCMVTERT or 
+MCMVFST) extended median lifespan by 41.4% and 32.5%, respectively. We report 
+CMV being used successfully as both an intranasal and injectable gene therapy 
+system to extend longevity. Specifically, this treatment significantly improved 
+glucose tolerance, physical performance, as well as preventing body mass loss 
+and alopecia. Further, telomere shortening associated with aging was ameliorated 
+by TERT and mitochondrial structure deterioration was halted in both treatments. 
+Intranasal and injectable preparations performed equally well in safely and 
+efficiently delivering gene therapy to multiple organs, with long-lasting 
+benefits and without carcinogenicity or unwanted side effects. Translating this 
+research to humans could have significant benefits associated with quality of 
+life and an increased health span.
+
+DOI: 10.1073/pnas.2121499119
+PMCID: PMC9171804
+PMID: 35537048 [Indexed for MEDLINE]
+
+Conflict of interest statement: Competing interest statement: D.K., and E.L.P. 
+are employees of BioViva, Inc. BioViva owns the patent pending technology on the 
+research herein. E.L.P. and D.K. manage and sit on the board of directors of 
+BioViva USA, Inc. G.C. is a member of the advisory board for and a shareholder 
+in BioViva USA, Inc. He is not an inventor on the patents.

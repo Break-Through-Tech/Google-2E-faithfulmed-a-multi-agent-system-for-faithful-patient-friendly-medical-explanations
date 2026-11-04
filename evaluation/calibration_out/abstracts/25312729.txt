@@ -1,0 +1,40 @@
+1. Curr Pharm Des. 2015;21(9):1196-204. doi: 10.2174/1381612820666141013150714.
+
+Development of anti-atherosclerosis therapy based on the inflammatory and 
+proliferative aspects of the disease.
+
+Maranhão RC, Leite AC Jr(1).
+
+Author information:
+(1)Laboratorio de Metabolismo e Lipides, Instituto do Coracao (InCor) do 
+Hospital das Clínicas da Faculdade de Medicina da Universidade de Sao Paulo 
+(HCFMUSP). Av. Dr. Eneas de Carvalho Aguiar, 44, bloco 2, 1° subsolo. Sao Paulo 
+- SP, 05403-000, Brazil. ramarans@usp.br.
+
+Atherosclerotic cardiovascular diseases are a worldwide major public health 
+concern. Atherosclerosis is driven by a chronic inflammatory process which is 
+present since the early stages of the disease, as a response to endothelium 
+aggression by a variety of offending agents, to subsequent formation of foam 
+cells, atheromatous plaque development and the clinical complications of the 
+disease, due to plaque rupture and thromboembolic acute episodes. However, drug 
+therapies directed to inflammation are lacking in the clinical practice, despite 
+an increasing effort of research and identification of several potential 
+molecular targets. Effective medical treatments available for primary and 
+secondary prevention are restricted to cholesterol lowering statins and 
+anti-platelet drugs such as aspirin. Here, steps of atherogenesis, cells 
+involved in the process, secreted pro- and anti-inflammatory factors, the 
+concept of unstable and stable atheroma plaques, the intertwining among 
+inflammation, lipid arterial deposit, thrombus formation, therapeutically 
+targetable mechanisms, monoclonal antibodies, enzymatic inhibitors, 
+phytotherapeutic compounds and anti-proliferative agents used in cancer 
+chemotherapy, drugs tested in experimental animals and at the clinical stage are 
+shortly reviewed. Because statins and anti-platelet drugs use do not prevent 
+more than 30-40% of the major cardiovascular events, the development of novel 
+therapeutic tools is desirable. Nonetheless, atherosclerosis is a chronic 
+process presumably demanding long-standing treatments, so that the safety, 
+opportunity, cost-effectiveness and development of drug resistance are major 
+issues that challenge the introduction of novel, inflammation-oriented 
+therapies.
+
+DOI: 10.2174/1381612820666141013150714
+PMID: 25312729 [Indexed for MEDLINE]

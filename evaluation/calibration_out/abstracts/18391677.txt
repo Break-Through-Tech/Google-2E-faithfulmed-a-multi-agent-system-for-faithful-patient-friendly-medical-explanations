@@ -1,0 +1,51 @@
+1. J Clin Rheumatol. 2008 Apr;14(2):87-91. doi: 10.1097/RHU.0b013e31816b2f99.
+
+The sensitivity and specificity of the Slump and the Straight Leg Raising tests 
+in patients with lumbar disc herniation.
+
+Majlesi J(1), Togay H, Unalan H, Toprak S.
+
+Author information:
+(1)Formed PM&R Center, Istanbul, Turkey. javidmajlesi@yahoo.co.uk
+
+BACKGROUND: An accurate and specific diagnosis prevents the recurrences of low 
+back pain and chronic spinal pain. The physical examination is the most useful 
+tool to diagnosis. The examiner must aim to determine the exact tissue that pain 
+arises from to make the specific diagnosis. Lumbar disc herniation is 1 disease 
+that physical examination, symptoms, and findings on imaging technique do not 
+always correlate with each other. The Straight Leg Raising (SLR) test has been 
+used as the primary test to diagnosis lumbar disc herniations and found to have 
+high correlation with findings on operation since its sensitivity is high in 
+only disc herniations leading to root compression that may eventually need 
+operation. More sensitive test, like the Slump, might be used in herniations in 
+which the SLR is negative. The Slump test is really a variant of the SLR and the 
+Lasègue's tests performed in the seated position and is a progressive series of 
+maneuvers designed to place the sciatic nerve roots under increasing tension. At 
+each step in the procedure, the patient informs the examiner what is being felt 
+and whether radicular pain is produced. As a result, the Slump test applies 
+traction to the nerve roots by incorporating spinal and hip joint flexion into 
+the leg raising and would warn the examiner of the presence of nerve root 
+compression when there is a negative SLR test.
+OBJECTIVES: This study measured the sensitivity and specificity of the Slump 
+test and compare it with the SLR test in patients with and without lumbar disc 
+herniations.
+METHODS: A prospective case control study of 75 patients with complaints 
+suggestive of lumbar disc herniation was carried out in the outpatient clinics 
+of the neurosurgery department of a state teaching hospital. Seventy-five 
+referred or self-admitted patients with low back, leg, or low back and leg pain 
+who had results of magnetic resonance imaging (MRI) of the lumbar spine were 
+included in the study. Thirty-eight patients had signs of herniation 
+demonstrated by MRI. Control patients (n = 37) had no disc bulges or herniations 
+on MRI. Both the Slump and SLR tests were performed during the assessment of all 
+the patients by the second author. The MRI results were assessed and recorded by 
+the first author.
+RESULTS: The Slump test was found to be more sensitive (0.84) than the SLR 
+(0.52) in the patients with lumbar disc herniations. However, the SLR was found 
+to be a slightly more specific test (0.89) than the Slump test (0.83).
+CONCLUSION: The Slump test might be used more frequently as a sensitive physical 
+examination tool in patients with symptoms of lumbar disc herniations. In 
+contrast, owing to its higher specificity, the SLR test may especially help 
+identify patients who have herniations with root compression requiring surgery.
+
+DOI: 10.1097/RHU.0b013e31816b2f99
+PMID: 18391677 [Indexed for MEDLINE]

@@ -1,0 +1,45 @@
+1. Natl J Maxillofac Surg. 2020 Jul-Dec;11(2):199-206. doi: 
+10.4103/njms.NJMS_49_20. Epub 2020 Dec 16.
+
+Comparative evaluation of crestal bone level in patients having low level of 
+Vitamin D treated with dental implant with or without Vitamin D3 supplements.
+
+Garg P(1), Ghalaut P(1), Dahiya K(2), Ravi R(1), Sharma A(1), Wakure P(1).
+
+Author information:
+(1)Department of Prosthodontics, Post Graduate Institute of Medical Sciences, 
+Pt. B.D Sharma University of Health Sciences, Rohtak, Haryana, India.
+(2)Department of Biochemistry, Post Graduate Institute of Medical Sciences, Pt. 
+B.D Sharma University of Health Sciences, Rohtak, Haryana, India.
+
+INTRODUCTION: Vitamin D has been shown to play a vital role in bone mineral 
+homeostasis by stimulating the intestinal absorption of calcium and phosphate. 
+The critical role of Vitamin D in bone metabolism triggered the need to evaluate 
+the effect of Vitamin D deficiency and hence replacement of the same on 
+osseointegration of dental implants. This prospective study evaluated the 
+crestal bone level in patients having low level of Vitamin D treated with dental 
+implant with or without Vitamin D3 supplements.
+MATERIALS AND METHODS: A prospective clinical study was conducted on 32 patients 
+based on the inclusion and exclusion criteria. Patients were divided into two 
+groups on the basis of Vitamin D level < 30 ng/ml (Group I: patients receiving 
+Vitamin D3 supplements, i.e., cholecalciferol 1 g sachet 60,000 IU/month) or <30 
+ng/ml (Group II: not receiving Vitamin D3 supplements). The crestal bone level 
+measurements were made with the help of Digimizer Image Analysis, MedCalc 
+software.
+RESULTS: All implants showed clinically acceptable crestal bone level at 
+interval of 1 week (baseline), 3 months, and 6 months. There was a statistically 
+nonsignificant difference seen for the values between the groups (P > 0.05) for 
+all other values at various time intervals. However, there was a statistically 
+significant/highly significant difference seen for the values between the groups 
+(P < 0.01, 0.05) for 3 months distal with higher values for Group I as compared 
+to Group II.
+CONCLUSION: From the study, it can be concluded that cholecalciferol has 
+systemic effects on accelerating bone formation around titanium implant.
+
+Copyright: © 2020 National Journal of Maxillofacial Surgery.
+
+DOI: 10.4103/njms.NJMS_49_20
+PMCID: PMC8051646
+PMID: 33897181
+
+Conflict of interest statement: There are no conflicts of interest.

@@ -1,0 +1,37 @@
+1. Nutrients. 2022 May 18;14(10):2101. doi: 10.3390/nu14102101.
+
+Cannabidiol (CBD) Dosing: Plasma Pharmacokinetics and Effects on Accumulation in 
+Skeletal Muscle, Liver and Adipose Tissue.
+
+Child RB(1)(2), Tallon MJ(2).
+
+Author information:
+(1)School of Chemical Engineering, University of Birmingham, Birmingham B15 2TT, 
+UK.
+(2)Legal Products Group Ltd., 26 St Thomas Pl, Ely, Cambridgeshire CB7 4EX, UK.
+
+Oral cannabidiol (CBD) consumption is widespread in North America and Europe, as 
+it has analgesic, neuroprotective and antitumor effects. Although oral CBD 
+consumption in humans affords beneficial effects in epileptic and inflammatory 
+states, its pharmacokinetics and subsequent uptake into tissue are largely 
+unknown. This study investigated plasma pharmacokinetics and accumulation of CBD 
+in gastrocnemius muscle, liver and adipose tissue in adult rats following oral 
+gavage. CBD was fed relative to body mass at 0 (control), 30, 115, or 230 
+mg/Kg/day for 28 days; with 6 males and 6 females per dosing group. 
+Pharmacokinetics were assessed on day 1 and day 28 in the group receiving CBD at 
+115 mg/Kg/day. The rise in tissue CBD was closely related to specific 
+pharmacokinetic parameters, and adipose tissue levels were ~10 to ~100 fold 
+greater than liver or muscle. Tissue CBD levels were moderately correlated 
+between adipose and muscle, and adipose and liver, but were highly correlated 
+for liver and muscle. CBD feeding resulted in several gender-specific effects, 
+including changes in pharmacokinetics, relationships between pharmacokinetic 
+parameters and tissue CBD and differences in tissue CBD levels. CBD accumulation 
+in mammalian tissues has the potential to influence receptor binding and 
+metabolism; therefore, the present findings may have relevance for developing 
+oral dosing regimens.
+
+DOI: 10.3390/nu14102101
+PMCID: PMC9146469
+PMID: 35631242 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare no conflict of interest.

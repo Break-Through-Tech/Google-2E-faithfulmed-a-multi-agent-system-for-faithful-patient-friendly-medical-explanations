@@ -1,0 +1,29 @@
+1. Cytogenet Genome Res. 2005;111(3-4):273-80. doi: 10.1159/000086900.
+
+Risk factors for nondisjunction of trisomy 21.
+
+Sherman SL(1), Freeman SB, Allen EG, Lamb NE.
+
+Author information:
+(1)Department of Human Genetics, Emory University School of Medicine, Atlanta, 
+GA 30322, USA. ssherman@genetics.emory.edu
+
+The leading cause of Down syndrome (DS) is nondisjunction of chromosome 21 
+occurring during the formation of gametes. In this review, we discuss the 
+progress made to identify risk factors associated with this type of chromosome 
+error occurring in oogenesis and spermatogenesis. For errors occurring in 
+oocytes, the primary risk factors are maternal age and altered recombination. We 
+review the current progress made with respect to these factors and briefly 
+outline the potential environmental and genetic influences that may play a role. 
+Although the studies of paternal nondisjunction are limited due to the 
+relatively small proportion of errors of this type, we review the potential 
+influence of paternal age, recombination and other environmental and genetic 
+factors on susceptibility. Although progress has been made to understand the 
+mechanisms and risk factors that underlie nondisjunction, considerably more 
+research needs to be conducted to dissect this multifactorial trait, one that 
+has a considerable impact on our species.
+
+Copyright 2005 S. Karger AG, Basel.
+
+DOI: 10.1159/000086900
+PMID: 16192705 [Indexed for MEDLINE]

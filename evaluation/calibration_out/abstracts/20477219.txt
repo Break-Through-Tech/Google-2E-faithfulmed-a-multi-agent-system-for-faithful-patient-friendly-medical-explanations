@@ -1,0 +1,27 @@
+1. Expert Rev Respir Med. 2008 Feb;2(1):27-36. doi: 10.1586/17476348.2.1.27.
+
+Modulite technology in the development of formoterol HFA pMDI: clinical evidence 
+and future opportunities.
+
+Bousquet J(1), Dell'anna C.
+
+Author information:
+(1)Hôpital Arnaud de Villeneuve 371, Avenue du Doyen Gaston Giraud, FR-34000, 
+Montpellier, France. bousquet@montp.inserm.fr
+
+This article is based on published safety and efficacy data on formoterol 
+pressurized metered-dose inhalers (pMDIs) developed with the Modulite 
+technology. This technology allows the development of ozone-friendly inhaled 
+drugs that replace the same doses of chlorofluorocarbon (CFC)-formulated 
+products and enables the attainment of new formulations with extra-fine 
+particles and improved lung deposition. Clinical pharmacology, as well as 
+clinical studies against comparators, have demonstrated that formoterol Modulite 
+and the existing dry powder inhaler and CFC formoterol formulations have a 
+similar pharmacokinetic profile, are clinically equivalent in bronchodilating 
+effects and exhibit a similar potential for systemic side effects. Therefore, 
+the Modulite formoterol hydrofluoroalkane-based formulation in extra-fine 
+particles is a valuable therapeutic option for both patients and physicians in 
+the management of asthma and chronic obstructive pulmonary disease.
+
+DOI: 10.1586/17476348.2.1.27
+PMID: 20477219

@@ -1,0 +1,58 @@
+1. J Endocrinol Invest. 2024 May;47(5):1083-1090. doi:
+10.1007/s40618-023-02229-7.  Epub 2023 Nov 28.
+
+Risks of suboptimal and excessive thyroid hormone replacement across ages.
+
+Feldt-Rasmussen U(1)(2)(3), Effraimidis G(4)(5)(6), Bliddal S(4), Klose M(4).
+
+Author information:
+(1)Department of Medical Endocrinology and Metabolism, Rigshospitalet, 
+Copenhagen University Hospital, Copenhagen, Denmark. ufeldt@rh.dk.
+(2)Institute of Clinical Medicine, Faculty of Health and Clinical Sciences, 
+Copenhagen University, Copenhagen, Denmark. ufeldt@rh.dk.
+(3)Department of Medical Endocrinology and Metabolism PE 2132, Rigshospitalet, 
+National University Hospital, Blegdamsvej 9, 2100, Copenhagen, Denmark. 
+ufeldt@rh.dk.
+(4)Department of Medical Endocrinology and Metabolism, Rigshospitalet, 
+Copenhagen University Hospital, Copenhagen, Denmark.
+(5)Department of Endocrinology and Metabolic Diseases, Larissa University 
+Hospital, Larissa, Greece.
+(6)Faculty of Medicine, School of Health Sciences, University of Thessaly, 
+Larissa, Greece.
+
+BACKGROUND: Hypothyroidism is prevalent at all ages and represents a 
+non-communicable disease with preventable consequences.
+METHOD: Narrative review.
+REVIEW: In children and adolescents, the most devastating consequences of 
+undertreatment with levothyroxine (LT4) are poor growth and development. Delayed 
+treatment in congenital hypothyroidism can lead to permanent brain damage. In 
+young to middle-aged adults, symptoms are often overlooked, and treatment 
+delayed by many years. The resulting consequences are also at this age group 
+compromised brain and physical function but less severe and partly reversible 
+with treatment. The under-treated condition often results in a higher risk of, 
+e.g., increased cardiovascular disease burden, obesity, hypertension, poor 
+physical capacity, and poor quality of life. Excessive replacement is at all 
+adult age groups associated with increased risk of cardiac death, osteoporosis, 
+loss of muscle function, psychological instability and poor quality of life. In 
+young fertile women, the consequences of undertreatment with LT4 are subnormal 
+fertility, recurrent pregnancy loss, compromised fetal growth, and 
+neurocognitive development. On the other hand, excessive LT4 treatment has been 
+related to gestational hypertension, preeclampsia and preterm birth. In the 
+elderly, care must be given to avoid confusing a slightly high age-related serum 
+TSH with requirement for LT4 treatment in a truly hypothyroid patient. Excessive 
+LT4 treatment in patients of high age is associated with an increased mortality.
+CONCLUSION: Suboptimal and excessive LT4 replacement of the preventable 
+non-communicable disease hypothyroidism requires more focus from the healthcare 
+system and from the global political systems to prevent the personally 
+devastating and socioeconomically challenging consequences.
+
+© 2023. The Author(s).
+
+DOI: 10.1007/s40618-023-02229-7
+PMCID: PMC11035408
+PMID: 38015369 [Indexed for MEDLINE]
+
+Conflict of interest statement: UFR has received speaker honoraria and travel 
+costs from Merck, Darmstadt, Germany and Horizon, Maryland, USA. SB has received 
+a speaker honorary from Merck, Darmstadt, Germany, and Novo Nordisk, Copenhagen, 
+Denmark.

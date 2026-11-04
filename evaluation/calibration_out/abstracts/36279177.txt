@@ -1,0 +1,39 @@
+1. Reproduction. 2022 Nov 22;164(6):F145-F154. doi: 10.1530/REP-22-0152. Print
+2022  Dec 1.
+
+OXIDATIVE STRESS AND REPRODUCTIVE FUNCTION: Oxidative stress in polycystic ovary 
+syndrome.
+
+Rudnicka E(1), Duszewska AM(2), Kucharski M(1), Tyczyński P(3), Smolarczyk R(1).
+
+Author information:
+(1)Department of Gynaecological Endocrinology, Medical University of Warsaw, 
+Warsaw, Poland.
+(2)Department of Morphological Sciences, Faculty of Veterinary Medicine, Warsaw, 
+University of Life Science, Warsaw, Poland.
+(3)Department of Interventional Cardiology and Angiology, National Institute of 
+Cardiology, Warsaw, Poland.
+
+IN BRIEF: A genetic, epigenetic, and environmental association exists between 
+oxidative stress (OS) and polycystic ovary syndrome (PCOS), expressed in a 
+multifaceted clinical profile. This review summarizes and discusses the role of 
+OS in the pathogenesis of PCOS syndrome, focusing on metabolic, reproductive, 
+and cancer complications.
+ABSTRACT: Oxidative stress (OS), an imbalance between oxidants and antioxidants 
+in cells, is one of many factors playing essential roles in the pathogenesis of 
+polycystic ovary syndrome (PCOS). PCOS is described mainly as a disproportion of 
+reproductive hormones, leading to chronic anovulation and infertility in women. 
+Interestingly, OS in PCOS may be associated with many disorders and diseases. 
+This review focuses on characteristic markers of OS in PCOS and the relationship 
+between OS and PCOS related to insulin resistance (IR), hyperandrogenemia, 
+obesity, chronic inflammation, cardiovascular diseases, and cancer. 
+Interestingly, in patients with PCOS, an increase in oxidative status and 
+insufficient compensation of the increase in antioxidant status before any 
+cardiovascular complications are observed. Moreover, free radicals promote 
+carcinogenesis in PCOS patients. However, despite these data, it has not been 
+established whether oxygen stress influences PCOS development or a secondary 
+disorder resulting from hyperglycemia, IR, and cardiovascular and cancer 
+complications in women.
+
+DOI: 10.1530/REP-22-0152
+PMID: 36279177 [Indexed for MEDLINE]

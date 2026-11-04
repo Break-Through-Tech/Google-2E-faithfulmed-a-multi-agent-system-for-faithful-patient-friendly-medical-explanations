@@ -1,0 +1,39 @@
+1. Drug Metab Dispos. 2011 Nov;39(11):2049-56. doi: 10.1124/dmd.111.041384. Epub 
+2011 Aug 5.
+
+Cannabidiol, a major phytocannabinoid, as a potent atypical inhibitor for 
+CYP2D6.
+
+Yamaori S(1), Okamoto Y, Yamamoto I, Watanabe K.
+
+Author information:
+(1)Department of Hygienic Chemistry, Faculty of Pharmaceutical Sciences, 
+Hokuriku University, Ho-3, Kanagawa-machi, Kanazawa 920-1181, Japan.
+
+Δ(9)-Tetrahydrocannabinol, cannabidiol (CBD), and cannabinol are the three major 
+cannabinoids contained in marijuana, which are devoid of nitrogen atoms in their 
+structures. In this study, we investigated the inhibitory effects of the major 
+phytocannabinoids on the catalytic activity of human CYP2D6. These major 
+cannabinoids inhibited the 
+3-[2-(N,N-diethyl-N-methylammonium)ethyl]-7-methoxy-4-methylcoumarin (AMMC) and 
+dextromethorphan O-demethylase activities of recombinant CYP2D6 and pooled human 
+liver microsomes in a concentration-dependent manner (IC(50) = 4.01-24.9 μM), 
+indicating the strongest inhibitory potency of CBD. However, these cannabinoids 
+showed no or weak metabolism-dependent inhibition. CBD competitively inhibited 
+the CYP2D6 activities with the apparent K(i) values of 1.16 to 2.69 μM. To 
+clarify the structural requirement for CBD-mediated CYP2D6 inhibition, effects 
+of CBD-related compounds on the AMMC O-demethylase activity of recombinant 
+CYP2D6 were examined. Olivetol (IC(50) = 7.21 μM) inhibited CYP2D6 activity as 
+potently as CBD did (IC(50) = 6.52 μM), whereas d-limonene did not show any 
+inhibitory effect. Pentylbenzene failed to inhibit CYP2D6 activity. Furthermore, 
+neither monomethyl nor dimethyl ethers of CBD inhibited the activity. 
+Cannabidivarin having a propyl side chain inhibited CYP2D6 activity; its 
+inhibitory effect (IC(50) = 10.2 μM) was less potent than that of CBD. On the 
+other hand, orcinol and resorcinol showed lack of inhibition. The inhibitory 
+effect of CBD on CYP2D6 activity was more potent than those of 16 compounds 
+without nitrogen atoms tested, such as progesterone. These results indicated 
+that CBD caused potent direct CYP2D6 inhibition, in which two phenolic hydroxyl 
+groups and the pentyl side chain of CBD may play important roles.
+
+DOI: 10.1124/dmd.111.041384
+PMID: 21821735 [Indexed for MEDLINE]

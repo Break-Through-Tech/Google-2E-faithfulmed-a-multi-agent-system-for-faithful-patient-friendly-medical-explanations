@@ -1,0 +1,71 @@
+1. Int J Cosmet Sci. 2021 Dec;43(6):729-737. doi: 10.1111/ics.12748. Epub 2021
+Nov  17.
+
+Barrier disruption, dehydration and inflammation: Investigation of the vicious 
+circle underlying dry skin.
+
+Bize C(1), Le Gélébart E(1), Moga A(2), Payré B(3), Garcia C(1).
+
+Author information:
+(1)Seppic Research & Innovation, Paris La Défense, La Garenne Colombes Cedex, 
+France.
+(2)Synelvia SAS - Prologue Biotech, Labège Cedex, France.
+(3)CMEAB Centre de Microscopie Electronique, Toulouse, France.
+
+OBJECTIVE: Many endogenous or exogenous factors, isolated or combined, can 
+trigger dry skin disorder, leading to a water/lipids-depleted stratum corneum 
+concomitant with uncomfortable rough and scaly skin surface. In a defensive 
+reaction, the alteration of the skin barrier stimulates the production of 
+cytokines to initiate homeostasis restoration but this can also induce an 
+inflammatory response that further weakens the barrier. The two phenomena 
+intertwining one another lead to the creation of a vicious circle, here called 
+Inflamm'dryness, that maintains dry skin state. It is thus very important to 
+investigate biological mechanisms involved in Inflamm'dryness to better manage 
+dry skin.
+METHODS: A 3D model mimicking dry skin has been developed. Adjustment of tape 
+stripping level allowed to reproduce skin barrier alterations and resulting 
+inflammation involved in dry skin. The effect of Helichrysum stoechas extract on 
+this downward spiral was then investigated to validate the concept.
+RESULTS: Tape-stripping permitted to successively remove the cell layers of the 
+stratum corneum: the barrier function was altered and skin was inflamed creating 
+a vicious circle, mimicking very dry skin prone to Inflamm'dryness. Helichrysum 
+stoechas extract was not only able to resolve inflammation but also to reverse 
+concurrently adverse tape-stripping effects and imparted significant structural 
+and functional recovery of the barrier (e.g. on NMF and ceramides levels, TEWL, 
+tissue organization).
+CONCLUSION: This 3D model reproduces Inflamm'dryness vicious circle present in 
+dry skin and highlights the importance of breaking this process to improve dry 
+skin conditions. Helichrysum stoechas extract is a promising active ingredient 
+for the management of dry skin.
+
+Publisher: OBJECTIF: De nombreux facteurs endogènes ou exogènes, isoles ou 
+combines, peuvent être à l’origine de sècheresse cutanée, conduisant à une peau 
+en manque d’eau et de lipides : la peau tiraille, présente parfois un l’aspect 
+rugueux (voire la présence de squames) et des sensations d’inconfort. Cette 
+altération de la barrière cutanée induit la production de cytokines permettant 
+la restauration de l'homéostasie de la peau mais induisant également une réponse 
+inflammatoire fragilisant davantage la barrière cutanée. Ces deux phénomènes 
+conduisent à la création d'un cercle vicieux, l’Inflamm'dryness, qui entretient 
+l'état de sécheresse de la peau. Il semble donc important d’étudier les 
+mécanismes biologiques impliqués dans le phénomène d’Inflamm’dryness afin de 
+mieux prendre soin des peaux sèches. MÉTHODES: Un modèle 3D mimant une peau 
+sèche a été développé. Un ajustement du nombre de tape-strippings a été 
+nécessaire afin de reproduire les défauts de barrière ainsi que de 
+l'inflammation caractéristiques des peaux sèches. L'effet d’un extrait 
+d'Helichrysum stoechas sur cette spirale négative a ensuite été étudié pour 
+valider le concept. RÉSULTATS: L’étape de tape-stripping a permis de retirer 
+successivement les couches superficielles du stratum corneum: la fonction 
+barrière est altérée et la peau est enflammée créant un cercle vicieux, mimant 
+une peau très sèche sujette à l’Inflamm’dryness. L'extrait d'Helichrysum 
+stoechas est non seulement capable de résoudre l'inflammation, mais également de 
+restaurer la fonction barrière de la peau (quantités de NMF et de céramides, la 
+perte insensible en eau, organisation des tissus…).
+CONCLUSION: Ce modèle 3D reproduit le cercle vicieux de l’Inflamm'dryness 
+caractéristique des peaux sèches et met en évidence l'importance de rompre ce 
+processus afin de remédier à la sécheresse cutanée. L'extrait d'Helichrysum 
+stoechas développé est un actif prometteur pour le soin des peaux sèches.
+
+© 2021 Society of Cosmetic Scientists and Societe Francaise de Cosmetologie.
+
+DOI: 10.1111/ics.12748
+PMID: 34716992 [Indexed for MEDLINE]

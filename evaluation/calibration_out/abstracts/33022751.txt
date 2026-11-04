@@ -1,0 +1,49 @@
+1. Clin Pharmacol Ther. 2021 May;109(5):1224-1231. doi: 10.1002/cpt.2071. Epub
+2020  Nov 21.
+
+Cannabidiol and Abnormal Liver Chemistries in Healthy Adults: Results of a Phase 
+I Clinical Trial.
+
+Watkins PB(1), Church RJ(1), Li J(2), Knappertz V(2).
+
+Author information:
+(1)Division of Pharmacotherapy and Experimental Therapeutics, Eshelman School of 
+Pharmacy and Institute for Drug Safety Sciences, University of North Carolina at 
+Chapel Hill, Chapel Hill, NC, USA.
+(2)Greenwich Biosciences, 5750 Fleet St Ste 200, Carlsbad, CA, USA.
+
+Liver safety concerns were raised in randomized controlled trials of cannabidiol 
+(CBD) in patients with Lennox-Gastaut and Dravet syndromes, but the relevance of 
+these concerns to healthy adults consuming CBD is unclear. The objective of this 
+manuscript is to report on liver safety findings from healthy adults who 
+received therapeutic daily doses of CBD for ~ 3.5 weeks and to investigate any 
+correlation between transaminase elevations and baseline characteristics, 
+pharmacogenetic, and pharmacokinetic data. Sixteen healthy adults were enrolled 
+in a phase I, open-label, fixed single-sequence drug-drug interaction trial to 
+investigate the effect of repeated dose administration of CBD (1,500 mg/day) on 
+cytochrome P450 (CYP) 1A2 activity. Seven (44%) participants experienced peak 
+serum alanine aminotransferase (ALT) values greater than the upper limit of 
+normal (ULN). For five (31%) participants, the value exceeded 5 × ULN, therefore 
+meeting the international consensus criteria for drug-induced liver injury. 
+There was no correlation between transaminase elevations and baseline 
+characteristics, CYP2C19 genotype, or CBD plasma concentrations. All ALT 
+elevations above the ULN began within 2-4 weeks of initial exposure to CBD. 
+Among the six participants with ALT elevations who were discontinued from the 
+protocol, some had symptoms consistent with hepatitis or hypersensitivity. We 
+conclude that healthy adults consuming CBD may experience elevations in serum 
+ALT consistent with drug-induced liver injury. Given the demonstrated 
+interindividual variation in susceptibility, clinicians should be alert to this 
+potential effect from CBD, which is increasingly available in various 
+nonprescription forms and doses to consumers.
+
+© 2020 The Authors. Clinical Pharmacology & Therapeutics published by Wiley 
+Periodicals LLC on behalf of American Society for Clinical Pharmacology and 
+Therapeutics.
+
+DOI: 10.1002/cpt.2071
+PMCID: PMC8246741
+PMID: 33022751 [Indexed for MEDLINE]
+
+Conflict of interest statement: P.B.W. and R.J.C. are paid consultants for GW 
+Research Ltd. but were not compensated for the preparation of this manuscript. 
+J.L. and V.K. are employees of Greenwich Biosciences.

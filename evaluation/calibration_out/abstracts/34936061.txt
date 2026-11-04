@@ -1,0 +1,56 @@
+1. Ophthalmol Ther. 2022 Feb;11(1):101-111. doi: 10.1007/s40123-021-00435-1. Epub
+ 2021 Dec 22.
+
+A One-Week Course of Levofloxacin/Dexamethasone Eye Drops: A Review on a New 
+Approach in Managing Patients After Cataract Surgery.
+
+Rizzo S(1)(2)(3), Gambini G(4)(5), De Vico U(1)(2), Rizzo C(6), Kilian R(7).
+
+Author information:
+(1)Ophthalmology Unit, "Fondazione Policlinico Universitario A. Gemelli IRCCS", 
+Largo A. Gemelli 8, Rome, Italy.
+(2)Catholic University Sacro Cuore, Rome, Italy.
+(3)Consiglio Nazionale delle Ricerche, Istituto di Neuroscienze, Pisa, Italy.
+(4)Ophthalmology Unit, "Fondazione Policlinico Universitario A. Gemelli IRCCS", 
+Largo A. Gemelli 8, Rome, Italy. gambini.gloria@gmail.com.
+(5)Catholic University Sacro Cuore, Rome, Italy. gambini.gloria@gmail.com.
+(6)Ophthalmology, Department of Surgical, Medical and Molecular Pathology and 
+Critical Care Medicine, University of Pisa, Pisa, Italy.
+(7)Ophthalmology Unit, University of Verona, Verona, Italy.
+
+A new fixed-dose combination of dexamethasone and levofloxacin eye drops has 
+recently been approved for the prevention and treatment of inflammation, and the 
+prevention of infection associated with cataract surgery in adults. This 
+combination has been developed to respond to a series of unmet needs in the 
+practical management of patients undergoing cataract surgery. Namely, despite 
+updated guidelines, many ophthalmologists employ protocols mainly based on their 
+personal experience. As a result, the choice of drugs, treatment duration, and 
+drug association is not evidence-based medicine (EBM)-oriented. In addition, 
+antibiotic resistance may occur since antibiotics are used for an extended 
+length of time, even with tapering. Corticosteroids are also prescribed for 
+prolonged periods, frequently without follow-up. Therefore, patient adherence to 
+postsurgical self-care is low, and mainly affects older patients who are the 
+majority undergoing cataract surgery. In both rabbit and human trials, it has 
+been demonstrated that both active ingredients penetrate the ocular system 
+without pharmacokinetic interaction between the two. The concentrations of both 
+ingredients in aqueous humor after their ocular instillation are high enough at 
+the site of action to carry out their expected potent anti-inflammatory and 
+antibiotic activity. Tested in a pivotal study aimed at investigating efficacy 
+and safety of the intended indication, the mixture/compound was non-inferior to 
+a 2-week treatment with dexamethasone/tobramycin in preventing or reducing 
+inflammation and in preventing infection when administered for 1 week, followed 
+by the administration of dexamethasone alone for another week. The outcomes 
+obtained by this study suggest that a 1-week course of 
+levofloxacin/dexamethasone eye drops is sufficient to resolve inflammation and 
+prevent infection in patients undergoing cataract surgery. In addition, this 
+study underlines that a follow-up visit after 1 week allows for a decision about 
+whether to stop or continue a treatment in patients still experiencing symptoms 
+or inflammation. In conclusion, this new dose combination could represent a 
+turning point in managing patients after cataract surgery, while mostly avoiding 
+antibiotic resistance and improving treatment adherence.
+
+© 2021. The Author(s).
+
+DOI: 10.1007/s40123-021-00435-1
+PMCID: PMC8770779
+PMID: 34936061

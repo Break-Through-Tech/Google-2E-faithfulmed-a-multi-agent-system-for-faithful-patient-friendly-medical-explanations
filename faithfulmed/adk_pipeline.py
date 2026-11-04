@@ -138,19 +138,23 @@ class VerifyStep(BaseAgent):
 
 class RefineStep(BaseAgent):
     """Fixes what {verdict} flagged and overwrites {text}, so the loop checks it again."""
-
+ 
     async def _run_async_impl(self, ctx: InvocationContext) -> AsyncGenerator[Event, None]:
         state = ctx.session.state
         if not state.get("verdict"):
             raise ValueError("Nothing to refine. Run the Verifier first.")
-
+ 
         result = await to_thread(
             refine, state.get("source_note", ""), state["text"], state["verdict"], state.get("atoms") or []
         )
         yield Event(
             author=self.name,
             invocation_id=ctx.invocation_id,
-            actions=EventActions(state_delta={"text": result.refined_text, "refiner_changes": result.changes}),
+            actions=EventActions(state_delta={
+                "text": result.refined_text,
+                "refiner_changes": [c.model_dump() for c in result.changes],
+                "refiner_unresolved": result.unresolved,
+            }),
         )
 
 # 1) Extractor - pull clinical "atoms" (facts + types) from the source document.

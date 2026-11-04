@@ -1,0 +1,50 @@
+1. BMC Musculoskelet Disord. 2009 Dec 11;10:156. doi: 10.1186/1471-2474-10-156.
+
+Transcutaneous electrical nerve stimulation for the management of tennis elbow: 
+a pragmatic randomized controlled trial: the TATE trial (ISRCTN 87141084).
+
+Chesterton LS(1), van der Windt DA, Sim J, Lewis M, Mallen CD, Mason EE, Warlow 
+C, Vohora K, Hay EM.
+
+Author information:
+(1)Arthritis Research Campaign National Primary Care Centre, Keele University, 
+Staffordshire ST5 5BG, UK. j.sim@keele.ac.uk
+
+BACKGROUND: Tennis elbow is a common and often extremely painful musculoskeletal 
+condition, which has considerable impact on individuals as well as economic 
+implications for healthcare utilization and absence from work. Many management 
+strategies have been studied in clinical trials. Whilst corticosteroid 
+injections offer short term pain relief, this treatment is unpleasant and is 
+used with caution due to an associated high risk of pain recurrence in the long 
+term. Systematic reviews conclude that there is no clear and effective treatment 
+for symptoms of pain in the first 6 weeks of the condition. There is a clear 
+need for an intervention that is acceptable to patients and provides them with 
+effective short-term pain relief without increasing the risk of recurrence. 
+Transcutaneous electrical nerve stimulation (TENS) is an inexpensive, 
+non-invasive, non-pharmacological form of analgesia that is commonly used in the 
+treatment of pain. TENS has very few contraindications and is simple to apply. 
+It also benefits from being patient controlled, thereby promoting 
+self-management. This study aims to assess the effectiveness, in terms of pain 
+relief, and cost-effectiveness of a self-management package of treatment that 
+includes TENS.
+METHODS/DESIGN: The design of the study will be a two-group pragmatic randomized 
+clinical trial. 240 participants aged 18 years and over with tennis elbow will 
+be recruited from 20-30 GP practices in Staffordshire, UK. Participants are to 
+be randomized on a 1:1 basis to receive either primary care management (standard 
+GP consultation, medication, advice and education) or primary care management 
+with the addition of TENS, over 6 weeks. Our primary outcome measure is average 
+intensity of elbow pain in the past 24 hours (0-10 point numerical rating scale) 
+at 6 weeks. Secondary outcomes include pain and limitation of function, global 
+assessment of change, days of sick leave, illness perceptions, and overall 
+health status. A cost-effectiveness analysis will also be performed. Patient 
+adherence and satisfaction data will be collected at 6 weeks, 6 months and 12 
+months by postal questionnaire. A diary will also be completed for the first 2 
+weeks of treatment. Clinical effectiveness and cost-effectiveness analyses will 
+be carried out using an intention-to-treat approach as the primary analysis.
+DISCUSSION: This paper presents detail on the rationale, design, methods and 
+operational aspects of the trial.
+TRIAL REGISTRATION: Current Controlled Trials. ISRCTN87141084.
+
+DOI: 10.1186/1471-2474-10-156
+PMCID: PMC2797760
+PMID: 20003341 [Indexed for MEDLINE]

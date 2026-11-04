@@ -1,0 +1,39 @@
+1. Adv Clin Exp Med. 2014 Nov-Dec;23(6):993-1000. doi: 10.17219/acem/37357.
+
+The impact of combinations of non-steroidal anti-inflammatory drugs and 
+anti-hypertensive agents on blood pressure.
+
+Kalafutova S(1), Juraskova B(2), Vlcek J(1).
+
+Author information:
+(1)Department of Social and Clinical Pharmacy, Faculty of Pharmacy in Hradec 
+Kralove, Charles University in Prague, The Czech Republic.
+(2)Sub-Department of Gerontology, Faculty of Medicine in Hradec Kralove, Charles 
+University in Prague, The Czech Republic; 3rd Clinic of Internal Medicine, 
+Metabolism and Gerontology, University Hospital Hradec Kralove, The Czech 
+Republic.
+
+Nowadays NSAIDs are the most frequently used groups of drugs, especially because 
+of their availability. Their consumption is high among older people, who are 
+much more sensitive to the side effects, and who are often also taking other 
+drugs which can interact with them. Moreover, the majority of the older 
+population is suffering from hypertension. This could well explain the commonly 
+encountered experience of drug interaction between NSAIDs and antihypertensive 
+drugs, which is very common in clinical practice. The severity of this drug 
+interaction is classified as class C, with a recommendation to monitor therapy. 
+However, even a minor long-term increase in blood pressure can significantly 
+increase the risk of cardiovascular mortality, while mortality rates can 
+possibly be reduced by sufficiently effective treatment of hypertension. 
+Therefore, in clinical practice, this type of interaction should not be 
+overlooked as a major cause of failure of hypertension treatment in older 
+patients, as well in many cases in general. The present article focusses on the 
+mechanism and the degree of influence on the blood pressure of particular types 
+of antihypertensive agents used in combination with NSAID. Not all groups of 
+antihypertensive drugs are affected to the same degree; some are more affected, 
+and others, such as calcium channel blockers, are not affected at all. 
+Similarly, not every NSAID increases blood pressure. Many studies, some of which 
+are analyzed in this article, present evidence of the degree of the influence 
+NSAIDs have on blood pressure.
+
+DOI: 10.17219/acem/37357
+PMID: 25618128 [Indexed for MEDLINE]

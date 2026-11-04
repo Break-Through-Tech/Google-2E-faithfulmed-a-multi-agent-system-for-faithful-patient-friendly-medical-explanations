@@ -1,0 +1,32 @@
+1. Nat Clin Pract Rheumatol. 2008 Nov;4(11):580-8. doi: 10.1038/ncprheum0921.
+Epub  2008 Oct 14.
+
+Vitamin D and musculoskeletal health.
+
+Wolff AE(1), Jones AN, Hansen KE.
+
+Author information:
+(1)Centracare Rheumatology Clinic, St Cloud, MN, USA.
+
+Vitamin D is critical for calcium homeostasis. Following cutaneous synthesis or 
+ingestion, vitamin D is metabolized to 25(OH)D and then to the active form 
+1,25(OH)2D. Low serum vitamin D levels are common in the general population and 
+cause a decline in calcium absorption, leading to low serum levels of ionized 
+calcium, which in turn trigger the release of parathyroid hormone, promoting 
+skeletal resorption and, eventually, bone loss or osteomalacia. Vitamin D 
+deficiency is generally defined as a serum 25(OH)D concentration <25-37 nmol/l 
+(<10-15 ng/ml), but the definition of the milder state of vitamin D 
+insufficiency is controversial. Three recent meta-analyses concluded that 
+vitamin D must be administered in combination with calcium in order to 
+substantially reduce the risk of nonvertebral fracture in adults over the age of 
+50 years. Fracture protection is optimal when patient adherence to medication 
+exceeds 80% and vitamin D doses exceed 700 IU/day. In addition to disordered 
+calcium homeostasis, low vitamin D levels might have effects on cell 
+proliferation and differentiation and immune function. Randomized, double-blind, 
+placebo-controlled trials are needed to clarify whether vitamin D 
+supplementation is beneficial in cancer, autoimmune disease and infection. This 
+Review focuses on the pathophysiology, clinical correlates, evaluation and 
+treatment of hypovitaminosis D.
+
+DOI: 10.1038/ncprheum0921
+PMID: 18852718 [Indexed for MEDLINE]

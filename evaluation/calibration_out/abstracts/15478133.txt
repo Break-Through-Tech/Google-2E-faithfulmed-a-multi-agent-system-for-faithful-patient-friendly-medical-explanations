@@ -1,0 +1,30 @@
+1. Int J Eat Disord. 2004 Nov;36(3):356-60. doi: 10.1002/eat.20055.
+
+An audit of a British sample of death certificates in which anorexia nervosa is 
+listed as a cause of death.
+
+Muir A(1), Palmer RL.
+
+Author information:
+(1)South Warwickshire Primary Care Trust, St Michael's Hospital, Warwick CV34 
+5QW, UK. anne@muirmursell.fsnet.co.uk
+
+OBJECTIVE: Anorexia nervosa is associated with an increased mortality rate. 
+National mortality statistics based on statutory death certification are 
+potentially an important source of information. However, there are reasons to 
+believe that these statistics may be subject to significant errors. An audit of 
+the quality of information and diagnosis was conducted on death certificates in 
+which anorexia nervosa was mentioned.
+METHOD: The current study examined data from death certificates of people who 
+died in England and Wales between 1993 and 1999.
+RESULTS: There were 230 such deaths, but only 128--just over one half--were 
+rated as likely to be deaths associated with true anorexia nervosa.
+DISCUSSION: National mortality statistics derived from death certificates are a 
+flawed source of information on deaths from anorexia nervosa when taken at face 
+value. There may be both underreporting and overreporting. Detailed examination 
+may improve their usefulness by reducing the overerreporting. It seems likely 
+that the association of deaths with anorexia nervosa is systematically 
+underreported.
+
+DOI: 10.1002/eat.20055
+PMID: 15478133 [Indexed for MEDLINE]

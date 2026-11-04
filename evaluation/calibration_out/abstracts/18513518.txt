@@ -1,0 +1,45 @@
+1. Am Heart J. 2008 Jun;155(6):1047-53. doi: 10.1016/j.ahj.2008.01.009. Epub 2008
+ Mar 5.
+
+Transfusion practice and outcomes in non-ST-segment elevation acute coronary 
+syndromes.
+
+Alexander KP(1), Chen AY, Wang TY, Rao SV, Newby LK, LaPointe NM, Ohman EM, Roe 
+MT, Boden WE, Harrington RA, Peterson ED; CRUSADE Investigators.
+
+Author information:
+(1)Duke Clinical Research Institute, Duke University Medical Center, Durham, NC 
+27715, USA. alexa019@mc.duke.edu
+
+OBJECTIVES: To describe the association between transfusion and outcomes as a 
+function of nadir hematocrit (HCT) in patients with non-ST-segment elevation 
+acute coronary syndromes (NSTE ACS).
+BACKGROUND: The adverse outcomes associated with transfusion in NSTE ACS is 
+uncertain and may vary by nadir HCT of the transfused.
+METHODS: Using data from 44242 patients with NSTE ACS in 400 US hospitals in the 
+CRUSADE initiative (January 2004-December 2005), we describe blood transfusion 
+as a function of nadir HCT and associated outcomes across nadir HCT groups 
+(<or=24%, 24.1%-27%, 27.1%-30%, >30%). We further explore patient and process 
+variation across hospital quartiles defined by transfusion use.
+RESULTS: Overall, 22.2% of patients with NSTE ACS are anemic and 10.4% receive a 
+blood transfusion during their care. Likelihood of transfusion rose from 1% when 
+nadir HCT was >30% to 70% when nadir HCT was <or=24%. The threshold for 
+transfusion is a median nadir HCT of 25.7% (interquartile range 23.8%-27.5%). 
+Although nadir HCT of transfused remains constant across quartiles of 
+transfusion use, occurrence of bleeding increases. Inhospital mortality is 
+higher in lower nadir HCT groups. In those with a nadir HCT of <or=24%, 
+transfusion tended to have a beneficial impact on mortality (HCT <or=24% 
+adjusted odds ratio [OR] 0.68 [0.45-1.02]). In the median range where 
+transfusion occurs, transfusion had a neutral impact on mortality (HCT 24%-27% 
+adjusted OR 1.01 [0.79-1.30]). Although rare, those transfused with nadir HCT of 
+27% to 30% (adjusted OR 1.18 [0.92-1.50]) or HCT of >30% (adjusted OR 3.47 
+[2.30-5.23]) had higher mortality.
+CONCLUSION: Anemia and transfusion are common in the care of NSTE ACS. The 
+observed association between transfusion and adverse outcomes is neutral in the 
+nadir HCT range where transfusions are most often given and trends strongly to 
+benefit when nadir HCT is <or=24%. Although reassuring, randomized trials are 
+needed to confirm the safety of transfusion in NSTE ACS. In the meantime, 
+avoiding the need for transfusion is the best approach.
+
+DOI: 10.1016/j.ahj.2008.01.009
+PMID: 18513518 [Indexed for MEDLINE]

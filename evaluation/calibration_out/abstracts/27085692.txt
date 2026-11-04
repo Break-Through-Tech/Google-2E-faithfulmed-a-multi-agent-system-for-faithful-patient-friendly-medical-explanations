@@ -1,0 +1,63 @@
+1. Eur J Cancer. 2016 Jun;60:190-209. doi: 10.1016/j.ejca.2016.02.025. Epub 2016 
+Apr 13.
+
+Cutaneous, gastrointestinal, hepatic, endocrine, and renal side-effects of 
+anti-PD-1 therapy.
+
+Hofmann L(1), Forschner A(2), Loquai C(3), Goldinger SM(4), Zimmer L(5), Ugurel 
+S(5), Schmidgen MI(3), Gutzmer R(6), Utikal JS(7), Göppner D(8), Hassel JC(9), 
+Meier F(10), Tietze JK(11), Thomas I(2), Weishaupt C(12), Leverkus M(13), Wahl 
+R(13), Dietrich U(10), Garbe C(2), Kirchberger MC(1), Eigentler T(2), Berking 
+C(11), Gesierich A(14), Krackhardt AM(15), Schadendorf D(5), Schuler G(1), 
+Dummer R(4), Heinzerling LM(16).
+
+Author information:
+(1)Department of Dermatology, University Hospital Erlangen, 
+Friedrich-Alexander-University Erlangen-Nürnberg (FAU), Germany.
+(2)Department of Dermatology, University Hospital Tübingen, Germany.
+(3)Department of Dermatology, University Hospital Mainz, Germany.
+(4)Department of Dermatology, University Hospital Zurich, Switzerland.
+(5)Department of Dermatology, University Hospital, University Duisburg-Essen, 
+Germany.
+(6)Department of Dermatology and Allergy, Skin Cancer Center Hannover, Hannover 
+Medical School, Germany.
+(7)Skin Cancer Unit, German Cancer Research Center (DKFZ), Heidelberg, Germany; 
+Department of Dermatology, Venereology and Allergology, University Medical 
+Center Mannheim, Ruprecht-Karl University of Heidelberg, Mannheim, Germany.
+(8)Department of Dermatology, University Hospital Magdeburg, Germany.
+(9)Department of Dermatology, University Hospital Heidelberg, Germany.
+(10)Department of Dermatology, University Hospital Dresden, Germany.
+(11)Department of Dermatology and Allergology, Ludwig-Maximilian-University 
+(LMU) Munich, Germany.
+(12)Department of Dermatology, University Hospital Münster, Münster, Germany.
+(13)Department of Dermatology, University Hospital RWTH Aachen, Germany.
+(14)Department of Dermatology, University Hospital Würzburg, Germany.
+(15)III. Medical Department, Technische Universität München (TUM), Munich, 
+Germany.
+(16)Department of Dermatology, University Hospital Erlangen, 
+Friedrich-Alexander-University Erlangen-Nürnberg (FAU), Germany. Electronic 
+address: Lucie.Heinzerling@uk-erlangen.de.
+
+BACKGROUND: Anti-programmed cell death receptor-1 (PD-1) antibodies represent an 
+effective treatment option for metastatic melanoma as well as for other cancer 
+entities. They act via blockade of the PD-1 receptor, an inhibitor of the T-cell 
+effector mechanisms that limit immune responses against tumours. As reported for 
+ipilimumab, the anti-PD-1 antibodies pembrolizumab and nivolumab can induce 
+immune-related adverse events (irAEs). These side-effects affect skin, 
+gastrointestinal tract, liver, endocrine system and other organ systems. Since 
+life-threatening and fatal irAEs have been reported, adequate diagnosis and 
+management are essential.
+METHODS AND FINDINGS: In total, 496 patients with metastatic melanoma from 15 
+skin cancer centers were treated with pembrolizumab or nivolumab; 242 
+side-effects were described in 138 patients. In 116 of the 138 patients, 
+side-effects affected the skin, gastrointestinal tract, liver, endocrine, and 
+renal system. Rare side-effects included diabetes mellitus, lichen planus, and 
+pancreas insufficiency due to pancreatitis.
+CONCLUSION: Anti-PD1 antibodies can induce a plethora of irAEs. The knowledge of 
+them will allow prompt diagnosis and improve the management resulting in 
+decreased morbidity.
+
+Copyright © 2016 Elsevier Ltd. All rights reserved.
+
+DOI: 10.1016/j.ejca.2016.02.025
+PMID: 27085692 [Indexed for MEDLINE]

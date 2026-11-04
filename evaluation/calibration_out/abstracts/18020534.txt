@@ -1,0 +1,33 @@
+1. Drugs Aging. 2007;24(12):1017-29. doi: 10.2165/00002512-200724120-00005.
+
+Optimal vitamin D status for the prevention and treatment of osteoporosis.
+
+Holick MF(1).
+
+Author information:
+(1)Department of Medicine, Section of Endocrinology, Nutrition, and Diabetes, 
+Vitamin D, Skin and Bone Research Laboratory, Boston University Medical Center, 
+Boston, Massachusetts, USA.
+
+Vitamin D(3) (cholecalciferol) sufficiency is essential for maximising bone 
+health. Vitamin D enhances intestinal absorption of calcium and phosphorus. The 
+major source of vitamin D for both children and adults is exposure of the skin 
+to sunlight. Season, latitude, skin pigmentation, sunscreen use, clothing and 
+aging can dramatically influence the synthesis of vitamin D in the skin. Very 
+few foods naturally contain vitamin D or are fortified with vitamin D. Serum 
+25-hydroxyvitamin D [25(OH)D; calcifediol] is the best measure of vitamin D 
+status. Vitamin D deficiency [as defined by a serum 25(OH)D level of <50 nmol/L 
+(<20 ng/mL)] is pandemic. This deficiency is very prevalent in osteoporotic 
+patients. Vitamin D deficiency causes osteopenia, osteoporosis and osteomalacia, 
+increasing the risk of fracture. Unlike osteoporosis, which is a painless 
+disease, osteomalacia causes aching bone pain that is often misdiagnosed as 
+fibromyalgia or chronic pain syndrome or is simply dismissed as depression. 
+Vitamin D deficiency causes muscle weakness, increasing the risk of falls and 
+fractures, and should be aggressively treated with pharmacological doses of 
+vitamin D. Vitamin D sufficiency can be sustained by sensible sun exposure or 
+ingesting at least 800-1000 IU of vitamin D(3) daily. Patients being treated for 
+osteoporosis should be adequately supplemented with calcium and vitamin D to 
+maximise the benefit of treatment.
+
+DOI: 10.2165/00002512-200724120-00005
+PMID: 18020534 [Indexed for MEDLINE]

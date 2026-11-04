@@ -1,0 +1,56 @@
+1. Interact Cardiovasc Thorac Surg. 2013 Jul;17(1):96-102. doi: 
+10.1093/icvts/ivt124. Epub 2013 Mar 28.
+
+Balancing the benefits and risks of blood transfusions in patients undergoing 
+cardiac surgery: a propensity-matched analysis.
+
+Shaw RE(1), Johnson CK, Ferrari G, Zapolanski A, Brizzio M, Rioux N, Edara S, 
+Sperling J, Grau JB.
+
+Author information:
+(1)Valley Columbia Heart Center, Columbia University College of Physicians and 
+Surgeons, Ridgewood, NJ 07450, USA.
+
+Comment in
+    Interact Cardiovasc Thorac Surg. 2013 Jul;17(1):102. doi: 
+10.1093/icvts/ivt180.
+    Interact Cardiovasc Thorac Surg. 2013 Jul;17(1):103. doi: 
+10.1093/icvts/ivt201.
+
+OBJECTIVES: Prior studies have found that cardiac surgery patients receiving 
+blood transfusions are at risk for increased mortality and morbidity following 
+surgery. It is not clear whether this increased risk occurs across all 
+haematocrit (HCT) levels. The goal of this study was to compare operative 
+mortality in propensity-matched cardiac surgery patients based on stratification 
+of the preoperative HCT levels.
+METHODS: Between 1 August 2004 and 30 June 2011, 3516 patients had cardiac 
+surgery. One thousand nine hundred and twenty-two (54.5%) required blood 
+transfusion during or after surgery. A propensity score for transfusion was 
+developed based on 22 baseline variables. One thousand seven hundred and 
+fourteen patients were matched: 857 in the transfusion group (TG) and 857 in the 
+non-transfused control group (CG). Univariate analyses demonstrated that, after 
+propensity matching, the groups did not differ on any baseline factors included 
+in the propensity model. Operative mortality was defined as death within 30 days 
+of surgery. Preoperative HCT was stratified into four groups: <36, 36-39, 40-42 
+and ≥ 43.
+RESULTS: For HCT <36%, 30-day mortality was higher in the TG than that in the CG 
+(3.0 vs 0.0%). For HCT 36-39, operative mortality was similar between TG (1.1%, 
+N = 180) and CG (0.8%, N = 361; P = 0.748). For HCT 40-42, operative mortality 
+was significantly higher in the TG compared with that in the CG (1.9 vs 0%, N = 
+108 and 218, respectively; P = 0.044). For HCT of ≥ 43, there was a trend 
+towards higher operative mortality in the TG vs the CG (2.0 vs 0%, N = 102 and 
+152, respectively; P = 0.083). Other surgical complications followed the same 
+pattern with higher rates found in the transfused group at higher presurgery HCT 
+levels. HCT at discharge for the eight groups were similar, with an average of 
+29.1 ± 1.1% (P = 0.117).
+CONCLUSIONS: Our study indicates that a broad application of blood products 
+shows no discernible benefits. Furthermore, patients who receive blood at all 
+HCT levels may be placed at an increased risk of operative mortality and/or 
+other surgical complications. Paradoxically, even though patients with low HCTs 
+theoretically should benefit the most, transfusion was still associated with a 
+higher complication and mortality rate in these patients. Our results indicate 
+that blood transfusion should be used judiciously in cardiac surgery patients.
+
+DOI: 10.1093/icvts/ivt124
+PMCID: PMC3686393
+PMID: 23537850 [Indexed for MEDLINE]
