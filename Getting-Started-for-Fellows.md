@@ -45,3 +45,24 @@ adk web faithfulmed
 ```
 
 Then open `http://127.0.0.1:8000` in your browser. Stop the server with `Ctrl+C`.
+
+## Streamlit Pipeline Visualizer
+
+After completing the environment and API key setup above, run this from the
+repository root:
+
+```powershell
+python -m streamlit run streamlit_app.py
+```
+
+Open the local address printed in the terminal. The app starts with a fictional
+example note; enter a note and select **Run pipeline** to see agent outputs as
+they arrive. The verifier and refiner may each produce more than one output.
+Stop the server with `Ctrl+C`.
+
+This visualizer runs the current ADK scaffold, not a production medical system.
+Its final readability pass is not followed by another verification step.
+Use only fictional or approved de-identified notes: submitted text is sent to
+the configured model provider. A working API key, network access, and model
+quota are required. If a stage fails, the app shows the error and any partial
+outputs rather than marking the run as successful.

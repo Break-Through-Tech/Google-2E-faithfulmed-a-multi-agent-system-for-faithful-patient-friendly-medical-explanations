@@ -37,7 +37,7 @@ seaborn==0.13.2
 
 # ── Demo (December: HF Spaces or Cloud Run) ────────────────────────────
 gradio==6.26.0
-# streamlit            # alternative demo framework
+streamlit==1.51.0       # interactive pipeline visualizer
 
 # ── Optional alternatives ──────────────────────────────────────────────
 # langgraph            # alternative orchestration to ADK
