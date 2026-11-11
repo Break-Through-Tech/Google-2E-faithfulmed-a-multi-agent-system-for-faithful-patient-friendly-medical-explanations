@@ -2,9 +2,12 @@
 
 from contextlib import aclosing
 from dataclasses import dataclass, field
-from typing import Any, Callable
+from typing import Any, Callable, Literal
 
 from google.adk.agents import BaseAgent
+from google.adk.agents.callback_context import CallbackContext
+from google.adk.apps import App
+from google.adk.plugins import BasePlugin
 from google.adk.runners import Runner
 from google.adk.sessions import InMemorySessionService
 from google.genai import types
@@ -25,6 +28,8 @@ class PipelineResult:
     outputs: dict[str, list[Any]] = field(default_factory=dict)
     current_text: str | None = None
     last_verified_text: str | None = None
+    phase: Literal["idle", "running", "completed", "failed"] = "running"
+    active_stage: str | None = None
 
     def record(self, author: str, state_delta: dict[str, Any]) -> bool:
         key = STAGE_OUTPUTS.get(author)
@@ -39,6 +44,21 @@ class PipelineResult:
             self.last_verified_text = self.current_text
         self.outputs.setdefault(author, []).append(state_delta[key])
         return True
+
+
+class StageProgressPlugin(BasePlugin):
+    def __init__(self, result: PipelineResult, on_update: Callable[[PipelineResult], None]):
+        super().__init__(name="stage_progress")
+        self.result = result
+        self.on_update = on_update
+
+    async def before_agent_callback(
+        self, *, agent: BaseAgent, callback_context: CallbackContext
+    ) -> types.Content | None:
+        if agent.name in STAGE_OUTPUTS:
+            self.result.active_stage = agent.name
+            self.on_update(self.result)
+        return None
 
 
 async def run_pipeline(
@@ -58,7 +78,14 @@ async def run_pipeline(
 
     sessions = InMemorySessionService()
     session = await sessions.create_session(app_name="faithfulmed_ui", user_id="local_user")
-    runner = Runner(app_name="faithfulmed_ui", agent=agent, session_service=sessions)
+    runner = Runner(
+        app=App(
+            name="faithfulmed_ui",
+            root_agent=agent,
+            plugins=[StageProgressPlugin(result, on_update)],
+        ),
+        session_service=sessions,
+    )
     try:
         message = types.Content(role="user", parts=[types.Part.from_text(text=note)])
         async with aclosing(

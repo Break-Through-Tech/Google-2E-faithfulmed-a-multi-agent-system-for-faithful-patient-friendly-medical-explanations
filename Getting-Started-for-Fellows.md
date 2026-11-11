@@ -62,6 +62,10 @@ python -m streamlit run streamlit_app.py
 Open the local address printed in the terminal. The app starts with a fictional
 example note; enter a note and select **Run pipeline** to see agent outputs as
 they arrive. The verifier and refiner may each produce more than one output.
+The pipeline journey highlights the agent currently running, marks received
+outputs, and shows when the Refiner was skipped because no revision was
+requested. If the run fails, it distinguishes the failed stage from stages
+that were not reached.
 Stop the server with `Ctrl+C`.
 
 The readability section calculates Flesch-Kincaid grade and Flesch reading ease

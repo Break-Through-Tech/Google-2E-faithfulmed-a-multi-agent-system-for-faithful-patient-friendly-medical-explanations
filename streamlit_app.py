@@ -40,14 +40,55 @@ def display_value(value: object, *, formatted_text: bool = False) -> None:
         st.text(str(value))
 
 
+def refiner_was_skipped(result: PipelineResult) -> bool:
+    reports = result.outputs.get("Verifier", [])
+    return (
+        result.phase == "completed" and not result.outputs.get("Refiner")
+        and bool(reports) and isinstance(reports[-1], dict)
+        and reports[-1].get("needs_revision") is False
+    )
+
+
 def display_progress(result: PipelineResult) -> None:
+    st.subheader("Pipeline journey")
+    if result.phase == "idle":
+        st.caption("Ready to run. The current stage will be highlighted here.")
+    elif result.phase == "running":
+        label = STAGE_LABELS.get(result.active_stage, result.active_stage)
+        st.caption(f"Currently running: {label}" if label else "Preparing the pipeline...")
+    elif result.phase == "failed":
+        st.caption("The pipeline stopped. Completed outputs remain available below.")
+    else:
+        st.caption("Pipeline run complete.")
     columns = st.columns(len(STAGE_OUTPUTS))
-    for column, stage in zip(columns, STAGE_OUTPUTS):
+    for index, (column, stage) in enumerate(zip(columns, STAGE_OUTPUTS), start=1):
         count = len(result.outputs.get(stage, []))
         with column:
-            st.markdown(f"**{STAGE_LABELS.get(stage, stage)}**")
-            st.caption(f"Output received ({count})" if count else "Waiting for output")
-    st.caption("Verifier and Refiner run in a loop of up to two iterations.")
+            with st.container(border=True):
+                st.caption(f"STEP {index:02d}")
+                st.markdown(f"**{STAGE_LABELS.get(stage, stage)}**")
+                skipped = stage == "Refiner" and refiner_was_skipped(result)
+                if result.active_stage == stage and result.phase == "failed":
+                    st.badge("Failed", icon=":material/error:", color="red")
+                elif result.active_stage == stage and result.phase == "running":
+                    st.badge("Running", icon=":material/progress_activity:", color="blue")
+                elif count:
+                    st.badge("Output received", icon=":material/check_circle:", color="green")
+                elif skipped:
+                    st.badge("Skipped", icon=":material/skip_next:", color="gray")
+                elif result.phase == "failed":
+                    st.badge("Not reached", color="gray")
+                elif result.phase == "completed":
+                    st.badge("No output", color="gray")
+                else:
+                    st.badge("Waiting", color="gray")
+                if skipped:
+                    st.caption("No revision requested.")
+                elif count:
+                    st.caption(f"{count} output(s) received")
+                else:
+                    st.caption(STAGE_DESCRIPTIONS[stage])
+    st.caption("Verifier and Refiner may repeat up to twice; a green badge means output was received, not that it was approved.")
 
 
 def display_verifier_report(result: PipelineResult) -> None:
@@ -160,7 +201,10 @@ def display_results(result: PipelineResult) -> None:
         with st.expander(f"{STAGE_LABELS.get(stage, stage)} · {len(outputs)} output(s)"):
             st.caption(description)
             if not outputs:
-                st.write("No output received.")
+                if stage == "Refiner" and refiner_was_skipped(result):
+                    st.write("Skipped: the Verifier did not request a revision.")
+                else:
+                    st.write("No output received.")
             for index, value in enumerate(outputs, start=1):
                 if len(outputs) > 1:
                     st.markdown(f"**Output {index}**")
@@ -187,6 +231,10 @@ progress = st.empty()
 message = st.empty()
 results = st.empty()
 
+if "pipeline_result" not in st.session_state and not submitted:
+    with progress.container():
+        display_progress(PipelineResult(phase="idle"))
+
 if submitted:
     result = PipelineResult()
     st.session_state["pipeline_result"] = result
@@ -201,12 +249,16 @@ if submitted:
     update(result)
     if not note.strip():
         st.session_state["pipeline_error"] = "Enter a medical note before running the pipeline."
+        result.phase = "failed"
     else:
         try:
             with message.container():
                 with st.spinner("Running the pipeline. This can take a few minutes."):
                     asyncio.run(run_pipeline(note, result, update))
+            result.phase = "completed"
+            result.active_stage = None
         except Exception as exc:
+            result.phase = "failed"
             st.session_state["pipeline_error"] = f"{type(exc).__name__}: {exc}"
 
 if "pipeline_result" in st.session_state:

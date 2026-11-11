@@ -122,6 +122,7 @@ class PipelineRunnerTests(unittest.IsolatedAsyncioTestCase):
             ]),
         ])
         result = PipelineResult()
+        active_stages = []
         with (
             patch("faithfulmed.adk_pipeline.extract_atoms", return_value=extraction),
             patch("faithfulmed.adk_pipeline.build_grounding", return_value=[]),
@@ -134,12 +135,20 @@ class PipelineRunnerTests(unittest.IsolatedAsyncioTestCase):
                 RefinedOutput(refined_text="Second revision.", changes=[]),
             ]),
         ):
-            await run_pipeline("No nausea.", result, lambda _: None, pipeline)
+            await run_pipeline(
+                "No nausea.", result,
+                lambda current: active_stages.append(current.active_stage),
+                pipeline,
+            )
         self.assertEqual(verify.call_count, 2)
         self.assertEqual(len(result.outputs["Verifier"]), 2)
         self.assertEqual(result.outputs["Verifier"][-1]["total_facts"], 1)
         self.assertEqual(result.last_verified_text, "First revision.")
         self.assertEqual(result.current_text, "Second revision.")
+        stage_starts = [stage for i, stage in enumerate(active_stages) if i == 0 or stage != active_stages[i - 1]]
+        self.assertEqual(stage_starts, [
+            "Extractor", "Simplifier", "readability", "Verifier", "Refiner", "Verifier", "Refiner"
+        ])
 
 
 class StreamlitAppTests(unittest.TestCase):
@@ -152,6 +161,34 @@ class StreamlitAppTests(unittest.TestCase):
         app.button[0].click().run()
         self.assertIn("Enter a medical note", app.error[0].value)
         self.assertFalse(app.success)
+
+    def test_refiner_is_skipped_when_verifier_does_not_request_revision(self):
+        async def successful_run(note, result, on_update):
+            result.active_stage = "readability"
+            result.record("readability", {"text": "A sample explanation."})
+            result.active_stage = "Verifier"
+            result.record("Verifier", {"verdict": {"needs_revision": False}})
+            on_update(result)
+
+        with patch("faithfulmed.pipeline_ui.run_pipeline", successful_run):
+            app = AppTest.from_file("streamlit_app.py").run()
+            app.button[0].click().run()
+            self.assertFalse(app.exception)
+            self.assertTrue(any("Skipped" in item.value for item in app.markdown))
+            self.assertTrue(any("No revision requested." in item.value for item in app.caption))
+
+    def test_failed_stage_and_unreached_refiner_are_not_shown_as_skipped(self):
+        async def failed_run(note, result, on_update):
+            result.active_stage = "Verifier"
+            on_update(result)
+            raise RuntimeError("model unavailable")
+
+        with patch("faithfulmed.pipeline_ui.run_pipeline", failed_run):
+            app = AppTest.from_file("streamlit_app.py").run()
+            app.button[0].click().run()
+            self.assertTrue(any("Failed" in item.value for item in app.markdown))
+            self.assertTrue(any("Not reached" in item.value for item in app.markdown))
+            self.assertFalse(any("Skipped" in item.value for item in app.markdown))
 
     def test_success_and_failure_show_actual_outputs(self):
         explanation = (
