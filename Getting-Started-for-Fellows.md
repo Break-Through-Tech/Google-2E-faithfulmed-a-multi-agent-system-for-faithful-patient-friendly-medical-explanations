@@ -68,6 +68,9 @@ requested. If the run fails, it distinguishes the failed stage from stages
 that were not reached.
 Stop the server with `Ctrl+C`.
 
+The visualizer's default theme is in `.streamlit/config.toml` and its layout
+styles are in `faithfulmed/app.css`. Restart Streamlit after changing the theme.
+
 The readability section calculates Flesch-Kincaid grade and Flesch reading ease
 on the final output, including headings, and compares the grade with the
 project's grade 8 target. These automated estimates do not measure clinical

@@ -1,0 +1,108 @@
+/* Keep the content readable on large displays without constraining small screens. */
+.stMainBlockContainer {
+    max-width: 90rem;
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+}
+
+.stApp {
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+h1, h2, h3 {
+    letter-spacing: -0.035em;
+}
+
+.st-key-page_header h1 {
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 1.05;
+    font-weight: 750;
+    padding-bottom: 0.3rem;
+}
+
+.st-key-page_header [data-testid="stCaptionContainer"] p {
+    color: inherit;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.st-key-page_header p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+[data-testid="stForm"] {
+    border-radius: 1.1rem;
+    padding: 1.3rem;
+    border-color: color-mix(in srgb, currentColor 18%, transparent);
+    background: color-mix(in srgb, currentColor 3%, transparent);
+}
+
+[data-testid="stTextArea"] textarea {
+    border-radius: 0.7rem;
+    line-height: 1.6;
+}
+
+[data-testid="stBaseButton-primaryFormSubmit"] {
+    border-radius: 0.65rem;
+    padding: 0.6rem 1.4rem;
+    font-weight: 650;
+}
+
+[data-testid="stAlert"] {
+    border-radius: 0.75rem;
+}
+
+[data-testid="stHorizontalBlock"] {
+    gap: 0.8rem;
+}
+
+[data-testid="stVerticalBlockBorderWrapper"] > div {
+    border-radius: 0.9rem;
+    background: color-mix(in srgb, currentColor 3%, transparent);
+    border-color: color-mix(in srgb, currentColor 16%, transparent);
+    height: 100%;
+}
+
+[data-testid="stCaptionContainer"] {
+    line-height: 1.45;
+}
+
+[data-testid="stMetric"] {
+    border: 1px solid color-mix(in srgb, currentColor 16%, transparent);
+    border-radius: 0.85rem;
+    padding: 1rem 1.1rem;
+    background: color-mix(in srgb, currentColor 3%, transparent);
+}
+
+[data-testid="stMetricValue"] {
+    font-weight: 650;
+    letter-spacing: -0.035em;
+}
+
+[data-testid="stExpander"] {
+    border-radius: 0.75rem;
+}
+
+@media (max-width: 1000px) {
+    [data-testid="stHorizontalBlock"] {
+        flex-wrap: wrap;
+    }
+
+    [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {
+        flex: 1 1 12rem;
+        min-width: 12rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .stMainBlockContainer {
+        padding: 2rem 1rem 3rem;
+    }
+
+    [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {
+        flex-basis: 100%;
+        min-width: 0;
+    }
+}
