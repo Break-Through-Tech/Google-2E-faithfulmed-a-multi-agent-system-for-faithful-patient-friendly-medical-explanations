@@ -1,0 +1,43 @@
+1. Transfusion. 2011 Oct;51(10):2148-59. doi: 10.1111/j.1537-2995.2011.03134.x. 
+Epub 2011 Apr 19.
+
+Association of admission hematocrit with 6-month and 1-year mortality in 
+intensive care unit patients.
+
+Mudumbai SC(1), Cronkite R, Hu KU, Wagner T, Hayashi K, Ozanne GM, Davies MF, 
+Heidenreich P, Bertaccini E.
+
+Author information:
+(1)Anesthesiology Service, Center for Health Care Evaluation, VA Palo Alto HCS, 
+Palo Alto, California, USA. mudumbai@stanford.edu
+
+BACKGROUND: This study examined the association of hematocrit (Hct) levels 
+measured upon intensive care unit (ICU) admission and red blood cell 
+transfusions to long-term (1-year or 180-day) mortality for both surgical and 
+medical patients.
+STUDY DESIGN AND METHODS: Administrative and laboratory data were collected 
+retrospectively on 2393 consecutive medical and surgical male patients admitted 
+to the ICU between 2003 and 2009. We stratified patients based on their median 
+Hct level during the first 24 hours of their ICU stay (Hct < 25.0%, 25% ≤ Hct < 
+30%, 30% ≤ Hct < 39%, and 39.0% and higher). An extended Cox regression analysis 
+was conducted to identify the time period after ICU admission (0 to <180, 180 to 
+365 days) when low Hct (<25.0) was most strongly associated with mortality. The 
+unadjusted and adjusted relationship between admission Hct level, receipt of a 
+transfusion, and 180-day mortality was assessed using Cox proportional hazards 
+regression modeling.
+RESULTS: Patients with an Hct level of less than 25% who were not transfused had 
+the worst mortality risk overall (hazard ratio [HR], 6.26; 95% confidence 
+interval [CI], 3.05-12.85; p < 0.001) during the 6 months after ICU admission 
+than patients with a Hct level of 39.0% or more who were not transfused. Within 
+the subgroup of patients with a Hct level of less than 25% only, receipt of a 
+transfusion was associated with a significant reduction in the risk of mortality 
+(HR, 0.40; 95% CI, 0.19-0.85; p = 0.017).
+CONCLUSION: Anemia of a Hct level of less than 25% upon admission to the ICU, in 
+the absence of a transfusion, is associated with long-term mortality. Our study 
+suggests that there may be Hct levels below which the transfusion 
+risk-to-benefit imbalance reverses.
+
+© 2011 American Association of Blood Banks.
+
+DOI: 10.1111/j.1537-2995.2011.03134.x
+PMID: 21985048 [Indexed for MEDLINE]

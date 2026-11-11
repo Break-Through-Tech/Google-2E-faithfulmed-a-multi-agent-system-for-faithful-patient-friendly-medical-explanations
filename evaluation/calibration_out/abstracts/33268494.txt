@@ -1,0 +1,68 @@
+1. Proc Natl Acad Sci U S A. 2020 Dec 22;117(51):32648-32656. doi: 
+10.1073/pnas.2014096117. Epub 2020 Dec 2.
+
+Consumptive coagulopathy of severe yellow fever occurs independently of 
+hepatocellular tropism and massive hepatic injury.
+
+Bailey AL(1), Kang LI(2), de Assis Barros D'Elia Zanella LGF(3)(4), Silveira 
+CGT(3), Ho YL(5), Foquet L(6), Bial G(6), McCune BT(7), Duarte-Neto AN(8), 
+Thomas A(9), Raué HP(9), Byrnes K(2), Kallas EG(5), Slifka MK(9), Diamond 
+MS(1)(7)(10)(11).
+
+Author information:
+(1)Department of Pathology and Immunology, Washington University School of 
+Medicine, St. Louis, MO 63110; adam.bailey@wustl.edu diamond@wusm.wustl.edu.
+(2)Department of Pathology and Immunology, Washington University School of 
+Medicine, St. Louis, MO 63110.
+(3)Division of Clinical Immunology and Allergy, School of Medicine, University 
+of São Paulo, Sao Paulo, Brazil 01246 903.
+(4)State Civil Servant's Hospital, São Paulo, Brazil 04028-000.
+(5)Department of Infectious and Parasitic Diseases, School of Medicine, 
+University of São Paulo, Sao Paulo, Brazil 01246 903.
+(6)Yecuris Corporation, Tualatin, OR 97062.
+(7)Department of Medicine, Washington University School of Medicine, St. Louis, 
+MO 63110.
+(8)Department of Pathology, Clinical Hospital, School of Medicine, University of 
+São Paulo, Sao Paulo, Brazil 01246 903.
+(9)Division of Neuroscience, Oregon National Primate Research Center, Oregon 
+Health & Science University, Beaverton, OR 97006.
+(10)Department of Molecular Microbiology, Washington University School of 
+Medicine, St. Louis, MO 63110.
+(11)The Andrew M. and Jane M. Bursky Center for Human Immunology and 
+Immunotherapy Programs, Washington University School of Medicine, St. Louis, MO 
+63110.
+
+Yellow fever (YF) is a mosquito-transmitted viral disease that causes tens of 
+thousands of deaths each year despite the long-standing deployment of an 
+effective vaccine. In its most severe form, YF manifests as a hemorrhagic fever 
+that causes severe damage to visceral organs. Although coagulopathy is a 
+defining feature of severe YF in humans, the mechanism by which it develops 
+remains uncertain. Hepatocytes are a major target of yellow fever virus (YFV) 
+infection, and the coagulopathy in severe YF has long been attributed to massive 
+hepatocyte infection and destruction that results in a defect in clotting factor 
+synthesis. However, when we analyzed blood from Brazilian patients with severe 
+YF, we found high concentrations of plasma D-dimer, a fibrin split product, 
+suggestive of a concurrent consumptive process. To define the relationship 
+between coagulopathy and hepatocellular tropism, we compared infection and 
+disease in Fah-/-, Rag2-/-, and Il2rɣ-/- mice engrafted with human hepatocytes 
+(hFRG mice) and rhesus macaques using a highly pathogenic African YFV strain. 
+YFV infection of macaques and hFRG mice caused substantial hepatocyte infection, 
+liver damage, and coagulopathy as defined by virological, clinical, and 
+pathological criteria. However, only macaques developed a consumptive 
+coagulopathy whereas YFV-infected hFRG mice did not. Thus, infection of cell 
+types other than hepatocytes likely contributes to the consumptive coagulopathy 
+associated with severe YF in primates and humans. These findings expand our 
+understanding of viral hemorrhagic disease and associated coagulopathy and 
+suggest directions for clinical management of severe YF cases.
+
+Copyright © 2020 the Author(s). Published by PNAS.
+
+DOI: 10.1073/pnas.2014096117
+PMCID: PMC7768776
+PMID: 33268494 [Indexed for MEDLINE]
+
+Conflict of interest statement: Competing interest statement: M.S.D. is a 
+consultant for Inbios, Eli Lilly, Vir Biotechnology, NGM Biopharmaceuticals, and 
+is on the Scientific Advisory Board of Moderna and Immunome. The Diamond 
+laboratory has received funding unrelated to this project under sponsored 
+research agreements from Moderna, Vir Biotechnology, and Emergent BioSolutions.

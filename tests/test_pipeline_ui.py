@@ -100,7 +100,7 @@ class PipelineRunnerTests(unittest.IsolatedAsyncioTestCase):
     async def test_integrated_pipeline_loop_exposes_real_report_and_last_refinement(self):
         from faithfulmed.adk_pipeline import ExtractAtomsStep, RefineStep, SimplifyStep, VerifyStep
         from faithfulmed.agents.extractor import ExtractionRecord, StoredAtom
-        from faithfulmed.agents.refiner import RefinedOutput
+        from faithfulmed.agents.refiner import Change, RefinedOutput
         from faithfulmed.agents.simplifier import SimplifiedOutput
         from faithfulmed.agents.verifier import VerifierJudgment, build_report
 
@@ -128,7 +128,9 @@ class PipelineRunnerTests(unittest.IsolatedAsyncioTestCase):
             patch("faithfulmed.adk_pipeline.simplify", return_value=draft),
             patch("faithfulmed.adk_pipeline.verify", return_value=report) as verify,
             patch("faithfulmed.adk_pipeline.refine", side_effect=[
-                RefinedOutput(refined_text="First revision.", changes=[]),
+                RefinedOutput(refined_text="First revision.", changes=[
+                    Change(problem_id="C1", old_text="Readable draft.", new_text="First revision."),
+                ]),
                 RefinedOutput(refined_text="Second revision.", changes=[]),
             ]),
         ):

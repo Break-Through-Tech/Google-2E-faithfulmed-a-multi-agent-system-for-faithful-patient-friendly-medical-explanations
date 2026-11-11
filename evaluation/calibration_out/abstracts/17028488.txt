@@ -1,0 +1,31 @@
+1. J Clin Hypertens (Greenwich). 2006 Oct;8(10):731-7. doi: 
+10.1111/j.1524-6175.2006.05939.x.
+
+Drug interactions and drugs that affect blood pressure.
+
+Elliott WJ(1).
+
+Author information:
+(1)Department of Preventive Medicine, Rush Medical College of Rush University at 
+Rush University Medical Center, Chicago, IL 60612, USA. welliott@rush.edu
+
+Many antihypertensive drugs have important interactions with drugs used for 
+different purposes; when these are used concomitantly, adverse effects on blood 
+pressure can result. Fortunately, in recent years, the drug development process 
+has generally discouraged the approval and marketing of antihypertensive drugs 
+with this problem, although some anomalies still exist (eg, telmisartan + 
+digoxin). Physicians who work in emergency departments are more familiar with 
+illicit or unregulated drugs that affect blood pressure; chief among these are 
+cocaine and other opioids, and methylphenidate and its congeners. The most 
+important prescription drugs that affect blood pressure are the nonsteroidal 
+anti-inflammatory drugs (including selective inhibitors of the second isoform of 
+cyclooxygenase) and steroids. Phenylpropanolamines, some antidepressants, and 
+sibutramine can often be avoided, as they raise blood pressure in a significant 
+proportion of those who take them. Conversely, the hypertensive effects of 
+calcineurin inhibitors and erythropoietin are most commonly overcome by 
+increasing the intensity of antihypertensive drug treatment, since these drugs 
+are essentially unavoidable in most patients who receive them.
+
+DOI: 10.1111/j.1524-6175.2006.05939.x
+PMCID: PMC8109496
+PMID: 17028488 [Indexed for MEDLINE]

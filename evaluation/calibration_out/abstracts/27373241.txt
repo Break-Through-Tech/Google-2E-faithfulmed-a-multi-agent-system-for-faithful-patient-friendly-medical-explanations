@@ -1,0 +1,50 @@
+1. J Dtsch Dermatol Ges. 2016 Jul;14(7):662-81. doi: 10.1111/ddg.13047.
+
+Management of side effects of immune checkpoint blockade by anti-CTLA-4 and 
+anti-PD-1 antibodies in metastatic melanoma.
+
+Kähler KC(1), Hassel JC(2), Heinzerling L(3), Loquai C(4), Mössner R(5), Ugurel 
+S(6), Zimmer L(6), Gutzmer R(7); “Cutaneous Side Effects” Committee of the Work 
+Group Dermatological Oncology (ADO).
+
+Author information:
+(1)Department of Dermatology, Venereology, and Allergology, University Hospital 
+Schleswig-Holstein, Campus Kiel, Kiel, Germany.
+(2)Department of Dermatology, and National Cancer Center, University Hospital 
+Heidelberg, Heidelberg, Germany.
+(3)Department of Dermatology, University Hospital Erlangen, Erlangen, Germany.
+(4)Department of Dermatology, Medical Faculty, University of Mainz, Mainz, 
+Germany.
+(5)Department of Dermatology, Venereology, and Allergology, University Medicine 
+Göttingen, Göttingen, Germany.
+(6)Department of Dermatology, Venereology and Allergology, University Hospital 
+Essen, Essen, Germany.
+(7)Hanover Skin Cancer Center, Department of Dermatology, Venereology, and 
+Allergology, Hanover Medical College, Hanover, Germany.
+
+CTLA-4 and PD-1 are potential targets for tumor-induced downregulation of 
+lymphocytic immune responses. Immune checkpoint-modifying monoclonal antibodies 
+oppose these effects, inducing T cell-mediated immune responses to various 
+tumors including melanoma. Both anti-CTLA-4 and anti-PD-1 antibodies modify the 
+interaction between tumor, antigen-presenting cells, and T lymphocytes. With 
+respect to overall survival, clinical studies have shown a major benefit for the 
+anti-CTLA-4 antibody ipilimumab as well as the two anti-PD-1 antibodies 
+nivolumab and pembrolizumab. Following approval of ipilimumab in 2011, the 
+latter two achieved market authorization in the summer of 2015. Immune responses 
+thus induced and enhanced inevitably entail autoimmune phenomena, affecting 
+various organs to varying degrees. Knowledge of these side effects is crucial 
+with regard to prevention and management by treating physicians. Typically 
+occurring early on and presenting with pronounced and persistent diarrhea, 
+colitis represents a major and severe side effect. Other immune-mediated 
+disorders include dermatitis, hypophysitis, thyroiditis, hepatitis, 
+iridocyclitis as well as other less common autoimmune phenomena. Early 
+recognition and initiation of treatment can reduce risks and sequelae for 
+patients. This review describes the mechanisms of action of immune checkpoint 
+blockade as well as its clinical effects in metastatic melanoma, with a detailed 
+focus on the spectrum of adverse events and their therapeutic management.
+
+© 2016 Deutsche Dermatologische Gesellschaft (DDG). Published by John Wiley & 
+Sons Ltd.
+
+DOI: 10.1111/ddg.13047
+PMID: 27373241 [Indexed for MEDLINE]

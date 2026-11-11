@@ -1,0 +1,41 @@
+1. J Sleep Res. 2021 Dec;30(6):e13357. doi: 10.1111/jsr.13357. Epub 2021 Apr 18.
+
+Infant diurnal cortisol predicts sleep.
+
+Tuladhar CT(1), Schwartz S(2), St John AM(1), Meyer JS(3), Tarullo AR(1).
+
+Author information:
+(1)Department of Psychological and Brain Sciences, Boston University, Boston, 
+MA, USA.
+(2)Graduate Program for Neuroscience, Boston University School of Medicine, 
+Boston, MA, USA.
+(3)Department of Psychological and Brain Sciences, University of Massachusetts, 
+Amherst, MA, USA.
+
+The sleep-wake system is immature at birth and develops in parallel with the 
+hypothalamic-pituitary-adrenal axis, a biological stress system of which the end 
+product is cortisol. Perturbations in one system during infancy can 
+maladaptively influence the maturation of the other system, leading to lasting 
+sleep and cortisol system dysregulation and heightening the risk of enduring 
+health problems. To better understand the early interplay between these systems, 
+we examined whether actigraphy-derived measures of night-time sleep duration and 
+onset were associated with cumulative exposure to cortisol, indexed by hair 
+cortisol concentration, in 12-month-old children. Overall, early sleep onset 
+predicted lower hair cortisol above and beyond sleep duration, family income and 
+chaos experienced at home. Furthermore, both sleep and cortisol levels vary day 
+to day, and temporal dependencies between daily sleep and cortisol regulation 
+are not well understood. Thus, we assessed how the sleep characteristics on a 
+particular evening related to salivary cortisol levels the following day and how 
+daytime and evening cortisol related to the sleep characteristics on the same 
+night. Lower total exposure to cortisol on a particular day was related to 
+longer night-time sleep duration the same night, but not sleep onset. Lower 
+salivary cortisol levels on a given evening related to earlier sleep onset the 
+same night, but not to night-time sleep duration. Sleep duration and onset on a 
+given night were unrelated to total cortisol exposure the following day. 
+Findings suggest that in early development, the day-to-day relation between 
+sleep and cortisol is not bidirectional, but more driven by diurnal cortisol.
+
+© 2021 European Sleep Research Society.
+
+DOI: 10.1111/jsr.13357
+PMID: 33870573 [Indexed for MEDLINE]

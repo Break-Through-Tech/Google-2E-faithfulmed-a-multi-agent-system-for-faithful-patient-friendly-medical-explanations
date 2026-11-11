@@ -1,0 +1,976 @@
+{
+  "134|M3|4|24997032": {
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "The exact cause is unknown, but it is believed to be related to a combination of factors, including genetic predisposition, sensomotoric dysfunction, altered enteric inflammation, and immune activation, as well as disturbance of the brain-gut interaction.",
+        "label": "unsupported",
+        "evidence": "Not mentioned in the original source.",
+        "severity": "major"
+      }
+    ]
+  },
+  "135|M18|1|38015369": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "If you are prescribed thyroid medications but don't take them, you may experience a range of negative consequences, including poor growth and development, compromised brain and physical function, increased risk of cardiovascular disease, obesity, hypertension, poor physical capacity, and poor quality of life.",
+        "label": "supported",
+        "evidence": "In children and adolescents, the most devastating consequences of undertreatment with levothyroxine (LT4) are poor growth and development. [...] In young to middle-aged adults, [...] resulting consequences are also at this age group compromised brain and physical function [...] higher risk of, e.g., increased cardiovascular disease burden, obesity, hypertension, poor physical capacity, and poor quality of life.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "134|M20|6|28403981": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "A stepwise management approach is often advocated, starting with general management principles and progressing to pharmacotherapy and combination therapies as needed.",
+        "label": "supported",
+        "evidence": "A stepwise management approach is advocated for patients with IBS.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "154|M24|8|25607119": {
+    "verifier": "contradicted",
+    "claims": [
+      {
+        "claim": "Overall, incorporating these breathing exercises can provide significant symptomatic relief and improve respiratory function.",
+        "label": "distorted",
+        "evidence": "Studies have demonstrated that SK can play an important role in promoting a healthy lifestyle by improving immunity, antioxidant status, hormonal status, and brain functioning.",
+        "severity": "major"
+      }
+    ]
+  },
+  "130|M26|6|26066290": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Furthermore, OS is implicated in the increased cardiovascular risk and metabolic complications seen in PCOS, highlighting its significant role in the syndrome's pathophysiology.",
+        "label": "supported",
+        "evidence": "Polycystic ovarian syndrome (PCOS) is a complex endocrine condition which is associated with metabolic and cardiovascular complications... depicts the participation of OS in the pathophysiology of this common derangement.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "133|M3|4|37900072": {
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "However, the impact of surgery on fertility can be minimized by selecting the appropriate surgery for the patient, careful tissue handling, limited use of electrosurgery, and employing microsurgical techniques with advanced laparoscopic or robotic surgery, which can simplify complex minimally invasive fertility-sparing procedures.",
+        "label": "unsupported",
+        "evidence": "Not mentioned in the original source.",
+        "severity": "major"
+      }
+    ]
+  },
+  "144|M9|7|20148501": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Treatment should be gradual and involve appropriate follow-up over weeks to months to reach desired blood pressure goals.",
+        "label": "supported",
+        "evidence": "High blood pressure should be treated gradually. Appropriate, repeated follow-up over weeks to months is needed to reach desired blood pressure goals.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "127|M8|5|35537048": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "It can be delivered safely and effectively to multiple organs, providing long-lasting benefits without significant side effects.",
+        "label": "supported",
+        "evidence": "Intranasal and injectable preparations performed equally well in safely and efficiently delivering gene therapy to multiple organs, with long-lasting benefits and without carcinogenicity or unwanted side effects.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "130|M10|5|36786429": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Furthermore, oxidative stress negatively impacts ovarian function, leading to issues such as abnormal follicular development and ovulation disorders.",
+        "label": "supported",
+        "evidence": "Excessive oxidative stress and apoptosis of ovarian granulosa cells lead to abnormal follicular development and ovulation disorders in polycystic ovary syndrome (PCOS).",
+        "severity": "minor"
+      }
+    ]
+  },
+  "120|M10|3|29381971": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "In some cases, it can be associated with cranial nerve deficits, which may include hearing loss.",
+        "label": "supported",
+        "evidence": "Cranial nerve deficits, including left facial paralysis, left facial numbness and left hearing loss, were evident on examination.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "142|M2|4|33666764": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Calcium channel blockers, particularly diltiazem and verapamil, are significant inhibitors of cytochrome P450 3A4, leading to potential drug interactions with various antihypertensives.",
+        "label": "supported",
+        "evidence": "Data has established the calcium channel blockers, namely, diltiazem and verapamil, as potent inhibitors of CYP3A4, and the majority of significant drug interactions involving antihypertensives are attributable to these two agents.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "123|M6|5|18435798": {
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "Molecular analysis of FBN1 is essential for confirming the diagnosis and guiding clinical management.",
+        "label": "background",
+        "evidence": "",
+        "severity": "minor"
+      }
+    ]
+  },
+  "131|M9|1|22779932": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Formoterol, a long-acting beta2-agonist, can cause various side effects, including hoarseness, dry mouth, headache, and dizziness.",
+        "label": "supported",
+        "evidence": "The most of the adverse events were associated with fixed inhaled formoterol-budesonide combination and inhaled tiotropium. The most frequently reported reactions were hoarseness, xerostomia, headache and dizziness.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "120|M18|2|32007456": {
+    "verifier": "contradicted",
+    "claims": [
+      {
+        "claim": "It can also be a symptom of a more serious underlying condition such as multiple sclerosis, malignancy, stroke, cervical artery dissection, rupture of a normal spleen, or other conditions that can cause cough-induced complications affecting various systems of the body.",
+        "label": "distorted",
+        "evidence": "Other seemingly benign entities may mask a serious underlying pathology (eg, cough headache, cough syncope).",
+        "severity": "major"
+      }
+    ]
+  },
+  "151|M2|5|34716992": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Dry skin conditions can also result from various endogenous or exogenous factors, leading to a rough and scaly skin surface.",
+        "label": "supported",
+        "evidence": "Many endogenous or exogenous factors, isolated or combined, can trigger dry skin disorder, leading to a water/lipids-depleted stratum corneum concomitant with uncomfortable rough and scaly skin surface.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "119|M8|4|24249758": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Roflumilast has been shown to reduce exacerbations and improve lung function, particularly in patients with chronic bronchitis.",
+        "label": "supported",
+        "evidence": "use of roflumilast was associated with reduced COPD exacerbations and improved lung function, as determined by spirometry, with the greatest benefits observed in patients with severe COPD who had chronic bronchitis",
+        "severity": "minor"
+      }
+    ]
+  },
+  "148|M20|2|16634245": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "In some cases, easy bruising may be a sign of an underlying condition that requires medical attention.",
+        "label": "supported",
+        "evidence": "These tools should permit the clinician to decide if the patient is either basically normal, may have simple contributing factors that lead to bruising, or is at significant risk of bleeding due to the presence of an underlying disorder.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "120|M20|3|29404361": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Additionally, it can be a manifestation of lateral medullary syndrome, also known as Wallenberg syndrome, which is caused by a stroke in the lateral part of the medulla oblongata.",
+        "label": "supported",
+        "evidence": "Lateral medullary syndrome (LMS), also known as Wallenberg's syndrome, PICA syndrome, results from occlusion of the posterior inferior cerebellar artery, with associated infarction of parts of medulla oblongata",
+        "severity": "minor"
+      }
+    ]
+  },
+  "136|M24|8|20003341": {
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "Cetylated fatty acid cream with menthol and transcutaneous electrical nerve stimulation can alleviate pain in conditions like tennis elbow.",
+        "label": "unsupported",
+        "evidence": "Not mentioned in the original source.",
+        "severity": "major"
+      }
+    ]
+  },
+  "143|M12|5|36970913": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Advance care planning, including discussions about end-of-life care and placement, can help individuals with Huntington's disease to make informed decisions about their care.",
+        "label": "supported",
+        "evidence": "Advance care planning (ACP) is a useful tool that benefits adult patients, care providers, and surrogate decision makers, through providing opportunities for patients to consider, express, and formalize their beliefs, preferences, and wishes pertaining to decisions regarding future medical care at a time when they retain decision-making capacity.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "136|M16|3|21253755": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "However, in refractory cases, surgical interventions like arthroscopic release with debridement or percutaneous release of the common extensor origin may be necessary.",
+        "label": "supported",
+        "evidence": "Surgical release of the common extensor origin can be done through an open, percutaneous, or arthroscopic approach.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "131|M17|3|15707858": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "High doses of formoterol can cause a decrease in plasma potassium levels, increased serum glucose levels, and small increases in mean QTc interval.",
+        "label": "supported",
+        "evidence": "Both formoterol and salbutamol were associated with decreased plasma potassium... increased serum glucose... and small increases in mean QTc interval",
+        "severity": "minor"
+      }
+    ]
+  },
+  "143|M6|3|26098083": {
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "Rehabilitation tailored to disease stages, such as aerobic and resistance exercises in early stages and task-specific training in middle stages, can mitigate symptom severity and improve functional status.",
+        "label": "unsupported",
+        "evidence": "",
+        "severity": "major"
+      }
+    ]
+  },
+  "143|M2|6|23480977": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Additionally, intensive neurorehabilitation may lessen disability and delay motor dysfunction progression, contributing positively to life quality.",
+        "label": "supported",
+        "evidence": "intensive neurorehabilitation lessens patients' disability and improves their quality of life ameliorating autonomy and delaying the progression of motor dysfunction.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "116|M13|4|33659106": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Quitting smoking and alcohol consumption can also be beneficial.",
+        "label": "supported",
+        "evidence": "Quitting alcohol and smoking... are the modifications to benefit people.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "120|M7|1|24799517": {
+    "verifier": "contradicted",
+    "claims": [
+      {
+        "claim": "Left-sided facial numbness can be caused by various conditions, including viral infections like varicella-zoster virus reactivation, which can lead to facial pain, swelling, and rash.",
+        "label": "distorted",
+        "evidence": "A 57-year-old man developed 3 days of left facial pain and swelling with left-sided hearing loss followed by a painful, unilateral, erythematous, and vesicular rash...",
+        "severity": "major"
+      }
+    ]
+  },
+  "134|M15|2|35869354": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "The pathophysiology of IBS includes disordered gut motility, alterations in gut microbiota, neural-hormonal system abnormalities, immune reactivity, and visceral hypersensitivity.",
+        "label": "supported",
+        "evidence": "The pathophysiology of irritable bowel syndrome (IBS) includes disordered gut motility, alterations in gut microbiota, neural-hormonal system abnormalities, immune reactivity, and visceral hypersensitivity.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "154|M26|5|22460377": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "For patients with paradoxical vocal fold motion or dysfunctional breathing, respiratory retraining exercises can effectively reduce symptoms and improve breathing patterns.",
+        "label": "supported",
+        "evidence": "The results suggest that non-pulmonary related shortness of breath treated with respiratory retraining can effectively eliminate dyspnea in patients with long term breathing difficulties caused by paradoxical vocal fold motion.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "116|M1|5|28126502": {
+    "verifier": "contradicted",
+    "claims": [
+      {
+        "claim": "Furthermore, alternative treatments such as hypoglossal nerve stimulation, body positioning, and oxygen treatment may also be effective.",
+        "label": "distorted",
+        "evidence": "Electrical stimulation of the hypoglossal nerve is a promising treatment approach for moderate to severe OSAHS. Avoiding the supine position during sleep and reducing the overnight rostral fluid shift from the legs to the neck can also achieve a partial improvement of sleep-disordered breathing.",
+        "severity": "major"
+      }
+    ]
+  },
+  "130|M20|3|21667435": {
+    "verifier": "contradicted",
+    "claims": [
+      {
+        "claim": "PCOS patients have higher levels of oxidative stress markers, such as malondialdehyde, and lower levels of antioxidants, such as glutathione, compared to healthy women.",
+        "label": "distorted",
+        "evidence": "Both plasma SOD and GPX activity showed no statistically significant difference between PCOS and controls.",
+        "severity": "major"
+      }
+    ]
+  },
+  "154|M11|4|27220949": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "The article does not provide a specific breathing technique to help slow down breathing and make it more relaxed.",
+        "label": "supported",
+        "evidence": "They described six main strategies for coping with episodes of breathlessness: reduction of physical exertion, cognitive and psychological strategies, breathing techniques and positions, air and oxygen, drugs and medical devices, and environmental and other strategies.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "131|M26|6|16303295": {
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "While formoterol is generally well-tolerated, its safety profile necessitates careful monitoring, especially at higher doses or in vulnerable populations.",
+        "label": "background",
+        "evidence": "",
+        "severity": "minor"
+      }
+    ]
+  },
+  "144|M12|2|20845760": {
+    "verifier": "contradicted",
+    "claims": [
+      {
+        "claim": "If your blood pressure is 130/80 mmHg or higher, your doctor may consider starting you on medication, especially if you have other risk factors for cardiovascular disease, such as diabetes, kidney disease, or a history of cardiovascular disease.",
+        "label": "distorted",
+        "evidence": "Diagnostic level for hypertension in clinic is > or = 140/90mmHg.",
+        "severity": "major"
+      }
+    ]
+  },
+  "129|M18|3|34854616": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Stopping metoprolol abruptly is not particularly associated with emergent bradycardia.",
+        "label": "supported",
+        "evidence": "Stopping metoprolol abruptly is not particularly associated with emergent bradycardia.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "130|M16|5|36279177": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Furthermore, oxidative stress has been linked to insulin resistance, a common feature of PCOS, and may contribute to the development of cardiovascular disease and other metabolic complications.",
+        "label": "supported",
+        "evidence": "This review focuses on characteristic markers of OS in PCOS and the relationship between OS and PCOS related to insulin resistance (IR), hyperandrogenemia, obesity, chronic inflammation, cardiovascular diseases, and cancer.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "127|M23|2|16143811": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "However, there has been no significant breakthrough in these two forms of therapy.",
+        "label": "supported",
+        "evidence": "there has been no significant breakthrough in these two forms of therapy.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "142|M20|1|30052747": {
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "Nonsteroidal anti-inflammatory drugs (NSAIDs), steroids, phenylpropanolamines, some antidepressants, and sibutramine can often be avoided, as they raise blood pressure in a significant proportion of those who take them.",
+        "label": "background",
+        "evidence": "",
+        "severity": "minor"
+      }
+    ]
+  },
+  "136|M24|8|23999980": {
+    "verifier": "contradicted",
+    "claims": [
+      {
+        "claim": "Cetylated fatty acid cream with menthol and transcutaneous electrical nerve stimulation can alleviate pain in conditions like tennis elbow.",
+        "label": "distorted",
+        "evidence": "OBJECTIVE: To investigate the effectiveness of supplementing information and advice on analgesia and exercise from a general practitioner with transcutaneous electrical nerve stimulation (TENS) as a non-drug form of analgesia to reduce pain intensity in patients with tennis elbow. CONCLUSIONS: This trial does not provide evidence for additional benefit of TENS as an adjunct to primary care management of tennis elbow.",
+        "severity": "major"
+      }
+    ]
+  },
+  "131|M24|4|23722615": {
+    "verifier": "contradicted",
+    "claims": [
+      {
+        "claim": "Life-threatening asthma episodes are a serious risk associated with formoterol use.",
+        "label": "distorted",
+        "evidence": "We conclude that this enlarged dataset indicates no increased risk of asthma-related deaths among patients exposed to formoterol compared with non-LABA treatments",
+        "severity": "major"
+      }
+    ]
+  },
+  "125|M7|1|31555556": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Tamsulosin is primarily used to treat lower urinary tract symptoms (LUTS) associated with benign prostatic hyperplasia (BPH) as it is the most popular uroselective alpha adrenoceptor antagonist for this condition.",
+        "label": "supported",
+        "evidence": "Tamsulosin remains the single most popular uroselective alpha adrenoceptor antagonist approved for the treatment of lower urinary tract symptoms (LUTS) attributable to benign prostatic hyperplasia (BPH).",
+        "severity": "minor"
+      }
+    ]
+  },
+  "131|M18|3|16892777": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Actually the text does not mention that the side effects are not significant.",
+        "label": "supported",
+        "evidence": "Clinical data also demonstrate that formoterol is safe and well tolerated even in high doses, with an adverse event profile similar to that of SABAs.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "142|M24|8|32918434": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Rifampin interacts with antihypertensive drugs, potentially altering their effectiveness.",
+        "label": "supported",
+        "evidence": "We postulate that rifampicin has attenuated the therapeutic effect of amlodipine via potent induction of hepatic CYP3A4",
+        "severity": "minor"
+      }
+    ]
+  },
+  "131|M7|1|23744625": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "The side effects of using formoterol include an increased number of asthma-related events in children, although this finding was not statistically significant.",
+        "label": "supported",
+        "evidence": "Although a greater number of asthma-related events were reported in children receiving regular formoterol, this finding was not statistically significant (Peto OR 1.49, 95% CI 0.48 to 4.61, low-quality evidence).",
+        "severity": "minor"
+      }
+    ]
+  },
+  "142|M21|1|25618128": {
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "Nonsteroidal anti-inflammatory drugs (NSAIDs), steroids, oestroprogestinic agents, immunosuppressants, erythropoietin, inhibitors of angiogenesis, anti-HIV agents, and some high-density lipoprotein-raising agents can cause hypertension and/or blunt the effect of antihypertensive treatment.",
+        "label": "background",
+        "evidence": "",
+        "severity": "minor"
+      }
+    ]
+  },
+  "148|M24|8|24426797": {
+    "verifier": "contradicted",
+    "claims": [
+      {
+        "claim": "Bruising can sometimes be a sign of physical abuse in children and the elderly.",
+        "label": "distorted",
+        "evidence": "Bruises commonly occur in children and are most often the result of a minor accidental injury. However, bruises can also signal an underlying medical illness or an inflicted injury (maltreatment). Although bruising is the most common manifestation of child physical maltreatment...",
+        "severity": "major"
+      }
+    ]
+  },
+  "136|M23|1|25213605": {
+    "verifier": "contradicted",
+    "claims": [
+      {
+        "claim": "The guidelines suggest that rehabilitation clinicians can use transcutaneous electrical nerve stimulation (TENS) as a patient-controlled adjunct to primary care management for tennis elbow to provide superior pain relief.",
+        "label": "distorted",
+        "evidence": "TENS conferred no additional clinical benefit over primary care management... TENS as an adjunct to primary care management failed to show any additional pain relief compared with primary care management alone.",
+        "severity": "major"
+      }
+    ]
+  },
+  "133|M16|5|26213861": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "The complexity of the surgery, including the use of advanced techniques such as single-port access laparoscopy, may also impact ovarian reserve.",
+        "label": "supported",
+        "evidence": "Surgical technique of endometrioma excision impacts on the ovarian reserve. Single-port access laparoscopy versus multiport access laparoscopy: a case control study.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "154|M8|6|16281658": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Controlled breathing techniques, including PLB and DB, are often included in rehabilitation programs for COPD patients.",
+        "label": "supported",
+        "evidence": "Breathing techniques are included in the rehabilitation program of patients with chronic obstructive pulmonary disease (COPD).",
+        "severity": "minor"
+      }
+    ]
+  },
+  "130|M26|1|23303572": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Polycystic ovary syndrome (PCOS) is strongly linked to oxidative stress (OS), with numerous studies indicating elevated levels of oxidative biomarkers in affected women.",
+        "label": "supported",
+        "evidence": "Circulating markers of oxidative stress are abnormal in women with PCOS independent of weight excess. This finding suggests that oxidative stress may participate in the pathophysiology of this common disorder.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "119|M30|3|35853985": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "The snippets mention salmeterol, but do not provide enough information to determine its popularity or effectiveness in stage 4 COPD specifically.",
+        "label": "supported",
+        "evidence": "The most classic treatment recommended in the current chronic obstructive pulmonary disease (COPD) guidelines is glucocorticoid and \u03b22 receptor agonist combination, such as salmeterol xinafoate and fluticasone propionate (Sal/Flu)...",
+        "severity": "minor"
+      }
+    ]
+  },
+  "133|M19|4|23768623": {
+    "verifier": "contradicted",
+    "claims": [
+      {
+        "claim": "Long-term effects are less clear, with some studies suggesting a sustained reduction in ovarian reserve , while others indicate some recovery over time.",
+        "label": "distorted",
+        "evidence": "The reduction is immediate and sustained over time.",
+        "severity": "major"
+      }
+    ]
+  },
+  "142|M11|1|30052747": {
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "Nonsteroidal anti-inflammatory drugs (NSAIDs), steroids, phenylpropanolamines, some antidepressants, and sibutramine can often be avoided, as they raise blood pressure in a significant proportion of those who take them.",
+        "label": "background",
+        "evidence": "",
+        "severity": "minor"
+      }
+    ]
+  },
+  "131|M4|2|18321744": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "High doses of formoterol may cause systemic effects such as decreased plasma potassium, increased serum glucose, and small increases in mean QTc interval.",
+        "label": "supported",
+        "evidence": "Formoterol caused a significantly greater decrease in serum potassium than BDP/formoterol or placebo... For glucose, the mean maximum increase after formoterol treatment was 0.4 mmol/l... high cumulative doses of the HFA modulite beclomethasone dipropionate/formoterol combination inhaler in asthmatic patients",
+        "severity": "minor"
+      }
+    ]
+  },
+  "130|M16|1|37337194": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Polycystic ovary syndrome (PCOS) is indeed linked to oxidative stress, as evidenced by multiple studies.",
+        "label": "supported",
+        "evidence": "Polycystic ovary syndrome (PCOS) is often accompanied by increased oxidative stress levels",
+        "severity": "minor"
+      }
+    ]
+  },
+  "129|M17|1|16223079": {
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "Abrupt cessation of metoprolol can cause various side effects, including central nervous system complications such as confusion, fatigue, lightheadedness, nightmares, sleep disturbance, and gait problems.",
+        "label": "background",
+        "evidence": "",
+        "severity": "minor"
+      }
+    ]
+  },
+  "134|M4|3|34128613": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Diagnosis is typically made on clinical grounds, using symptom-based criteria such as the Rome criteria, and excluding organic disease.",
+        "label": "supported",
+        "evidence": "Patients who meet symptom-based criteria and have no alarm features may be confidently diagnosed with few, if any, additional tests.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "142|M18|2|17028488": {
+    "verifier": "contradicted",
+    "claims": [
+      {
+        "claim": "Sibutramine is unlikely to cause a critical increase in blood pressure",
+        "label": "distorted",
+        "evidence": "Phenylpropanolamines, some antidepressants, and sibutramine can often be avoided, as they raise blood pressure in a significant proportion of those who take them.",
+        "severity": "major"
+      },
+      {
+        "claim": "blood pressure and heart rate should be monitored closely",
+        "label": "unsupported",
+        "evidence": "Not mentioned in the original source.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "136|M29|1|18656765": {
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "For severe elbow pain, initial treatment should be conservative and may include rest, nonsteroidal anti-inflammatory drugs (NSAIDs), physical therapy, use of splints, and local injections.",
+        "label": "background",
+        "evidence": "",
+        "severity": "minor"
+      }
+    ]
+  },
+  "148|M2|3|27177185": {
+    "verifier": "contradicted",
+    "claims": [
+      {
+        "claim": "Additionally, bleeding disorders, which are prevalent in the elderly, can lead to an increased tendency to bruise.",
+        "label": "distorted",
+        "evidence": "Bleeding disorders are common.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "136|M7|2|30658050": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Both interventions have shown to result in clinically meaningful improvements in pain intensity and function over time.",
+        "label": "supported",
+        "evidence": "Following this intervention, the patient experienced clinically meaningful improvement in pain intensity (numeric pain-rating scale), function (Patient-Rated Tennis Elbow Evaluation), and related disability",
+        "severity": "minor"
+      }
+    ]
+  },
+  "123|M20|1|27437668": {
+    "verifier": "contradicted",
+    "claims": [
+      {
+        "claim": "FBN1 mutation refers to a change in the fibrillin-1 gene, which encodes a protein essential for the formation of elastic fibers found in connective tissue.",
+        "label": "distorted",
+        "evidence": "FBN1 encodes the gene for fibrillin-1, a structural macromolecule that polymerizes into microfibrils. Fibrillin microfibrils are morphologically distinctive fibrils, present in all connective tissues",
+        "severity": "minor"
+      }
+    ]
+  },
+  "154|M11|6|34866434": {
+    "verifier": "contradicted",
+    "claims": [
+      {
+        "claim": "Additionally, you can try using a handheld fan to blow air on your face, which can help reduce the sensation of breathlessness.",
+        "label": "distorted",
+        "evidence": "The pooled results demonstrated no significant difference in breathlessness severity between fan-to-face blowing and control methods... however, a significant reduction in breathlessness severity was observed in the short-time intervention compared with long-time intervention.",
+        "severity": "major"
+      }
+    ]
+  },
+  "127|M20|4|18337227": {
+    "verifier": "contradicted",
+    "claims": [
+      {
+        "claim": "It has been used to treat various diseases, including genetic disorders, cancer, and cardiovascular diseases.",
+        "label": "distorted",
+        "evidence": "While originally conceived as a way to treat life-threatening disorders (inborn errors, cancers) refractory to conventional treatment, gene therapy now is considered for many non-life-threatening conditions",
+        "severity": "major"
+      }
+    ]
+  },
+  "131|M1|1|20477219": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Common side effects of formoterol include tremors, palpitations, and increased heart rate.",
+        "label": "supported",
+        "evidence": "Common side effects of formoterol include tremors, palpitations, and increased heart rate.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "133|M12|2|36499748": {
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "Short-term effects include damage to the ovarian reserve, which can lead to a decrease in the number of eggs available for fertilization.",
+        "label": "unsupported",
+        "evidence": "Not mentioned in the original source.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "123|M21|3|21976953": {
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "The mutation can result in a range of symptoms, from mild to severe, including tall stature, arachnodactyly, ectopia lentis, and thoracic aortic aneurysm and dissection.",
+        "label": "background",
+        "evidence": "",
+        "severity": "minor"
+      }
+    ]
+  },
+  "129|M17|4|28539824": {
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "In some cases, it can also lead to a rapid increase in blood pressure to pre-treatment levels or above, or both, and/or myocardial ischemia.",
+        "label": "unsupported",
+        "evidence": "",
+        "severity": "major"
+      }
+    ]
+  },
+  "136|M30|1|24784124": {
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "Severe elbow pain can be addressed through various therapeutic strategies, including evaluation for potential underlying causes such as arthritis or injury.",
+        "label": "unsupported",
+        "evidence": "Not mentioned in the original source.",
+        "severity": "major"
+      }
+    ]
+  },
+  "143|M30|2|37038822": {
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "While the provided context does not directly address specific strategies for living with the disease, it highlights the importance of support systems, such as family and clinical trials, which can provide resources and community for those affected.",
+        "label": "unsupported",
+        "evidence": "",
+        "severity": "minor"
+      }
+    ]
+  },
+  "120|M19|1|21614764": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Left-sided facial numbness can be caused by various conditions, including aneurysms of the vertebral artery cerebellopontine angle meningiomas congenital absence of the internal carotid artery and adenoid cystic carcinoma of the maxillary sinus.",
+        "label": "supported",
+        "evidence": "Left-sided facial numbness can be caused by various conditions, including aneurysms of the vertebral artery cerebellopontine angle meningiomas congenital absence of the internal carotid artery and adenoid cystic carcinoma of the maxillary sinus.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "125|M15|1|31469636": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Tamsulosin is used for the treatment of benign prostatic hyperplasia (BPH).",
+        "label": "supported",
+        "evidence": "men currently not using prescription medications for benign prostatic hyperplasia (BPH) but interested in self-directed use of over-the-counter (OTC) tamsulosin",
+        "severity": "minor"
+      }
+    ]
+  },
+  "129|M17|1|29381909": {
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "Abrupt cessation of metoprolol can cause various side effects, including central nervous system complications such as confusion, fatigue, lightheadedness, nightmares, sleep disturbance, and gait problems.",
+        "label": "unsupported",
+        "evidence": "",
+        "severity": "major"
+      }
+    ]
+  },
+  "119|M24|6|27576232": {
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "Triple therapy is particularly recommended for COPD patients with persistent symptoms, moderate to severe COPD, and clinically significant symptoms and exacerbations.",
+        "label": "unsupported",
+        "evidence": "Not mentioned in the original source.",
+        "severity": "major"
+      }
+    ]
+  },
+  "124|M3|5|34487597": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "In asymptomatic patients, there is no established indication for any tests apart from calculation of a global cardiovascular risk based on traditional risk factors and initiation of primary preventive measures if appropriate.",
+        "label": "supported",
+        "evidence": "In asymptomatic patients, there is no established indication for any tests apart from calculation of a global cardiovascular risk based on traditional risk factors and initiation of primary preventive measures if appropriate.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "127|M18|3|15881698": {
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "Gene therapy can be used to repair or replace a faulty gene, introduce a new function, or interfere with an existing function.",
+        "label": "background",
+        "evidence": "",
+        "severity": "minor"
+      }
+    ]
+  },
+  "123|M28|4|37994127": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Additionally, mutations in genes like FBN1 can have variable effects depending on the specific mutation and other genetic factors, which may influence the severity and range of symptoms.",
+        "label": "supported",
+        "evidence": "Additionally, mutations in genes like FBN1 can have variable effects depending on the specific mutation and other genetic factors, which may influence the severity and range of symptoms.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "123|M20|3|28442527": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "The mutation can result in a range of symptoms, including tall stature, long limbs and fingers, heart problems, and eye issues.",
+        "label": "supported",
+        "evidence": "A nine-year-old girl was referred to our pediatric endocrinology clinic for tall stature. Physical examination revealed a lens dislocation with strabismus, high palate, positive wrist and thumb signs, joint hypermobility, and pes planus. Transthoracic echocardiography revealed dilatation of the aortic root.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "127|M24|7|18294288": {
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "It can inhibit cellular proliferation and migration, contributing to its anti-cancer properties.",
+        "label": "unsupported",
+        "evidence": "Not mentioned in the original source.",
+        "severity": "major"
+      }
+    ]
+  },
+  "127|M11|4|18337227": {
+    "verifier": "contradicted",
+    "claims": [
+      {
+        "claim": "It has been used to treat various diseases, including genetic disorders, cancer, and cardiovascular diseases.",
+        "label": "distorted",
+        "evidence": "While originally conceived as a way to treat life-threatening disorders (inborn errors, cancers) refractory to conventional treatment, gene therapy now is considered for many non-life-threatening conditions...",
+        "severity": "major"
+      }
+    ]
+  },
+  "124|M3|4|34487597": {
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "Non-invasive tests are typically used in patients with intermediate pre-test probability, and in patients with high pre-test probability, they are helpful for risk stratification.",
+        "label": "unsupported",
+        "evidence": "",
+        "severity": "minor"
+      }
+    ]
+  },
+  "120|M18|1|18280947": {
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "Left-sided facial numbness can be caused by various conditions, including neoplastic pathology, infection, and compression of the trigeminal nerve.",
+        "label": "background",
+        "evidence": "",
+        "severity": "minor"
+      }
+    ]
+  },
+  "151|M24|3|17414434": {
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "Seborrheic dermatitis, a chronic inflammatory condition, also causes erythematous scaly skin.",
+        "label": "unsupported",
+        "evidence": "Not mentioned in the original source.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "143|M29|4|35193564": {
+    "verifier": "contradicted",
+    "claims": [
+      {
+        "claim": "Coping strategies, such as acceptance, emotional support, planning, and active coping, can be effective in managing the condition.",
+        "label": "distorted",
+        "evidence": "Among the most used CSs was support (social and emotional) seeking.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "120|M26|3|31723507": {
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "Neoplastic causes such as meningiomas, adenoid cystic carcinoma, and metastatic tumors can also compress cranial nerves or brain structures, resulting in facial numbness.",
+        "label": "background",
+        "evidence": "",
+        "severity": "minor"
+      }
+    ]
+  },
+  "134|M26|7|26491416": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Emerging therapies and probiotics show promise but require further validation.",
+        "label": "supported",
+        "evidence": "Ongoing research is evaluating the use of probiotics. Research is continuing to optimize the use of available agents and evaluating new approaches to further improve the care of patients with IBS.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "144|M24|4|15834689": {
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "For diabetics and those with chronic kidney disease (CKD), treatment is recommended for BP \u2265130/80 mmHg.",
+        "label": "supported",
+        "evidence": "The therapeutic objective in patients with diabetes mellitus is a blood pressure level of 130/80 mmHg and in patients with kidney disease and proteinuria 125/75 mmHg.",
+        "severity": "minor"
+      }
+    ]
+  },
+  "127|M4|2|17577203": {
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "It involves the transfer of genetic material into a cell, tissue, or whole organ to cure or alleviate a disease.",
+        "label": "background",
+        "evidence": "",
+        "severity": "minor"
+      }
+    ]
+  },
+  "148|M28|3|29851199": {
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "This is because such conditions may involve factors that affect the blood vessels, skin, or the body's ability to repair itself.",
+        "label": "unsupported",
+        "evidence": "Not mentioned in the original source.",
+        "severity": "minor"
+      }
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+1. Med Hypothesis Discov Innov Ophthalmol. 2019 Fall;8(3):163-176.
+
+Persistent Corneal Epithelial Defects: A Review Article.
+
+Vaidyanathan U(1), Hopping GC(1), Liu HY(1), Somani AN(1), Ronquillo YC(2), 
+Hoopes PC(2), Moshirfar M(2)(3)(4).
+
+Author information:
+(1)McGovern Medical School, Health Science Center, University of Texas, Houston, 
+TX, USA.
+(2)Hoopes Durrie Rivera Research Center, Hoopes Vision, Draper, UT, USA.
+(3)John A. Moran Eye Center, Department of Ophthalmology and Visual Sciences, 
+School of Medicine, University of Utah Salt Lake City, UT, USA.
+(4)Utah Lions Eye Bank, Murray, UT, USA.
+
+Persistent corneal epithelial defects (PEDs or PCEDs) result from the failure of 
+rapid re-epithelialization and closure within 10-14 days after a corneal injury, 
+even with standard supportive treatment. Disruptions in the protective 
+epithelial and stromal layers of the cornea can render the eye susceptible to 
+infection, stromal ulceration, perforation, scarring, and significant vision 
+loss. Although several therapies exist and an increasing number of novel 
+approaches are emerging, treatment of PEDs can still be quite challenging. It is 
+important to treat the underlying causative condition, which may include an 
+infection, limbal stem cell deficiency, or diabetes, in order to facilitate 
+wound healing. Standard treatments, such as bandage contact lenses (BCLs) and 
+artificial tears (ATs), aim to provide barrier protection to the epithelial 
+layer. Recently-developed medical treatments can target the re-epithelialization 
+process by facilitating access to growth factors and anti-inflammatory agents, 
+and novel surgical techniques can provide re-innervation to the cornea. PEDs 
+should be treated within 7-10 days to avoid secondary complications. These 
+interventions, along with a step-wise approach to management, can be useful in 
+patients with PEDs that are refractory to standard medical treatment. In this 
+review, we discuss the epidemiology, etiology, diagnosis, current and novel 
+management, and prognosis of persistent epithelial defects.
+
+© 2019, Author(s).
+
+PMCID: PMC6778469
+PMID: 31598519
+
+Conflict of interest statement: Ethical issues have been completely observed by 
+the authors. All named authors meet the International Committee of Medical 
+Journal Editors (ICMJE) criteria for authorship of this manuscript, take 
+responsibility for the integrity of the work as a whole, and have given final 
+approval for the version to be published. No conflict of interest has been 
+presented.

@@ -1,0 +1,43 @@
+1. Cureus. 2019 Sep 24;11(9):e5746. doi: 10.7759/cureus.5746.
+
+Lung Carcinoma Presenting as a Superior Vena Cava Syndrome, Burnt and Twice 
+Reborn as Adrenal and Facial Tumors.
+
+Young K(1), Friedman E(2).
+
+Author information:
+(1)Internal Medicine, Ross University School of Medicine, Tampa, USA.
+(2)Oncology/hematology, United Oncology Medical Associates, Miami, USA.
+
+Eighty-five percent of all lung cancers are Non-Small-Cell Lung Carcinoma 
+(NSCLC) with common sites of metastasis to the adrenal glands and liver. Onset 
+is insidious, and seventy-five percent of patients have either regional or 
+distant metastases at initial presentation. The five-year relative survival rate 
+is four and a half percent with a distantly spread disease based on recent 
+studies. Here we present a unique case of a ten-year survival with NSCLC 
+initially presenting as a Superior Vena Cava Syndrome and reoccurring with 
+adrenal gland, bone, and CNS lesions. The patient presented with SVC caused by 
+lung cancer and underwent chemo and radiotherapy with complete response in 2010. 
+Five years later, the same cancer returned disguised as an adrenal tumor. In 
+2017, the patient came in with facial neuropathy, shooting pains, sinus 
+headaches, eyelid concerns, and active tumoral activity was detected in the 
+middle cranial fossa, involving parotid glands and the vertebral column. 
+Craniotomy revealed a metastatic poorly differentiated adenocarcinoma that 
+extended through foramen ovale and rotundum to the infratemporal fossa and 
+caused left-sided facial paralysis, hearing loss and numbness in CN V2 - V3 
+distribution. Considering that the patient has experienced several recurrences 
+of disease on standard protocols and is not a candidate for targeted molecular 
+therapies, an immunotherapy trial was suggested as the next step. The natural 
+history of this disease is remarkable in terms of metastatic sites, 
+paraneoplastic manifestations, and a substantially prolonged lifespan. Thus, 
+more studies of similar cases will advance our understanding of tumor genetics 
+and immunotherapy allowing the greater benefit to future patients.
+
+Copyright © 2019, Young et al.
+
+DOI: 10.7759/cureus.5746
+PMCID: PMC6825460
+PMID: 31723507
+
+Conflict of interest statement: The authors have declared that no competing 
+interests exist.

@@ -1,0 +1,36 @@
+1. Eur Respir J. 2014 Jan;43(1):103-14. doi: 10.1183/09031936.00004713. Epub 2013
+ May 30.
+
+Safety of formoterol in asthma clinical trials: an update.
+
+Sears MR(1), Radner F.
+
+Author information:
+(1)St Joseph's Healthcare and McMaster University, Hamilton, ON, Canada.
+
+Comment in
+    Eur Respir J. 2014 Jan;43(1):6-9. doi: 10.1183/09031936.00193813.
+
+Use of long-acting β-agonists (LABAs) in asthma remains controversial, and large 
+safety trials are in progress. We have previously reported safety outcomes with 
+formoterol in 117 AstraZeneca asthma trials (78,339 patients, 92% using inhaled 
+corticosteroids) completed by December 2006, and have now added 32 trials with 
+formoterol (26,124 patients, 100% using inhaled corticosteroids) completed by 
+December 2011. The primary dataset of 79 randomised controlled trials includes 
+94,684 patients, 67,380 of whom were exposed to formoterol, while the complete 
+dataset comprises 149 trials and 104,463 patients. There were no new 
+asthma-related deaths in the expanded primary dataset, with eight asthma-related 
+deaths among formoterol-randomised patients and two among non-LABA-randomised 
+patients (relative risk 1.13, 95% CI 0.23-10.9), and 15 versus nine 
+cardiac-related deaths (relative risk 0.47, 95% CI 0.19-1.22). Nonfatal 
+asthma-related serious adverse events were significantly reduced with formoterol 
+(relative risk 0.63, 95% CI 0.53-0.75), as were discontinuations due to adverse 
+events. Examining 40 trials with direct formoterol versus non-LABA comparisons, 
+Mantel-Haenszel relative risk for asthma-related death was 2.75 (95% CI 
+0.52-14.4) and for serious adverse events 0.83 (95% CI 0.68-1.02). We conclude 
+that this enlarged dataset indicates no increased risk of asthma-related deaths 
+among patients exposed to formoterol compared with non-LABA treatments, although 
+the wide confidence interval precludes certainty.
+
+DOI: 10.1183/09031936.00004713
+PMID: 23722615 [Indexed for MEDLINE]

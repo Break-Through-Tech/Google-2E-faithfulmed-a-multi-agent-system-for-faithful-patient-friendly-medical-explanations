@@ -1,0 +1,33 @@
+1. Health Psychol Rev. 2021 Mar;15(1):56-84. doi: 10.1080/17437199.2020.1760727. 
+Epub 2020 Jul 7.
+
+Meditation interventions efficiently reduce cortisol levels of at-risk samples: 
+a meta-analysis.
+
+Koncz A(1), Demetrovics Z(2), Takacs ZK(3).
+
+Author information:
+(1)Doctoral School of Psychology, ELTE Eötvös Loránd University, MTA-ELTE 
+Lendület Adaptation Research Group, Budapest, Hungary.
+(2)Institute of Psychology, ELTE Eötvös Loránd University, Budapest, Hungary.
+(3)Institute of Education, ELTE Eötvös Loránd University; MTA-ELTE Lendület 
+Adaptation Research Group, Budapest, Hungary.
+
+Previous meta-analytic results showed beneficial effects of meditation 
+interventions for cortisol levels. In the present meta-analysis we tested 
+whether effects are larger for those who might be in need of such stress 
+reduction programs due to a risk for elevated cortisol levels as compared to 
+no-risk samples. We included RCTs that measured change in cortisol levels. Based 
+on 10 studies using blood samples meditation interventions had a significant, 
+medium effect from pre-to post-test compared to the control group. Upon closer 
+inspection, this effect was only present for at-risk samples, that is, patients 
+with a somatic illness. In the 21 studies using saliva samples the effect was 
+small and not significant, but there was a marginally significant effect for 
+groups living in stressful life situations. This pattern may suggest that that 
+meditation interventions are most beneficial for at-risk populations. These 
+interventions might provide people with strategies of stress management that can 
+contribute to well-being. Preliminary results suggest that benefits of 
+meditation interventions might not fade with time.
+
+DOI: 10.1080/17437199.2020.1760727
+PMID: 32635830 [Indexed for MEDLINE]

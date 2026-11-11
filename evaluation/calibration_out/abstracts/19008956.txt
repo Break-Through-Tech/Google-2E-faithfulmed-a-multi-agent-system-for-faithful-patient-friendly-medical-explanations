@@ -1,0 +1,40 @@
+1. PLoS Genet. 2008 Nov;4(11):e1000263. doi: 10.1371/journal.pgen.1000263. Epub 
+2008 Nov 14.
+
+Aging predisposes oocytes to meiotic nondisjunction when the cohesin subunit 
+SMC1 is reduced.
+
+Subramanian VV(1), Bickel SE.
+
+Author information:
+(1)Department of Biological Sciences, Dartmouth College, Hanover, NH, USA.
+
+In humans, meiotic chromosome segregation errors increase dramatically as women 
+age, but the molecular defects responsible are largely unknown. Cohesion along 
+the arms of meiotic sister chromatids provides an evolutionarily conserved 
+mechanism to keep recombinant chromosomes associated until anaphase I. One 
+attractive hypothesis to explain age-dependent nondisjunction (NDJ) is that loss 
+of cohesion over time causes recombinant homologues to dissociate prematurely 
+and segregate randomly during the first meiotic division. Using Drosophila as a 
+model system, we have tested this hypothesis and observe a significant increase 
+in meiosis I NDJ in experimentally aged Drosophila oocytes when the cohesin 
+protein SMC1 is reduced. Our finding that missegregation of recombinant 
+homologues increases with age supports the model that chiasmata are destabilized 
+by gradual loss of cohesion over time. Moreover, the stage at which Drosophila 
+oocytes are most vulnerable to age-related defects is analogous to that at which 
+human oocytes remain arrested for decades. Our data provide the first 
+demonstration in any organism that, when meiotic cohesion begins intact, the 
+aging process can weaken it sufficiently and cause missegregation of recombinant 
+chromosomes. One major advantage of these studies is that we have reduced but 
+not eliminated the SMC1 subunit. Therefore, we have been able to investigate how 
+aging affects normal meiotic cohesion. Our findings that recombinant chromosomes 
+are at highest risk for loss of chiasmata during diplotene argue that human 
+oocytes are most vulnerable to age-induced loss of meiotic cohesion at the stage 
+at which they remain arrested for several years.
+
+DOI: 10.1371/journal.pgen.1000263
+PMCID: PMC2577922
+PMID: 19008956 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors have declared that no competing 
+interests exist.

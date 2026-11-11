@@ -1,0 +1,43 @@
+1. Transfus Apher Sci. 2004 Aug;31(1):55-66. doi: 10.1016/j.transci.2004.06.002.
+
+Current status of transfusion triggers for red blood cell concentrates.
+
+Hardy JF(1).
+
+Author information:
+(1)Département d'anesthésiolgie, Université de Montréal, CP 6128, succursale 
+Centre-ville, Canada, QC, 1H3C 3J7. jean-francois.hardy@umontreal.ca
+
+Clinical practice guidelines on red blood cell transfusion (RBC) are based on 
+expert opinion, animal studies and the few human trials available. Twelve 
+randomized controlled trials on the benefits of RBC transfusions in humans have 
+been published. In the absence of definitive outcome studies, numerous 
+theoretical arguments have been put forward in favor or against the classic 
+transfusion threshold of 100 g/l. However, data from randomized controlled 
+trials suggest that overall morbidity (including cardiac) and mortality, 
+hemodynamic, pulmonary and oxygen transport variables are not different between 
+restrictive (transfusion threshold between 70 and 80 g/l) and liberal 
+transfusion strategies and that a restrictive transfusion strategy is not 
+associated with increased adverse outcomes. In fact, a restrictive strategy may 
+be associated with decreased adverse outcomes in younger and less sick critical 
+care patients. The majority of existing guidelines conclude that transfusion is 
+rarely indicated when the hemoglobin concentration is greater than 100 g/l and 
+is almost always indicated when it falls below a threshold of 60 g/l in healthy, 
+stable patients or more in older, sicker patients. In anesthetized patients, 
+this threshold should be modulated by factors related to the dynamic nature of 
+surgery such as uncontrolled hemorrhage, microvascular bleeding, etc. Another 
+important role of RBC relates to primary hemostasis and higher triggers may be 
+appropriate in coagulopathic patients. RBC concentrates are administered to 
+correct inadequate oxygen delivery and/or to sustain primary hemostasis. 
+Reliable monitors of tissue oxygenation and hemostasis will be required to study 
+the benefits (or lack thereof) of RBC transfusions. The quest for a universal 
+transfusion trigger, i.e., one that would be applicable to patients of all ages 
+under all circumstances, must be abandoned. All RBC transfusions must be 
+tailored to the patient's needs, at the moment the need arises. In conclusion 
+published recommendations are commensurate with existing knowledge and, 
+unfortunately, their conclusions are limited. Future research and development 
+should focus on the determination of optimal transfusion strategies in various 
+patient populations and on reliable monitors to guide transfusion therapy.
+
+DOI: 10.1016/j.transci.2004.06.002
+PMID: 15294196 [Indexed for MEDLINE]

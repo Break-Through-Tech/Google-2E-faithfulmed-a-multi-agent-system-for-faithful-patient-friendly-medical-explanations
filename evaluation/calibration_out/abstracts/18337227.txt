@@ -1,0 +1,30 @@
+1. Toxicol Pathol. 2008 Jan;36(1):97-103. doi: 10.1177/0192623307309925.
+
+Gene therapy: some history, applications, problems, and prospects.
+
+Cotrim AP(1), Baum BJ.
+
+Author information:
+(1)National Institute of Dental and Craniofacial Research, NIH, DHHS, Bethesda, 
+Maryland 20892-1190, USA. acotrim@nidcr.nih.gov.
+
+The concept of transferring genes to tissues for clinical applications has been 
+discussed for nearly half a century, but our ability to manipulate genetic 
+material via recombinant DNA technology has brought this goal to reality. While 
+originally conceived as a way to treat life-threatening disorders (inborn 
+errors, cancers) refractory to conventional treatment, gene therapy now is 
+considered for many non-life-threatening conditions, including those adversely 
+affecting a patient's quality of life. The lack of suitable treatment has become 
+a rational basis for extending the scope of gene therapy. This manuscript 
+reviews the general methods by which genes are transferred as well as diverse 
+examples of clinical applications (acquired tissue damage, upper 
+gastrointestinal tract infection, autoimmune disease, systemic protein 
+deficiency). Despite some well-publicized problems, gene therapy has made 
+substantive progress, including tangible success, albeit much slower than was 
+initially predicted. Although gene therapy is still at a fairly primitive stage, 
+it is firmly science based. There is justifiable optimism that with increased 
+pathobiological understanding and biotechnological improvements, gene therapy 
+will become a standard part of clinical practice within 20 years.
+
+DOI: 10.1177/0192623307309925
+PMID: 18337227 [Indexed for MEDLINE]

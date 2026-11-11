@@ -1,0 +1,26 @@
+1. Med J Malaysia. 2020 Sep;75(5):591-593.
+
+Resistant hypertension during antituberculosis treatment: how is rifampicin 
+implicated?
+
+Lee SL(1), Lim WJ(1), Chai ST(2).
+
+Author information:
+(1)Hospital Sultanah Aminah Johor Bahru, Department of Medicine, Johor, 
+Malaysia.
+(2)Hospital Sultanah Aminah Johor Bahru, Department of Medicine, Johor, 
+Malaysia. chaishuteng@gmail.com.
+
+A 67-year-old mental institute resident was treated for smear-positive pulmonary 
+tuberculosis. His background history included chronic essential hypertension 
+which was well-controlled with amlodipine 10mg daily. However, his blood 
+pressure became suboptimal one week into antitubercular treatment, necessitating 
+escalation of antihypertensive therapy up to six medications. Following 
+completion of antitubercular treatment, his blood pressure improved markedly. 
+The number of antihypertensives was able to be reduced to only two after a 
+month. We postulate that rifampicin has attenuated the therapeutic effect of 
+amlodipine via potent induction of hepatic CYP3A4 but the failure to control the 
+blood pressure even with medications unrelated to cytochrome P450 pathways 
+raises the spectre of an additional interaction.
+
+PMID: 32918434 [Indexed for MEDLINE]

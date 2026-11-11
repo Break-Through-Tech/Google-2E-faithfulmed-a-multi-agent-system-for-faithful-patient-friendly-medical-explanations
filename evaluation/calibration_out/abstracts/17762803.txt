@@ -1,0 +1,47 @@
+1. Spine (Phila Pa 1976). 2007 Sep 1;32(19):2041-9. doi: 
+10.1097/BRS.0b013e318145a386.
+
+Physiotherapy-based rehabilitation following disc herniation operation: results 
+of a randomized clinical trial.
+
+Erdogmus CB(1), Resch KL, Sabitzer R, Müller H, Nuhr M, Schöggl A, Posch M, 
+Osterode W, Ungersböck K, Ebenbichler GR.
+
+Author information:
+(1)Department of Physical Medicine & Rehabilitation, Vienna Medical University, 
+Vienna, Austria.
+
+STUDY DESIGN: Three-group, randomized, single blinded, controlled trial.
+OBJECTIVE: To test the effectiveness of physiotherapy-based rehabilitation 
+starting 1 week after lumbar disc surgery. In addition, we tried to estimate the 
+contribution of specific effects to the observed outcome (efficacy).
+SUMMARY OF BACKGROUND DATA: Physiotherapy-based rehabilitation is usually 
+recommended for patients following lumbar disc surgery. Few and conflicting data 
+exist for the relative effectiveness of this intervention.
+METHODS: A total of 120 patients following first-time, uncomplicated lumbar disc 
+surgery were randomly assigned to "comprehensive" physiotherapy, "sham" neck 
+massage, or no therapy. Before enrollment, all subjects completed a minimal 
+physiotherapeutic intervention. Physiotherapy was administered by experienced 
+physiotherapists and consisted of 20 sessions per patient over 12 weeks. 
+Masseurs administered "sham massage" to the neck. The amount of treatment time 
+was equal to that of physiotherapy. The main outcome measure was the Low Back 
+Pain Rating Score (LBPRS) at 6 and 12 weeks, and 1.5 years after randomization. 
+Secondary parameters were patients' overall satisfaction with treatment outcome 
+and socioeconomic and psychologic measures.
+RESULTS: At the end of therapy (12 weeks), the LBPRS revealed a significantly 
+better improvement in the physiotherapy group than in the untreated group. LBPRS 
+outcome, however, did not significantly differ between physiotherapy and "sham" 
+therapy. There was a tendency toward significance between the sham therapy and 
+no therapy. Within the 1.5-year follow-up, LBP rating scales remained 
+significantly improved compared with baseline, but there were no significant 
+outcome differences. No statistically significant between-group differences were 
+found for the secondary outcome parameters.
+CONCLUSION: As compared with no therapy, physiotherapy following first-time disc 
+herniation operation is effective in the short-term. Because of the limited 
+benefits of physiotherapy relative to "sham" therapy, it is open to question 
+whether this treatment acts primarily physiologically in patients following 
+first-time lumbar disc surgery, but psychological factors may contribute 
+substantially to the benefits observed.
+
+DOI: 10.1097/BRS.0b013e318145a386
+PMID: 17762803 [Indexed for MEDLINE]

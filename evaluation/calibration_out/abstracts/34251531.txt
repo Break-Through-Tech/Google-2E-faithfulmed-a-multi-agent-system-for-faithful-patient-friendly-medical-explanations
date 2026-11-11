@@ -1,0 +1,32 @@
+1. Handb Exp Pharmacol. 2022;270:359-404. doi: 10.1007/164_2021_505.
+
+Anti-inflammatory and Immunomodulatory Therapies in Atherosclerosis.
+
+Deroissart J(1), Porsch F(1), Koller T(1), Binder CJ(2).
+
+Author information:
+(1)Department of Laboratory Medicine, Medical University of Vienna, Vienna, 
+Austria.
+(2)Department of Laboratory Medicine, Medical University of Vienna, Vienna, 
+Austria. christoph.binder@meduniwien.ac.at.
+
+Hypercholesterolemia is a major risk factor in atherosclerosis development and 
+lipid-lowering drugs (i.e., statins) remain the treatment of choice. Despite 
+effective reduction of LDL cholesterol in patients, a residual cardiovascular 
+risk persists in some individuals, highlighting the need for further therapeutic 
+intervention. Recently, the CANTOS trial paved the way toward the development of 
+specific therapies targeting inflammation, a key feature in atherosclerosis 
+progression. The pre-existence of multiple drugs modulating both innate and 
+adaptive immune responses has significantly accelerated the number of 
+translational studies applying these drugs to atherosclerosis. Additional 
+preclinical research has led to the discovery of new therapeutic targets, 
+offering promising perspectives for the treatment and prevention of 
+atherosclerosis. Currently, both drugs with selective targeting and broad 
+unspecific anti-inflammatory effects have been tested. In this chapter, we aim 
+to give an overview of current advances in immunomodulatory treatment approaches 
+for atherosclerotic cardiovascular diseases.
+
+© 2021. The Author(s).
+
+DOI: 10.1007/164_2021_505
+PMID: 34251531 [Indexed for MEDLINE]

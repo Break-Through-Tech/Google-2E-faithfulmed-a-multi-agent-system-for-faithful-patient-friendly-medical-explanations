@@ -1,0 +1,42 @@
+1. J Electrocardiol. 2016 Mar-Apr;49(2):216-22. doi: 
+10.1016/j.jelectrocard.2015.11.008. Epub 2015 Nov 23.
+
+T wave abnormalities identify patients with previous lateral wall myocardial 
+infarction and circumflex artery disease.
+
+Rovai D(1), Gimelli A(2), Coceani M(3), Sbrana F(4), Masini G(5), Rossi G(6).
+
+Author information:
+(1)Institute of Clinical Physiology, National Research Council (CNR), Via 
+Moruzzi 1, Pisa, Italy. Electronic address: drovai@ifc.cnr.it.
+(2)Fondazione Toscana Gabriele Monasterio, Cardiothoracic Department, Via 
+Trieste 41, Pisa, Italy. Electronic address: gimelli@ftgm.it.
+(3)Fondazione Toscana Gabriele Monasterio, Cardiothoracic Department, Via 
+Trieste 41, Pisa, Italy. Electronic address: michecoc@ftgm.it.
+(4)Fondazione Toscana Gabriele Monasterio, Cardiothoracic Department, Via 
+Trieste 41, Pisa, Italy. Electronic address: francesco.sbrana@ftgm.it.
+(5)Institute of Clinical Physiology, National Research Council (CNR), Via 
+Moruzzi 1, Pisa, Italy. Electronic address: gabri_maso@hotmail.com.
+(6)Institute of Clinical Physiology, National Research Council (CNR), Via 
+Moruzzi 1, Pisa, Italy. Electronic address: rossigi@ifc.cnr.it.
+
+BACKGROUND: The diagnosis of previous lateral myocardial infarction is based on 
+QRS morphology.
+OBJECTIVES: To explore the diagnostic role of T wave abnormalities.
+METHODS: We studied 166 patients with known or suspected ischemic heart disease 
+who underwent a 12-lead electrocardiogram, myocardial perfusion scintigraphy, 
+and coronary arteriography within 90days. We excluded patients with 
+bundle-branch block, hypertrophy, or paced rhythm.
+RESULTS: Only one patient had a prominent R wave in V1, no patient showed 
+lateral Q waves of necrosis. T wave amplitude in V2-V6 ≥0.6mV, and T wave 
+amplitude in lead 1+V6 ≤0mV detected a lateral infarction (sensitivity 33 and 
+44%, specificity 83 and 80%). T wave amplitude in lead 1+V6 ≤0mV was the only 
+independent predictor of infarction or LCx occlusion (AUC 0.72 and 0.74). Serum 
+potassium values were not associated with T wave abnormalities.
+CONCLUSION: T wave abnormalities identify previous lateral infarction and LCx 
+disease.
+
+Copyright © 2016. Published by Elsevier Inc.
+
+DOI: 10.1016/j.jelectrocard.2015.11.008
+PMID: 26718348 [Indexed for MEDLINE]

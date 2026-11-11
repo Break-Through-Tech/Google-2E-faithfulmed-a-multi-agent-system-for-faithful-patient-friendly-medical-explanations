@@ -1,0 +1,41 @@
+1. Pacing Clin Electrophysiol. 2007 Oct;30(10):1267-72. doi: 
+10.1111/j.1540-8159.2007.00849.x.
+
+Relationship between abnormal microvolt T-wave alternans and poor glycemic 
+control in type 2 diabetic patients.
+
+Molon G(1), Costa A, Bertolini L, Zenari L, Arcaro G, Barbieri E, Targher G.
+
+Author information:
+(1)Division of Cardiology, Sacro Cuore Hospital, Negrar (VR), Verona, Italy.
+
+Comment in
+    Pacing Clin Electrophysiol. 2008 Feb;31(2):260; author reply 261. doi: 
+10.1111/j.1540-8159.2007.00982.x.
+
+BACKGROUND: Abnormal microvolt T-wave alternans (TWA) predicts the risk of 
+ventricular arrhythmias and sudden cardiac death. Although type 2 diabetes is 
+associated with an increased risk of these events, there is a dearth of 
+available data on microvolt TWA measurements in type 2 diabetic populations.
+METHODS: We studied 59 consecutive type 2 diabetic outpatients without manifest 
+cardiovascular disease (CVD) and 35 non-diabetic controls who were matched for 
+age, sex, and blood pressure values. Microvolt TWA analysis was performed 
+non-invasively using the CH-2000 system during a sub-maximal exercise with the 
+patient sitting on a bicycle ergometer.
+RESULTS: The frequency of abnormal TWA was significantly higher in diabetic 
+patients than in controls (25.4 vs 5.7%; P < 0.01). Among diabetic patients, 
+those with abnormal TWA (n = 15) had remarkably higher hemoglobin A1c (HbA1c) 
+(8.1 +/- 0.9 vs 7.1 +/- 0.8%, P < 0.001) and slightly smaller time-domain heart 
+rate variability parameters (i.e., RMSSD, root mean square of difference of 
+successive R-R intervals) than those with normal TWA (n = 44). Gender, age, body 
+mass index, lipids, blood pressure values, cigarette smoking, diabetes duration, 
+microvascular complication status, QTc interval, and current use of medications 
+did not significantly differ between the groups. In multivariate regression 
+logistic analysis, HbA1c (OR 13.6, 95% CI 2.0-89.1; P = 0.0076) predicted 
+abnormal TWA independent of RMSSD values and other potential confounders.
+CONCLUSIONS: Our findings suggest that abnormal TWA is a very common condition 
+(approximately 25%) among people with type 2 diabetes without manifest CVD and 
+is closely correlated to glycemic control.
+
+DOI: 10.1111/j.1540-8159.2007.00849.x
+PMID: 17897130 [Indexed for MEDLINE]

@@ -1,0 +1,42 @@
+1. Kaohsiung J Med Sci. 2010 Jul;26(7):366-72. doi:
+10.1016/S1607-551X(10)70060-7.
+
+Outcome of physical therapy intervention on ventilator weaning and functional 
+status.
+
+Yang PH(1), Wang CS, Wang YC, Yang CJ, Hung JY, Hwang JJ, Wang TH, Chuang IC, 
+Huang MS.
+
+Author information:
+(1)Department of Nursing, College of Medicine, Kaohsiung Medical University, 
+Kaohsiung, Taiwan.
+
+Our study aimed to understand the characteristics of ventilator dependence in 
+patients at a respiratory care center and the potential effects of physical 
+therapy on ventilator weaning and patients' functional status. Prospective data 
+collection consisted of the following: (1) demographic data, including name, 
+gender, age, diagnosis, the Acute Physiology and Chronic Health Evaluation as a 
+severity of the disease, modified Glasgow Coma Scale, mobility at the time of 
+admission, and days of hospitalization; (2) Rapid shallow breathing index (RSBI) 
+as a predictive indicator of ventilator weaning, including indicators of 
+ventilator weaning were collected from the respiratory flow sheet; and (3) 
+Barthel index. Between July 1 and December 31, 2007, 126 patients were admitted 
+to the respiratory care center, and those who required mechanical ventilation 
+for more than 14 days were enrolled. Fifty-five subjects received physical 
+therapy. The RSBI in patients who received physical therapy was 75.7 +/- 37.9 
+before therapy and 80.0 +/- 48.5 afterwards, while the Barthel index increased 
+from 0.8 +/- 1.4 to 1.9 +/- 2.5 (p < 0.05). The RSBI decreased as time of 
+physical therapy lengthened, but not significantly (r = 0.12, p = 0.44). The 
+success rate of ventilator weaning in patients receiving physical therapy 
+intervention versus non-physical therapy intervention was 58.2% and 40.9%, 
+respectively. The results indicated that lengthening the physical therapy 
+intervention time enhanced the ventilator weaning success rate while mobility 
+was not affected (r = -0.11, p = 0.41). Physical therapy may be offered to 
+ventilator-dependent patients in line with their individual needs to improve or 
+maintain basic mobility.
+
+Copyright 2010 Elsevier. Published by Elsevier B.V. All rights reserved.
+
+DOI: 10.1016/S1607-551X(10)70060-7
+PMCID: PMC11915898
+PMID: 20638039 [Indexed for MEDLINE]

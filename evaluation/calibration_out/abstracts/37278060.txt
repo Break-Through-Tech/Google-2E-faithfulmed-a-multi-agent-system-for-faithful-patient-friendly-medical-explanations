@@ -1,0 +1,54 @@
+1. J Pediatr Orthop. 2023 Sep 1;43(8):e680-e685. doi:
+10.1097/BPO.0000000000002449.  Epub 2023 Jun 5.
+
+Pediatric Hand and Wrist Fractures in Osteogenesis Imperfecta: An Analysis of 
+Incidence, Patient-specific Risk Factors, and Fracture-specific Characteristics.
+
+Chhabra BN(1), Phillips T(1), Mitchell TW(1), Gattu N(2), Ezeokoli EU(2)(3), 
+Bell B(1)(2).
+
+Author information:
+(1)Department of Orthopaedic Surgery, Baylor College of Medicine.
+(2)Division of Orthopaedic Surgery, Texas Children's Hospital.
+(3)Oakland University William Beaumont School of Medicine.
+
+BACKGROUND: Children with osteogenesis imperfecta (OI) frequently present with 
+fractures; however, hand and wrist fractures (HWFs), those distal to the radial 
+and ulnar diaphysis, are seldom observed. Yet, HWFs remain among the most common 
+fractures in children with non-OI. The objective of this study was to identify 
+the incidence of OI HWFs. Secondary objectives aimed at identifying 
+patient-specific risk factors for HWFs in OI and comparing clinical courses to 
+non-OI HWFs.
+METHODS: A retrospective cohort study was conducted. Database query by ICD-10 
+codes identified 18 patients with OI HWF, 451 patients with OI without HWFs, and 
+26,183 patients with non-OI HWF. Power analysis estimated appropriate sample 
+sizes and random sampling was utilized to collect patients. Patient 
+demographics, OI-specific variables, fracture morphology, and fracture clinical 
+courses were recorded. Data were analyzed for patient-specific and 
+fracture-specific factors affecting OI HWF incidence.
+RESULTS: Of patients with OI, 3.8% (18/469) sustained HWFs. Patients with OI HWF 
+were significantly older than patients with OI without HWFs ( P = 0.002) with no 
+differences in height, weight, ethnicity, sex, or ambulatory status. Compared 
+with non-OI HWFs, patients with OI HWF were significantly shorter ( P < 0.001), 
+weighed less ( P = 0.002), and were less likely to be ambulatory ( P < 0.001). 
+OI HWFs were more commonly on the side of hand dominance ( P < 0.001) with 
+transverse patterns ( P = 0.001). OI HWFs were less frequent in the thumb ( P = 
+0.048) and trended towards significance in the metacarpals ( P = 0.054). All OI 
+HWFs were treated nonoperatively with similar union rates and refracture rates 
+to non-OI HWFs. Multivariate regression showed that older patient age (odds 
+ratio: 1.079, 95% CI: 1.005,1.159, P = 0.037) and OI type I (odds ratio: 5.535, 
+95% CI: 1.069, 26.795, P = 0.041) were significant prognosticators for HWFs in 
+patients with OI.
+CONCLUSION: OI HWFs are uncommon (3.8%, 18/469) but specific HWF morphologies 
+and locations are more common in patients with OI; however, these are not 
+pathognomonic. Older patients with mild penetrance of type I OI are at the 
+highest risk for HWFs. OI HWFs do well when managed nonoperatively with 
+noninferior clinical courses compared with non-OI HWFs.
+LEVEL OF EVIDENCE: Level III.
+
+Copyright © 2023 Wolters Kluwer Health, Inc. All rights reserved.
+
+DOI: 10.1097/BPO.0000000000002449
+PMID: 37278060 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare no conflicts of interest.

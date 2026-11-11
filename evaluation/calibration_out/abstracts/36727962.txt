@@ -1,0 +1,45 @@
+1. J Am Acad Orthop Surg. 2023 Apr 1;31(7):349-356. doi:
+10.5435/JAAOS-D-22-00582.  Epub 2023 Jan 18.
+
+Transfusion Thresholds Can Be Safely Lowered in the Hip Fracture Patient: A 
+Consecutive Series of 1,496 Patients.
+
+Konda SR(1), Parola R, Perskin CR, Fisher ND, Ganta A, Egol KA.
+
+Author information:
+(1)From the Department of Orthopedic Surgery, NYU Langone Orthopedic Hospital, 
+New York, NY (Konda, Parola, Perskin, Fisher, Ganta, and Egol) and Department of 
+Orthopedic Surgery, Jamaica Hospital Medical Center, New York, NY (Konda, Ganta, 
+and Egol).
+
+INTRODUCTION: The purpose of this study is to identify optimal threshold 
+hemoglobin (Hgb) and hematocrit (Hct) laboratory values to transfuse hip 
+fracture patients.
+METHODS: A consecutive series of hip fracture patients were reviewed for 
+demographic, clinical, and cost data. Patients receiving an allogeneic 
+transfusion of packed red blood cells (pRBCs) were grouped based on last Hct or 
+Hgb (H&H) value before first transfusion. Multivariate logistic regressions of 
+H&H quantile were performed to predict "good outcomes," a composite binary 
+variable defined as admissions satisfying (1) no major complications, (2) length 
+of stay below top tertile, (3) cost below median, (4) no mortality within 30 
+days, and (5) no readmission within 30 days. Odds ratios (OR) for "good 
+outcomes" were calculated for each H&H quantile.
+RESULTS: One thousand four hundred ninety-six hip fracture patients were 
+identified, of which 598 (40.0%) were transfused with pRBCs. Patients first 
+transfused at Hgb values from 7.55 to 7.85 g/dL ( P = 0.043, OR = 2.70) or Hct 
+values from 22.7 to 23.8% ( P = 0.048, OR = 2.63) were most likely to achieve 
+"good outcomes."
+DISCUSSION: The decision to transfuse patients should be motivated by Hgb and 
+Hct laboratory test results, given that transfusion timing relative to surgery 
+has been shown to not affect outcomes among patients matched by trauma risk 
+score. Surgeons should aim to transfuse hip fracture patients at Hgb levels 
+between 7.55 g/dL and 7.85 g/dL or Hct levels between 22.7% and 23.8%. These 
+transfusion thresholds have the potential to lower healthcare costs without 
+compromising quality, ultimately resulting in less costly, efficacious care for 
+the patient.
+LEVEL OF EVIDENCE: Level III.
+
+Copyright © 2023 by the American Academy of Orthopaedic Surgeons.
+
+DOI: 10.5435/JAAOS-D-22-00582
+PMID: 36727962 [Indexed for MEDLINE]

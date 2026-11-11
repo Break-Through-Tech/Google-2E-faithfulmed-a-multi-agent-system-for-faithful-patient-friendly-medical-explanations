@@ -1,0 +1,66 @@
+1. J Adolesc Health. 2019 Mar;64(3):305-310. doi:
+10.1016/j.jadohealth.2018.07.025.  Epub 2018 Dec 11.
+
+Long-term Outcomes of Adolescent Anorexia Nervosa on Bone.
+
+Mumford J(1), Kohn M(2), Briody J(3), Miskovic-Wheatley J(4), Madden S(4), 
+Clarke S(5), Biggin A(6), Schindeler A(7), Munns C(8).
+
+Author information:
+(1)Eating Disorder Service, Sydney Children's Hospital Network, Westmead, New 
+South Wales, Australia; School of Rural Medicine, University of New England, 
+Armidale, New South Wales, Australia.
+(2)Eating Disorder Service, Sydney Children's Hospital Network, Westmead, New 
+South Wales, Australia; Adolescent and Young Adult Medicine, Westmead Hospital, 
+Westmead, New South Wales, Australia.
+(3)Nuclear Medicine, The Children's Hospital at Westmead, Westmead, New South 
+Wales, Australia.
+(4)Eating Disorder Service, Sydney Children's Hospital Network, Westmead, New 
+South Wales, Australia.
+(5)Adolescent and Young Adult Medicine, Westmead Hospital, Westmead, New South 
+Wales, Australia; The Children's Hospital at Westmead, Westmead, New South 
+Wales, Australia.
+(6)Department of Endocrinology, The Children's Hospital at Westmead, Westmead, 
+New South Wales, Australia; Children's Hospital Westmead Clinical School, 
+University of Sydney, Sydney, New South Wales, Australia.
+(7)Orthopaedic Research Unit, The Children's Hospital at Westmead, Westmead, New 
+South Wales, Australia; Discipline of Paediatrics & Child Health, University of 
+Sydney, Sydney, New South Wales, Australia.
+(8)Department of Endocrinology, The Children's Hospital at Westmead, Westmead, 
+New South Wales, Australia; Discipline of Paediatrics & Child Health, University 
+of Sydney, Sydney, New South Wales, Australia. Electronic address: 
+craig.munns@health.nsw.gov.au.
+
+Comment in
+    J Adolesc Health. 2019 Mar;64(3):283-285. doi: 
+10.1016/j.jadohealth.2018.12.008.
+
+PURPOSE: Anorexia nervosa (AN) is a chronic and life-threatening eating disorder 
+that can have a considerable negative impact on the growing skeleton. We 
+hypothesized that the long-term impact on bone health may persist even after 
+normalization of body weight.
+METHODS: 41 females (mean age 21.2 ± 2.9 years) with a history of 
+adolescent-onset AN attended a follow-up bone health assessment at 5 years (T5, 
+n = 28) or 10 years (T10, n = 13) after their first AN-related hospital 
+admission. Assessment included dual-energy x-ray absorptiometry measurements of 
+the total body, lumbar spine, and proximal femur, peripheral quantitative 
+computed tomography at the radius and tibia, anthropometric measurements, serum 
+biochemistry, fracture history, and a patient questionnaire.
+RESULTS: A recovery in body weight and BMI was seen for both the T5 and T10 
+cohorts (BMI at intake 16.6, BMI at T5-T10 21.2-21.3). Dual-energy x-ray 
+absorptiometry body composition indicated a recovery of fat mass and lean tissue 
+mass. Total BMD was unaffected, but reductions were seen at the femoral neck and 
+arms. Peripheral quantitative computed tomography showed reduced trabecular and 
+cortical bone in the radius, and cortical thinning in the tibia. AN patients 
+showed a statistically significant reduction in measures of radiographic bone 
+health at follow up, although not to a degree that necessitated clinical 
+intervention. Serum insulin-like growth factor 1 was also positively correlated 
+with total BMD and BMC measures. While fracture risk was not increased, a subset 
+of participants (8%) showed multiple (>4) fractures.
+CONCLUSION: A longitudinal study of adolescent AN showed persisting negative 
+effects on bone health.
+
+Crown Copyright © 2018. Published by Elsevier Inc. All rights reserved.
+
+DOI: 10.1016/j.jadohealth.2018.07.025
+PMID: 30819332 [Indexed for MEDLINE]

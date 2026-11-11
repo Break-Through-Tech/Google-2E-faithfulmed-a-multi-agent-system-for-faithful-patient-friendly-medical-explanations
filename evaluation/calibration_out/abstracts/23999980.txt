@@ -1,0 +1,66 @@
+1. BMJ. 2013 Sep 2;347:f5160. doi: 10.1136/bmj.f5160.
+
+Transcutaneous electrical nerve stimulation as adjunct to primary care 
+management for tennis elbow: pragmatic randomised controlled trial (TATE trial).
+
+Chesterton LS(1), Lewis AM, Sim J, Mallen CD, Mason EE, Hay EM, van der Windt 
+DA.
+
+Author information:
+(1)Arthritis Research UK Primary Care Centre, Keele University, Keele, 
+Staffordshire ST5 5BG, UK. l.s.chesterton@keele.ac.uk
+
+Comment in
+    Praxis (Bern 1994). 2013 Dec 31;103(1):49-50. doi: 
+10.1024/1661-8157/a001501.
+
+Republished in
+    Br J Sports Med. 2014 Oct;48(19):1458. doi: 10.1136/bjsports-2013-f5160rep.
+
+OBJECTIVE: To investigate the effectiveness of supplementing information and 
+advice on analgesia and exercise from a general practitioner with transcutaneous 
+electrical nerve stimulation (TENS) as a non-drug form of analgesia to reduce 
+pain intensity in patients with tennis elbow.
+DESIGN: Pragmatic randomised controlled trial in primary care.
+SETTING AND: 38 general practices in the West Midlands, UK.
+PARTICIPANTS: 241 adults consulting with a first or new (no consultation in 
+previous six months) clinical diagnosis of tennis elbow.
+INTERVENTIONS: Participants were randomly allocated to either primary care 
+management alone, consisting of a consultation with a general practitioner 
+followed by information and advice on exercises, or primary care management plus 
+TENS to be used once a day for 45 minutes over six weeks (or until symptom 
+resolution) for pain relief.
+OUTCOME MEASURES: The primary outcome was self reported intensity of elbow pain 
+(0-10 rating scale) at six weeks. Primary and secondary outcomes were measured 
+at baseline and at six weeks, six months, and 12 months by postal questionnaire. 
+Analysis was by intention to treat.
+RESULTS: 121 participants were randomised to primary care management plus TENS 
+and 120 to primary care management only (first episode, n=197 (82%); duration 
+<1-3 months, n=138 (57%)). Adherence to exercise and TENS recommendations 
+reported at six weeks was low; only 42 participants in the primary care 
+management plus TENS group met a priori defined adherence criteria. Both 
+intervention groups showed large improvements in pain and secondary outcomes, 
+especially during the first six weeks of follow-up. However, no clinically or 
+statistically significant differences were seen between groups at any follow-up 
+timepoint. At the primary endpoint (six weeks), the between group difference in 
+improvement of pain was -0.33 (95% confidence interval -0.96 to 0.31; P=0.31) in 
+favour of the primary care management only group, with adjustment for age, sex, 
+and baseline pain score.
+CONCLUSIONS: This trial does not provide evidence for additional benefit of TENS 
+as an adjunct to primary care management of tennis elbow. Poor adherence to 
+interventions is evidence of the challenges of implementing self management 
+treatment strategies in primary care.
+TRIAL REGISTRATION: Current Controlled Trials ISRCTN87141084.
+
+DOI: 10.1136/bmj.f5160
+PMCID: PMC3759476
+PMID: 23999980 [Indexed for MEDLINE]
+
+Conflict of interest statement: Competing interests: All authors have completed 
+the ICMJE uniform disclosure form at www.icmje.org/coi_disclosure.pdf (available 
+on request from the corresponding author) and declare: EMH, DAvdW, LSC, AML, and 
+JS had support from an NIHR Research for Patient Benefit grant, and EHM had 
+support from the grant for the submitted work; no financial relationships with 
+any organisations that might have an interest in the submitted work in the 
+previous three years; no other relationships or activities that could appear to 
+have influenced the submitted work or activities of this type.

@@ -1,0 +1,60 @@
+1. J Intern Med. 2022 Feb;291(2):197-206. doi: 10.1111/joim.13390. Epub 2021 Oct
+6.
+
+Factors for heterogeneous outcomes of angina and myocardial ischemia without 
+obstructive coronary atherosclerosis.
+
+Radico F(1)(2), Di Castelnuovo A(3), Aimo A(4), Zimarino M(1)(5), Knuuti J(6), 
+Rossi S(1)(5), Pastormerlo LE(4), Zyw L(4), Orsini E(7), Iacoviello L(8)(9), 
+Neglia D(4), Emdin M(4), de Gaetano G(8), De Caterina R(7)(10).
+
+Author information:
+(1)Institute of Cardiology, "G. d'Annunzio" University, Chieti, Italy.
+(2)ASL 2 Abruzzo, Chieti, Italy.
+(3)Mediterranea Cardiocentro, Naples, Italy.
+(4)Scuola Superiore Sant'Anna, Fondazione Toscana Gabriele Monasterio, Pisa, 
+Italy.
+(5)Interventional Cath Lab, Chieti, Italy.
+(6)Turku PET Centre, University of Turku and Turku University Hospital, Turku, 
+Finland.
+(7)Cardiovascular Division, Pisa University Hospital, and University of Pisa, 
+Via Paradisa, 2, Pisa, 56124, Italy.
+(8)Department of Epidemiology and Prevention, IRCCS Neuromed Mediterranean 
+Neurological Institute, Pozzilli, Italy.
+(9)Department of Medicine and Surgery, Research Center in Epidemiology and 
+Preventive Medicine (EPIMED), University of Insubria, Varese, Italy.
+(10)Fondazione Villa Serena per la Ricerca, Città Sant'Angelo, Italy.
+
+Comment in
+    J Intern Med. 2022 Feb;291(2):112-114. doi: 10.1111/joim.13398.
+
+BACKGROUND AND OBJECTIVES: The absence of obstructive coronary artery disease 
+(CAD) in patients with angina is common, but its prognosis is debated. We 
+investigated outcomes of such patients to identify predictors of cardiovascular 
+events.
+METHODS: We selected 1014 patients with angina, evidence of myocardial ischemia 
+at the electrocardiogram (ECG) exercise test or imaging stress tests, and 
+nonobstructive CAD (absence of lumen diameter reduction ≥50%) at coronary 
+angiography between 1999 and 2015. Note that, 1905 age- and risk factors-matched 
+asymptomatic subjects served as "real-world" comparators. The primary endpoint 
+was the occurrence of all-cause death or myocardial infarction.
+RESULTS: At 6-years median follow-up (interquartile range, 3-9 years), the 
+primary endpoint occurred in 53 patients (5.5%, 0.92/100 person-years). Besides 
+similar event rates compared with asymptomatic subjects (hazard ratio [HR] 0.85, 
+95% confidence interval [CI] 0.62-1.15, p = 0.28), the index population showed a 
+very heterogeneous prognosis. Patients with nonobstructive CAD (HR 1.85, 95% CI 
+1.02-3.37, p = 0.04, compared with "normal" coronary arteries) and ischemia at 
+imaging tests (HR 2.11, 95% CI 1.07-4.14, p = 0.03, compared with ischemia 
+detected only at the ECG exercise test) were at higher risk and those with both 
+these components showing even >10-fold event rates as compared with the absence 
+of both. Three-hundred and twenty-five patients (34%) continued to experience 
+angina, 69 (7.2%) underwent repeat coronary angiography, and 14 (1.5%) had 
+consequent coronary revascularization for atherosclerosis progression.
+CONCLUSION: Apart from the impaired quality of life, angina without obstructive 
+CAD has an overall benign but very heterogeneous prognosis. Nonobstructive CAD 
+and myocardial ischemia at imaging tests both confer a higher risk.
+
+© 2021 The Association for the Publication of the Journal of Internal Medicine.
+
+DOI: 10.1111/joim.13390
+PMID: 34487597 [Indexed for MEDLINE]

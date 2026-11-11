@@ -1,0 +1,42 @@
+1. Int J Mol Sci. 2022 Dec 6;23(23):15426. doi: 10.3390/ijms232315426.
+
+Ovarian Reserve Disorders, Can We Prevent Them? A Review.
+
+Man L(1), Lustgarten Guahmich N(1), Vyas N(1), Tsai S(1), Arazi L(1), Lilienthal 
+D(1), Schattman G(1), Rosenwaks Z(1), James D(1).
+
+Author information:
+(1)Ronald O. Perelman and Claudia Cohen Center for Reproductive Medicine and 
+Infertility, Weill Cornell Medicine, New York, NY 10007, USA.
+
+The ovarian reserve is finite and begins declining from its peak at 
+mid-gestation until only residual follicles remain as women approach menopause. 
+Reduced ovarian reserve, or its extreme form, premature ovarian insufficiency, 
+stems from multiple factors, including developmental, genetic, environmental 
+exposures, autoimmune disease, or medical/surgical treatment. In many cases, the 
+cause remains unknown and resulting infertility is not ultimately addressed by 
+assisted reproductive technologies. Deciphering the mechanisms that underlie 
+disorders of ovarian reserve could improve the outcomes for patients struggling 
+with infertility, but these disorders are diverse and can be categorized in 
+multiple ways. In this review, we will explore the topic from a perspective that 
+emphasizes the prevention or mitigation of ovarian damage. The most desirable 
+mode of fertoprotection is primary prevention (intervening before ablative 
+influence occurs), as identifying toxic influences and deciphering the 
+mechanisms by which they exert their effect can reduce or eliminate exposure and 
+damage. Secondary prevention in the form of screening is not recommended 
+broadly. Nevertheless, in some instances where a known genetic background exists 
+in discrete families, screening is advised. As part of prenatal care, screening 
+panels include some genetic diseases that can lead to infertility or 
+subfertility. In these patients, early diagnosis could enable fertility 
+preservation or changes in family-building plans. Finally, Tertiary Prevention 
+(managing disease post-diagnosis) is critical. Reduced ovarian reserve has a 
+major influence on physiology beyond fertility, including delayed/absent puberty 
+or premature menopause. In these instances, proper diagnosis and medical therapy 
+can reduce adverse effects. Here, we elaborate on these modes of prevention as 
+well as proposed mechanisms that underlie ovarian reserve disorders.
+
+DOI: 10.3390/ijms232315426
+PMCID: PMC9737352
+PMID: 36499748 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare no conflict of interest.

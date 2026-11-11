@@ -1,0 +1,57 @@
+1. Front Nutr. 2023 Jan 6;9:1078086. doi: 10.3389/fnut.2022.1078086. eCollection 
+2022.
+
+Chrononutrition is associated with melatonin and cortisol rhythm during 
+pregnancy: Findings from MY-CARE cohort study.
+
+Teoh AN(1), Kaur S(1), Shafie SR(2), Mohd Shukri NH(2), Ahmad Bustami N(3), 
+Takahashi M(4), Shibata S(5).
+
+Author information:
+(1)Faculty of Applied Sciences, UCSI University, Kuala Lumpur, Malaysia.
+(2)Department of Nutrition, Faculty of Medicine and Health Sciences, Universiti 
+Putra Malaysia, Serdang, Selangor, Malaysia.
+(3)Faculty of Medicine and Health Sciences, School of Healthy Aging, Medical 
+Aesthetics and Regenerative Medicine, UCSI University, Kuala Lumpur, Malaysia.
+(4)Institute for Liberal Arts, Tokyo Institute of Technology, Tokyo, Japan.
+(5)Department of Electrical Engineering and Biosciences, School of Advanced 
+Engineering and Sciences, Waseda University, Tokyo, Japan.
+
+Chrononutrition has been suggested to have an entrainment effect on circadian 
+rhythm which is crucial for metabolic health. Investigating how chrononutrition 
+affects maternal circadian rhythm can shed light on its role during pregnancy. 
+This study aims to determine chrononutrition characteristics of healthy 
+primigravida during pregnancy and its association with melatonin and cortisol 
+rhythm across gestation. A total of 70 healthy primigravidas were recruited from 
+ten randomly selected government maternal and child clinics in Kuala Lumpur, 
+Malaysia. During the second and third trimesters, chrononutrition 
+characteristics including meal timing, frequency, eating window, breakfast 
+skipping, and late-night eating were determined using a 3-day food record. 
+Pregnant women provided salivary samples at five time-points over a 24 h period 
+for melatonin and cortisol assay. Consistently across the second and third 
+trimesters, both melatonin and cortisol showed a rhythmic change over the day. 
+Melatonin levels displayed an increment toward the night whilst cortisol levels 
+declined over the day. Majority observed a shorter eating window (≤12 h) during 
+the second and third trimesters (66 and 55%, respectively). Results showed 23 
+and 28% skipped breakfast whereas 45 and 37% ate within 2 h pre-bedtime. During 
+the third trimester, a longer eating window was associated with lower melatonin 
+mean (β = -0.40, p = 0.006), peak (β = -0.42, p = 0.006), and AUCG (β = -0.44, p 
+= 0.003). During both trimesters, a lower awakening cortisol level was observed 
+in pregnant women who skipped breakfast (β = -0.33, p = 0.029; β = -0.29, p = 
+0.044). Only during the second trimester, breakfast-skipping was significantly 
+associated with a greater cortisol amplitude (β = 0.43, p = 0.003). Findings 
+suggest that certain chrononutrition components, particularly eating window and 
+breakfast skipping have a significant influence on maternal melatonin and 
+cortisol rhythm. Dietary intervention targeting these characteristics may be 
+useful in maintaining maternal circadian rhythm.
+
+Copyright © 2023 Teoh, Kaur, Shafie, Mohd Shukri, Ahmad Bustami, Takahashi and 
+Shibata.
+
+DOI: 10.3389/fnut.2022.1078086
+PMCID: PMC9852999
+PMID: 36687684
+
+Conflict of interest statement: The authors declare that the research was 
+conducted in the absence of any commercial or financial relationships that could 
+be construed as a potential conflict of interest.

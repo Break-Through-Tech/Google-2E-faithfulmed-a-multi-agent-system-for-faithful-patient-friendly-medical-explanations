@@ -1,0 +1,53 @@
+1. J Intern Med. 2023 Jun;293(6):724-752. doi: 10.1111/joim.13627. Epub 2023 Mar 
+13.
+
+Cannabidiol-associated hepatotoxicity: A systematic review and meta-analysis.
+
+Lo LA(1), Christiansen A(2), Eadie L(3), Strickland JC(4), Kim DD(5), Boivin 
+M(6), Barr AM(5)(7), MacCallum CA(3).
+
+Author information:
+(1)Department of Public Health Sciences, Dalla Lana School of Public Health, 
+University of Toronto, Toronto, Ontario, Canada.
+(2)Centre for Neuroscience Studies, Queen's University, Kingston, Ontario, 
+Canada.
+(3)Department of Medicine, Faculty of Medicine, University of British Columbia, 
+Vancouver, British Columbia, Canada.
+(4)Department of Psychiatry and Behavioral Sciences, Johns Hopkins University 
+School of Medicine, Baltimore, Maryland, USA.
+(5)Department of Anesthesiology, Pharmacology & Therapeutics, Faculty of 
+Medicine, University of British Columbia, Vancouver, British Columbia, Canada.
+(6)CommPharm Consulting, Barrie, Ontario, Canada.
+(7)British Columbia Mental Health & Substance Use Services Research Institute, 
+Vancouver, British Columbia, Canada.
+
+BACKGROUND: Findings of liver enzyme elevations in recent cannabidiol studies 
+have raised concerns over liver safety. This study aimed to determine the 
+association between cannabidiol use, liver enzyme elevation, and drug-induced 
+liver injury (DILI).
+METHODS: In this systematic review and meta-analysis, a search of EMBASE, 
+CENTRAL, CINAHL, Clinicaltrials.gov, Medline, medRxiv, and Web of Science of 
+records up to February 2022 was conducted. Clinical trials initiating daily 
+cannabidiol treatment with serial liver enzyme measures were included. The 
+proportion of liver enzyme elevations and DILI were independently extracted from 
+published reports. Pooled proportions and probability meta-analyses were 
+conducted.
+RESULTS: Cannabidiol use was associated with an increased probability of liver 
+enzyme elevation (N = 12 trials, n = 1229; OR = 5.85 95% CI = 3.84-8.92, 
+p < 0.001) and DILI (N = 12 trials, n = 1229; OR = 4.82 95% CI = 2.46-9.45, 
+p < 0.001) compared to placebo controls. In participants taking cannabidiol 
+(N = 28 trials, n = 1533), the pooled proportion of liver enzyme elevations was 
+0.074 (95% CI 0.0448-0.1212), and DILI was 0.0296 (95% CI 0.0136-0.0631). 
+High-dose CBD (≥1000 mg/day or ≥20 mg/kg/day) and concomitant antiepileptic drug 
+use were identified as risk factors. No cases were reported in adults using 
+cannabidiol doses <300 mg/day. No cases of severe DILI were reported.
+CONCLUSIONS: Cannabidiol-associated liver enzyme elevations and DILI meet the 
+criteria of common adverse drug events. Clinicians are encouraged to screen for 
+cannabidiol use and monitor liver function in patients at increased risk.
+
+© 2023 The Authors. Journal of Internal Medicine published by John Wiley & Sons 
+Ltd on behalf of Association for Publication of The Journal of Internal 
+Medicine.
+
+DOI: 10.1111/joim.13627
+PMID: 36912195 [Indexed for MEDLINE]

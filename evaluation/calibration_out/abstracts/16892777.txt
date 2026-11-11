@@ -1,0 +1,46 @@
+1. Ann Allergy Asthma Immunol. 2006 Jul;97(1):24-33. doi: 
+10.1016/S1081-1206(10)61365-8.
+
+The use of inhaled formoterol in the treatment of asthma.
+
+Berger WE(1).
+
+Author information:
+(1)Allergy & Asthma Associates of Southern California, Mission Viejo, California 
+92691-6410, USA. weberger@uci.edu
+
+Erratum in
+    Ann Allergy Asthma Immunol. 2006 Oct;97(4):562. Dosage error in article 
+text.
+
+OBJECTIVE: To discuss the clinical efficacy and safety of formoterol when used 
+to relieve symptoms of asthma and prevent exercise-induced bronchoconstriction 
+(EIB).
+DATA SOURCES: A PubMed search was performed for articles published between 1997 
+and 2005 with the keywords formoterol, asthma, and long-acting beta2-adrenergic 
+agonist, with cross-referencing to identify peer-reviewed journal articles.
+STUDY SELECTION: Published articles on the clinical use of formoterol for asthma 
+or EIB were included as well as articles detailing the pharmacologic properties 
+of the drug. To present a thorough review of the literature, published studies 
+based on patient number, study design, or other measures of study quality were 
+not excluded.
+RESULTS: Formoterol is the only long-acting beta2-adrenergic agonist that 
+combines a rapid onset of action (within 3 minutes) with a long duration of 
+effect (approximately 12 hours). Clinically, as recommended by asthma treatment 
+guidelines, formoterol in conjunction with inhaled corticosteroids (ICSs) is a 
+preferred treatment for moderate to severe persistent asthma. Significant 
+clinical data support the use of formoterol in combination with ICSs for the 
+treatment of asthma, with studies demonstrating improved pulmonary function and 
+symptom scores and decreased need for maintenance ICSs and short-acting 
+beta2-adrenergic agonists (SABAs) as relief medication. Recent studies also 
+demonstrate that use of formoterol as needed as relief medication is associated 
+with a prolonged time to exacerbation, improved pulmonary function, and 
+decreased asthma symptoms. When used as monotherapy, formoterol provides 
+protection against EIB. Clinical data also demonstrate that formoterol is safe 
+and well tolerated even in high doses, with an adverse event profile similar to 
+that of SABAs.
+CONCLUSION: Overall, formoterol is safe and effective as adjunct controller 
+therapy for moderate and severe persistent asthma and as monotherapy for EIB.
+
+DOI: 10.1016/S1081-1206(10)61365-8
+PMID: 16892777 [Indexed for MEDLINE]

@@ -1,0 +1,33 @@
+1. Best Pract Res Clin Anaesthesiol. 2004 Dec;18(4):661-73. doi: 
+10.1016/j.bpa.2004.05.002.
+
+Strategies for transfusion therapy.
+
+Spahn DR(1).
+
+Author information:
+(1)Department of Anesthesiology, University Hospital Lausanne Chuv, Ch-1011 
+Lausanne, Switzerland. donat.spahn@chuv.hospvd.ch
+
+Transfusion of allogeneic red blood cells (RBCs), fresh frozen plasma (FFP) and 
+platelets is associated with risks, and outcome studies comparing liberal and 
+restrictive transfusion regimens are lacking in surgical patients. Therefore, 
+guidelines have been established. They recommend first maintaining normovolaemia 
+by the use of crystalloids and colloids. RBC transfusions are recommended for 
+haemoglobin levels < 6 g/dl and for physiological signs of inadequate 
+oxygenation such as haemodynamic instability, oxygen extraction > 50% and 
+myocardial ischaemia (new ST-segment depressions > 0.1 mV, new ST-segment 
+elevations > 0.2 mV or new wall motion abnormalities in transoesophageal 
+echocardiography). FFP transfusions are recommended for urgent reversal of 
+anticoagulation, known coagulation factor deficiencies, microvascular bleeding 
+in the presence of elevated (> 1.5 times normal) prothrombin time (PT) or 
+partial thromboplastin time (PTT) and microvascular bleeding after the 
+replacement of more than one blood volume when PT or PTT cannot be obtained. 
+Platelet transfusions are recommended prior to major operations in patients with 
+platelet counts < 50,000/microl, intraoperatively with microvascular bleeding at 
+platelet counts < 50,000/microl and in the range of 50,000-100,0000/microl 
+following cardiopulmonary bypass and in patients undergoing surgery where 
+already minimal bleeding may cause major damage such as in neurosurgery.
+
+DOI: 10.1016/j.bpa.2004.05.002
+PMID: 15460551 [Indexed for MEDLINE]

@@ -1,0 +1,39 @@
+1. Clin Exp Emerg Med. 2019 Mar;6(1):84-88. doi: 10.15441/ceem.17.247. Epub 2018 
+Jan 31.
+
+Metoprolol treatment of dual cocaine and bupropion cardiovascular and central 
+nervous system toxicity.
+
+Richards JR(1), Gould JB(2), Laurin EG(1), Albertson TE(3).
+
+Author information:
+(1)Department of Emergency Medicine, University of California Davis Medical 
+Center, Sacramento, CA, USA.
+(2)Department of Family & Community Medicine, University of California Davis 
+Medical Center, Sacramento, CA, USA.
+(3)Department of Internal Medicine, University of California Davis Medical 
+Center, Sacramento, CA, USA.
+
+Cardiovascular and central nervous system (CNS) toxicity, including 
+tachydysrhythmia, agitation, and seizures, may arise from cocaine or bupropion 
+use. We report acute toxicity from the concomitant use of cocaine and bupropion 
+in a 25-year-old female. She arrived agitated and uncooperative, with a history 
+of possible antecedent cocaine use. Her electrocardiogram demonstrated 
+tachycardia at 130 beats/min, with a corrected QT interval of 579 ms. Two doses 
+of 5 mg intravenous metoprolol were administered, which resolved the agitation, 
+tachydysrhythmia, and corrected QT interval prolongation. Her comprehensive 
+toxicology screen returned positive for both cocaine and bupropion. We believe 
+clinicians should be aware of the potential for synergistic cardiovascular and 
+CNS toxicity from concomitant cocaine and bupropion use. Metoprolol may 
+represent an effective initial treatment. Unlike benzodiazepines, metoprolol 
+directly counters the pharmacologic effects of stimulants without respiratory 
+depression, sedation, or paradoxical agitation. A lipophilic beta-blocker, 
+metoprolol has good penetration of the CNS and can counter stimulant-induced 
+agitation.
+
+DOI: 10.15441/ceem.17.247
+PMCID: PMC6453686
+PMID: 29381909
+
+Conflict of interest statement: No potential conflict of interest relevant to 
+this article was reported.

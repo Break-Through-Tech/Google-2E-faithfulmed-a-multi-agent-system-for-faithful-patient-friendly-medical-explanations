@@ -1,0 +1,41 @@
+1. Am J Health Syst Pharm. 2013 Dec 1;70(23):2087-95. doi: 10.2146/ajhp130114.
+
+Roflumilast in the management of chronic obstructive pulmonary disease.
+
+Lipari M(1), Benipal H, Kale-Pradhan P.
+
+Author information:
+(1)Melissa Lipari, Pharm.D., BCACP, is Assistant Professor; Harpreet Benipal, 
+Pharm.D., is a 2013 graduate; and Pramodini Kale-Pradhan, Pharm.D., is 
+Professor, Department of Pharmacy Practice, Eugene Applebaum College of Pharmacy 
+and Health Sciences, Wayne State University, and St. John Hospital and Medical 
+Center, Detroit, MI.
+
+PURPOSE: The pharmacology, pharmacokinetics, efficacy, and safety of 
+roflumilast-the first in a new class of agents for managing chronic obstructive 
+pulmonary disease (COPD)-are reviewed.
+SUMMARY: Roflumilast (Daliresp, Forest Pharmaceuticals) is an oral 
+phosphodiesterase-4 (PDE-4) inhibitor that targets inflammatory cells involved 
+in triggering COPD exacerbations. The only PDE-4 inhibitor approved by the Food 
+and Drug Administration, roflumilast is available in 500-μg tablets to be 
+administered once daily. In six placebo-controlled trials involving nearly 4500 
+patients with COPD of varying severity, the use of roflumilast was associated 
+with reduced COPD exacerbations and improved lung function, as determined by 
+spirometry, with the greatest benefits observed in patients with severe COPD who 
+had chronic bronchitis and a history of frequent exacerbations; clinical 
+efficacy was demonstrated in patients receiving roflumilast alone as well as 
+those receiving concomitant inhaled long-acting β2-agonist (LABA) therapy. The 
+most common adverse events in clinical trials of roflumilast were diarrhea, 
+nausea, and headache. Weight loss and an increased risk of psychiatric events 
+have also been reported in association with roflumilast use. As roflumilast is 
+rapidly converted to its active metabolite via cytochrome P-450 (CYP) 
+isoenzymes, coadministration with strong CYP inducers is not recommended. 
+Research to better define roflumilast's role in COPD management, including a 
+study to determine whether it confers additive benefits when used in combination 
+with standard inhaled therapies other than LABAs, is ongoing.
+CONCLUSION: Roflumilast is a safe and effective option for controlling COPD 
+exacerbations in a defined subset of patients for whom the available treatment 
+alternatives are very limited.
+
+DOI: 10.2146/ajhp130114
+PMID: 24249758 [Indexed for MEDLINE]

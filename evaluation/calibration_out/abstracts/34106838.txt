@@ -1,0 +1,31 @@
+1. Adv Anesth. 2020 Dec;38:251-267. doi: 10.1016/j.aan.2020.09.002.
+
+Anesthesia for the Patient with Severe Liver Failure.
+
+Spring A(1), Saran JS(1), McCarthy S(1), McCluskey SA(2).
+
+Author information:
+(1)Abdominal Organ Transplantation Anesthesia Fellowship Program, Department of 
+Anesthesia and Pain Management, Toronto General Hospital, University Health 
+Network, University of Toronto, 3 Eaton North, 200 Elizabeth Street, Toronto, 
+Ontario M5G 2C4, Canada.
+(2)Department of Anesthesia and Pain Management, Toronto General Hospital, 
+University Health Network, University of Toronto, 3 Eaton North, 200 Elizabeth 
+Street, Toronto, Ontario M5G 2C4, Canada. Electronic address: 
+Stuart.McCluskey@uhn.ca.
+
+The incidence of liver failure continues to increase, and it is associated with 
+increased perioperative morbidity and mortality. Liver failure is associated 
+with multiorgan dysfunction, including central nervous, cardiac, respiratory, 
+gastrointestinal, renal, and hematological systems. Preoperative identification, 
+optimization, and tailored anesthetic management are essential for optimum 
+outcomes in patients with liver disease undergoing surgery. The coagulopathy of 
+liver failure is a balanced coagulopathy better assessed by thromboelastography 
+than conventional testing, and it is not directly associated with bleeding risk.
+
+Crown Copyright © 2020. Published by Elsevier Inc. All rights reserved.
+
+DOI: 10.1016/j.aan.2020.09.002
+PMID: 34106838 [Indexed for MEDLINE]
+
+Conflict of interest statement: Conflicts of Interest None.

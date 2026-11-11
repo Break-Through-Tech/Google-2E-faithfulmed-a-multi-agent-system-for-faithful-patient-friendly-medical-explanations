@@ -1,0 +1,44 @@
+1. Diabetes Metab Syndr. 2023 Dec;17(12):102905. doi: 10.1016/j.dsx.2023.102905. 
+Epub 2023 Nov 15.
+
+The effects of the ketogenic diet for the management of type 2 diabetes 
+mellitus: A systematic review and meta-analysis of recent studies.
+
+Choy KYC(1), Louie JCY(2).
+
+Author information:
+(1)School of Biological Sciences, Faculty of Science, The University of Hong 
+Kong, Hong Kong SAR, China.
+(2)School of Biological Sciences, Faculty of Science, The University of Hong 
+Kong, Hong Kong SAR, China; Department of Nursing and Allied Health, School of 
+Health Sciences, Swinburne University of Technology, Hawthorn, VIC, Australia. 
+Electronic address: jimmylouie@swin.edu.au.
+
+OBJECTIVE: To systematically review the effects of the ketogenic diet on 
+glycaemic control, body weight, cardiovascular risk factors, and liver and 
+kidney function in patients with type 2 diabetes.
+METHODS: PubMed, MEDLINE, Embase, Cochrane Library and CINAHL were searched for 
+randomised controlled trials published between 2001 and 2021 that compared the 
+ketogenic diet to a control diet for effects on glycaemic control, body weight, 
+cardiovascular risk factors, liver and renal function markers in adults with 
+type 2 diabetes for >14 days. Meta-analyses using fixed or random effects models 
+were conducted.
+RESULTS: Nineteen reports from 11 randomised controlled trials were included. 
+Compared to the control, the ketogenic diet showed no significant difference in 
+changes in glycaemic control or body weight, but greater increases in HDL 
+(standardised mean difference 0.19; 95%CI 0.02-0.37; I2 = 0 %; moderate-quality 
+evidence) and greater reductions in triglycerides (standardised mean difference 
+-0.41; 95%CI -0.64 to -0.18; I2 = 0 %; low-quality evidence).
+CONCLUSIONS: The ketogenic diet may improve lipid profiles but showed no 
+additional benefits for glycaemic control or weight loss compared to control 
+diets in type 2 diabetes patients over two years.
+
+Copyright © 2023 The Author(s). Published by Elsevier Ltd.. All rights reserved.
+
+DOI: 10.1016/j.dsx.2023.102905
+PMID: 38006799 [Indexed for MEDLINE]
+
+Conflict of interest statement: Declaration of competing interest The authors 
+declare that they have no known competing financial interests or personal 
+relationships that could have appeared to influence the work reported in this 
+paper.

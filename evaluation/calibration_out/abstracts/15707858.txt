@@ -1,0 +1,32 @@
+1. Pulm Pharmacol Ther. 2005;18(3):229-34. doi: 10.1016/j.pupt.2004.12.011.
+
+Safety and tolerability of high-dose formoterol (Aerolizer) and salbutamol 
+(pMDI) in patients with mild/moderate, persistent asthma.
+
+Kruse M(1), Rosenkranz B, Dobson C, Ayre G, Horowitz A.
+
+Author information:
+(1)PAREXEL International GmbH, Institute of Clinical Pharmacology, Berlin, 
+Germany.
+
+This double-blind, double-dummy, crossover study evaluated the tolerability of 
+high-dose formoterol and salbutamol. Sixteen adults with mild/moderate 
+persistent asthma (FEV1 > or = 70% predicted) were randomized to receive either 
+formoterol 36 microg three times daily (TID) at 5-h intervals via Aerolizer 
+(total daily dose 108 microg), or salbutamol 600 microg TID via pressurized 
+metered-dose inhaler (total daily dose 1800 microg) for 3 consecutive days. 
+After a 3-7-day washout period patients received the other treatment. FEV1 was 
+measured 15 min pre-dose and 2 h post-dose. Both formoterol and salbutamol were 
+associated with decreased plasma potassium (mean of minimum values: 3.4 and 3.6 
+mmol/L, respectively; P<0.001), increased serum glucose (mean of maximum values: 
+8.3 and 7.9 mmol/L, respectively; P=0.021), and small increases in mean QTc 
+interval (mean of maximum values: 428.8 and 417.4 ms, respectively; P<0.001). 
+However, none of these effects was clinically significant. Both treatments 
+increased FEV1 to a mean maximum of 4.6 L (P=0.613), but the mean FEV1 
+AUC(0-72)h for formoterol was significantly greater than for salbutamol (302.2 L 
+h, vs. 277.4 L h; P<0.001). No patients discontinued due to treatment-related 
+adverse events. High-dose formoterol via Aerolizer did not produce any 
+clinically significant systemic effects in patients with mild/moderate asthma.
+
+DOI: 10.1016/j.pupt.2004.12.011
+PMID: 15707858 [Indexed for MEDLINE]

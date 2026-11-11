@@ -1,0 +1,44 @@
+1. Pulm Pharmacol Ther. 2008;21(3):551-7. doi: 10.1016/j.pupt.2008.01.001. Epub 
+2008 Jan 19.
+
+Tolerability of high cumulative doses of the HFA modulite beclomethasone 
+dipropionate/formoterol combination inhaler in asthmatic patients.
+
+Singh D(1), Piccinno A, Borrill Z, Poli G, Acerbi D, Meuleners L, Woodcock A.
+
+Author information:
+(1)Medicines Evaluation Unit, South Manchester University Hospitals Trust, 
+University of Manchester, Southmoor Road, Wythenshawe, Manchester M23 9QZ, UK. 
+dsingh@meu.org.uk <dsingh@meu.org.uk>
+
+The corticosteroid beclomethasone dipropionate (BDP) has been formulated with 
+the long acting beta agonist formoterol (BDP/formoterol 100 microg/6 microg, 
+Foster) in a single inhaler using Modulite technology. We have investigated the 
+acute tolerability of high, cumulative doses of BDP/formoterol compared to 
+formoterol alone and placebo. This was a double blind, 3-way cross-over 
+comparison of 10 puffs of BDP/formoterol 100 microg/6 microg or formoterol 6 
+microg or placebo during maintenance treatment with BDP/formoterol two puffs per 
+day. Pharmacokinetics over 12h during maintenance treatment was measured on day 
+7. High cumulative doses were then administered on three separated days. 
+Eighteen patients with asthma were recruited (mean FEV(1) 65% predicted). The 
+primary endpoint was serum potassium over the 12h period after high doses. QTc, 
+blood pressure and heart rate over 12h, and plasma lactate and glucose over 3h 
+following dosing were assessed. Formoterol caused a significantly greater 
+decrease in serum potassium than BDP/formoterol or placebo (difference in mean 
+minimum concentrations; 0.11 and -0.15 mmol/l, respectively, p<0.05 for both 
+comparisons). No significant differences in serum potassium parameters were 
+found between BDP/formoterol and placebo. QTc, plasma lactate and vital signs 
+values observed with the combination were not statistically different from those 
+with formoterol alone. For glucose, the mean maximum increase after formoterol 
+treatment was 0.4 mmol/l (p<0.01 compared to placebo), while BDP/formoterol 
+treatment caused a maximum increase of 0.7 mmol/l (p<0.01 compared to formoterol 
+and placebo). The active metabolite of BDP is beclomethasone-17-monopropriate 
+(B17MP), which reached Cmax at 0.25 h, with an elimination half-life of 3.7 h. 
+Formoterol also reached Cmax at 0.25 h, and concentrations were measurable up to 
+12 h. High doses of BDP/formoterol did not significantly reduce serum potassium, 
+while formoterol alone did to a greater extent. The BDP/formoterol combination 
+was well tolerated, and exhibited a safety profile generally similar to 
+formoterol alone when administered in high doses to stable asthmatic patients.
+
+DOI: 10.1016/j.pupt.2008.01.001
+PMID: 18321744 [Indexed for MEDLINE]

@@ -1,0 +1,43 @@
+1. J Spinal Cord Med. 2024 Sep;47(5):744-752. doi: 10.1080/10790268.2023.2197818.
+ Epub 2023 Apr 28.
+
+Mechanical diagnosis and therapy in musculoskeletal pain of individuals with 
+spinal cord injury.
+
+Grasser P(1), Neto FR(1), Veloso JHCL(2), Gomes Costa RR(1), Dorneles JR(1).
+
+Author information:
+(1)Spinal Cord Injury Department, Sarah Network of Rehabilitation Hospital, 
+Brasilia, Brazil.
+(2)Spinal Cord Injury Department, Sarah Network of Rehabilitation Hospital, Rio 
+de Janeiro, Brazil.
+
+CONTEXT/OBJECTIVE: Musculoskeletal pain (MSKP) has high prevalence in 
+individuals with spinal cord injury (SCI). Mechanical Diagnosis and Therapy 
+(MDT) is a method focused on identifying the pain source in the musculoskeletal 
+system and presents good results in pain relief in people without neurological 
+impairment. However, no studies have investigated the use of MDT in SCI 
+population. The objective was to evaluate the applicability and outcomes of MDT 
+treatment in pain relief and independence improvement in daily activities of 
+individuals with SCI presenting MSKP.
+DESIGN: Single-arm trial.
+SETTING: Rehabilitation Hospital.
+PARTICIPANTS: Twenty-four individuals with SCI who presented MSKP.
+INTERVENTION: MDT-certified physical therapist conducted assessments and 
+treatments of pain according to the MDT approach.
+OUTCOMES MEASURES: Numeric rating scale (NRS) was used to measure pain and Pain 
+Disability Index (PDI) and Patient-Specific Functional Scale (PSFS) to evaluate 
+daily activities.
+RESULTS: Significant median decreases were found for NRS (from 7 to 2) and PDI 
+(from 27 to 8) after MDT, whereas PSFS score presented a significant mean 
+increase (from 3.2-7.7). The average decrease in pain after MDT treatment was 
+70.9% (5.36 on the NRS).
+CONCLUSION: MDT can reduce pain and enhance independence in daily activities in 
+individuals with SCI and MSKP.
+
+DOI: 10.1080/10790268.2023.2197818
+PMCID: PMC11378664
+PMID: 37116180 [Indexed for MEDLINE]
+
+Conflict of interest statement: No potential conflict of interest was reported 
+by the author(s).

@@ -1,0 +1,44 @@
+1. Adv Ther. 2022 Sep;39(9):4003-4020. doi: 10.1007/s12325-022-02224-z. Epub 2022
+ Jul 22.
+
+A Narrative Review of Irritable Bowel Syndrome with Diarrhea: A Primer for 
+Primary Care Providers.
+
+Moshiree B(1), Heidelbaugh JJ(2), Sayuk GS(3)(4)(5).
+
+Author information:
+(1)Division of Gastroenterology and Hepatology, Atrium Health Wake Forest 
+Baptist, Charlotte Campus, 1025 Morehead Medical Drive, Suite 300, Charlotte, 
+NC, 28204, USA. Baha.Moshiree@atriumhealth.org.
+(2)Department of Family Medicine, University of Michigan, Ann Arbor, MI, USA.
+(3)Department of Medicine, Washington University in St. Louis School of 
+Medicine, St. Louis, MO, USA.
+(4)Department of Psychiatry, Washington University in St. Louis School of 
+Medicine, St. Louis, MO, USA.
+(5)Gastroenterology Section, St. Louis Veterans Affairs Medical Center, St. 
+Louis, MO, USA.
+
+Irritable bowel syndrome with diarrhea (IBS-D) is a chronic disorder of 
+gut-brain interaction, characterized by recurrent abdominal pain in association 
+with more frequent, loose stools. The pathophysiology of irritable bowel 
+syndrome (IBS) includes disordered gut motility, alterations in gut microbiota, 
+neural-hormonal system abnormalities, immune reactivity, and visceral 
+hypersensitivity. Timely diagnosis of IBS-D can be achieved easily using 
+clinical criteria. Formal IBS diagnosis is important for optimizing treatment 
+and patient outcomes and facilitating patient access to appropriate educational 
+resources. Yet, given the symptom overlap with other gastrointestinal 
+conditions, diagnosis of IBS-D often is perceived to be challenging. Treatment 
+of IBS includes both nonpharmacologic and pharmacologic options. Rifaximin, 
+alosetron, and eluxadoline are effective treatments indicated for IBS-D, but 
+have limited availability internationally. Dietary approaches may also be 
+indicated for certain patients with IBS-D. Psychological interventions may be 
+effective in treating abdominal pain alone and global symptoms in IBS. We 
+describe use of these diverse therapies and provide an overview to facilitate 
+the primary care provider's approach to distinguishing IBS-D from other 
+conditions with symptom overlap.
+
+© 2022. The Author(s).
+
+DOI: 10.1007/s12325-022-02224-z
+PMCID: PMC9402521
+PMID: 35869354 [Indexed for MEDLINE]

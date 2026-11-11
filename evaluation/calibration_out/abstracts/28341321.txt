@@ -1,0 +1,42 @@
+1. Physiol Behav. 2017 Sep 1;178:179-186. doi: 10.1016/j.physbeh.2017.02.020.
+Epub  2017 Mar 22.
+
+Reprint of "Repeated adolescent activity-based anorexia influences central 
+estrogen signaling and adulthood anxiety-like behaviors in rats".
+
+Lee TJ(1), Kinzig KP(2).
+
+Author information:
+(1)Department of Psychological Sciences, Purdue University, 703 Third Street, 
+West Lafayette, IN 47907, United States. Electronic address: lee1271@purdue.edu.
+(2)Department of Psychological Sciences, Purdue University, 703 Third Street, 
+West Lafayette, IN 47907, United States. Electronic address: kkinzig@purdue.edu.
+
+Anorexia nervosa (AN) typically presents in adolescence and is highly comorbid 
+with anxiety and depression, which often persist after elimination of AN 
+symptomology. The activity-based anorexia (ABA) paradigm allows for evaluation 
+of behavioral and neuroendocrine consequences of AN-like behaviors, including 
+voluntary anorexia, hyperactivity, and disruption of the 
+hypothalamic-pituitary-gonadal (HPG) and the hypothalamic pituitary adrenal 
+(HPA) axis. Because ABA in adolescent females results in increased anxiety-like 
+behavior in adulthood and the estrogen signaling system has been shown to play a 
+role in anxiety and food intake, we investigated the role of ovarian hormones in 
+adolescent ABA-treated rats, and long-term effects of mid- and late adolescent 
+ABA exposure on behavior and estrogen signaling. While previous research 
+demonstrated that two bouts of ABA during adolescence resulted in decreased time 
+in the open arm of the elevated plus maze (EPM) and increased activity of the 
+HPA axis in response to a novel stressor, here we show that one bout of ABA in 
+mid-or late-adolescence did not result in the same behavioral outcome. Two 
+exposures to ABA during adolescence were necessary to produce long-term 
+anxiety-like behavior on the EPM. Finally, removal of ovarian hormones by 
+ovariectomy (OVX) prior to puberty did not attenuate long-term behavioral 
+consequences of ABA in adolescence, and estrogen receptor β (ERβ) expression 
+level in the amygdala of ABA rats was significantly lower than control subjects. 
+Taken together, these studies identify enduring effects of ABA in adolescent 
+females that may be mediated by ABA-induced changes to CNS ERβ signaling that 
+increase anxiety-like behaviors.
+
+Copyright © 2017 Elsevier Inc. All rights reserved.
+
+DOI: 10.1016/j.physbeh.2017.02.020
+PMID: 28341321

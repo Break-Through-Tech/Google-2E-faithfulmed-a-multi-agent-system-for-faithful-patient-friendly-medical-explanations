@@ -1,0 +1,35 @@
+1. Cancer Sci. 2008 May;99(5):856-62. doi: 10.1111/j.1349-7006.2008.00774.x. Epub
+ 2008 Feb 19.
+
+Pharmacokinetic considerations regarding non-viral cancer gene therapy.
+
+Nishikawa M(1), Takakura Y, Hashida M.
+
+Author information:
+(1)Department of Biopharmaceutics and Drug Metabolism, Graduate School of 
+Pharmaceutical Sciences, Kyoto University, Sakyo-ku, Kyoto 606-8501, Japan. 
+makiya@pharm.kyoto-u.ac.jp
+
+Cancer gene therapy, in which pharmacologically active compounds are 
+administered to cancer patients in a genetic form, has been examined not only in 
+animals but also in cancer patients. Viral vector-induced severe side effects in 
+patients have greatly underscored the importance of non-viral gene transfer 
+methods. Even though the importance of pharmacokinetics is undoubtedly 
+understood in the development of anticancer therapies, its importance has been 
+less well recognized in non-viral cancer gene therapy. When transgene products 
+express their activity within transduced cells, such as herpes simplex virus 
+type 1 thymidine kinase and short hairpin RNA, the pharmacokinetics of the 
+vectors and the expression profiles of the transgenes will determine the 
+efficacy of gene transfer. The percentage of cells transduced is highly 
+important if few by-stander effects are expected. If transgene products are 
+secreted from cells into the blood circulation, such as interferons and 
+interleukins, the pharmacokinetics of transgenes becomes a matter of significant 
+importance. Then, any approach to increasing the level and duration of transgene 
+expression will increase the therapeutic effects of cancer gene therapy. Here we 
+review the pharmacokinetics of both non-viral vectors and transgene products, 
+and discuss what should be done to achieve safer and more effective non-viral 
+cancer gene therapy.
+
+DOI: 10.1111/j.1349-7006.2008.00774.x
+PMCID: PMC11158855
+PMID: 18294288 [Indexed for MEDLINE]

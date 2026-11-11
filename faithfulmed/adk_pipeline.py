@@ -81,8 +81,8 @@ class ExtractAtomsStep(BaseAgent):
 
 class SimplifyStep(BaseAgent):
     """
-    The facts are already in state. Grounding is fetched once in Python and stored beside
-    the draft, so the Verifier can check the draft's citations against the passages the model
+    The facts are already in state. Grounding is fetched once in Python and stored beside 
+    the draft, so the Verifier can check the draft's citations against the passages the model 
     was actually given.
     """
 
@@ -113,7 +113,7 @@ class VerifyStep(BaseAgent):
     and the passages the Simplifier used. Writes the report as {verdict} for the Refiner, and ends
     the loop early when nothing needs revising.
     """
-
+ 
     async def _run_async_impl(self, ctx: InvocationContext) -> AsyncGenerator[Event, None]:
         state = ctx.session.state
         atoms = state.get("atoms")
@@ -121,7 +121,7 @@ class VerifyStep(BaseAgent):
             raise ValueError("Nothing to verify against. Run the Extractor first.")
         if not state.get("draft"):
             raise ValueError("Nothing to verify. Run the Simplifier first.")
-
+ 
         # Build a temporary dictionary with current prose and original draft metadata.
         # ** copies the draft fields, then simplified_text replaces that one field.
         # This does not change state["draft"] or certify its citations for later edits.
@@ -138,19 +138,23 @@ class VerifyStep(BaseAgent):
 
 class RefineStep(BaseAgent):
     """Fixes what {verdict} flagged and overwrites {text}, so the loop checks it again."""
-
+ 
     async def _run_async_impl(self, ctx: InvocationContext) -> AsyncGenerator[Event, None]:
         state = ctx.session.state
         if not state.get("verdict"):
             raise ValueError("Nothing to refine. Run the Verifier first.")
-
+ 
         result = await to_thread(
             refine, state.get("source_note", ""), state["text"], state["verdict"], state.get("atoms") or []
         )
         yield Event(
             author=self.name,
             invocation_id=ctx.invocation_id,
-            actions=EventActions(state_delta={"text": result.refined_text, "refiner_changes": result.changes}),
+            actions=EventActions(state_delta={
+                "text": result.refined_text,
+                "refiner_changes": [c.model_dump() for c in result.changes],
+                "refiner_unresolved": result.unresolved,
+            }),
         )
 
 # 1) Extractor - pull clinical "atoms" (facts + types) from the source document.
@@ -169,7 +173,7 @@ readability_agent = LlmAgent(
         Evaluate the draft's readability using the Flesch-Kincaid grade level and SMOG metrics.
         Then, if the reading level required for the text is above the 8th-grade level, rewrite the text
         to make it readable at the 8th-grade level or below while maintaining the text's original meaning.
-
+    
         Follow these guidelines:
         1) Do not insert new information, change the meaning of existing information, or remove significant pieces of information
         from the input text.

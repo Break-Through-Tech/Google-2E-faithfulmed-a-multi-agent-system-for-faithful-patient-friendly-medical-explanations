@@ -1,0 +1,42 @@
+1. Best Pract Res Clin Rheumatol. 2010 Apr;24(2):193-204. doi: 
+10.1016/j.berh.2010.01.002.
+
+Exercise therapy for chronic nonspecific low-back pain.
+
+van Middelkoop M(1), Rubinstein SM, Verhagen AP, Ostelo RW, Koes BW, van Tulder 
+MW.
+
+Author information:
+(1)Department of General Practice, Erasmus Medical Center, Rotterdam, the 
+Netherlands.
+
+Exercise therapy is the most widely used type of conservative treatment for low 
+back pain. Systematic reviews have shown that exercise therapy is effective for 
+chronic but not for acute low back pain. During the past 5 years, many 
+additional trials have been published on chronic low back pain. This articles 
+aims to give an overview on the effectiveness of exercise therapy in patients 
+with low back pain. For this overview, existing Cochrane reviews for the 
+individual interventions were screened for studies fulfilling the inclusion 
+criteria, and the search strategy outlined by the Cochrane Back Review Group 
+(CBRG) was followed. Studies were included if they fulfilled the following 
+criteria: (1) randomised controlled trials,(2) adult (> or =18 years) population 
+with chronic (> or =12 weeks) nonspecific low back pain and (3) evaluation of at 
+least one of the main clinically relevant outcome measures (pain, functional 
+status, perceived recovery or return to work). Two reviewers independently 
+selected studies and extracted data on study characteristics, risk of bias and 
+outcomes at short-term, intermediate and long-term follow-up. The GRADE approach 
+(GRADE, Grading of Recommendations Assessment, Development and Evaluation) was 
+used to determine the quality of evidence. In total, 37 randomised controlled 
+trials met the inclusion criteria and were included in this overview. Compared 
+to usual care, exercise therapy improved post-treatment pain intensity and 
+disability, and long-term function. The authors conclude that evidence from 
+randomised controlled trials demonstrated that exercise therapy is effective at 
+reducing pain and function in the treatment of chronic low back pain. There is 
+no evidence that one particular type of exercise therapy is clearly more 
+effective than others. However, effects are small and it remains unclear which 
+subgroups of patients benefit most from a specific type of treatment.
+
+Published by Elsevier Ltd.
+
+DOI: 10.1016/j.berh.2010.01.002
+PMID: 20227641 [Indexed for MEDLINE]

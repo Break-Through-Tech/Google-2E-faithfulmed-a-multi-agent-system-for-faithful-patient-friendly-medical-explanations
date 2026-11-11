@@ -1,0 +1,33 @@
+1. J Cell Physiol. 2007 Nov;213(2):301-5. doi: 10.1002/jcp.21173.
+
+Gene therapy: the first two decades and the current state-of-the-art.
+
+Flotte TR(1).
+
+Author information:
+(1)Department of Pediatrics, University of Massachusetts Medical School, 
+Worcester, Massachusetts, USA. Terry.Flotte@umassmed.edu
+
+The concept of gene therapy was envisioned soon after the emergence of 
+restriction endonucleases and subcloning of mammalian genes in phage and 
+plasmids. Over the ensuing decades, vectors were developed, including nonviral 
+methods, integrating virus vectors (gammaretrovirus and lentivirus), and 
+non-integrating virus vectors (adenovirus, adeno-associated virus, and herpes 
+simplex virus vectors). Preclinical data demonstrated potential efficacy in a 
+broad range of animal models of human diseases, but clinical efficacy in humans 
+remained elusive in most cases, even after decades of experience in over 1000 
+trials. Adverse effects from gene therapy have been observed in some cases, 
+often because of viral vectors retaining some of the pathogenic potential of the 
+viruses upon which they are based. Later generation vectors have been developed 
+in which the safety and/or the efficiency of gene transfer has been improved. 
+Most recently this work has involved alterations of vector envelope or capsid 
+proteins either by insertion of ligands to target specific receptors or by 
+directed evolution. The disease targets for gene therapy are multiple, but the 
+most promising data have come from monogenic disorders. As the number of 
+potential targets for gene therapy continues to increase, and a substantial 
+number of trials continue with both the standard and the later generation vector 
+systems, it is hoped that a therapeutic niche for gene therapy will emerge in 
+the coming decades.
+
+DOI: 10.1002/jcp.21173
+PMID: 17577203 [Indexed for MEDLINE]

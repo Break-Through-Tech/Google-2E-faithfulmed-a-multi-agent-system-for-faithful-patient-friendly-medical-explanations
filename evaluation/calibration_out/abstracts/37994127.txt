@@ -1,0 +1,40 @@
+1. Zhonghua Yi Xue Yi Chuan Xue Za Zhi. 2023 Dec 10;40(12):1478-1483. doi: 
+10.3760/cma.j.cn511374-20220530-00366.
+
+[Analysis of clinical features and variants of NF1 gene in 12 patients with 
+Neurofibromatosis type 1].
+
+[Article in Chinese]
+
+Zhang Y(1), Yan L, Xie M, Xue J, Zhuang D, Li H.
+
+Author information:
+(1)Laboratory for Comprehensive Prevention and Treatment of Birth Defects, 
+Ningbo Women and Children's Hospital, Ningbo, Zhejiang 315012, China. 
+lihaibo-775@163.com.
+
+OBJECTIVE: To explore the types of NF1 gene variants and clinical 
+characteristics among patients with Neurofibromatosis type I (NF1).
+METHODS: Clinical data of 12 patients diagnosed at Ningbo Women and Children's 
+Hospital between December 2019 and May 2022 were retrospectively analyzed. The 
+probands and their family members were subjected to high-throughput sequencing, 
+and candidate variants were verified by Sanger sequencing and chromosome 
+microarray analysis.
+RESULTS: The 12 patients had ranged from 4 months to 27 years old, with a 
+male-to-female ratio of 2 : 1. Cafè-au-lait spots were found in all patients. 
+83.3% of them also had axillary and/or inguinal freckling, 58.3% had 
+neurofibromas, and 16.7% had congenital pseudarthrosis of the tibia. Five types 
+of NF1 gene variants were identified in the patients, including 5 nonsense 
+variants, 4 frameshift variants, 1 missense variant, 1 splice variant, 1 large 
+deletion involving the whole gene. Six patients were found to harbor de novo 
+variants, 2 had inherited the variants from their parents, and 4 were not 
+verified for their parental origin. The c.3379del (p.Thr1127Glnfs*15) and 
+c.6628_6629del (p.Glu2210Thrfs*10) variants were unreported in literature and 
+databases.
+CONCLUSION: Most NF1 patients may present with Cafè-au-lait spots initially and 
+are due to pathogenic variant of the NF1 gene. High-throughput sequencing can 
+efficiently identify such variants among the patients and enable the definite 
+diagnosis.
+
+DOI: 10.3760/cma.j.cn511374-20220530-00366
+PMID: 37994127 [Indexed for MEDLINE]

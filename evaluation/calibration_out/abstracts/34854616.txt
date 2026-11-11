@@ -1,0 +1,30 @@
+1. Ned Tijdschr Geneeskd. 2021 Sep 16;165:D6039.
+
+[Don't stop medication too abruptly: advice about the discontinuation of 
+medication].
+
+[Article in Dutch]
+
+Karssemeijer EGA(1)(2), van der Heijden CDCC(3), Wolters TLC(3), Te Boekhorst 
+B(3), Ter Avest M(4), Kramers C(3).
+
+Author information:
+(1)Radboudumc, afd. Geriatrie, Nijmegen.
+(2)Contact: Esther G.A. Karssemeijer (esther.karssemeijer@radboudumc.nl).
+(3)Radboudumc, afd. Farmacologie-Toxicologie, Nijmegen.
+(4)Canisius Wilhelmina Ziekenhuis, afd. Klinische Farmacie, Nijmegen.
+
+Polypharmacy may result in interactions and side effects that lead to morbidity 
+and mortality. Therefore, it is important to evaluate on a regular basis the 
+possibility to stop medication. Sometimes it is necessary to temporarily 
+discontinue certain medication, for example when a patient is unable to swallow 
+or suffers from a delirium. Not all drugs can be stopped abruptly, since this 
+can result in a rebound-effect or withdrawal symptoms Especially drugs that act 
+on the central nervous system (e.g. psychotropic drugs, dopaminergic drugs, 
+opioids) are known to cause (severe) withdrawal symptoms when stopped abruptly 
+In addition, beta-blockers, corticosteroids and proton-pump inhibitors cause 
+symptoms when stopped without tapering. Gradually tapering off these medicines 
+is needed, sometimes under guidance from a specialist. Moreover, it is important 
+to realize that stopping medication can also introduce interactions.
+
+PMID: 34854616 [Indexed for MEDLINE]

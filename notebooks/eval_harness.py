@@ -1,5 +1,5 @@
 """
-FaithfulMed — starter evaluation harness.
+FaithfulMed evaluation harness.
 
 Build this out in Week 1-2, BEFORE the agents. You can't improve what you can't measure.
 Run: python notebooks/eval_harness.py  (expects data/medaesqa_v1.json — see data/README.md)
@@ -17,7 +17,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-import textstat
+from textstat import textstat
 from sklearn.metrics import cohen_kappa_score, accuracy_score
 
 DATA = Path(__file__).resolve().parent.parent / "data" / "medaesqa_v1.json"

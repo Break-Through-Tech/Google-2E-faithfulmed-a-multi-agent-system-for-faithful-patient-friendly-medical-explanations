@@ -1,0 +1,40 @@
+1. Diagnostics (Basel). 2022 Nov 18;12(11):2864. doi:
+10.3390/diagnostics12112864.
+
+Severe Gastritis Due to Nivolumab Treatment of a Metastatic Melanoma Patient.
+
+Samonis G(1), Bousmpoukea A(1), Molfeta A(1), Kalkinis AD(2), Petraki K(3), 
+Koutserimpas C(4), Bafaloukos D(1).
+
+Author information:
+(1)First Oncology Department, Metropolitan Hospital, Neon Faliron, 18547 Athens, 
+Greece.
+(2)Department of Nuclear Medicine, Metropolitan Hospital, Neon Faliron, 18547 
+Athens, Greece.
+(3)Department of Pathology, Metropolitan Hospital, Neon Faliron, 18547 Athens, 
+Greece.
+(4)Department of Orthopaedics and Traumatology, "251" Hellenic Air Force General 
+Hospital of Athens, 11525 Athens, Greece.
+
+Nivolumab, an anti-PD-1 check point inhibitor, is an immunotherapeutic agent, 
+representing a major step in the treatment of melanoma. However, its use is 
+associated with severe toxicities. Among them, gastrointestinal (GI) disorders 
+from the lower GI tract have been widely reported. On the contrary, disorders 
+from the upper GI tract are rare. Such a case of delayed nivolumab induced 
+severe gastritis in a 53-year-old Caucasian female patient suffering metastatic 
+melanoma is described. The patient's symptoms from the upper GI tract began 4 
+months after nivolumab treatment initiation. The diagnosis was based on imaging, 
+including PET/CT, endoscopical and pathological findings. The side effect was 
+successfully treated with prolonged administration of proton pump inhibitors and 
+corticosteroids. There are only a few cases of immune check point inhibitors 
+(ICPis) induced upper GI tract disorders, while it seems that the symptoms from 
+nivolumab induced upper GI tract damages appear later than those reported in the 
+lower part. Nivolumab, among other side effects, may cause severe gastritis. 
+Hence, this pathological entity should be included in the list of this drug's 
+side effects.
+
+DOI: 10.3390/diagnostics12112864
+PMCID: PMC9689097
+PMID: 36428923
+
+Conflict of interest statement: The authors declare no conflict of interest.

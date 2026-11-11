@@ -1,0 +1,40 @@
+1. Gene. 2016 Oct 10;591(1):279-291. doi: 10.1016/j.gene.2016.07.033. Epub 2016
+Jul  18.
+
+FBN1: The disease-causing gene for Marfan syndrome and other genetic disorders.
+
+Sakai LY(1), Keene DR(2), Renard M(3), De Backer J(3).
+
+Author information:
+(1)Departments of Molecular & Medical Genetics and Biochemistry & Molecular 
+Biology, Oregon Health & Science University and Shriners Hospital for Children, 
+3101 SW Sam Jackson Park Road, Portland, OR 97239, United States. Electronic 
+address: lys@shcc.org.
+(2)Biomedical Engineering, Oregon Health & Science University and Shriners 
+Hospital for Children, 3101 SW Sam Jackson Park Road, Portland, OR 97239, United 
+States.
+(3)Center for Medical Genetics, Ghent University Hospital, De Pintelaan 185, 
+9000, Ghent, Belgium.
+
+FBN1 encodes the gene for fibrillin-1, a structural macromolecule that 
+polymerizes into microfibrils. Fibrillin microfibrils are morphologically 
+distinctive fibrils, present in all connective tissues and assembled into 
+tissue-specific architectural frameworks. FBN1 is the causative gene for Marfan 
+syndrome, an inherited disorder of connective tissue whose major features 
+include tall stature and arachnodactyly, ectopia lentis, and thoracic aortic 
+aneurysm and dissection. More than one thousand individual mutations in FBN1 are 
+associated with Marfan syndrome, making genotype-phenotype correlations 
+difficult. Moreover, mutations in specific regions of FBN1 can result in the 
+opposite features of short stature and brachydactyly characteristic of 
+Weill-Marchesani syndrome and other acromelic dysplasias. How can mutations in 
+one molecule result in disparate clinical syndromes? Current concepts of the 
+fibrillinopathies require an appreciation of tissue-specific fibrillin 
+microfibril microenvironments and the collaborative relationship between the 
+structures of fibrillin microfibril networks and biological functions such as 
+regulation of growth factor signaling.
+
+Copyright © 2016 Elsevier B.V. All rights reserved.
+
+DOI: 10.1016/j.gene.2016.07.033
+PMCID: PMC6639799
+PMID: 27437668 [Indexed for MEDLINE]

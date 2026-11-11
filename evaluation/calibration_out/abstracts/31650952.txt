@@ -1,0 +1,44 @@
+1. Zhongguo Fei Ai Za Zhi. 2019 Oct 20;22(10):671-675. doi: 
+10.3779/j.issn.1009-3419.2019.10.12.
+
+[Management of Rheumatic Adverse Events Related to Immune Checkpoint 
+Inhibitors].
+
+[Article in Chinese; Abstract available in Chinese from the publisher]
+
+Zhou J(1), Wang Q(1), Duan L(2), Si X(3), Zhang L(4), Liu X(5), Li Y(6), Wang 
+H(3), Guo X(7), Zhang W(1), Zhang L(3).
+
+Author information:
+(1)Department of Rheumatology, Peking Union Medical College Hospital, Chinese 
+Academy of Medical Sciences, Beijing 100730, China.
+(2)Department of Endocrinology, Peking Union Medical College Hospital, Chinese 
+Academy of Medical Sciences, Beijing 100730, China.
+(3)Department of Respiratory medicine, Peking Union Medical College Hospital, 
+Chinese Academy of Medical Sciences, Beijing 100730, China.
+(4)Department of Clinical Laboratory, Peking Union Medical College Hospital, 
+Chinese Academy of Medical Sciences, Beijing 100730, China.
+(5)Department of Ophthalmology, Peking Union Medical College Hospital, Chinese 
+Academy of Medical Sciences, Beijing 100730, China.
+(6)Department of Gastroenterology, Peking Union Medical College Hospital, 
+Chinese Academy of Medical Sciences, Beijing 100730, China.
+(7)Department of Cardiology, Peking Union Medical College Hospital, Chinese 
+Academy of Medical Sciences, Beijing 100730, China.
+
+Immune checkpoint inhibitors (ICIs) have made remarkable breakthroughs in cancer 
+treatment. However, the widely use of ICIs is associated with a spectrum of 
+immune-related adverse events (irAEs). These adverse events can affect any organ 
+system. In this article, we have made a systemic review about the clinical 
+characteristics of rheumatic irAEs, and also summarized irAEs in patients with 
+pre-exsiting rheumatic disease. We also focus on the management of rheumatic 
+irAEs.
+
+Publisher: 【中文题目：免疫检查点抑制剂风湿性毒副反应诊治建议】 【中文摘要：近年来，免疫检查点抑制剂（immune checkpoint 
+inhibitors, ICIs）已成为肿瘤治疗的突破性进展之一。但随着ICIs的广泛应用，这类药物所导致的免疫相关副反应（immune-related 
+adverse events, 
+irAEs）也逐渐引起人们的重视。研究发现，irAEs几乎可影响到人体的各个器官。本文主要针对ICIs在风湿方面毒副反应的临床特点展开综述，并且总结了具有基础风湿病的患者在使用ICIs后的免疫相关副反应，最后对这类副反应的治疗进行了探讨。】 
+【中文关键词：免疫检查点抑制剂；免疫相关副反应；风湿性疾病；治疗】.
+
+DOI: 10.3779/j.issn.1009-3419.2019.10.12
+PMCID: PMC6817434
+PMID: 31650952 [Indexed for MEDLINE]

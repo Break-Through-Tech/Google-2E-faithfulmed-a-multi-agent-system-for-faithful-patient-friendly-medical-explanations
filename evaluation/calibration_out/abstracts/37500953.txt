@@ -1,0 +1,55 @@
+1. Sci Rep. 2023 Jul 27;13(1):12202. doi: 10.1038/s41598-023-39293-1.
+
+Functional consequences of C-terminal mutations in RUNX2.
+
+Thaweesapphithak S(1)(2), Theerapanon T(1), Rattanapornsompong K(1), Intarak 
+N(1), Kanpittaya P(3), Trachoo V(4), Porntaveetus T(5)(6), Shotelersuk V(7)(8).
+
+Author information:
+(1)Center of Excellence in Genomics and Precision Dentistry, Department of 
+Physiology, Faculty of Dentistry, Chulalongkorn University, Bangkok, 10330, 
+Thailand.
+(2)Graduate Program in Oral Biology, Faculty of Dentistry, Chulalongkorn 
+University, Bangkok, Thailand.
+(3)Department of Orthodontics, Faculty of Dentistry, Chulalongkorn University, 
+Bangkok, Thailand.
+(4)Department of Oral and Maxillofacial Surgery, Faculty of Dentistry, 
+Chulalongkorn University, Bangkok, Thailand.
+(5)Center of Excellence in Genomics and Precision Dentistry, Department of 
+Physiology, Faculty of Dentistry, Chulalongkorn University, Bangkok, 10330, 
+Thailand. thantrira.p@chula.ac.th.
+(6)Graduate Program in Geriatric and Special Patients Care, Faculty of 
+Dentistry, Chulalongkorn University, Bangkok, Thailand. thantrira.p@chula.ac.th.
+(7)Center of Excellence for Medical Genomics, Department of Pediatrics, Faculty 
+of Medicine, Chulalongkorn University, Bangkok, Thailand.
+(8)Excellence Center for Genomics and Precision Medicine, King Chulalongkorn 
+Memorial Hospital, the Thai Red Cross Society, Bangkok, Thailand.
+
+Cleidocranial dysplasia (CCD) is a genetic disorder caused by mutations in the 
+RUNX2 gene, affecting bone and teeth development. Previous studies focused on 
+mutations in the RUNX2 RHD domain, with limited investigation of mutations in 
+the C-terminal domain. This study aimed to investigate the functional 
+consequences of C-terminal mutations in RUNX2. Eight mutations were analyzed, 
+and their effects on transactivation activity, protein expression, subcellular 
+localization, and osteogenic potential were studied. Truncating mutations in the 
+PST region and a missense mutation in the NMTS region resulted in increased 
+transactivation activity, while missense mutations in the PST showed activity 
+comparable to the control. Truncating mutations produced truncated proteins, 
+while missense mutations produced normal-sized proteins. Mutant proteins were 
+mislocalized, with six mutant proteins detected in both the nucleus and 
+cytoplasm. CCD patient bone cells exhibited mislocalization of RUNX2, similar to 
+the generated mutant. Mislocalization of RUNX2 and reduced expression of 
+downstream genes were observed in MSCs from a CCD patient with the 
+p.Ser247Valfs*3 mutation, leading to compromised osteogenic potential. This 
+study provides insight into the functional consequences of C-terminal mutations 
+in RUNX2, including reduced expression, mislocalization, and aberrant 
+transactivation of downstream genes, contributing to the compromised osteogenic 
+potential observed in CCD.
+
+© 2023. The Author(s).
+
+DOI: 10.1038/s41598-023-39293-1
+PMCID: PMC10374887
+PMID: 37500953 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare no competing interests.

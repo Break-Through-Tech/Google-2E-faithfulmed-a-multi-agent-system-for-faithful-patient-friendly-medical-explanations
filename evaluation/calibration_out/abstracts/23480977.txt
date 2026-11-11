@@ -1,0 +1,49 @@
+1. Eur J Phys Rehabil Med. 2013 Apr;49(2):189-95. Epub 2013 Mar 13.
+
+Effectiveness of intensive neurorehabilitation in patients with Huntington's 
+disease.
+
+Ciancarelli I(1), Tozzi Ciancarelli MG, Carolei A.
+
+Author information:
+(1)Department of Medicine, Public Health, Life and Environmental Sciences, 
+University of L'Aquila, L'Aquila, Italy. irene.ciancarelli@univaq.it
+
+BACKGROUND: Huntington's disease (HD) is a neurodegenerative disorder 
+characterized by motor, cognitive, and behavioral impairments that differ in 
+their presentation and progression across subjects. Studies validating the 
+effectiveness of intensive neurorehabilitation such as a strategy to reducing 
+functional impairments and to improving motor capacities in HD patients are 
+limited and heterogeneous.
+AIM: To design and test an intensive multifunctional neurorehabilitative 
+protocol in symptomatic patients with HD in the attempt to limit the progression 
+of neurological deficits and to preserve and maintain independence in the 
+activities of daily living.
+DESIGN: Case series.
+SETTING: Rehabilitation nursing home.
+POPULATION: Thirty-four patients (12 men and 22 women) with HD.
+METHODS: Three-week in-hospital intensive multifunctional neurorehabilitation. 
+The evaluation of patients was performed before and at the end of the 3-week 
+neurorehabilitative treatment by the Barthel Index (BI) and the Total Functional 
+Capacity Scale (TFCS) assessing independence in the activities of daily living, 
+by the Physical Performance Test (PPT) assessing motor performances on 
+functional tasks, and by the Tinetti Scale (TS) assessing balance and gait. A 
+telephone follow-up interview evaluating individual autonomy by the BI was 
+scheduled 3 months after discharge in order to evaluate the short-term results.
+RESULTS: We found a significant increase (P<0.001) of the mean scores of BI, TS, 
+PPT and TFCS in all patients at the end of the 3-week in-hospital intensive 
+multifunctional neurorehabilitation with respect to the score values obtained 
+before rehabilitative treatment. The differences of BI, TS, PPT and TFCS scores 
+(Δ scores) observed in HD patients assuming tetrabenazine and in patients not 
+assuming the drug, before and after rehabilitation, were not statistically 
+different. The improvement in independence in the activities of daily living 
+evaluated by BI vanished 3 months after discharge (P<0.05).
+CONCLUSION: Rehabilitative treatment in HD patients needs to be multifunctional 
+and continuous to improve or maintain motor performances and functional 
+independence.
+CLINICAL REHABILITATION IMPACT: Despite Huntington's disease is a progressive 
+and incurable disease intensive neurorehabilitation lessens patients' disability 
+and improves their quality of life ameliorating autonomy and delaying the 
+progression of motor dysfunction.
+
+PMID: 23480977 [Indexed for MEDLINE]

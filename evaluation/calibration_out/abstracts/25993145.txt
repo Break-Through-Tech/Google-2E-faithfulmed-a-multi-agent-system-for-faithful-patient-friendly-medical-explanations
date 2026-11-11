@@ -1,0 +1,31 @@
+1. Am Soc Clin Oncol Educ Book. 2015:76-83. doi: 10.14694/EdBook_AM.2015.35.76.
+
+Managing immune checkpoint-blocking antibody side effects.
+
+Postow MA(1).
+
+Author information:
+(1)From the Memorial Sloan Kettering Cancer Center, New York, NY; Weill Cornell 
+Medical College, New York, NY.
+
+Immune checkpoint-blocking antibodies that enhance the immune system's ability 
+to fight cancer are becoming important components of treatment for patients with 
+a variety of malignancies. Cytotoxic T-lymphocyte-associated antigen 4 (CTLA-4) 
+was the first immune checkpoint to be clinically targeted, and ipilimumab, an 
+inhibitor of CTLA-4, was approved by the U.S. Food and Drug Administration (FDA) 
+for patients with advanced melanoma. The programmed cell death-1 (PD-1) receptor 
+and one of its ligands, PD-L1, more recently have shown great promise as 
+therapeutic targets in a variety of malignancies. Nivolumab and pembrolizumab 
+recently have been FDA- approved for patients with melanoma and additional 
+approvals within this therapeutic class are expected. The use of anti-CTLA-4 and 
+anti-PD-1/PD-L1 antibodies is associated with side effects known as 
+immune-related adverse events (irAEs). Immune-related adverse events affect the 
+dermatologic, gastrointestinal, hepatic, endocrine, and other organ systems. 
+Temporary immunosuppression with corticosteroids, tumor necrosis factor-alpha 
+antagonists, mycophenolate mofetil, or other agents can be effective treatment. 
+This article describes the side-effect profile of the checkpoint-blocking 
+antibodies that target CTLA-4 and PD-1/PD-L1 and provides suggestions on how to 
+manage specific irAEs.
+
+DOI: 10.14694/EdBook_AM.2015.35.76
+PMID: 25993145 [Indexed for MEDLINE]

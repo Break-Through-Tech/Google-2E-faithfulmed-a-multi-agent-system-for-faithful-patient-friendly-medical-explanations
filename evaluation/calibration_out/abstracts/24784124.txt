@@ -1,0 +1,33 @@
+1. Am Fam Physician. 2014 Apr 15;89(8):649-57.
+
+Evaluation of elbow pain in adults.
+
+Kane SF(1), Lynch JH(1), Taylor JC(1).
+
+Author information:
+(1)Womack Army Medical Center, Fort Bragg, NC, USA.
+
+The elbow is a complex joint designed to withstand a wide range of dynamic 
+exertional forces. The location and quality of elbow pain can generally localize 
+the injury to one of the four anatomic regions: anterior, medial, lateral, or 
+posterior. The history should include questions about the onset of pain, what 
+the patient was doing when the pain started, and the type and frequency of 
+athletic and occupational activities. Lateral and medial epicondylitis are two 
+of the more common diagnoses and often occur as a result of occupational 
+activities. Patients have pain and tenderness over the affected tendinous 
+insertion that are accentuated with specific movements. If lateral and medial 
+epicondylitis treatments are unsuccessful, ulnar neuropathy and radial tunnel 
+syndrome should be considered. Ulnar collateral ligament injuries occur in 
+athletes participating in sports that involve overhead throwing. Biceps 
+tendinopathy is a relatively common source of pain in the anterior elbow; 
+history often includes repeated elbow flexion with forearm supination and 
+pronation. Olecranon bursitis is a common cause of posterior elbow pain and 
+swelling. It can be septic or aseptic, and is diagnosed based on history, 
+physical examination, and bursal fluid analysis if necessary. Plain radiography 
+is the initial choice for the evaluation of acute injuries and is best for 
+showing bony injuries, soft tissue swelling, and joint effusions. Magnetic 
+resonance imaging is the preferred imaging modality for chronic elbow pain. 
+Musculoskeletal ultrasonography allows for an inexpensive dynamic evaluation of 
+commonly injured structures.
+
+PMID: 24784124 [Indexed for MEDLINE]

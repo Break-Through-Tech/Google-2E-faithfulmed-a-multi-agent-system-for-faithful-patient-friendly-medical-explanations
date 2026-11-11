@@ -1,0 +1,63 @@
+1. Exp Eye Res. 2021 Apr;205:108526. doi: 10.1016/j.exer.2021.108526. Epub 2021
+Mar  2.
+
+Long term observation of ocular surface alkali burn in rabbit models: 
+Quantitative analysis of corneal haze, vascularity and self-recovery.
+
+Kethiri AR(1), Singh VK(1), Damala M(2), Basu S(3), Rao CM(4), Bokara KK(4), 
+Singh V(5).
+
+Author information:
+(1)Stem Cell Laboratory, Prof. Brien Holden Eye Research Center, L V Prasad Eye 
+Institute, Hyderabad, Telangana, India; Center for Ocular Regeneration (CORE), 
+LV Prasad Eye Institute, Hyderabad, Telangana, India.
+(2)Stem Cell Laboratory, Prof. Brien Holden Eye Research Center, L V Prasad Eye 
+Institute, Hyderabad, Telangana, India; School of Life Sciences, University of 
+Hyderabad, Hyderabad, Telangana, India; Center for Ocular Regeneration (CORE), 
+LV Prasad Eye Institute, Hyderabad, Telangana, India.
+(3)The Cornea Institute, LV Prasad Eye Institute, Hyderabad, Telangana, India; 
+Center for Ocular Regeneration (CORE), LV Prasad Eye Institute, Hyderabad, 
+Telangana, India.
+(4)CSIR-Center for Cellular and Molecular Biology, ANNEXE II, Medical 
+Biotechnology Complex, Hyderabad, Telangana, India.
+(5)Stem Cell Laboratory, Prof. Brien Holden Eye Research Center, L V Prasad Eye 
+Institute, Hyderabad, Telangana, India; Center for Ocular Regeneration (CORE), 
+LV Prasad Eye Institute, Hyderabad, Telangana, India. Electronic address: 
+viveksingh@lvpei.org.
+
+Limbal Stem Cell Deficiency (LSCD), caused due to corneal injury, primarily by 
+chemical/alkali burns, leads to compromised vision. Recently, several animal 
+models of corneal alkali burn injury have become available. The majority of the 
+studies with these animal models start interventions soon after the injury. 
+However, in the clinical setting, there is a considerable delay before the 
+intervention is initiated. Detailed knowledge of the molecular, 
+histopathological, and clinical parameters associated with the progression of 
+the injury leading to LSCD is highly desirable. In this context, we set out to 
+investigate clinical, histopathological parameters of ocular surface alkali burn 
+over a long period of time, post-injury. Limbal stem cell-deficient animal 
+models of rabbits were created by alkali burn using sodium hydroxide, which was 
+then assessed for their progression towards LSCD by grading the alkali burn, 
+corneal haze, and vascularization. Additionally, cells present on the corneal 
+surface after the burn was investigated by histology and immunophenotyping. 
+Grading of rabbit eyes post-alkali burn had shown complete conjunctivalization 
+in 80% (n = 12/15) of the rabbits with the alkali burn grade score of 
+3.88 ± 0.29 in three months and remained stable at four months (4.12 ± 0.24). 
+However, ocular surface showed self-healing in 20% (n = 3/15) of the rabbits 
+with a score of 1.67 ± 0.34 in four months irrespective of similar alkali 
+injury. These self-healing corneas exhibited decreased opacity score from 
+2.51 ± 0.39 to 0.66 ± 0.22 (p = 0.002) and regressed vascularity from 
+1.66 ± 0.41 to 0.66 ± 0.33 in one to nine months, respectively. Restoration of 
+the corneal phenotype (CK3+) was observed in central and mid-peripheral regions 
+of the self-healing corneas, and histology revealed the localization of 
+inflammatory cells to the peripheral cornea when compared to conjunctivalized 
+and scarred LSCD eyes. Our study shows the essentiality to consider the time 
+required for surgical intervention after the corneal alkali injury in rabbit 
+models as evident from their tendency to self-heal and restore corneal phenotype 
+without therapy. Such information on the possibility of self-healing should be 
+useful in further studies as well as determining interventional timings and 
+strategy during clinical presentation of corneal alkali burns.
+
+Copyright © 2021 Elsevier Ltd. All rights reserved.
+
+DOI: 10.1016/j.exer.2021.108526
+PMID: 33662355 [Indexed for MEDLINE]

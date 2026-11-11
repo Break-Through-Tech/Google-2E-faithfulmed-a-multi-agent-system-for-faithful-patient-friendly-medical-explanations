@@ -1,0 +1,31 @@
+1. Am Fam Physician. 2013 Jan 15;87(2):114-20.
+
+Evaluation and management of corneal abrasions.
+
+Wipperman JL(1), Dorsch JN.
+
+Author information:
+(1)University of Kansas School of Medicine, Wichita, KS 67214, USA.
+
+Corneal abrasions are commonly encountered in primary care. Patients typically 
+present with a history of trauma and symptoms of foreign body sensation, 
+tearing, and sensitivity to light. History and physical examination should 
+exclude serious causes of eye pain, including penetrating injury, infective 
+keratitis, and corneal ulcers. After fluorescein staining of the cornea, an 
+abrasion will appear yellow under normal light and green in cobalt blue light. 
+Physicians should carefully examine for foreign bodies and remove them, if 
+present. The goals of treatment include pain control, prevention of infection, 
+and healing. Pain relief may be achieved with topical nonsteroidal 
+anti-inflammatory drugs or oral analgesics. Evidence does not support the use of 
+topical cycloplegics for uncomplicated corneal abrasions. Patching is not 
+recommended because it does not improve pain and has the potential to delay 
+healing. Although evidence is lacking, topical antibiotics are commonly 
+prescribed to prevent bacterial superinfection. Contact lens-related abrasions 
+should be treated with antipseudomonal topical antibiotics. Follow-up may not be 
+necessary for patients with small (4 mm or less), uncomplicated abrasions; 
+normal vision; and resolving symptoms. All other patients should be reevaluated 
+in 24 hours. Referral is indicated for any patient with symptoms that do not 
+improve or that worsen, a corneal infiltrate or ulcer, significant vision loss, 
+or a penetrating eye injury.
+
+PMID: 23317075 [Indexed for MEDLINE]

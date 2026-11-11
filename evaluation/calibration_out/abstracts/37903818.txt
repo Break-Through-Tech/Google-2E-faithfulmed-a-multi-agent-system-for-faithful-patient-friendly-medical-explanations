@@ -1,0 +1,46 @@
+1. Sci Rep. 2023 Oct 30;13(1):18625. doi: 10.1038/s41598-023-44939-1.
+
+Assessment of the eye surface and subjective symptoms after using 0.1% 
+dexamethasone drops with and without preservatives in patients after cataract 
+surgery.
+
+Muzyka-Woźniak M(1), Stróżecki Ł(2), Przeździecka-Dołyk J(3)(4).
+
+Author information:
+(1)Ophthalmology Clinical Centre SPEKTRUM, Research and Development Centre CREO, 
+Zaolziańska 4 Str., 53-334, Wrocław, Poland. mmw@spektrum.wroc.pl.
+(2)Department of Anaesthesiology and Intensive Therapy, Wroclaw Medical 
+University, Wybrzeże Ludwika Pasteura 1, 50-367, Wrocław, Poland.
+(3)Ophthalmology Clinical Centre SPEKTRUM, Research and Development Centre CREO, 
+Zaolziańska 4 Str., 53-334, Wrocław, Poland.
+(4)Department of Optics and Photonics, Wroclaw University of Science and 
+Technology, Wybrzeże Wyspiańskiego 27, 50-370, Wrocław, Poland.
+
+Cataract surgery can cause dry eye symptoms. One of the many factors 
+compromising the ocular surface is the use of benzalkonium chloride 
+(BAC)-preserved topical eye drops administered during the postoperative period. 
+In this open-label, prospective, randomized, comparative clinical trial, 40 
+patients not previously affected by dry eye disease were assigned to receive 
+either preservative-free (PFD) or preserved (PD) dexamethasone 0.1% eye drops 
+for two weeks after a standard phacoemulsification procedure. Fluorescein 
+break-up time, ocular surface staining score, Schirmer test, Ocular Surface 
+Disease Index and anterior chamber (AC) cells were evaluated at baseline prior 
+to the surgery and 2 weeks after surgery. No statistically significant 
+differences in baseline assessments were observed between groups. At week 2, a 
+significant increase in corneal staining scores (p = 0.003) and foreign body 
+sensation (p = 0.04) was observed for the PD group only. The conjunctival 
+staining score was significantly higher in both groups. The mean AC cell grading 
+was higher in the PFD group than in the PD group (0.28 ± 0.30 and 0.07 ± 0.18, 
+respectively; p = 0.013). Preservative-free dexamethasone eye drops after 
+cataract surgery caused milder dry eye symptoms as compared with preserved 
+dexamethasone. The AC inflammation control comparison may require a larger study 
+group. Trial registration: ClinicalTrials.gov identifier NCT05753787, 
+03/03/2023.
+
+© 2023. The Author(s).
+
+DOI: 10.1038/s41598-023-44939-1
+PMCID: PMC10616106
+PMID: 37903818 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare no competing interests.

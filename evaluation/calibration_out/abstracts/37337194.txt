@@ -1,0 +1,53 @@
+1. BMC Med Genomics. 2023 Jun 19;16(1):141. doi: 10.1186/s12920-023-01581-0.
+
+Evidence for causal effects of polycystic ovary syndrome on oxidative stress: a 
+two-sample mendelian randomisation study.
+
+Yifu P(1).
+
+Author information:
+(1)Laboratory of Genetic Disease and Perinatal Medicine, Key Laboratory of Birth 
+Defects and Related Diseases of Women and Children, Ministry of Education, West 
+China Second University Hospital, Sichuan University, Chengdu, Sichuan Province, 
+610041, China. puyifu150695@163.com.
+
+BACKGROUND: Polycystic ovary syndrome (PCOS) is often accompanied by increased 
+oxidative stress levels; however, it is still unclear whether PCOS itself is 
+causally related to oxidative stress (OS), whether OS can increase the 
+occurrence of PCOS, and which characteristics of PCOS increase OS levels. 
+Therefore, this study explored the causal relationship between PCOS, its 
+characteristics, and OS.
+METHODS: Two-sample bidirectional and two-sample Mendelian randomisation studies 
+were performed based on publicly available statistics from genome-wide 
+association studies. PCOS; its characteristics, such as testosterone, 
+low-density lipoprotein, high-density lipoprotein; and 11 major OS markers 
+(superoxide dismutase, glutathione S-transferase, glutathione peroxidase, 
+catalase, uric acid, zinc, tocopherol, ascorbic acid, retinol, albumin, and 
+total bilirubin), were studied. The main analytical method used was inverse 
+variance weighting (IVW). Pleiotropy was evaluated using the Mendelian 
+randomisation-Egger intercept. Q and P values were used to assess heterogeneity.
+RESULTS: There was no causal relationship between PCOS and the OS indices (all 
+P > 0.05). There was a causal relationship between the OS index, ascorbate 
+level, and PCOS (IVW, odds ratio: 2.112, 95% confidence interval: 1.257-3.549, 
+P = 0.005). In addition, there was a causal relationship between testosterone, 
+low-density lipoprotein, high-density lipoprotein, sex hormone-binding globulin, 
+body mass index, triacylglycerol, age at menarche, and most OS indices according 
+to the IVW method. The F statistics showed that there was no weak instrumental 
+variable. A sensitivity analysis was performed using the leave-one-out method. 
+No pleiotropy was observed. The results were robust, and the conclusions were 
+reliable.
+CONCLUSIONS: This study showed for the first time that there was no causal 
+relationship between PCOS and OS. However, there was a causal relationship 
+between the OS index, ascorbate level, and PCOS. It revealed that PCOS itself 
+could not increase OS, and the increase in OS in PCOS was related to other 
+potential factors, such as testosterone, low-density lipoprotein, high-density 
+lipoprotein, sex hormone-binding globulin, body mass index, triacylglycerol, and 
+age at menarche.
+
+© 2023. The Author(s).
+
+DOI: 10.1186/s12920-023-01581-0
+PMCID: PMC10278295
+PMID: 37337194 [Indexed for MEDLINE]
+
+Conflict of interest statement: The authors declare no competing interests.

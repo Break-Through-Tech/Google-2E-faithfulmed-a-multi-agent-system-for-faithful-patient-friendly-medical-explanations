@@ -1,0 +1,46 @@
+1. J Pediatr Surg. 2014 Nov;49(11):1678-82. doi: 10.1016/j.jpedsurg.2014.10.044. 
+Epub 2014 Nov 8.
+
+Initial hematocrit predicts the use of blood transfusion in the pediatric trauma 
+patient.
+
+Allen CJ(1), Tashiro J(2), Valle EJ(1), Thorson CM(2), Shariatmadar S(3), 
+Schulman CI(1), Neville HL(2), Proctor KG(1), Sola JE(4).
+
+Author information:
+(1)Division of Trauma Surgery, DeWitt Daughtry Family Department of Surgery, 
+University of Miami Miller School of Medicine, Miami, FL, USA.
+(2)Division of Pediatric Surgery, DeWitt Daughtry Family Department of Surgery, 
+University of Miami Miller School of Medicine, Miami, FL, USA.
+(3)Division of Hematology, DeWitt Daughtry Family Department of Surgery, 
+University of Miami Miller School of Medicine, Miami, FL, USA.
+(4)Division of Pediatric Surgery, DeWitt Daughtry Family Department of Surgery, 
+University of Miami Miller School of Medicine, Miami, FL, USA. Electronic 
+address: jsola@med.miami.edu.
+
+PURPOSE: Initial hematocrit (Hct) is generally not considered a marker of acute 
+blood loss because it is assumed that physiologic response of fluid conservation 
+to hemorrhage is delayed. We challenged this idea by theorizing that admission 
+Hct correlates with conventional signs of shock and predicts the use of blood 
+transfusion during resuscitation of pediatric trauma patients.
+METHODS: Data from 1928 pediatric admissions (<18 years) at a Level I trauma 
+center (2000-2012) were compared using standard statistical analyses and 
+logistic regression modeling to identify factors associated with blood 
+transfusion during initial trauma resuscitation.
+RESULTS: Overall mortality rate was 3.5%, with a transfusion rate of 10.7%. 
+Factors significantly associated with transfusion were initial Hct, Glasgow Coma 
+Score, base deficit, and injury severity score (all p<0.001). Initial Hct is a 
+stronger predictor for transfusion (area under receiver operator curve (AUC: 
+0.728) compared to age-specific tachycardia (AUC: 0.689), age-specific 
+hypotension (AUC: 0.673), and altered mental status (AUC: 0.654)). On 
+multivariate analysis, initial Hct was an independent predictor (OR [95% CI]: 
+2.94 [1.56, 5.52]) along with hypotension (6.37 [2.95, 13.8]), base deficit 
+(4.14 [1.38, 12.4]), and tachycardia (3.07 [1.62, 5.81]).
+CONCLUSIONS: Initial Hct correlates significantly with conventional signs of 
+shock and is a strong independent predictor for blood transfusion with better 
+predictability than other clinical factors.
+
+Copyright © 2014 Elsevier Inc. All rights reserved.
+
+DOI: 10.1016/j.jpedsurg.2014.10.044
+PMID: 25475817 [Indexed for MEDLINE]

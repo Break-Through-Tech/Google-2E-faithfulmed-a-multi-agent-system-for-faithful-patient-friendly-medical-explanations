@@ -1,0 +1,835 @@
+[
+  {
+    "id": "134|M3|4|24997032",
+    "question_id": "134",
+    "sentence": "The exact cause is unknown, but it is believed to be related to a combination of factors, including genetic predisposition, sensomotoric dysfunction, altered enteric inflammation, and immune activation, as well as disturbance of the brain-gut interaction.",
+    "pmid": "24997032",
+    "human": "supported",
+    "split": "dev",
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "The exact cause is unknown, but it is believed to be related to a combination of factors, including genetic predisposition, sensomotoric dysfunction, altered enteric inflammation, and immune activation, as well as disturbance of the brain-gut interaction.",
+        "label": "unsupported",
+        "evidence": "Not mentioned in the original source.",
+        "severity": "major"
+      }
+    ]
+  },
+  {
+    "id": "154|M24|8|25607119",
+    "question_id": "154",
+    "sentence": "Overall, incorporating these breathing exercises can provide significant symptomatic relief and improve respiratory function.",
+    "pmid": "25607119",
+    "human": "supported",
+    "split": "dev",
+    "verifier": "contradicted",
+    "claims": [
+      {
+        "claim": "Overall, incorporating these breathing exercises can provide significant symptomatic relief and improve respiratory function.",
+        "label": "distorted",
+        "evidence": "Studies have demonstrated that SK can play an important role in promoting a healthy lifestyle by improving immunity, antioxidant status, hormonal status, and brain functioning.",
+        "severity": "major"
+      }
+    ]
+  },
+  {
+    "id": "133|M3|4|37900072",
+    "question_id": "133",
+    "sentence": "However, the impact of surgery on fertility can be minimized by selecting the appropriate surgery for the patient, careful tissue handling, limited use of electrosurgery, and employing microsurgical techniques with advanced laparoscopic or robotic surgery, which can simplify complex minimally invasive fertility-sparing procedures.",
+    "pmid": "37900072",
+    "human": "supported",
+    "split": "dev",
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "However, the impact of surgery on fertility can be minimized by selecting the appropriate surgery for the patient, careful tissue handling, limited use of electrosurgery, and employing microsurgical techniques with advanced laparoscopic or robotic surgery, which can simplify complex minimally invasive fertility-sparing procedures.",
+        "label": "unsupported",
+        "evidence": "Not mentioned in the original source.",
+        "severity": "major"
+      }
+    ]
+  },
+  {
+    "id": "123|M6|5|18435798",
+    "question_id": "123",
+    "sentence": "Molecular analysis of FBN1 is essential for confirming the diagnosis and guiding clinical management.",
+    "pmid": "18435798",
+    "human": "supported",
+    "split": "dev",
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "Molecular analysis of FBN1 is essential for confirming the diagnosis and guiding clinical management.",
+        "label": "background",
+        "evidence": "",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "120|M18|2|32007456",
+    "question_id": "120",
+    "sentence": "It can also be a symptom of a more serious underlying condition such as multiple sclerosis, malignancy, stroke, cervical artery dissection, rupture of a normal spleen, or other conditions that can cause cough-induced complications affecting various systems of the body.",
+    "pmid": "32007456",
+    "human": "supported",
+    "split": "dev",
+    "verifier": "contradicted",
+    "claims": [
+      {
+        "claim": "It can also be a symptom of a more serious underlying condition such as multiple sclerosis, malignancy, stroke, cervical artery dissection, rupture of a normal spleen, or other conditions that can cause cough-induced complications affecting various systems of the body.",
+        "label": "distorted",
+        "evidence": "Other seemingly benign entities may mask a serious underlying pathology (eg, cough headache, cough syncope).",
+        "severity": "major"
+      }
+    ]
+  },
+  {
+    "id": "143|M6|3|26098083",
+    "question_id": "143",
+    "sentence": "Rehabilitation tailored to disease stages, such as aerobic and resistance exercises in early stages and task-specific training in middle stages, can mitigate symptom severity and improve functional status.",
+    "pmid": "26098083",
+    "human": "supported",
+    "split": "dev",
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "Rehabilitation tailored to disease stages, such as aerobic and resistance exercises in early stages and task-specific training in middle stages, can mitigate symptom severity and improve functional status.",
+        "label": "unsupported",
+        "evidence": "",
+        "severity": "major"
+      }
+    ]
+  },
+  {
+    "id": "136|M24|8|20003341",
+    "question_id": "136",
+    "sentence": "Cetylated fatty acid cream with menthol and transcutaneous electrical nerve stimulation can alleviate pain in conditions like tennis elbow.",
+    "pmid": "20003341",
+    "human": "supported",
+    "split": "dev",
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "Cetylated fatty acid cream with menthol and transcutaneous electrical nerve stimulation can alleviate pain in conditions like tennis elbow.",
+        "label": "unsupported",
+        "evidence": "Not mentioned in the original source.",
+        "severity": "major"
+      }
+    ]
+  },
+  {
+    "id": "120|M7|1|24799517",
+    "question_id": "120",
+    "sentence": "Left-sided facial numbness can be caused by various conditions, including viral infections like varicella-zoster virus reactivation, which can lead to facial pain, swelling, and rash.",
+    "pmid": "24799517",
+    "human": "supported",
+    "split": "dev",
+    "verifier": "contradicted",
+    "claims": [
+      {
+        "claim": "Left-sided facial numbness can be caused by various conditions, including viral infections like varicella-zoster virus reactivation, which can lead to facial pain, swelling, and rash.",
+        "label": "distorted",
+        "evidence": "A 57-year-old man developed 3 days of left facial pain and swelling with left-sided hearing loss followed by a painful, unilateral, erythematous, and vesicular rash...",
+        "severity": "major"
+      }
+    ]
+  },
+  {
+    "id": "116|M1|5|28126502",
+    "question_id": "116",
+    "sentence": "Furthermore, alternative treatments such as hypoglossal nerve stimulation, body positioning, and oxygen treatment may also be effective.",
+    "pmid": "28126502",
+    "human": "supported",
+    "split": "dev",
+    "verifier": "contradicted",
+    "claims": [
+      {
+        "claim": "Furthermore, alternative treatments such as hypoglossal nerve stimulation, body positioning, and oxygen treatment may also be effective.",
+        "label": "distorted",
+        "evidence": "Electrical stimulation of the hypoglossal nerve is a promising treatment approach for moderate to severe OSAHS. Avoiding the supine position during sleep and reducing the overnight rostral fluid shift from the legs to the neck can also achieve a partial improvement of sleep-disordered breathing.",
+        "severity": "major"
+      }
+    ]
+  },
+  {
+    "id": "154|M11|4|27220949",
+    "question_id": "154",
+    "sentence": "The article does not provide a specific breathing technique to help slow down breathing and make it more relaxed.",
+    "pmid": "27220949",
+    "human": "contradicted",
+    "split": "dev",
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "The article does not provide a specific breathing technique to help slow down breathing and make it more relaxed.",
+        "label": "supported",
+        "evidence": "They described six main strategies for coping with episodes of breathlessness: reduction of physical exertion, cognitive and psychological strategies, breathing techniques and positions, air and oxygen, drugs and medical devices, and environmental and other strategies.",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "131|M26|6|16303295",
+    "question_id": "131",
+    "sentence": "While formoterol is generally well-tolerated, its safety profile necessitates careful monitoring, especially at higher doses or in vulnerable populations.",
+    "pmid": "16303295",
+    "human": "contradicted",
+    "split": "dev",
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "While formoterol is generally well-tolerated, its safety profile necessitates careful monitoring, especially at higher doses or in vulnerable populations.",
+        "label": "background",
+        "evidence": "",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "129|M18|3|34854616",
+    "question_id": "129",
+    "sentence": "Stopping metoprolol abruptly is not particularly associated with emergent bradycardia.",
+    "pmid": "34854616",
+    "human": "contradicted",
+    "split": "dev",
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Stopping metoprolol abruptly is not particularly associated with emergent bradycardia.",
+        "label": "supported",
+        "evidence": "Stopping metoprolol abruptly is not particularly associated with emergent bradycardia.",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "130|M16|5|36279177",
+    "question_id": "130",
+    "sentence": "Furthermore, oxidative stress has been linked to insulin resistance, a common feature of PCOS, and may contribute to the development of cardiovascular disease and other metabolic complications.",
+    "pmid": "36279177",
+    "human": "contradicted",
+    "split": "dev",
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Furthermore, oxidative stress has been linked to insulin resistance, a common feature of PCOS, and may contribute to the development of cardiovascular disease and other metabolic complications.",
+        "label": "supported",
+        "evidence": "This review focuses on characteristic markers of OS in PCOS and the relationship between OS and PCOS related to insulin resistance (IR), hyperandrogenemia, obesity, chronic inflammation, cardiovascular diseases, and cancer.",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "127|M23|2|16143811",
+    "question_id": "127",
+    "sentence": "However, there has been no significant breakthrough in these two forms of therapy.",
+    "pmid": "16143811",
+    "human": "contradicted",
+    "split": "dev",
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "However, there has been no significant breakthrough in these two forms of therapy.",
+        "label": "supported",
+        "evidence": "there has been no significant breakthrough in these two forms of therapy.",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "142|M20|1|30052747",
+    "question_id": "142",
+    "sentence": "Nonsteroidal anti-inflammatory drugs (NSAIDs), steroids, phenylpropanolamines, some antidepressants, and sibutramine can often be avoided, as they raise blood pressure in a significant proportion of those who take them.",
+    "pmid": "30052747",
+    "human": "contradicted",
+    "split": "dev",
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "Nonsteroidal anti-inflammatory drugs (NSAIDs), steroids, phenylpropanolamines, some antidepressants, and sibutramine can often be avoided, as they raise blood pressure in a significant proportion of those who take them.",
+        "label": "background",
+        "evidence": "",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "125|M7|1|31555556",
+    "question_id": "125",
+    "sentence": "Tamsulosin is primarily used to treat lower urinary tract symptoms (LUTS) associated with benign prostatic hyperplasia (BPH) as it is the most popular uroselective alpha adrenoceptor antagonist for this condition.",
+    "pmid": "31555556",
+    "human": "contradicted",
+    "split": "dev",
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Tamsulosin is primarily used to treat lower urinary tract symptoms (LUTS) associated with benign prostatic hyperplasia (BPH) as it is the most popular uroselective alpha adrenoceptor antagonist for this condition.",
+        "label": "supported",
+        "evidence": "Tamsulosin remains the single most popular uroselective alpha adrenoceptor antagonist approved for the treatment of lower urinary tract symptoms (LUTS) attributable to benign prostatic hyperplasia (BPH).",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "131|M18|3|16892777",
+    "question_id": "131",
+    "sentence": "Actually the text does not mention that the side effects are not significant.",
+    "pmid": "16892777",
+    "human": "contradicted",
+    "split": "dev",
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Actually the text does not mention that the side effects are not significant.",
+        "label": "supported",
+        "evidence": "Clinical data also demonstrate that formoterol is safe and well tolerated even in high doses, with an adverse event profile similar to that of SABAs.",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "142|M24|8|32918434",
+    "question_id": "142",
+    "sentence": "Rifampin interacts with antihypertensive drugs, potentially altering their effectiveness.",
+    "pmid": "32918434",
+    "human": "contradicted",
+    "split": "dev",
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Rifampin interacts with antihypertensive drugs, potentially altering their effectiveness.",
+        "label": "supported",
+        "evidence": "We postulate that rifampicin has attenuated the therapeutic effect of amlodipine via potent induction of hepatic CYP3A4",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "131|M7|1|23744625",
+    "question_id": "131",
+    "sentence": "The side effects of using formoterol include an increased number of asthma-related events in children, although this finding was not statistically significant.",
+    "pmid": "23744625",
+    "human": "contradicted",
+    "split": "dev",
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "The side effects of using formoterol include an increased number of asthma-related events in children, although this finding was not statistically significant.",
+        "label": "supported",
+        "evidence": "Although a greater number of asthma-related events were reported in children receiving regular formoterol, this finding was not statistically significant (Peto OR 1.49, 95% CI 0.48 to 4.61, low-quality evidence).",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "142|M21|1|25618128",
+    "question_id": "142",
+    "sentence": "Nonsteroidal anti-inflammatory drugs (NSAIDs), steroids, oestroprogestinic agents, immunosuppressants, erythropoietin, inhibitors of angiogenesis, anti-HIV agents, and some high-density lipoprotein-raising agents can cause hypertension and/or blunt the effect of antihypertensive treatment.",
+    "pmid": "25618128",
+    "human": "contradicted",
+    "split": "dev",
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "Nonsteroidal anti-inflammatory drugs (NSAIDs), steroids, oestroprogestinic agents, immunosuppressants, erythropoietin, inhibitors of angiogenesis, anti-HIV agents, and some high-density lipoprotein-raising agents can cause hypertension and/or blunt the effect of antihypertensive treatment.",
+        "label": "background",
+        "evidence": "",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "142|M20|1|30052747",
+    "question_id": "142",
+    "sentence": "Nonsteroidal anti-inflammatory drugs (NSAIDs), steroids, phenylpropanolamines, some antidepressants, and sibutramine can often be avoided, as they raise blood pressure in a significant proportion of those who take them.",
+    "pmid": "30052747",
+    "human": "contradicted",
+    "split": "dev",
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "Nonsteroidal anti-inflammatory drugs (NSAIDs), steroids, phenylpropanolamines, some antidepressants, and sibutramine can often be avoided, as they raise blood pressure in a significant proportion of those who take them.",
+        "label": "background",
+        "evidence": "",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "131|M7|1|23744625",
+    "question_id": "131",
+    "sentence": "The side effects of using formoterol include an increased number of asthma-related events in children, although this finding was not statistically significant.",
+    "pmid": "23744625",
+    "human": "contradicted",
+    "split": "dev",
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "The side effects of using formoterol include an increased number of asthma-related events in children, although this finding was not statistically significant.",
+        "label": "supported",
+        "evidence": "Although a greater number of asthma-related events were reported in children receiving regular formoterol, this finding was not statistically significant (Peto OR 1.49, 95% CI 0.48 to 4.61, low-quality evidence).",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "133|M16|5|26213861",
+    "question_id": "133",
+    "sentence": "The complexity of the surgery, including the use of advanced techniques such as single-port access laparoscopy, may also impact ovarian reserve.",
+    "pmid": "26213861",
+    "human": "contradicted",
+    "split": "dev",
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "The complexity of the surgery, including the use of advanced techniques such as single-port access laparoscopy, may also impact ovarian reserve.",
+        "label": "supported",
+        "evidence": "Surgical technique of endometrioma excision impacts on the ovarian reserve. Single-port access laparoscopy versus multiport access laparoscopy: a case control study.",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "154|M8|6|16281658",
+    "question_id": "154",
+    "sentence": "Controlled breathing techniques, including PLB and DB, are often included in rehabilitation programs for COPD patients.",
+    "pmid": "16281658",
+    "human": "contradicted",
+    "split": "dev",
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Controlled breathing techniques, including PLB and DB, are often included in rehabilitation programs for COPD patients.",
+        "label": "supported",
+        "evidence": "Breathing techniques are included in the rehabilitation program of patients with chronic obstructive pulmonary disease (COPD).",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "130|M26|1|23303572",
+    "question_id": "130",
+    "sentence": "Polycystic ovary syndrome (PCOS) is strongly linked to oxidative stress (OS), with numerous studies indicating elevated levels of oxidative biomarkers in affected women.",
+    "pmid": "23303572",
+    "human": "contradicted",
+    "split": "dev",
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Polycystic ovary syndrome (PCOS) is strongly linked to oxidative stress (OS), with numerous studies indicating elevated levels of oxidative biomarkers in affected women.",
+        "label": "supported",
+        "evidence": "Circulating markers of oxidative stress are abnormal in women with PCOS independent of weight excess. This finding suggests that oxidative stress may participate in the pathophysiology of this common disorder.",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "119|M30|3|35853985",
+    "question_id": "119",
+    "sentence": "The snippets mention salmeterol, but do not provide enough information to determine its popularity or effectiveness in stage 4 COPD specifically.",
+    "pmid": "35853985",
+    "human": "contradicted",
+    "split": "dev",
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "The snippets mention salmeterol, but do not provide enough information to determine its popularity or effectiveness in stage 4 COPD specifically.",
+        "label": "supported",
+        "evidence": "The most classic treatment recommended in the current chronic obstructive pulmonary disease (COPD) guidelines is glucocorticoid and \u03b22 receptor agonist combination, such as salmeterol xinafoate and fluticasone propionate (Sal/Flu)...",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "142|M11|1|30052747",
+    "question_id": "142",
+    "sentence": "Nonsteroidal anti-inflammatory drugs (NSAIDs), steroids, phenylpropanolamines, some antidepressants, and sibutramine can often be avoided, as they raise blood pressure in a significant proportion of those who take them.",
+    "pmid": "30052747",
+    "human": "contradicted",
+    "split": "dev",
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "Nonsteroidal anti-inflammatory drugs (NSAIDs), steroids, phenylpropanolamines, some antidepressants, and sibutramine can often be avoided, as they raise blood pressure in a significant proportion of those who take them.",
+        "label": "background",
+        "evidence": "",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "131|M4|2|18321744",
+    "question_id": "131",
+    "sentence": "High doses of formoterol may cause systemic effects such as decreased plasma potassium, increased serum glucose, and small increases in mean QTc interval.",
+    "pmid": "18321744",
+    "human": "contradicted",
+    "split": "dev",
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "High doses of formoterol may cause systemic effects such as decreased plasma potassium, increased serum glucose, and small increases in mean QTc interval.",
+        "label": "supported",
+        "evidence": "Formoterol caused a significantly greater decrease in serum potassium than BDP/formoterol or placebo... For glucose, the mean maximum increase after formoterol treatment was 0.4 mmol/l... high cumulative doses of the HFA modulite beclomethasone dipropionate/formoterol combination inhaler in asthmatic patients",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "142|M11|1|30052747",
+    "question_id": "142",
+    "sentence": "Nonsteroidal anti-inflammatory drugs (NSAIDs), steroids, phenylpropanolamines, some antidepressants, and sibutramine can often be avoided, as they raise blood pressure in a significant proportion of those who take them.",
+    "pmid": "30052747",
+    "human": "contradicted",
+    "split": "dev",
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "Nonsteroidal anti-inflammatory drugs (NSAIDs), steroids, phenylpropanolamines, some antidepressants, and sibutramine can often be avoided, as they raise blood pressure in a significant proportion of those who take them.",
+        "label": "background",
+        "evidence": "",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "130|M16|1|37337194",
+    "question_id": "130",
+    "sentence": "Polycystic ovary syndrome (PCOS) is indeed linked to oxidative stress, as evidenced by multiple studies.",
+    "pmid": "37337194",
+    "human": "contradicted",
+    "split": "dev",
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Polycystic ovary syndrome (PCOS) is indeed linked to oxidative stress, as evidenced by multiple studies.",
+        "label": "supported",
+        "evidence": "Polycystic ovary syndrome (PCOS) is often accompanied by increased oxidative stress levels",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "129|M17|1|16223079",
+    "question_id": "129",
+    "sentence": "Abrupt cessation of metoprolol can cause various side effects, including central nervous system complications such as confusion, fatigue, lightheadedness, nightmares, sleep disturbance, and gait problems.",
+    "pmid": "16223079",
+    "human": "contradicted",
+    "split": "dev",
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "Abrupt cessation of metoprolol can cause various side effects, including central nervous system complications such as confusion, fatigue, lightheadedness, nightmares, sleep disturbance, and gait problems.",
+        "label": "background",
+        "evidence": "",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "134|M4|3|34128613",
+    "question_id": "134",
+    "sentence": "Diagnosis is typically made on clinical grounds, using symptom-based criteria such as the Rome criteria, and excluding organic disease.",
+    "pmid": "34128613",
+    "human": "contradicted",
+    "split": "dev",
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Diagnosis is typically made on clinical grounds, using symptom-based criteria such as the Rome criteria, and excluding organic disease.",
+        "label": "supported",
+        "evidence": "Patients who meet symptom-based criteria and have no alarm features may be confidently diagnosed with few, if any, additional tests.",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "136|M29|1|18656765",
+    "question_id": "136",
+    "sentence": "For severe elbow pain, initial treatment should be conservative and may include rest, nonsteroidal anti-inflammatory drugs (NSAIDs), physical therapy, use of splints, and local injections.",
+    "pmid": "18656765",
+    "human": "contradicted",
+    "split": "dev",
+    "verifier": "not_supported",
+    "claims": [
+      {
+        "claim": "For severe elbow pain, initial treatment should be conservative and may include rest, nonsteroidal anti-inflammatory drugs (NSAIDs), physical therapy, use of splints, and local injections.",
+        "label": "background",
+        "evidence": "",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "148|M2|3|27177185",
+    "question_id": "148",
+    "sentence": "Additionally, bleeding disorders, which are prevalent in the elderly, can lead to an increased tendency to bruise.",
+    "pmid": "27177185",
+    "human": "not_supported",
+    "split": "dev",
+    "verifier": "contradicted",
+    "claims": [
+      {
+        "claim": "Additionally, bleeding disorders, which are prevalent in the elderly, can lead to an increased tendency to bruise.",
+        "label": "distorted",
+        "evidence": "Bleeding disorders are common.",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "136|M7|2|30658050",
+    "question_id": "136",
+    "sentence": "Both interventions have shown to result in clinically meaningful improvements in pain intensity and function over time.",
+    "pmid": "30658050",
+    "human": "not_supported",
+    "split": "dev",
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Both interventions have shown to result in clinically meaningful improvements in pain intensity and function over time.",
+        "label": "supported",
+        "evidence": "Following this intervention, the patient experienced clinically meaningful improvement in pain intensity (numeric pain-rating scale), function (Patient-Rated Tennis Elbow Evaluation), and related disability",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "123|M20|1|27437668",
+    "question_id": "123",
+    "sentence": "FBN1 mutation refers to a change in the fibrillin-1 gene, which encodes a protein essential for the formation of elastic fibers found in connective tissue.",
+    "pmid": "27437668",
+    "human": "not_supported",
+    "split": "dev",
+    "verifier": "contradicted",
+    "claims": [
+      {
+        "claim": "FBN1 mutation refers to a change in the fibrillin-1 gene, which encodes a protein essential for the formation of elastic fibers found in connective tissue.",
+        "label": "distorted",
+        "evidence": "FBN1 encodes the gene for fibrillin-1, a structural macromolecule that polymerizes into microfibrils. Fibrillin microfibrils are morphologically distinctive fibrils, present in all connective tissues",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "154|M11|6|34866434",
+    "question_id": "154",
+    "sentence": "Additionally, you can try using a handheld fan to blow air on your face, which can help reduce the sensation of breathlessness.",
+    "pmid": "34866434",
+    "human": "not_supported",
+    "split": "dev",
+    "verifier": "contradicted",
+    "claims": [
+      {
+        "claim": "Additionally, you can try using a handheld fan to blow air on your face, which can help reduce the sensation of breathlessness.",
+        "label": "distorted",
+        "evidence": "The pooled results demonstrated no significant difference in breathlessness severity between fan-to-face blowing and control methods... however, a significant reduction in breathlessness severity was observed in the short-time intervention compared with long-time intervention.",
+        "severity": "major"
+      }
+    ]
+  },
+  {
+    "id": "127|M20|4|18337227",
+    "question_id": "127",
+    "sentence": "It has been used to treat various diseases, including genetic disorders, cancer, and cardiovascular diseases.",
+    "pmid": "18337227",
+    "human": "not_supported",
+    "split": "dev",
+    "verifier": "contradicted",
+    "claims": [
+      {
+        "claim": "It has been used to treat various diseases, including genetic disorders, cancer, and cardiovascular diseases.",
+        "label": "distorted",
+        "evidence": "While originally conceived as a way to treat life-threatening disorders (inborn errors, cancers) refractory to conventional treatment, gene therapy now is considered for many non-life-threatening conditions",
+        "severity": "major"
+      }
+    ]
+  },
+  {
+    "id": "131|M1|1|20477219",
+    "question_id": "131",
+    "sentence": "Common side effects of formoterol include tremors, palpitations, and increased heart rate.",
+    "pmid": "20477219",
+    "human": "not_supported",
+    "split": "dev",
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Common side effects of formoterol include tremors, palpitations, and increased heart rate.",
+        "label": "supported",
+        "evidence": "Common side effects of formoterol include tremors, palpitations, and increased heart rate.",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "120|M19|1|21614764",
+    "question_id": "120",
+    "sentence": "Left-sided facial numbness can be caused by various conditions, including aneurysms of the vertebral artery cerebellopontine angle meningiomas congenital absence of the internal carotid artery and adenoid cystic carcinoma of the maxillary sinus.",
+    "pmid": "21614764",
+    "human": "not_supported",
+    "split": "dev",
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Left-sided facial numbness can be caused by various conditions, including aneurysms of the vertebral artery cerebellopontine angle meningiomas congenital absence of the internal carotid artery and adenoid cystic carcinoma of the maxillary sinus.",
+        "label": "supported",
+        "evidence": "Left-sided facial numbness can be caused by various conditions, including aneurysms of the vertebral artery cerebellopontine angle meningiomas congenital absence of the internal carotid artery and adenoid cystic carcinoma of the maxillary sinus.",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "125|M15|1|31469636",
+    "question_id": "125",
+    "sentence": "Tamsulosin is used for the treatment of benign prostatic hyperplasia (BPH).",
+    "pmid": "31469636",
+    "human": "not_supported",
+    "split": "dev",
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Tamsulosin is used for the treatment of benign prostatic hyperplasia (BPH).",
+        "label": "supported",
+        "evidence": "men currently not using prescription medications for benign prostatic hyperplasia (BPH) but interested in self-directed use of over-the-counter (OTC) tamsulosin",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "124|M3|5|34487597",
+    "question_id": "124",
+    "sentence": "In asymptomatic patients, there is no established indication for any tests apart from calculation of a global cardiovascular risk based on traditional risk factors and initiation of primary preventive measures if appropriate.",
+    "pmid": "34487597",
+    "human": "not_supported",
+    "split": "dev",
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "In asymptomatic patients, there is no established indication for any tests apart from calculation of a global cardiovascular risk based on traditional risk factors and initiation of primary preventive measures if appropriate.",
+        "label": "supported",
+        "evidence": "In asymptomatic patients, there is no established indication for any tests apart from calculation of a global cardiovascular risk based on traditional risk factors and initiation of primary preventive measures if appropriate.",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "123|M28|4|37994127",
+    "question_id": "123",
+    "sentence": "Additionally, mutations in genes like FBN1 can have variable effects depending on the specific mutation and other genetic factors, which may influence the severity and range of symptoms.",
+    "pmid": "37994127",
+    "human": "not_supported",
+    "split": "dev",
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Additionally, mutations in genes like FBN1 can have variable effects depending on the specific mutation and other genetic factors, which may influence the severity and range of symptoms.",
+        "label": "supported",
+        "evidence": "Additionally, mutations in genes like FBN1 can have variable effects depending on the specific mutation and other genetic factors, which may influence the severity and range of symptoms.",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "123|M20|3|28442527",
+    "question_id": "123",
+    "sentence": "The mutation can result in a range of symptoms, including tall stature, long limbs and fingers, heart problems, and eye issues.",
+    "pmid": "28442527",
+    "human": "not_supported",
+    "split": "dev",
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "The mutation can result in a range of symptoms, including tall stature, long limbs and fingers, heart problems, and eye issues.",
+        "label": "supported",
+        "evidence": "A nine-year-old girl was referred to our pediatric endocrinology clinic for tall stature. Physical examination revealed a lens dislocation with strabismus, high palate, positive wrist and thumb signs, joint hypermobility, and pes planus. Transthoracic echocardiography revealed dilatation of the aortic root.",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "127|M11|4|18337227",
+    "question_id": "127",
+    "sentence": "It has been used to treat various diseases, including genetic disorders, cancer, and cardiovascular diseases.",
+    "pmid": "18337227",
+    "human": "not_supported",
+    "split": "dev",
+    "verifier": "contradicted",
+    "claims": [
+      {
+        "claim": "It has been used to treat various diseases, including genetic disorders, cancer, and cardiovascular diseases.",
+        "label": "distorted",
+        "evidence": "While originally conceived as a way to treat life-threatening disorders (inborn errors, cancers) refractory to conventional treatment, gene therapy now is considered for many non-life-threatening conditions...",
+        "severity": "major"
+      }
+    ]
+  },
+  {
+    "id": "143|M29|4|35193564",
+    "question_id": "143",
+    "sentence": "Coping strategies, such as acceptance, emotional support, planning, and active coping, can be effective in managing the condition.",
+    "pmid": "35193564",
+    "human": "not_supported",
+    "split": "dev",
+    "verifier": "contradicted",
+    "claims": [
+      {
+        "claim": "Coping strategies, such as acceptance, emotional support, planning, and active coping, can be effective in managing the condition.",
+        "label": "distorted",
+        "evidence": "Among the most used CSs was support (social and emotional) seeking.",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "129|M18|3|34854616",
+    "question_id": "129",
+    "sentence": "Stopping metoprolol abruptly is not particularly associated with emergent bradycardia.",
+    "pmid": "34854616",
+    "human": "not_supported",
+    "split": "dev",
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Stopping metoprolol abruptly is not particularly associated with emergent bradycardia.",
+        "label": "supported",
+        "evidence": "Stopping metoprolol abruptly is not particularly associated with emergent bradycardia.",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "134|M26|7|26491416",
+    "question_id": "134",
+    "sentence": "Emerging therapies and probiotics show promise but require further validation.",
+    "pmid": "26491416",
+    "human": "not_supported",
+    "split": "dev",
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "Emerging therapies and probiotics show promise but require further validation.",
+        "label": "supported",
+        "evidence": "Ongoing research is evaluating the use of probiotics. Research is continuing to optimize the use of available agents and evaluating new approaches to further improve the care of patients with IBS.",
+        "severity": "minor"
+      }
+    ]
+  },
+  {
+    "id": "144|M24|4|15834689",
+    "question_id": "144",
+    "sentence": "For diabetics and those with chronic kidney disease (CKD), treatment is recommended for BP \u2265130/80 mmHg.",
+    "pmid": "15834689",
+    "human": "not_supported",
+    "split": "dev",
+    "verifier": "supported",
+    "claims": [
+      {
+        "claim": "For diabetics and those with chronic kidney disease (CKD), treatment is recommended for BP \u2265130/80 mmHg.",
+        "label": "supported",
+        "evidence": "The therapeutic objective in patients with diabetes mellitus is a blood pressure level of 130/80 mmHg and in patients with kidney disease and proteinuria 125/75 mmHg.",
+        "severity": "minor"
+      }
+    ]
+  }
+]

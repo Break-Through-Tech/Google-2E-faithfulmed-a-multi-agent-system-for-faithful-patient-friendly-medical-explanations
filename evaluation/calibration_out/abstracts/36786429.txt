@@ -1,0 +1,44 @@
+1. Phytother Res. 2023 Apr;37(4):1405-1421. doi: 10.1002/ptr.7749. Epub 2023 Feb 
+14.
+
+Carnosol inhibits KGN cells oxidative stress and apoptosis and attenuates 
+polycystic ovary syndrome phenotypes in mice through Keap1-mediated Nrf2/HO-1 
+activation.
+
+Ji R(1)(2), Jia F(3)(4), Chen X(1)(2), Gao Y(1)(2), Yang J(1)(2).
+
+Author information:
+(1)Reproductive Medical Center, Renmin Hospital of Wuhan University, Wuhan, 
+China.
+(2)Ascientific Research Platform, Hubei Clinic Research Center for Assisted 
+Reproductive Technology and Embryonic Development, Wuhan, China.
+(3)Department of Vascular and Endovascular Surgery, Henan Provincial People's 
+Hospital, Zhengzhou City, Henan, China.
+(4)Department of Aortic Surgery, Central China Fuwai Hospital of Zhengzhou 
+University, Zhengzhou, Henan, China.
+
+Excessive oxidative stress and apoptosis of ovarian granulosa cells lead to 
+abnormal follicular development and ovulation disorders in polycystic ovary 
+syndrome (PCOS). Carnosol is a plant-derived polyphenol that has been proven to 
+exhibit several cell protective effects. In this study, we established 
+hyperandrogenic PCOS models both in vitro and in vivo. In the 
+human ovarian granulosa cell line, KGN cells, decreased viability and 
+mitochondrial membrane potential, and upregulated reactive oxygen species (ROS) 
+level and apoptosis induced by DHT were partly reversed by carnosol. Western 
+blotting results showed that carnosol treatment inhibited the DHT-activated 
+mitochondrial apoptotic pathway by activating nuclear factor-erythroid 2-related 
+factor (Nrf2)/heme oxygenase 1 (HO-1). Knockdown of Nrf2 by transfecting with 
+siRNA or inhibiting HO-1 by zinc protoporphyrin (ZnPP) blocked the protective 
+effects of carnosol. Computational modeling and pull-down assay results 
+confirmed the direct binding of carnosol to kelch-like ECH-associated protein 1 
+(Keap1). In vivo results showed that the intraperitoneal administration of 
+carnosol (50 and 100 mg/kg) improved estrous cycle disorders, polycystic ovary, 
+and decreased elevated androgen in the PCOS mice. In summary, Carnosol has an 
+effective role in inhibiting oxidative stress and apoptosis in DHT-treated KGN 
+cells and protecting against mouse PCOS phenotypes through the Keap1-mediated 
+activation of Nrf2/HO-1 signaling.
+
+© 2023 John Wiley & Sons Ltd.
+
+DOI: 10.1002/ptr.7749
+PMID: 36786429 [Indexed for MEDLINE]

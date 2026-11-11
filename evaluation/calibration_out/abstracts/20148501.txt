@@ -1,0 +1,28 @@
+1. Am Fam Physician. 2010 Feb 15;81(4):470-6.
+
+Evaluation and treatment of severe asymptomatic hypertension.
+
+Kessler CS(1), Joudeh Y.
+
+Author information:
+(1)University of Illinois at Chicago College of Medicine, Chicago, IL, USA. 
+chad.kessler@va.gov
+
+Poorly controlled hypertension is a common finding in the outpatient setting. 
+When patients present with severely elevated blood pressure (i.e., systolic 
+blood pressure of 180 mm Hg or greater, or diastolic blood pressure of 110 mm Hg 
+or greater), physicians need to differentiate hypertensive emergency from 
+severely elevated blood pressure without signs or symptoms of end-organ damage 
+(severe asymptomatic hypertension). Most patients who are asymptomatic but have 
+poorly controlled hypertension do not have acute end-organ damage and, 
+therefore, do not require immediate workup or treatment (within 24 hours). 
+However, physicians should confirm blood pressure readings and appropriately 
+classify the hypertensive state. A cardiovascular risk profile is important in 
+guiding the treatment of severe asymptomatic hypertension; higher risk patients 
+may benefit from more urgent and aggressive evaluation and treatment. Oral 
+agents may be initiated before discharge, but intravenous medications and 
+fast-acting oral agents should be reserved for true hypertensive emergencies. 
+High blood pressure should be treated gradually. Appropriate, repeated follow-up 
+over weeks to months is needed to reach desired blood pressure goals.
+
+PMID: 20148501 [Indexed for MEDLINE]

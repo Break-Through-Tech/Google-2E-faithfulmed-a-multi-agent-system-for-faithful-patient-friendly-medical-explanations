@@ -1,0 +1,34 @@
+1. Acta Biochim Biophys Sin (Shanghai). 2005 Sep;37(9):581-7. doi: 
+10.1111/j.1745-7270.2005.00087.x.
+
+Targeting gene-virotherapy for cancer.
+
+Liu XY(1), Gu JF, Shi WF.
+
+Author information:
+(1)Institute of Biochemistry and Cell Biology, Shanghai Institutes for 
+Biological Sciences, Chinese Academy of Sciences, Shanghai 200031, China. 
+xyliu@sibs.ac.cn
+
+Gene therapy and viral therapy for cancer have therapeutic effects, but there 
+has been no significant breakthrough in these two forms of therapy. Therefore, a 
+new strategy called "targeting gene-virotherapy", which combines the advantages 
+of gene therapy and viral therapy, has been formulated. This new therapy has 
+stronger antitumor effects than either gene therapy or viral therapy. A 
+tumor-specific replicative adenovirus vector ZD55 (E1B55KD deleted Adv.) was 
+constructed and various single therapeutic genes were inserted into ZD55 to form 
+ZD55-gene. These are the targeting gene-virotherapy genes. But experiments 
+showed that a single gene was not effective in eliminating the tumor mass, and 
+therefore two genes were separately inserted into ZD55. This strategy is called 
+"targeting dual gene-virotherapy" (with PCT patent). Better results were 
+obtained with this strategy, and all the xenograft tumor masses were completely 
+eliminated in all mice when two suitable genes producing a synergetic or 
+compensative effect were chosen. Twenty-six papers on these strategies have been 
+published by researchers in our laboratory. Furthermore, an adenoviral vector 
+with two targeting promoters harboring two antitumor genes has been constructed 
+for cancer therapy. Promising results have been obtained with this adenoviral 
+vector and another patent has been applied for. This antitumor strategy can be 
+used to kill tumor cells completely with minimum damage to normal cells.
+
+DOI: 10.1111/j.1745-7270.2005.00087.x
+PMID: 16143811 [Indexed for MEDLINE]

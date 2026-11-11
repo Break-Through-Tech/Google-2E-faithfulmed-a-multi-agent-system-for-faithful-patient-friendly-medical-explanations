@@ -1,0 +1,24 @@
+1. Dermatol Ther. 2010 Jan-Feb;23(1):48-60. doi:
+10.1111/j.1529-8019.2009.01290.x.
+
+Effects of ambient sunlight and photoprotection on vitamin D status.
+
+Diehl JW(1), Chiu MW.
+
+Author information:
+(1)Department of Medicine, University of California, Los Angeles, 90095, USA.
+
+Ultraviolet B radiation exposure is responsible for the majority of natural 
+vitamin D stores in humans. The physiologic role of vitamin D in health and 
+disease is continually expanding, and at the same time the population that is 
+vitamin D deficient is increasing. The environmental characteristics and 
+personal physical traits that contribute to vitamin D3 synthesis from sun 
+exposure are discussed, and the effects of photoprotection on vitamin D status 
+are examined. It is concluded that sunscreen, in the manner used by the general 
+public, does not cause vitamin D insufficiency. Implementing guidelines 
+suggesting sun exposure duration for sufficient vitamin D3 production is limited 
+by the complex interaction of contributory factors, and no recommendation can be 
+made that is both safe and accurate enough for general public usage.
+
+DOI: 10.1111/j.1529-8019.2009.01290.x
+PMID: 20136908 [Indexed for MEDLINE]

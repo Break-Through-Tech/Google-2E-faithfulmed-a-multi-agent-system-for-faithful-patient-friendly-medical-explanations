@@ -1,0 +1,45 @@
+1. Clin Pharmacol Ther. 2023 Nov;114(5):1006-1014. doi: 10.1002/cpt.3004. Epub
+2023  Jul 28.
+
+Assessing Liver Effects of Cannabidiol and Valproate Alone and in Combination 
+Using Quantitative Systems Toxicology.
+
+Lakhani VV(1), Generaux G(1), Howell BA(1), Longo DM(1), Watkins PB(2)(3).
+
+Author information:
+(1)DILIsym Services Inc., A Simulations-Plus Company, Durham, North Carolina, 
+USA.
+(2)UNC Eshelman School of Pharmacy, University of North Carolina at Chapel Hill, 
+Chapel Hill, North Carolina, USA.
+(3)UNC Institute for Drug Safety Sciences, University of North Carolina at 
+Chapel Hill, Chapel Hill, North Carolina, USA.
+
+In clinical trials of cannabidiol (CBD) for the treatment of seizures in 
+patients with Dravet syndrome, Lennox-Gastaut syndrome, and tuberous sclerosis 
+complex, elevations in serum alanine aminotransferase (ALT) > 3× the upper limit 
+of normal were observed in some patents, but the incidence was much greater in 
+patients who were receiving treatment with valproate (VPA) before starting CBD. 
+To explore potential mechanisms underlying this interaction, we used DILIsym, a 
+quantitative systems toxicology model, to predict ALT elevations in a simulated 
+human population treated with CBD alone, VPA alone, and when CBD dosing was 
+starting during treatment with VPA. We gathered in vitro data assessing the 
+potential for CBD, the two major CBD metabolites, and VPA to cause 
+hepatotoxicity via inhibition of bile acid transporters, mitochondrial 
+dysfunction, and production of reactive oxygen species (ROS). 
+Physiologically-based pharmacokinetic models for CBD and VPA were used to 
+predict liver exposure. DILIsym simulations predicted dose-dependent ALT 
+elevations from CBD treatment and this was predominantly driven by ROS 
+production from the parent molecule. DILIsym also predicted VPA treatment to 
+cause ALT elevations which were transient when mitochondrial biogenesis was 
+incorporated into the model. Contrary to the clinical experience, simulation of 
+2 weeks treatment with VPA prior to introduction of CBD treatment did not 
+predict an increase of the incidence of ALT elevations relative to CBD treatment 
+alone. We conclude that the marked increased incidence of CBD-associated ALT 
+elevations in patients already receiving VPA is unlikely to involve the three 
+major mechanisms of direct hepatotoxicity.
+
+© 2023 The Authors. Clinical Pharmacology & Therapeutics © 2023 American Society 
+for Clinical Pharmacology and Therapeutics.
+
+DOI: 10.1002/cpt.3004
+PMID: 37458709 [Indexed for MEDLINE]
