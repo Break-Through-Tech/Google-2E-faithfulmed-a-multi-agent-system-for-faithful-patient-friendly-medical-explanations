@@ -60,6 +60,12 @@ example note; enter a note and select **Run pipeline** to see agent outputs as
 they arrive. The verifier and refiner may each produce more than one output.
 Stop the server with `Ctrl+C`.
 
+The readability section calculates Flesch-Kincaid grade and Flesch reading ease
+on the final output, including headings, and compares the grade with the
+project's grade 8 target. These automated estimates do not measure clinical
+accuracy, medical jargon, or actual patient understanding; short texts can be
+less reliable.
+
 This visualizer runs the current ADK scaffold, not a production medical system.
 Its final readability pass is not followed by another verification step.
 Use only fictional or approved de-identified notes: submitted text is sent to

@@ -6,6 +6,7 @@ import json
 import streamlit as st
 
 from faithfulmed.pipeline_ui import PipelineResult, STAGE_OUTPUTS, run_pipeline
+from faithfulmed.readability import score_readability
 
 
 SAMPLE_NOTE = (
@@ -57,6 +58,31 @@ def display_results(result: PipelineResult) -> None:
             display_value(final[-1], formatted_text=True)
         with st.expander("View original output"):
             st.text(final[-1])
+
+        st.subheader("Readability scores")
+        try:
+            if not isinstance(final[-1], str):
+                raise ValueError("The final explanation is not text.")
+            scores = score_readability(final[-1])
+        except ValueError as exc:
+            st.warning(f"Readability scores unavailable: {exc}")
+        else:
+            grade, ease, words = st.columns(3)
+            grade.metric("Flesch-Kincaid grade", f"{scores.grade:.2f}")
+            ease.metric("Flesch reading ease", f"{scores.reading_ease:.2f}")
+            words.metric("Words", scores.word_count)
+            if scores.grade <= 8:
+                st.success("The estimated grade meets the project's grade 8 or below target.")
+            else:
+                st.warning("The estimated grade is above the project's grade 8 target.")
+            if scores.word_count < 30:
+                st.caption("Short passages can produce less reliable readability estimates.")
+            st.caption(
+                "Grade estimates US school reading level; for reading ease, higher is generally easier. "
+                "These are automated estimates of the final output, including headings. "
+                "The target comparison uses the unrounded grade. "
+                "They do not assess medical jargon, accuracy, or whether a patient understands the text."
+            )
 
     st.subheader("Explore agent outputs")
     for stage, description in STAGE_DESCRIPTIONS.items():
