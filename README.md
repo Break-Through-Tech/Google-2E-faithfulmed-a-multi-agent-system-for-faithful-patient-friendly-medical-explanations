@@ -33,13 +33,14 @@
 
 ## 👩🏽‍💻 **Setup and Installation**
 
-**Provide step-by-step instructions so someone else can run your code and reproduce your results. Depending on your setup, include:**
+To run the interactive Streamlit pipeline visualizer, follow the
+[setup and demo guide](DEMO.md#run-the-streamlit-visualizer). It covers
+dependencies, the API key, the prepared Chroma database, and commands for
+Windows, Git Bash, macOS, and Linux.
 
-* How to clone the repository
-* How to install dependencies
-* How to set up the environment
-* How to access the dataset(s)
-* How to run the notebook or scripts
+The visualizer is an experimental prototype, not medical advice. Use only
+fictional or approved de-identified notes; submitted text is sent to the
+configured model provider.
 
 ---
 

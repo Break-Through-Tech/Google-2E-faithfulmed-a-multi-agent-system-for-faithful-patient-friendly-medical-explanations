@@ -1,6 +1,9 @@
-# Run FaithfulMed in ADK Web
+# Run FaithfulMed locally
 
-Use this guide to run the agents locally in your browser. ADK Web is for development, not patient use or production.
+Use this guide to run the Streamlit visualizer or ADK Web locally in your
+browser. Both are prototypes for development, not patient use or production.
+Use only fictional or approved de-identified notes; submitted text is sent to
+the configured model provider.
 
 ## Demo
 
@@ -91,6 +94,42 @@ Google-2E/
 
 The default collection is `medical_docs`. Do not create an empty database or rebuild the index just to launch ADK Web.
 For a database stored elsewhere, set `FAITHFULMED_CHROMA_PATH` to its absolute folder path before starting the server.
+
+## Run the Streamlit visualizer
+
+After completing steps 1–4, start the app from the repository root using the
+Python executable in your virtual environment:
+
+### Windows PowerShell
+
+```powershell
+& ".\.venv\Scripts\python.exe" -m streamlit run streamlit_app.py
+```
+
+### Git Bash on Windows
+
+```bash
+./.venv/Scripts/python.exe -m streamlit run streamlit_app.py
+```
+
+### macOS or Linux
+
+```bash
+./.venv/bin/python -m streamlit run streamlit_app.py
+```
+
+If you created your environment at a different location, substitute its Python
+executable. For example, with the short Windows environment above, use
+`C:/fm-venv/Scripts/python.exe -m streamlit run streamlit_app.py` in Git Bash.
+
+Open the local URL printed by Streamlit, usually `http://localhost:8501`. The
+app starts with a fictional sample note. Select **Run pipeline** to see stage
+progress, the explanation, readability estimates, and the latest verifier
+report. Stop the server with **Ctrl+C**. Restart it after changing the theme.
+
+Scores are automated estimates, not proof of clinical accuracy or patient
+understanding. A final refinement at the iteration limit may not be checked
+again by the verifier; the interface warns when the report and final text differ.
 
 ## 5. Start ADK Web
 
