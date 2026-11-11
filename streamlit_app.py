@@ -21,10 +21,13 @@ STAGE_DESCRIPTIONS = {
 }
 
 
-def display_value(value: object) -> None:
+def display_value(value: object, *, formatted_text: bool = False) -> None:
     if hasattr(value, "model_dump"):
         value = value.model_dump()
     if isinstance(value, str):
+        if formatted_text:
+            st.markdown(value)
+            return
         try:
             value = json.loads(value)
         except json.JSONDecodeError:
@@ -50,7 +53,10 @@ def display_results(result: PipelineResult) -> None:
     final = result.outputs.get("Readability", [])
     if final:
         st.subheader("Patient-friendly explanation")
-        display_value(final[-1])
+        with st.container(border=True):
+            display_value(final[-1], formatted_text=True)
+        with st.expander("View original output"):
+            st.text(final[-1])
 
     st.subheader("Explore agent outputs")
     for stage, description in STAGE_DESCRIPTIONS.items():
@@ -62,7 +68,7 @@ def display_results(result: PipelineResult) -> None:
             for index, value in enumerate(outputs, start=1):
                 if len(outputs) > 1:
                     st.markdown(f"**Output {index}**")
-                display_value(value)
+                display_value(value, formatted_text=stage in {"Simplifier", "Refiner", "Readability"})
 
 
 st.set_page_config(page_title="FaithfulMed", page_icon="🩺", layout="wide")

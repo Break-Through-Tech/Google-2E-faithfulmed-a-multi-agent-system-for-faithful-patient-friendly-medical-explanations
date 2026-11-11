@@ -92,9 +92,17 @@ class StreamlitAppTests(unittest.TestCase):
         self.assertFalse(app.success)
 
     def test_success_and_failure_show_actual_outputs(self):
+        explanation = (
+            "**Problems and Lab Results:**\n"
+            "* You have rectal bleeding.\n"
+            "* No known allergies.\n\n"
+            "**Medical History:**\n"
+            "* The patient denies nausea."
+        )
+
         async def successful_run(note, result, on_update):
             result.record("Extractor", {"atoms": {"atoms": [{"source_quote": "No nausea."}]}})
-            result.record("Readability", {"final": "Final explanation"})
+            result.record("Readability", {"final": explanation})
             on_update(result)
 
         with patch("faithfulmed.pipeline_ui.run_pipeline", successful_run):
@@ -102,7 +110,9 @@ class StreamlitAppTests(unittest.TestCase):
             app.button[0].click().run()
             self.assertFalse(app.exception)
             self.assertTrue(app.success)
-            self.assertIn("Final explanation", [item.value for item in app.text])
+            self.assertIn(explanation, [item.value for item in app.markdown])
+            self.assertIn(explanation, [item.value for item in app.text])
+            self.assertIn("View original output", [item.label for item in app.expander])
             self.assertTrue(app.json)
 
         async def failed_run(note, result, on_update):
@@ -114,7 +124,7 @@ class StreamlitAppTests(unittest.TestCase):
             app.button[0].click().run()
             self.assertIn("model unavailable", app.error[0].value)
             self.assertFalse(app.success)
-            self.assertNotIn("Final explanation", [item.value for item in app.text])
+            self.assertNotIn(explanation, [item.value for item in app.markdown])
 
 
 if __name__ == "__main__":
