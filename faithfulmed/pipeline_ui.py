@@ -13,20 +13,30 @@ from google.genai import types
 STAGE_OUTPUTS = {
     "Extractor": "atoms",
     "Simplifier": "draft",
+    "readability": "text",
     "Verifier": "verdict",
-    "Refiner": "draft",
-    "Readability": "final",
+    "Refiner": "text",
 }
+STAGE_LABELS = {"readability": "Readability"}
 
 
 @dataclass
 class PipelineResult:
     outputs: dict[str, list[Any]] = field(default_factory=dict)
+    current_text: str | None = None
+    last_verified_text: str | None = None
 
     def record(self, author: str, state_delta: dict[str, Any]) -> bool:
         key = STAGE_OUTPUTS.get(author)
         if key is None or key not in state_delta:
             return False
+        if author in ("readability", "Refiner"):
+            text = state_delta[key]
+            if not isinstance(text, str) or not text.strip():
+                raise ValueError(f"{STAGE_LABELS.get(author, author)} returned no usable text.")
+            self.current_text = text
+        elif author == "Verifier":
+            self.last_verified_text = self.current_text
         self.outputs.setdefault(author, []).append(state_delta[key])
         return True
 
@@ -65,6 +75,7 @@ async def run_pipeline(
     finally:
         await runner.close()
 
-    final = result.outputs.get("Readability", [])
-    if not final or not isinstance(final[-1], str) or not final[-1].strip():
-        raise RuntimeError("The pipeline finished without a final readability output.")
+    if result.current_text is None:
+        raise RuntimeError("The pipeline finished without a final explanation.")
+    if not result.outputs.get("Verifier"):
+        raise RuntimeError("The pipeline finished without a verifier report.")

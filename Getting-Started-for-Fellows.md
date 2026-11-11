@@ -49,7 +49,11 @@ Then open `http://127.0.0.1:8000` in your browser. Stop the server with `Ctrl+C`
 ## Streamlit Pipeline Visualizer
 
 After completing the environment and API key setup above, run this from the
-repository root:
+repository root. The integrated Simplifier also needs the team's prepared
+Chroma database at `chroma/`, including `chroma.sqlite3` and its companion
+folders, with the `medical_docs` collection. Ask a teammate for the complete
+database; an empty Chroma database is not sufficient. To use a different
+location, set `FAITHFULMED_CHROMA_PATH` to the database directory.
 
 ```powershell
 python -m streamlit run streamlit_app.py
@@ -66,8 +70,13 @@ project's grade 8 target. These automated estimates do not measure clinical
 accuracy, medical jargon, or actual patient understanding; short texts can be
 less reliable.
 
-This visualizer runs the current ADK scaffold, not a production medical system.
-Its final readability pass is not followed by another verification step.
+The verifier section shows the latest report's faithfulness, additions,
+omissions, total facts, hallucination and revision flags, and false coverage.
+These are model judgments and do not establish clinical accuracy. If the
+Refiner changes the text after the last verifier pass, the app warns that the
+report does not assess the final text.
+
+This visualizer is not a production medical system.
 Use only fictional or approved de-identified notes: submitted text is sent to
 the configured model provider. A working API key, network access, and model
 quota are required. If a stage fails, the app shows the error and any partial

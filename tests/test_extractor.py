@@ -1,178 +1,213 @@
-import tempfile
+"""Offline tests for the Extractor."""
+import json
 import unittest
-from pathlib import Path
 
 from faithfulmed.agents.extractor import (
     Atom,
-    Extraction,
-    attach_topics,
-    check_atom_texts,
-    check_assertion_cues,
-    check_quotes,
-    check_quote_context,
-    find_topic,
-    load_aliases,
-    load_extraction,
+    ExtractionRecord,
+    ExtractionValidationError,
+    ExtractorError,
+    extract_atoms,
     missing_numbers,
-    save_extraction,
 )
 
+NOTE = (
+    "HISTORY OF PRESENT ILLNESS:, The patient reports a mild headache. "
+    "He denies nausea. His father has questionable celiac disease. "
+    "Blood pressure was 120/80. Oxygen saturation was 98% on O2. "
+    "ADMITTING DIAGNOSES:,1. Fever."
+)
 
-class ExtractorHelperTests(unittest.TestCase):
-    # Keep each helper test focused by starting from a valid, reusable atom.
-    def make_extraction(self, quote="No history of asthma.", text="No history of asthma."):
-        return Extraction(atoms=[
-            Atom(
-                text=text,
-                type="diagnosis",
-                assertion="absent",
-                source_quote=quote,
-            )
-        ])
+HEADACHE = {
+    "text": "The patient reports a mild headache.",
+    "type": "symptom",
+    "assertion": "present",
+    "source_quote": "The patient reports a mild headache.",
+}
+NO_NAUSEA = {
+    "text": "He denies nausea.",
+    "type": "symptom",
+    "assertion": "absent",
+    "source_quote": "He denies nausea.",
+}
+FATHER = {
+    "text": "His father has questionable celiac disease.",
+    "type": "diagnosis",
+    "assertion": "family",
+    "source_quote": "His father has questionable celiac disease.",
+}
+PARAPHRASED = {
+    "text": "The patient reports a severe headache.",
+    "type": "symptom",
+    "assertion": "present",
+    "source_quote": "The patient reports a severe headache.",
+}
+FURNITURE = {
+    "text": "ADMITTING DIAGNOSES:,1. Fever.",
+    "type": "diagnosis",
+    "assertion": "present",
+    "source_quote": "ADMITTING DIAGNOSES:,1. Fever.",
+}
 
-    def test_load_aliases_returns_string_mapping(self):
-        aliases = load_aliases()
-        self.assertTrue(aliases)
-        self.assertTrue(all(isinstance(key, str) and isinstance(value, str) for key, value in aliases.items()))
 
-    def test_symptom_is_a_supported_atom_type(self):
-        atom = Atom(
-            text="mild headache",
-            type="symptom",
-            assertion="present",
-            source_quote="mild headache",
-        )
-        self.assertEqual(atom.type, "symptom")
+def reply(*atoms):
+    """One scripted model reply, in the JSON shape the schema expects."""
+    return json.dumps({"atoms": list(atoms)})
 
-    def test_note_specific_categories_are_supported(self):
-        categories = [
-            ("No known allergies.", "allergy", "absent"),
-            ("Past medical history is unremarkable.", "history", "absent"),
-            ("CT imaging was normal.", "clinical_finding", "present"),
-            ("The patient is NPO.", "diet", "present"),
-        ]
-        atoms = [
-            Atom(text=text, type=atom_type, assertion=assertion, source_quote=text)
-            for text, atom_type, assertion in categories
-        ]
-        self.assertEqual([atom.type for atom in atoms], [item[1] for item in categories])
 
-    def test_find_topic_prefers_longest_phrase(self):
-        aliases = {
-            "heart": "Heart",
-            "heart failure": "Heart Failure",
-            "congestive heart failure": "Congestive Heart Failure",
+def scripted(*replies):
+    """A sender that returns the scripted replies in order and fails loudly when empty."""
+    remaining = list(replies)
+
+    def send(prompt, model):
+        if not remaining:
+            raise AssertionError("the test script ran out of replies")
+        return remaining.pop(0)
+
+    return send
+
+
+def checks_in(error):
+    return {record["check"] for record in error.diagnostics}
+
+
+class AcceptedExtractionTest(unittest.TestCase):
+    def test_valid_reply_gets_identity_and_spans(self):
+        record = extract_atoms(NOTE, send=scripted(reply(HEADACHE, NO_NAUSEA)))
+
+        self.assertIsInstance(record, ExtractionRecord)
+        self.assertEqual([atom.fact_id for atom in record.atoms], ["F001", "F002"])
+        for atom in record.atoms:
+            self.assertEqual(NOTE[atom.char_start:atom.char_end], atom.source_quote)
+
+    def test_repair_that_fixes_the_problem_is_accepted(self):
+        record = extract_atoms(NOTE, send=scripted(reply(PARAPHRASED), reply(HEADACHE)))
+
+        self.assertEqual(len(record.atoms), 1)
+        self.assertEqual(record.atoms[0].source_quote, HEADACHE["source_quote"])
+
+    def test_blank_note_is_named_and_rejected(self):
+        with self.assertRaises(ExtractorError) as caught:
+            extract_atoms("   ", send=scripted())
+
+        self.assertIn("blank", str(caught.exception))
+
+
+class RejectedExtractionTest(unittest.TestCase):
+    def assert_check_fires(self, expected_check, *atoms):
+        with self.assertRaises(ExtractionValidationError) as caught:
+            extract_atoms(NOTE, send=scripted(reply(*atoms), reply(*atoms)))
+
+        self.assertIn(expected_check, checks_in(caught.exception))
+        return caught.exception
+
+    def test_paraphrased_quote_is_rejected(self):
+        self.assert_check_fires("quote", PARAPHRASED)
+
+    def test_text_must_come_from_the_note(self):
+        atom = dict(HEADACHE, text="The patient has a bad head pain")
+        self.assert_check_fires("text", atom)
+
+    def test_section_header_furniture_is_rejected(self):
+        self.assert_check_fires("furniture", FURNITURE)
+
+    def test_nested_quote_is_dropped(self):
+        nested = {
+            "text": "He denies nausea. His father has questionable celiac disease.",
+            "type": "symptom",
+            "assertion": "absent",
+            "source_quote": "He denies nausea. His father has questionable celiac disease.",
         }
-        self.assertEqual(
-            find_topic("Possible congestive heart failure.", aliases),
-            "Congestive Heart Failure",
-        )
+        record = extract_atoms(NOTE, send=scripted(reply(NO_NAUSEA, nested), reply(NO_NAUSEA, nested)))
 
-    def test_find_topic_returns_none_without_match(self):
-        self.assertIsNone(find_topic("No matching phrase here", {}))
+        self.assertEqual([atom.fact_id for atom in record.atoms], ["F001"])
+        self.assertTrue(any(warning.startswith("F002 dropped") for warning in record.review_warnings))
 
-    # Topic attachment must preserve the original evidence and assertion fields.
-    def test_attach_topics_preserves_atom_fields(self):
-        extraction = self.make_extraction(text="History of asthma")
-        linked = attach_topics(extraction, {"asthma": "Asthma"})
-        self.assertEqual(linked[0].topic, "Asthma")
-        self.assertEqual(linked[0].assertion, "absent")
-        self.assertEqual(linked[0].source_quote, "No history of asthma.")
+    def test_duplicate_span_is_rejected(self):
+        with self.assertRaises(ExtractionValidationError) as caught:
+            extract_atoms(NOTE, send=scripted(reply(HEADACHE, HEADACHE), reply(HEADACHE, HEADACHE)))
 
-    def test_check_quotes_requires_verbatim_match(self):
-        source = "No history of asthma."
-        extraction = self.make_extraction(quote="no history of asthma.")
-        self.assertEqual(check_quotes(source, extraction), extraction.atoms)
+        self.assertIn("overlap", checks_in(caught.exception))
 
-    def test_check_atom_texts_rejects_added_words(self):
-        source = "Temperature is 37 C."
-        extraction = self.make_extraction(
-            quote=source,
-            text="Patient temperature is 37 C.",
-        )
-        self.assertEqual(check_atom_texts(source, extraction), extraction.atoms)
+    def test_absent_fact_without_a_cue_is_rejected(self):
+        atom = {"text": "nausea", "type": "symptom", "assertion": "absent", "source_quote": "nausea"}
+        self.assert_check_fires("assertion cue", atom)
 
-    # Evidence checks keep negation and the subject/diagnosis context in each quote.
-    def test_check_assertion_cues_flags_absence_quote_without_negation(self):
-        extraction = self.make_extraction(quote="nausea", text="nausea")
-        self.assertEqual(check_assertion_cues(extraction), extraction.atoms)
+    def test_family_fact_must_name_the_relative(self):
+        atom = {
+            "text": "questionable celiac disease",
+            "type": "diagnosis",
+            "assertion": "family",
+            "source_quote": "questionable celiac disease",
+        }
+        self.assert_check_fires("family owner", atom)
 
-    def test_check_assertion_cues_accepts_full_denial_quote(self):
-        extraction = self.make_extraction(
-            quote="The patient denies nausea.",
-            text="The patient denies nausea.",
-        )
-        self.assertEqual(check_assertion_cues(extraction), [])
+    def test_patient_fact_must_not_name_a_relative(self):
+        atom = dict(FATHER, assertion="present")
+        self.assert_check_fires("family owner", atom)
 
-    def test_check_assertion_cues_flags_possible_quote_without_uncertainty(self):
-        extraction = Extraction(atoms=[
-            Atom(
-                text="polyp",
-                type="diagnosis",
-                assertion="possible",
-                source_quote="polyp",
-            )
-        ])
-        self.assertEqual(check_assertion_cues(extraction), extraction.atoms)
+    def test_repair_that_drops_a_fact_is_recorded(self):
+        record = extract_atoms(NOTE, send=scripted(reply(HEADACHE, PARAPHRASED), reply(HEADACHE)))
 
-    def test_check_assertion_cues_accepts_possible_with_uncertainty_context(self):
-        quote = "Possibilities include a polyp."
-        extraction = Extraction(atoms=[
-            Atom(
-                text=quote,
-                type="diagnosis",
-                assertion="possible",
-                source_quote=quote,
-            )
-        ])
-        self.assertEqual(check_assertion_cues(extraction), [])
+        self.assertEqual(len(record.atoms), 1)
+        self.assertTrue(any("down from 2" in warning for warning in record.review_warnings))
 
-    def test_check_quote_context_flags_bare_present_symptom(self):
-        extraction = Extraction(atoms=[
-            Atom(
-                text="mild headache",
-                type="symptom",
-                assertion="present",
-                source_quote="mild headache",
-            )
-        ])
-        self.assertEqual(check_quote_context(extraction), extraction.atoms)
+    def test_one_bad_atom_does_not_discard_the_note(self):
+        record = extract_atoms(NOTE, send=scripted(reply(HEADACHE, FURNITURE), reply(HEADACHE, FURNITURE)))
 
-    def test_check_quote_context_accepts_complete_symptom_and_diagnosis_quotes(self):
-        extraction = Extraction(atoms=[
-            Atom(
-                text="The patient reports a mild headache.",
-                type="symptom",
-                assertion="present",
-                source_quote="The patient reports a mild headache.",
-            ),
-            Atom(
-                text="The clinician diagnosed migraine.",
-                type="diagnosis",
-                assertion="present",
-                source_quote="The clinician diagnosed migraine.",
-            ),
-        ])
-        self.assertEqual(check_quote_context(extraction), [])
+        self.assertEqual([atom.fact_id for atom in record.atoms], ["F001"])
+        self.assertTrue(any(warning.startswith("F002 dropped") for warning in record.review_warnings))
 
-    def test_missing_numbers_reports_unrepresented_values(self):
-        extraction = self.make_extraction(quote="A1C was 7.2%.", text="A1C was 7.2%.")
-        self.assertEqual(missing_numbers("A1C was 7.2%; glucose was 105.", extraction), ["105"])
+    def test_family_fact_is_accepted_when_it_names_the_relative(self):
+        record = extract_atoms(NOTE, send=scripted(reply(FATHER)))
 
-    # The JSON handoff should round-trip the same fields and reject unsafe filenames.
-    def test_save_and_load_round_trip(self):
-        extraction = self.make_extraction()
-        with tempfile.TemporaryDirectory() as temp_dir:
-            output_path = save_extraction("sample-1", extraction.atoms, Path(temp_dir) / "nested")
-            payload = load_extraction(output_path)
+        self.assertEqual(record.atoms[0].assertion, "family")
 
-        self.assertEqual(payload["doc_id"], "sample-1")
-        self.assertEqual(payload["atoms"][0], extraction.atoms[0].model_dump(mode="json"))
 
-    def test_save_rejects_path_traversal_doc_id(self):
-        with tempfile.TemporaryDirectory() as temp_dir:
-            with self.assertRaises(ValueError):
-                save_extraction("../outside", [], Path(temp_dir))
+class DiagnosticsTest(unittest.TestCase):
+    def test_message_carries_no_patient_text(self):
+        with self.assertRaises(ExtractionValidationError) as caught:
+            extract_atoms(NOTE, send=scripted(reply(PARAPHRASED), reply(PARAPHRASED)))
+
+        message = str(caught.exception)
+        self.assertNotIn("headache", message.lower())
+        self.assertNotIn("celiac", message.lower())
+        self.assertIn("quote", message)
+
+    def test_each_record_names_the_fact_and_the_check(self):
+        with self.assertRaises(ExtractionValidationError) as caught:
+            extract_atoms(NOTE, send=scripted(reply(PARAPHRASED), reply(PARAPHRASED)))
+
+        record = caught.exception.diagnostics[0]
+        self.assertEqual(record["fact"], 1)
+        self.assertEqual(record["check"], "quote")
+        self.assertTrue(record["message"])
+
+    def test_attempts_are_reported(self):
+        with self.assertRaises(ExtractionValidationError) as caught:
+            extract_atoms(NOTE, send=scripted(reply(PARAPHRASED), reply(PARAPHRASED)))
+
+        self.assertEqual(caught.exception.attempts, 2)
+
+
+class NumberCoverageTest(unittest.TestCase):
+    def test_lettered_digits_are_not_measurements(self):
+        missing = missing_numbers(NOTE, [])
+
+        self.assertIn("120", missing)
+        self.assertIn("98", missing)
+        self.assertNotIn("2", missing)
+
+    def test_quoted_numbers_are_covered(self):
+        atom = {
+            "text": "Blood pressure was 120/80.",
+            "type": "lab_value",
+            "assertion": "present",
+            "source_quote": "Blood pressure was 120/80.",
+        }
+        missing = missing_numbers(NOTE, [Atom.model_validate(atom)])
+
+        self.assertNotIn("120", missing)
 
 
 if __name__ == "__main__":

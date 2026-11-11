@@ -2,34 +2,39 @@
 import json
 import re
 from pathlib import Path
-from typing import List, Literal, Optional
+from typing import Callable, List, Literal, Optional
 
 from pydantic import BaseModel, Field
 
-# Started with 3.8 but kept getting 503s and eventually a 429 limit... 3.6 hasn't been much better on the 503 end...
 MODEL = "gemini-3.5-flash-lite"
-PACKAGE_ALIAS_PATH = Path(__file__).resolve().parent.parent / "medlineplus_aliases.json"
-NOTEBOOK_ALIAS_PATH = Path(__file__).resolve().parents[2] / "notebooks" / "medlineplus_aliases.json"
-ALIAS_PATH = PACKAGE_ALIAS_PATH if PACKAGE_ALIAS_PATH.exists() else NOTEBOOK_ALIAS_PATH
+MAX_ATTEMPTS = 2
 
 
-# ---- Step 1: talking to Gemini -------------------------------------------
-def ask(prompt: str) -> str:
-    """Send a prompt to Gemini and return the reply text."""
-    from google import genai
-
-    client = genai.Client()
-
-    response = client.models.generate_content(
-        model=MODEL,
-        contents=prompt
-    )
-
-    return response.text
+class ExtractorError(Exception):
+    """A failure the Extractor can name, instead of a raw SDK or validation traceback."""
 
 
-# ---- Step 2: what an atom is ---------------------------------------------
-# This schema constrains Gemini's response and is also reused as the ADK output schema.
+class ExtractionValidationError(ExtractorError):
+    """The model replied, but the reply failed the source checks.
+
+    `diagnostics` holds one record per problem: the fact position, the check that fired,
+    and the quote it fired on. `str(error)` reports counts and check names only, because
+    the message may be logged or shown in a UI and must not carry patient text.
+    """
+
+    def __init__(self, diagnostics: List[dict], attempts: int):
+        self.diagnostics = diagnostics
+        self.attempts = attempts
+        checks = sorted({record["check"] for record in diagnostics})
+        super().__init__(
+            f"Extraction failed source validation after {attempts} attempt(s). "
+            f"{len(diagnostics)} issue(s) from {len(checks)} check(s): {', '.join(checks)}."
+        )
+
+
+# An atom is one medical fact. Its assertion tells us whether
+# the fact is present, denied, uncertain, historical, or about a family member.
+# Pydantic checks the shape of the reply. Later functions check it against the note.
 class Atom(BaseModel):
     text: str = Field(
         description=(
@@ -37,26 +42,13 @@ class Atom(BaseModel):
             "that establishes who has the fact and its status."
         )
     )
-    type: Literal[
-        "diagnosis",
-        "symptom",
-        "medication",
-        "allergy",
-        "lab_value",
-        "clinical_finding",
-        "history",
-        "diet",
-        "procedure",
-        "instruction",
-    ] = Field(
-        description=(
-            "Choose diagnosis for a confirmed condition; symptom for a patient-reported symptom; "
-            "medication for a drug or its use; allergy for allergy status; lab_value for a lab or vital measurement; "
-            "clinical_finding for exam or imaging findings; history for medical, surgical, family, or social history; "
-            "diet for documented food or fasting status; procedure for a test or intervention; "
-            "instruction for patient advice or directions."
+    type: Literal["diagnosis", "symptom", "medication", "lab_value", "procedure", "instruction"] = Field(
+        description=
+            "The category of the extracted fact: diagnosis for a diagnosed disease or condition; " \
+            "symptom for a symptom reported or denied by the patient; " \
+            "medication for a drug or its use; lab_value for a test result or clinical measurement;" \
+            "procedure for a clinical procedure or intervention; instruction for advice or directions given to the patient."
         )
-    )
     assertion: Literal["present", "absent", "possible", "past", "family"] = Field(
         description=
             "The assertion status of the fact: present for an affirmed current fact; " \
@@ -70,303 +62,432 @@ class Atom(BaseModel):
         )
     )
 
-
 class Extraction(BaseModel):
     atoms: List[Atom]
 
 
-# ---- Step 3: the instruction ---------------------------------------------
-# Keep the prompt aligned with Atom: it defines the clinical rules the schema cannot express.
+class StoredAtom(Atom):
+    """An accepted atom, with identity and position filled in by Python.
+
+    The model is not asked for these: an offset it computed could not be trusted, and a
+    position it invented would not survive a repair attempt.
+    """
+
+    # Python adds these fields after checking the reply. The model supplies words,
+    # but Python finds where those words occur and assigns an ID inside this result.
+    fact_id: str = Field(description="Stable handle inside this extraction, such as F001.")
+    char_start: int = Field(description="Inclusive offset of source_quote in the note.")
+    char_end: int = Field(description="Exclusive offset of source_quote in the note.")
+
+
+class ExtractionRecord(BaseModel):
+    """What extract_atoms returns and what the session state carries."""
+
+    atoms: List[StoredAtom]
+    review_warnings: List[str] = Field(
+        default_factory=list,
+        description="Facts dropped after repair, and any coverage lost, for a human to review.",
+    )
+
+
 INSTRUCTION = """
-ROLE & OVERVIEW
-You are a clinical information extraction agent. Extract every clinically meaningful fact from the input, with one fact per atom.
-Each atom should have a type and a corresponding source_quote that is copied EXACTLY from the source.
-Never ever infer, add, or correct anything that isn't written in the source.
-Keep any and all abbreviations as written - do not expand upon or rename them.
-Text uses only words from the source. An absence or possibility of a disease is not a diagnosis.
-Your task is extraction, not diagnosis, interpretation, summarization, or medical advice.
+ROLE
+You extract clinical facts from one note. You do not interpret, summarize, diagnose, or advise.
 
-CORE RULES
-1. Extract each distinct clinically meaningful fact as a separate atom.
-2. Use only information supported by the source text. Never invent, infer,
-   assume, or add clinical facts that are not explicitly stated.
-3. Preserve the source's meaning, including negation, uncertainty, timing,
-   medication status, and whether a fact concerns the patient or a family member.
-4. Keep abbreviations as written. Do not expand, rename, correct, or silently
-   reinterpret abbreviations.
-5. Keep each atom's text concise and faithful to the source. Do not add
-   information merely to make the sentence sound more natural.
-6. Every atom must have a source_quote copied exactly from one contiguous
-   portion of the source text. Do not paraphrase the quote, combine separate
-   excerpts, or insert words that are not present in the source.
-    Include the complete clause that establishes the fact and assertion. For
-    "The patient reports a mild headache," use that complete phrase, not only
-    "mild headache." For "The clinician diagnosed migraine," include
-    "diagnosed," not only the condition name.
-    For an absent fact, quote the denial too: for "The patient denies nausea,"
-    quote that phrase, not just "nausea." For a possible fact, include its
-    uncertainty cue: for "Possibilities include a polyp," quote that phrase,
-    not just "polyp."
-7. If the source does not provide enough information to determine a fact,
-   do not fill in the missing information from medical knowledge.
-8. Do not omit a clinically meaningful fact merely because it is negative,
-   uncertain, historical, or related to family history.
+WHAT AN ATOM IS
+One atom is one fact, quoted from the note, with two labels attached.
+- text and source_quote must be the SAME string: one complete clause, copied character for
+  character. If you cannot copy it exactly, do not create the atom.
+- One fact per atom. Keep a measurement with its value and unit, and a medicine with its
+  documented dose.
+- Do not split one fact into several atoms, and do not quote the same words twice.
+- Items that follow one shared lead-in are ONE fact. "Negative for heart disease, lung
+  disease, or bleeding problems" is one atom, and so is "Possibilities include A, B and
+  C". Do not create one atom per item and repeat the lead-in each time.
 
-FIELD: text
-Copy the shortest complete source clause that identifies the fact and makes
-- diagnosis: a condition explicitly diagnosed as present.
-surrounding words identify who has it or how it is asserted.
-Use the same complete excerpt as source_quote. Do not add words not present.
-Do not turn a negative statement into a positive one.
-- allergy: an allergy or explicit allergy-status statement.
-Do not turn a possible condition into a confirmed condition.
-Do not add a patient, diagnosis, medication, unit, date, or other detail
-- clinical_finding: an objective physical-exam or imaging finding that is not
-    itself a diagnosis.
-- history: medical, surgical, family, social, or travel history.
-- diet: documented food, feeding, or fasting status.
-unless it is supported by the source.
-Include relevant numbers and units exactly as documented.
+QUOTE RULES
+1. The quote must appear in the note exactly: same spelling, capitalization, punctuation.
+   Do not expand abbreviations or correct anything.
+2. Do not paraphrase, tidy, or join two places in the note.
+3. Never include a list number, or a section label that introduces a list, in the fact. From
+   "ADMITTING DIAGNOSES:,1. Fever.,2. Otitis media." quote "Fever." and
+   "Otitis media.", not the header and not the numbers. A label on its own, such as
+   "HEENT:", may stay when the note gives the clause no other subject.
+4. Never quote a span that contains another atom's quote.
 
-FIELD: type
-Choose exactly one of the permitted types:
-- diagnosis: a disease, condition, or clinical finding.
-- medication: a named medication or drug, including information about its
-  use or discontinuation when stated.
-- lab_value: a test result, measurement, or clinical reading, including
-  the available test name, value, and unit.
-- procedure: a clinical procedure or intervention explicitly described
-  in the source.
-- instruction: advice, directions, or instructions given to the patient.
+ASSERTION: choose the value, then quote the words that prove it
+- present: the note affirms it. Quote the finding itself.
+- absent: the note denies it. The quote MUST contain the denying words: "no", "not",
+  "denies", "without", "negative for", "free of", "no history of". Quote
+  "denies nausea", never only "nausea". A symptom that improved or resolved is not
+  absent: use past when it is no longer current.
+- possible: the note is unsure. The quote MUST contain the hedging words: "possible",
+  "questionable", "suspected", "may", "cannot be excluded".
+- past: historical, stopped, improved, or resolved. The quote MUST contain the time
+  wording: "history of", "status post", "previously", "discontinued", "resolved",
+  "improved", "no longer", or the year.
+- family: about a relative. The quote MUST name the relative, such as "mother",
+  "father", "sister", "brother", "son", "daughter", or say "family history". Quote
+  "Her father has questionable celiac disease", never only "questionable celiac
+  disease".
 
-Choose the most specific type supported by the source. Do not label a normal
-exam or imaging result as a diagnosis, diet as medication, or history as a
-diagnosis. Do not classify a medication as current merely because its name
-appears in the source.
+TYPE
+diagnosis: a disease, condition, or clinical finding.
+symptom: a symptom reported or denied, including improvement or resolution.
+medication: a drug, its use, its dose, or its discontinuation.
+lab_value: a test, measurement, or reading, with its value and unit.
+procedure: a procedure or intervention performed or planned.
+instruction: advice or directions given to the patient.
 
-FIELD: assertion
-Choose exactly one permitted value:
-- present: the source affirms the fact as current or applicable.
-- absent: the source explicitly denies the fact or states that it is absent.
-- possible: the source expresses uncertainty, suspicion, or possibility.
-- past: the source explicitly describes a historical fact that is no longer
-  current.
-- family: the fact concerns a family member's medical history, not the
-  patient's own medical history.
+WHAT TO EXTRACT
+- Every clinically meaningful fact within those types, including negatives, uncertain
+  findings, historical items, stopped medicines, family history, and improvements.
+- Keep numbers and units exactly as written.
+- Never infer a fact from medical knowledge, and never treat silence as absence.
+- Never turn a possible condition into a confirmed one, or a relative's condition into
+  the patient's.
+- Do not classify a medicine as current unless the note establishes it.
 
-Apply these rules:
-- Explicit negation takes precedence over an otherwise affirmative mention
-  of a condition. For example, "No history of diabetes" must not be marked
-  as present.
-- Explicit uncertainty must be preserved. For example, "Possible pneumonia"
-  must not be treated as a confirmed diagnosis.
-- Use past for a fact explicitly described as historical and no longer
-  current. Do not assume that a condition has resolved just because it
-  occurred in the past.
-- Use family when the fact concerns a family member, rather than the patient.
-- If a fact concerns family history, use family even if the condition
-  occurred in the relative's past. Do not attribute the relative's condition
-  to the patient.
-- If a medication is explicitly stated to have been stopped, discontinued,
-  or ceased, do not represent it as a current medication. Use past when
-  the medication's use is historical and no longer current.
-- Do not assume a medication is current or discontinued if the source
-  does not establish its status.
-- When the source does not establish a status, do not invent certainty.
-  Use the closest supported value only when justified by the source.
-
-FIELD: source_quote
-Copy the shortest complete clause that adequately supports the atom.
-The quote must appear verbatim in the source, including its original
-abbreviations, spelling, capitalization, and punctuation.
-The quote must identify the subject and support the assertion as well as the
-fact. Include wording such as "reports" for a reported symptom, "diagnosed"
-for a diagnosis, and "denies" or "no" for an absent fact. Never quote only
-the clinical term when surrounding words establish its context.
-Do not use a paraphrase as a quote.
-Do not combine words from different parts of the source into one quote.
-If a fact cannot be supported by a suitable source excerpt, do not create
-an atom for that fact.
-
-GRANULARITY
-Extract one distinct fact per atom.
-Keep a test or measurement together with its documented value and unit
-when they belong to the same result.
-For example, a blood pressure reading of "120/80" is one measurement,
-not two separate atoms for 120 and 80.
-If the source documents multiple distinct measurements, extract each
-measurement separately.
-Keep a medication's name and its documented dose or schedule together
-when they describe the same medication instruction.
-Do not split a single fact into multiple atoms unless the source contains
-distinct clinically meaningful facts.
-
-NEGATION, UNCERTAINTY, AND HISTORY
-Preserve clinically important wording such as "no", "denies", "possible",
-"suspected", "history of", "discontinued", and "family history".
-Do not infer that a patient has a condition simply because the condition
-is mentioned.
-Do not infer that a condition is absent merely because it is not mentioned.
-Do not convert a family member's condition into the patient's condition.
-Do not convert a suspected diagnosis into a confirmed diagnosis.
-Do not infer that a past condition has resolved unless the source says so.
-
-COMPLETENESS
-Extract all clinically meaningful facts that fall within the permitted
-types. Preserve all documented numerical values, relevant units, and
-important contextual details.
-Do not add unrelated information or duplicate the same fact without reason.
+WHAT TO SKIP
+- Note furniture: section headers, list numbers, page markers, signature and dictation
+  lines.
+- Any fact you cannot quote exactly.
 
 OUTPUT
-Return only the structured extraction matching the supplied schema.
-Do not include explanations, commentary, markdown, or additional fields.
+Return only the structured extraction, one atom per fact, no commentary.
 """
-# It should tell the model to:
-#   - extract every clinically meaningful fact, one fact per atom
-#   - give each atom a type and a source_quote copied EXACTLY from the source
-#   - never infer, add, or correct anything not written in the source
-#   - keep abbreviations as written (don't expand or rename them)
+
+# Checks. Each returns issue records, and each is wired into extract_atoms.
+# These notes are comma-joined, so "sentence" is not a unit that exists here: a check
+# is written over a quote, a clause of the note, or a pair of spans.
+
+# A list number is furniture, and so is a section label that introduces one. A label on its
+# own is not, because in these comma-joined notes the label is sometimes the only subject the
+# clause has. The (?!\d) stops a decimal such as "0.25%" from reading as list number "0.".
+LIST_NUMBER_PATTERN = re.compile(r"^\s*(?:[A-Z][A-Z0-9 /&\-]{2,}:\s*,?\s*\d+\.|\d+\.(?!\d))")
+RELATIVE_PATTERN = re.compile(
+    r"\b(?:mother|father|mom|dad|sister|brother|daughter|son|wife|husband|partner|"
+    r"grandmother|grandfather|aunt|uncle|cousin|sibling)\b",
+    flags=re.IGNORECASE,
+)
+FAMILY_HISTORY_PATTERN = re.compile(r"\bfamily\b", flags=re.IGNORECASE)
+NEGATION_CUE_PATTERN = re.compile(
+    r"\b(?:no|not|never|none|den(?:y|ies|ied)|without|negative|absent|free of|"
+    r"ruled out|absence of)\b|n't\b",
+    flags=re.IGNORECASE,
+)
+NUMBER_PATTERN = r"(?<![A-Za-z0-9])\d+(?:[.,]\d+)?"
 
 
-# ---- Step 4: structured extraction ---------------------------------------
-def extract_atoms(source_text: str, model: str = MODEL) -> Extraction:
+def issue(position: int, check: str, quote: str, message: str) -> dict:
+    """One problem, addressed to a fact position and to the check that found it."""
+    return {"fact": position, "check": check, "quote": quote, "message": message}
+
+
+def assign_spans(source_text: str, atoms: List[Atom]) -> List[tuple[int, int]]:
+    """Find each quote's offsets, claiming a distinct occurrence where one exists.
+
+    Two atoms quoting the same words must land on different spans, otherwise overlap
+    detection cannot tell a duplicate from a coincidence.
+    """
+    # A span is a pair of character positions: include start, stop just before end.
+    # (-1, -1) means the quote was not found. Each exact occurrence can be claimed once.
+    claimed = set()
+    spans: List[tuple[int, int]] = []
+    for atom in atoms:
+        quote = atom.source_quote
+        start = source_text.find(quote) if quote else -1
+        first = (start, start + len(quote)) if start != -1 else (-1, -1)
+        chosen = None
+        while start != -1:
+            # The same words may appear more than once in a note. Look for an unused
+            # occurrence before treating the atom as a duplicate of another atom.
+            candidate = (start, start + len(quote))
+            if candidate not in claimed:
+                chosen = candidate
+                break
+            start = source_text.find(quote, start + 1)
+        # No free occurrence left means the quote was reused, so reuse the first span and
+        # let check_overlap report it instead of silently accepting the duplicate.
+        chosen = chosen or first
+        spans.append(chosen)
+        if chosen != (-1, -1):
+            claimed.add(chosen)
+    return spans
+
+
+def check_quotes(source_text: str, atoms: List[Atom]) -> List[dict]:
+    """Every quote is non-empty and appears verbatim in the note."""
+    issues = []
+    for position, atom in enumerate(atoms, start=1):
+        if not atom.source_quote.strip():
+            issues.append(issue(position, "quote", atom.source_quote, "source_quote is empty."))
+        elif atom.source_quote not in source_text:
+            issues.append(issue(position, "quote", atom.source_quote,
+                                "source_quote is not a verbatim substring of the note."))
+    return issues
+
+
+def check_texts(source_text: str, atoms: List[Atom]) -> List[dict]:
+    """Every text is non-empty and copied from the note."""
+    issues = []
+    for position, atom in enumerate(atoms, start=1):
+        if not atom.text.strip():
+            issues.append(issue(position, "text", atom.source_quote, "text is empty."))
+        elif atom.text not in source_text:
+            issues.append(issue(position, "text", atom.source_quote,
+                                "text is not a verbatim substring of the note."))
+    return issues
+
+
+def check_furniture(atoms: List[Atom]) -> List[dict]:
+    """No atom starts with a list number or a label that introduces a list."""
+    issues = []
+    for position, atom in enumerate(atoms, start=1):
+        for field in ("text", "source_quote"):
+            value = getattr(atom, field)
+            match = LIST_NUMBER_PATTERN.match(value)
+            if match:
+                issues.append(issue(position, "furniture", value,
+                                    f"{field} starts with a list number: {match.group(0).strip()!r}."))
+    return issues
+
+
+def check_overlap(atoms: List[Atom], spans: List[tuple[int, int]]) -> List[dict]:
+    """No two atoms quote the same span, and no quote sits inside another."""
+    # Compare each quote with the others. If this quote contains another quote,
+    # report an issue on this atom. Equal spans also count as overlap.
+    issues = []
+    for position, (start, end) in enumerate(spans, start=1):
+        if start < 0:
+            continue
+        for other_position, (other_start, other_end) in enumerate(spans, start=1):
+            if other_position == position or other_start < 0:
+                continue
+            if start <= other_start and other_end <= end:
+                if (start, end) == (other_start, other_end):
+                    message = f"quote is identical to the quote of fact {other_position}."
+                elif (end - start) > (other_end - other_start):
+                    message = f"quote contains the quote of fact {other_position}."
+                else:
+                    message = f"quote sits inside the quote of fact {other_position}."
+                issues.append(issue(position, "overlap", atoms[position - 1].source_quote, message))
+                break
+    return issues
+
+
+def check_assertion_cues(atoms: List[Atom]) -> List[dict]:
+    """An absent atom's quote carries the wording that makes it absent."""
+    issues = []
+    for position, atom in enumerate(atoms, start=1):
+        if atom.assertion == "absent" and not NEGATION_CUE_PATTERN.search(atom.source_quote):
+            issues.append(issue(position, "assertion cue", atom.source_quote,
+                                "absent fact has no negation cue in its quote."))
+    return issues
+
+
+def check_family_owner(atoms: List[Atom]) -> List[dict]:
+    """A family atom names its relative, and a patient atom names no relative."""
+    issues = []
+    for position, atom in enumerate(atoms, start=1):
+        names_relative = bool(RELATIVE_PATTERN.search(atom.source_quote))
+        names_family = bool(FAMILY_HISTORY_PATTERN.search(atom.source_quote))
+        if atom.assertion == "family" and not (names_relative or names_family):
+            issues.append(issue(position, "family owner", atom.source_quote,
+                                "family fact names no relative and no family history."))
+        if atom.assertion != "family" and names_relative:
+            issues.append(issue(position, "family owner", atom.source_quote,
+                                "quote names a relative but the assertion is not family."))
+    return issues
+
+
+def missing_numbers(source_text: str, atoms: List[Atom]) -> List[str]:
+    """Numbers in the note that no atom mentions. A review signal, never a gate."""
+    quoted = " ".join(atom.text + " " + atom.source_quote for atom in atoms)
+    covered = set(re.findall(NUMBER_PATTERN, quoted))
+    return sorted(set(re.findall(NUMBER_PATTERN, source_text)) - covered)
+
+
+def collect_issues(source_text: str, atoms: List[Atom], spans: List[tuple[int, int]]) -> List[dict]:
+    """Run every blocking check and return the combined record."""
+    # Collect all kinds of issues here, including ones that can be fixed or dropped.
+    # extract_atoms decides which remaining issues must stop the entire note.
+    issues: List[dict] = []
+    issues.extend(check_quotes(source_text, atoms))
+    issues.extend(check_texts(source_text, atoms))
+    issues.extend(check_furniture(atoms))
+    issues.extend(check_overlap(atoms, spans))
+    issues.extend(check_assertion_cues(atoms))
+    issues.extend(check_family_owner(atoms))
+    return issues
+
+
+# Checks a repair can fix, or that can be dropped one atom at a time. A quote that is not
+# verbatim, or a document that will not parse, makes the whole reply untrustworthy instead.
+FIXABLE_CHECKS = frozenset({"furniture", "overlap", "assertion cue", "family owner"})
+
+
+def live_send(prompt: str, model: str) -> str:
+    """Send one prompt to Gemini and return the raw reply text."""
     from google import genai
     from google.genai import types
 
     client = genai.Client()
-    resp = client.models.generate_content(
+    response = client.models.generate_content(
         model=model,
-        contents= f"SOURCE:\n{source_text}",
+        contents=prompt,
         config=types.GenerateContentConfig(
-            system_instruction= INSTRUCTION,
+            system_instruction=INSTRUCTION,
             response_mime_type="application/json",
-            response_schema= Extraction,
+            response_schema=Extraction,
             temperature=0,
         ),
     )
-    if resp.parsed is None:
-        raise ValueError(f"Gemini didn't return a parsed result. Raw reply: {resp.text}")
-    return resp.parsed
+    return response.text or ""
 
 
-# ---- Step 5: are the atoms real? -----------------------------------------
-# These checks enforce literal source grounding; they flag suspicious output but cannot prove clinical correctness.
-def check_quotes(source_text: str, extraction: Extraction) -> List[Atom]:
-    """Return atoms whose source quote is not an exact substring of the source."""
-    return [atom for atom in extraction.atoms if atom.source_quote not in source_text]
+def parse_reply(reply_text: str) -> Optional[Extraction]:
+    """Validate a reply against the schema, returning None when it does not parse."""
+    try:
+        return Extraction.model_validate_json(reply_text)
+    except Exception:
+        return None
 
 
-def check_atom_texts(source_text: str, extraction: Extraction) -> List[Atom]:
-    """Return atoms whose text is not copied verbatim from the source."""
-    return [atom for atom in extraction.atoms if atom.text not in source_text]
-
-
-NEGATION_CUE_PATTERN = re.compile(
-    r"\b(?:no|not|never|none|den(?:y|ies|ied)|without|negative|absent|free of)\b",
-    flags=re.IGNORECASE,
-)
-POSSIBILITY_CUE_PATTERN = re.compile(
-    r"\b(?:possible|possibilities|possibly|may|might|suspected|suspect|consider|could be)\b",
-    flags=re.IGNORECASE,
-)
-
-
-def check_assertion_cues(extraction: Extraction) -> List[Atom]:
-    """Return absent or possible atoms whose quotes omit their assertion cue."""
-    return [
-        atom for atom in extraction.atoms
-        if (
-            atom.assertion == "absent"
-            and not NEGATION_CUE_PATTERN.search(atom.source_quote)
-        ) or (
-            atom.assertion == "possible"
-            and not POSSIBILITY_CUE_PATTERN.search(atom.source_quote)
+def build_stored_atoms(atoms: List[Atom], spans: List[tuple[int, int]]) -> List[StoredAtom]:
+    """Add the identity and the offsets the model is not asked for."""
+    stored = []
+    for position, (atom, (start, end)) in enumerate(zip(atoms, spans), start=1):
+        stored.append(
+            StoredAtom(**atom.model_dump(), fact_id=f"F{position:03d}", char_start=start, char_end=end)
         )
-    ]
+    return stored
 
 
-SYMPTOM_CUE_PATTERN = re.compile(
-    r"\b(?:report(?:s|ed)?|complain(?:s|ed)?|experienc(?:e|es|ed)|"
-    r"endorse(?:s|d)?|present(?:s|ed) with|has|have)\b",
-    flags=re.IGNORECASE,
-)
-DIAGNOSIS_CUE_PATTERN = re.compile(
-    r"\b(?:diagnos(?:e|ed|is)|impression|assessment|confirmed|consistent with)\b",
-    flags=re.IGNORECASE,
-)
+def correction_prompt(source_text: str, extraction: Optional[Extraction], diagnostics: List[dict]) -> str:
+    """Ask for a corrected extraction, naming each problem without restating the note."""
+    problems = "\n".join(
+        f"- fact {record['fact']}: [{record['check']}] {record['message']}"
+        for record in diagnostics
+    )
+    previous = extraction.model_dump_json() if extraction else "No valid extraction."
+    return (
+        f"SOURCE:\n{source_text}\n\nPREVIOUS EXTRACTION:\n{previous}\n\n"
+        f"PROBLEMS:\n{problems}\n\n"
+        "Return a corrected, complete extraction that keeps every fact from the previous "
+        "attempt. Every text and source_quote must be a nonempty exact excerpt from SOURCE. "
+        "Quote the fact itself, not the section header or list number in front of it. "
+        "Preserve the subject, uncertainty, and timing. Do not discard facts to make "
+        "validation pass."
+    )
 
 
-# Cue checks catch common missing-context errors, but their results still need clinical review.
-def check_quote_context(extraction: Extraction) -> List[Atom]:
-    """Return present symptom/diagnosis atoms whose quotes omit context cues."""
-    invalid_atoms = []
-    for atom in extraction.atoms:
-        if atom.assertion != "present":
-            continue
-        if atom.type == "symptom" and not SYMPTOM_CUE_PATTERN.search(atom.source_quote):
-            invalid_atoms.append(atom)
-        elif atom.type == "diagnosis" and not DIAGNOSIS_CUE_PATTERN.search(atom.source_quote):
-            invalid_atoms.append(atom)
-    return invalid_atoms
-
-
-# ---- Step 6: were facts dropped? -----------------------------------------
-NUMBER_PATTERN = r"\d+(?:\.\d+)?"   # matches 10 and 8.2
-
-
-def missing_numbers(source_text: str, extraction: Extraction) -> List[str]:
-    """Returns numbers in the source that no atom mentions."""
-    covered = set(re.findall(NUMBER_PATTERN, " ".join(atom.text + " " + atom.source_quote for atom in extraction.atoms)))
-    return sorted(set(re.findall(NUMBER_PATTERN, source_text)) - covered)
-
-
-# ---- Step 7: Attaching relevant aliases or abbreviations ------------------------------------------
-# Matching longest phrases first avoids a broad alias overriding a more specific clinical topic.
-class LinkedAtom(Atom):
-    topic: Optional[str] = None
-
-
-def load_aliases() -> dict:
-    """Load and validate the lowercase alias-to-topic mapping."""
-    aliases = json.loads(ALIAS_PATH.read_text(encoding="utf-8"))
-    if not isinstance(aliases, dict) or any(
-        not isinstance(alias, str) or not isinstance(topic, str)
-        for alias, topic in aliases.items()
-    ):
-        raise ValueError(f"Alias file must contain a JSON object of strings: {ALIAS_PATH}")
-    return aliases
-
-
-def find_topic(text: str, aliases: dict) -> Optional[str]:
-    """Return the MedlinePlus topic for some text, or None."""
-    words = re.findall(r"[a-z0-9\-]+", text.lower())
-    for phrase_length in range(4, 0, -1):
-        for start in range(len(words) - phrase_length + 1):
-            phrase = " ".join(words[start:start + phrase_length])
-            if phrase in aliases:
-                return aliases[phrase]
-    return None
-
-
-def attach_topics(extraction: Extraction, aliases: dict) -> List[LinkedAtom]:
-    """Return copies of the extracted atoms with matching MedlinePlus topics."""
+def coverage_warnings(first_count: Optional[int], final_count: int) -> List[str]:
+    """Name a repair that came back with fewer facts than the first reply."""
+    if first_count is None or final_count >= first_count:
+        return []
+    lost = first_count - final_count
     return [
-        LinkedAtom(**atom.model_dump(), topic=find_topic(atom.text, aliases))
-        for atom in extraction.atoms
+        f"the final reply has {final_count} atoms, down from {first_count}; "
+        f"{lost} fact(s) are not in the extraction."
     ]
 
-# ---- Step 8: hand-off file ------------------------------------------------
-# Persist JSON so downstream agents can consume the same typed facts without rerunning extraction.
-def save_extraction(doc_id: str, atoms: List[Atom], out_dir: Path) -> Path:
+
+def extract_atoms(
+    source_text: str,
+    model: str = MODEL,
+    send: Optional[Callable[[str, str], str]] = None,
+) -> ExtractionRecord:
+    """Extract atoms from one note, or raise ExtractionValidationError with the record.
+
+    A reply is repaired once. After that, a check that can be attributed to single atoms
+    drops those atoms and names them in `review_warnings`, so one bad atom cannot discard
+    a whole note. A reply that cannot be trusted at all still fails the run.
+
+    `send` is injected so the tests can run with no API key and no network. Every
+    sentinel here is a check in this module, never a judgement the model makes about
+    its own output.
+    """
+    if not source_text.strip():
+        raise ExtractorError("Source note must not be blank.")
+
+    # Tests can supply a scripted sender. Normal use calls the live model instead.
+    sender = send or live_send
+    prompt = f"SOURCE:\n{source_text}"
+    first_count = None
+    attempts_made = 0
+    extraction = None
+    atoms: List[Atom] = []
+    spans: List[tuple[int, int]] = []
+    issues: List[dict] = []
+
+    for attempt in range(1, MAX_ATTEMPTS + 1):
+        # There are at most two replies: the first extraction and one correction.
+        # Recheck the whole reply because a correction can introduce new problems.
+        attempts_made = attempt
+        extraction = parse_reply(sender(prompt, model))
+        atoms = extraction.atoms if extraction else []
+
+        if extraction is None:
+            issues = [issue(0, "reply", "", "the reply is not a valid extraction document.")]
+        elif not atoms:
+            issues = [issue(0, "empty", "", "the reply contained no atoms.")]
+        else:
+            spans = assign_spans(source_text, atoms)
+            issues = collect_issues(source_text, atoms, spans)
+            if first_count is None:
+                first_count = len(atoms)
+            if not issues:
+                return ExtractionRecord(
+                    atoms=build_stored_atoms(atoms, spans),
+                    review_warnings=coverage_warnings(first_count, len(atoms)),
+                )
+
+        if attempt < MAX_ATTEMPTS:
+            prompt = correction_prompt(source_text, extraction, issues)
+
+    # A made-up quote or non-copied fact text prevents us from trusting the reply.
+    # Other named issues can be handled one atom at a time after correction fails.
+    blocking = [item for item in issues if item["check"] not in FIXABLE_CHECKS]
+    if blocking or not atoms:
+        raise ExtractionValidationError(diagnostics=issues, attempts=attempts_made)
+
+    # Assign IDs before removing bad atoms. Surviving IDs can therefore have gaps,
+    # which keeps each surviving atom tied to its position in this checked reply.
+    stored = build_stored_atoms(atoms, spans)
+    dropped_positions = {item["fact"] for item in issues}
+    kept = [atom for position, atom in enumerate(stored, start=1) if position not in dropped_positions]
+
+    # Dropping facts is a loss of coverage, so name every drop for human review.
+    # These checks verify selected rules, not whether every clinical fact was found.
+    review_warnings = []
+    for item in issues:
+        fact_id = f"F{item['fact']:03d}"
+        review_warnings.append(
+            f"{fact_id} dropped after repair: {item['check']} - {item['message']}"
+        )
+    review_warnings.extend(coverage_warnings(first_count, len(kept)))
+
+    if not kept:
+        raise ExtractionValidationError(
+            diagnostics=issues + [issue(0, "empty", "", "every atom was dropped after repair.")],
+            attempts=attempts_made,
+        )
+
+    return ExtractionRecord(atoms=kept, review_warnings=review_warnings)
+
+
+# Hand off the file
+def save_extraction(doc_id: str, record: ExtractionRecord, out_dir: Path) -> Path:
     """Write one document's atoms to <out_dir>/<doc_id>.json and return the path."""
     if not doc_id or Path(doc_id).name != doc_id or doc_id in {".", ".."}:
-        raise ValueError("doc_id must be a non-empty filename stem")
+        raise ExtractorError("doc_id must be a non-empty filename stem")
 
     out_dir.mkdir(parents=True, exist_ok=True)
     output_path = out_dir / f"{doc_id}.json"
     payload = {
         "doc_id": doc_id,
-        "atoms": [atom.model_dump(mode="json") for atom in atoms],
+        "atoms": [atom.model_dump(mode="json") for atom in record.atoms],
     }
     output_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
     return output_path
@@ -376,5 +497,5 @@ def load_extraction(path: Path) -> dict:
     """Read a saved extraction back into a dict."""
     payload = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(payload, dict):
-        raise ValueError("Extraction file must contain a JSON object")
+        raise ExtractorError("Extraction file must contain a JSON object")
     return payload

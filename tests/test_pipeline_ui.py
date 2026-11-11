@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
 
-from google.adk.agents import BaseAgent
+from google.adk.agents import BaseAgent, LoopAgent, SequentialAgent
 from google.adk.events import Event, EventActions
 from streamlit.testing.v1 import AppTest
 import textstat
@@ -15,11 +15,11 @@ class FixtureAgent(BaseAgent):
         outputs = [
             ("Extractor", "atoms", {"atoms": [{"text": "No nausea."}]}),
             ("Simplifier", "draft", "Initial draft"),
+            ("readability", "text", "Readable draft"),
             ("Verifier", "verdict", "First review"),
-            ("Refiner", "draft", "Revised draft"),
+            ("Refiner", "text", "Revised draft"),
             ("Verifier", "verdict", "Second review"),
-            ("Refiner", "draft", "Second revision"),
-            ("Readability", "final", "Final explanation"),
+            ("Refiner", "text", "Final explanation"),
         ]
         for author, key, value in outputs:
             yield Event(author=author, actions=EventActions(state_delta={key: value}))
@@ -38,7 +38,17 @@ class MissingFinalAgent(BaseAgent):
 
 class EmptyFinalAgent(BaseAgent):
     async def _run_async_impl(self, ctx):
-        yield Event(author="Readability", actions=EventActions(state_delta={"final": "  "}))
+        yield Event(author="readability", actions=EventActions(state_delta={"text": "  "}))
+
+
+class MissingVerifierAgent(BaseAgent):
+    async def _run_async_impl(self, ctx):
+        yield Event(author="readability", actions=EventActions(state_delta={"text": "Draft."}))
+
+
+class FixtureReadability(BaseAgent):
+    async def _run_async_impl(self, ctx):
+        yield Event(author=self.name, actions=EventActions(state_delta={"text": "Readable draft."}))
 
 
 class PipelineRunnerTests(unittest.IsolatedAsyncioTestCase):
@@ -53,8 +63,9 @@ class PipelineRunnerTests(unittest.IsolatedAsyncioTestCase):
         )
         self.assertEqual(updates, list(range(1, 8)))
         self.assertEqual(result.outputs["Verifier"], ["First review", "Second review"])
-        self.assertEqual(result.outputs["Refiner"], ["Revised draft", "Second revision"])
-        self.assertEqual(result.outputs["Readability"], ["Final explanation"])
+        self.assertEqual(result.outputs["Refiner"], ["Revised draft", "Final explanation"])
+        self.assertEqual(result.current_text, "Final explanation")
+        self.assertEqual(result.last_verified_text, "Revised draft")
 
     async def test_adk_error_keeps_partial_outputs_and_raises(self):
         result = PipelineResult()
@@ -69,18 +80,64 @@ class PipelineRunnerTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_empty_final_output_is_failure(self):
         result = PipelineResult()
-        with self.assertRaisesRegex(RuntimeError, "without a final"):
+        with self.assertRaisesRegex(ValueError, "no usable text"):
             await run_pipeline("A sample note", result, lambda _: None, EmptyFinalAgent(name="Empty"))
 
     async def test_empty_note_is_rejected(self):
         with self.assertRaisesRegex(ValueError, "Enter a medical note"):
             await run_pipeline("  ", PipelineResult(), lambda _: None)
 
+    async def test_missing_verifier_is_failure(self):
+        with self.assertRaisesRegex(RuntimeError, "without a verifier report"):
+            await run_pipeline("A sample note", PipelineResult(), lambda _: None, MissingVerifierAgent(name="Missing"))
+
     def test_only_expected_author_and_key_are_recorded(self):
         result = PipelineResult()
         self.assertFalse(result.record("Other", {"draft": "ignored"}))
         self.assertFalse(result.record("Verifier", {"draft": "ignored"}))
         self.assertEqual(result.outputs, {})
+
+    async def test_integrated_pipeline_loop_exposes_real_report_and_last_refinement(self):
+        from faithfulmed.adk_pipeline import ExtractAtomsStep, RefineStep, SimplifyStep, VerifyStep
+        from faithfulmed.agents.extractor import ExtractionRecord, StoredAtom
+        from faithfulmed.agents.refiner import RefinedOutput
+        from faithfulmed.agents.simplifier import SimplifiedOutput
+        from faithfulmed.agents.verifier import VerifierJudgment, build_report
+
+        atom = StoredAtom(
+            text="No nausea.", source_quote="No nausea.", type="symptom",
+            assertion="absent", fact_id="F001", char_start=0, char_end=10,
+        )
+        extraction = ExtractionRecord(atoms=[atom])
+        draft = SimplifiedOutput(simplified_text="No nausea.", source_metadata=[])
+        judgment = VerifierJudgment(claims=[], omissions=[])
+        report = build_report(judgment, 1, [])
+        report.needs_revision = True
+        pipeline = SequentialAgent(name="TestIntegrated", sub_agents=[
+            ExtractAtomsStep(name="Extractor"),
+            SimplifyStep(name="Simplifier"),
+            FixtureReadability(name="readability"),
+            LoopAgent(name="RefineLoop", max_iterations=2, sub_agents=[
+                VerifyStep(name="Verifier"), RefineStep(name="Refiner"),
+            ]),
+        ])
+        result = PipelineResult()
+        with (
+            patch("faithfulmed.adk_pipeline.extract_atoms", return_value=extraction),
+            patch("faithfulmed.adk_pipeline.build_grounding", return_value=[]),
+            patch("faithfulmed.adk_pipeline.simplify", return_value=draft),
+            patch("faithfulmed.adk_pipeline.verify", return_value=report) as verify,
+            patch("faithfulmed.adk_pipeline.refine", side_effect=[
+                RefinedOutput(refined_text="First revision.", changes=[]),
+                RefinedOutput(refined_text="Second revision.", changes=[]),
+            ]),
+        ):
+            await run_pipeline("No nausea.", result, lambda _: None, pipeline)
+        self.assertEqual(verify.call_count, 2)
+        self.assertEqual(len(result.outputs["Verifier"]), 2)
+        self.assertEqual(result.outputs["Verifier"][-1]["total_facts"], 1)
+        self.assertEqual(result.last_verified_text, "First revision.")
+        self.assertEqual(result.current_text, "Second revision.")
 
 
 class StreamlitAppTests(unittest.TestCase):
@@ -105,7 +162,7 @@ class StreamlitAppTests(unittest.TestCase):
 
         async def successful_run(note, result, on_update):
             result.record("Extractor", {"atoms": {"atoms": [{"source_quote": "No nausea."}]}})
-            result.record("Readability", {"final": explanation})
+            result.record("readability", {"text": explanation})
             on_update(result)
 
         with patch("faithfulmed.pipeline_ui.run_pipeline", successful_run):
@@ -134,7 +191,7 @@ class StreamlitAppTests(unittest.TestCase):
 
     def test_grade_target_uses_unrounded_score(self):
         async def successful_run(note, result, on_update):
-            result.record("Readability", {"final": "A sample explanation."})
+            result.record("readability", {"text": "A sample explanation."})
             on_update(result)
 
         with patch("faithfulmed.pipeline_ui.run_pipeline", successful_run):
@@ -148,7 +205,7 @@ class StreamlitAppTests(unittest.TestCase):
 
     def test_missing_readable_words_does_not_show_a_score(self):
         async def successful_run(note, result, on_update):
-            result.record("Readability", {"final": "** ### ---"})
+            result.record("readability", {"text": "** ### ---"})
             on_update(result)
 
         with patch("faithfulmed.pipeline_ui.run_pipeline", successful_run):
@@ -156,6 +213,54 @@ class StreamlitAppTests(unittest.TestCase):
             app.button[0].click().run()
             self.assertFalse(app.metric)
             self.assertTrue(any("no words" in item.value for item in app.warning))
+
+    def test_verifier_fields_and_unverified_final_text(self):
+        report = {
+            "faithfulness_score": 0.75,
+            "addition_count": 1,
+            "omission_count": 2,
+            "total_facts": 8,
+            "hallucination": False,
+            "needs_revision": True,
+            "false_coverage": [2, 4],
+            "claims": [{"label": "supported"}],
+        }
+
+        async def successful_run(note, result, on_update):
+            result.record("readability", {"text": "First draft."})
+            result.record("Verifier", {"verdict": report})
+            result.record("Refiner", {"text": "Revised final explanation."})
+            on_update(result)
+
+        with patch("faithfulmed.pipeline_ui.run_pipeline", successful_run):
+            app = AppTest.from_file("streamlit_app.py").run()
+            app.button[0].click().run()
+            self.assertFalse(app.exception)
+            metrics = {item.label: item.value for item in app.metric}
+            self.assertEqual(metrics["Faithfulness"], "75.0%")
+            self.assertEqual(metrics["Additions"], "1")
+            self.assertEqual(metrics["Omissions"], "2")
+            self.assertEqual(metrics["Total facts"], "8")
+            self.assertEqual(metrics["Major hallucination flagged"], "No")
+            self.assertEqual(metrics["Revision needed"], "Yes")
+            self.assertTrue(any("changed after this report" in item.value for item in app.warning))
+            self.assertIn("Revised final explanation.", [item.value for item in app.text])
+            self.assertTrue(any("2, 4" in item.value for item in app.markdown))
+
+    def test_missing_or_invalid_verifier_fields_are_unavailable(self):
+        async def successful_run(note, result, on_update):
+            result.record("readability", {"text": "First draft."})
+            result.record("Verifier", {"verdict": {"addition_count": True, "false_coverage": None}})
+            on_update(result)
+
+        with patch("faithfulmed.pipeline_ui.run_pipeline", successful_run):
+            app = AppTest.from_file("streamlit_app.py").run()
+            app.button[0].click().run()
+            metrics = {item.label: item.value for item in app.metric}
+            self.assertEqual(metrics["Additions"], "Unavailable")
+            self.assertEqual(metrics["Revision needed"], "Unavailable")
+            self.assertTrue(any("False coverage: Unavailable" in item.value for item in app.markdown))
+            self.assertTrue(any("assessed the current explanation" in item.value for item in app.caption))
 
 
 class ReadabilityTests(unittest.TestCase):
