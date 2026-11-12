@@ -164,7 +164,7 @@ extractor = ExtractAtomsStep(name="Extractor")
 simplifier = SimplifyStep(name="Simplifier")
 
 # 3) Readability - grade-level pass before faithfulness is judged, per the agreed flowchart.
-readability_agent = LlmAgent(
+readability = LlmAgent(
     name="readability",
     model=MODEL,
     description="Rewrites clinical text to make it readable for patients at or below an 8th-grade reading level",
@@ -181,7 +181,7 @@ readability_agent = LlmAgent(
         a plain language definition.
         3) Output only the simplified text.
 
-        Draft: {draft}
+        Draft: {text}
     """,
     output_key="text"
 )
