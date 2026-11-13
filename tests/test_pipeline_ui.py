@@ -7,7 +7,7 @@ from streamlit.testing.v1 import AppTest
 import textstat
 
 from faithfulmed.pipeline_ui import PipelineResult, run_pipeline
-from faithfulmed.readability import ReadabilityScores, score_readability
+from faithfulmed.readability_scores import ReadabilityScores, score_readability
 
 
 class FixtureAgent(BaseAgent):
@@ -235,10 +235,10 @@ class StreamlitAppTests(unittest.TestCase):
 
         with patch("faithfulmed.pipeline_ui.run_pipeline", successful_run):
             app = AppTest.from_file("streamlit_app.py").run()
-            with patch("faithfulmed.readability.score_readability", return_value=ReadabilityScores(8.0, 60.0, 30)):
+            with patch("faithfulmed.readability_scores.score_readability", return_value=ReadabilityScores(8.0, 6.0)):
                 app.button[0].click().run()
                 self.assertTrue(any("meets" in item.value for item in app.success))
-            with patch("faithfulmed.readability.score_readability", return_value=ReadabilityScores(8.001, 60.0, 30)):
+            with patch("faithfulmed.readability_scores.score_readability", return_value=ReadabilityScores(8.001, 6.0)):
                 app.button[0].click().run()
                 self.assertTrue(any("above" in item.value for item in app.warning))
 
@@ -307,8 +307,7 @@ class ReadabilityTests(unittest.TestCase):
         text = "**Summary:**\n* The patient has a headache.\n* The patient can rest."
         scores = score_readability(text)
         self.assertEqual(scores.grade, textstat.flesch_kincaid_grade(text))
-        self.assertEqual(scores.reading_ease, textstat.flesch_reading_ease(text))
-        self.assertEqual(scores.word_count, textstat.lexicon_count(text, removepunct=True))
+        self.assertEqual(scores.smog, textstat.smog_index(text))
 
     def test_no_words_is_not_a_zero_score(self):
         with self.assertRaisesRegex(ValueError, "no words"):
