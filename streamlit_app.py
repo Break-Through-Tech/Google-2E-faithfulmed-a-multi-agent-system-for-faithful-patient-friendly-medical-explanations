@@ -5,9 +5,10 @@ import json
 from pathlib import Path
 
 import streamlit as st
+from textstat import textstat
 
 from faithfulmed.pipeline_ui import PipelineResult, STAGE_LABELS, STAGE_OUTPUTS, run_pipeline
-from faithfulmed.readability import score_readability
+from faithfulmed.readability_scores import score_readability
 
 
 SAMPLE_NOTE = (
@@ -24,8 +25,10 @@ STAGE_DESCRIPTIONS = {
 
 
 def display_value(value: object, *, formatted_text: bool = False) -> None:
-    if hasattr(value, "model_dump"):
-        value = value.model_dump()
+    # Pydantic results expose model_dump. getattr keeps the call type-safe.
+    model_dump = getattr(value, "model_dump", None)
+    if callable(model_dump):
+        value = model_dump()
     if isinstance(value, str):
         if formatted_text:
             st.markdown(value)
@@ -55,8 +58,11 @@ def display_progress(result: PipelineResult) -> None:
     if result.phase == "idle":
         st.caption("Ready to run. The current stage will be highlighted here.")
     elif result.phase == "running":
-        label = STAGE_LABELS.get(result.active_stage, result.active_stage)
-        st.caption(f"Currently running: {label}" if label else "Preparing the pipeline...")
+        stage = result.active_stage
+        if stage:
+            st.caption(f"Currently running: {STAGE_LABELS.get(stage, stage)}")
+        else:
+            st.caption("Preparing the pipeline...")
     elif result.phase == "failed":
         st.caption("The pipeline stopped. Completed outputs remain available below.")
     else:
@@ -125,8 +131,10 @@ def display_verifier_report(result: PipelineResult) -> None:
             value = report.get(key)
             if expected is float:
                 claims = report.get("claims")
+                # isinstance narrows the value; bool is excluded because it is an int.
                 valid = (
-                    type(value) in (float, int)
+                    isinstance(value, (int, float))
+                    and not isinstance(value, bool)
                     and 0 <= value <= 1
                     and isinstance(claims, list)
                     and bool(claims)
@@ -178,15 +186,19 @@ def display_results(result: PipelineResult) -> None:
         except ValueError as exc:
             st.warning(f"Readability scores unavailable: {exc}")
         else:
+            # Reading ease and word count are shown for context only.
+            # The grade target is decided by scores.grade, not by either of these.
+            reading_ease = textstat.flesch_reading_ease(final)
+            word_count = textstat.lexicon_count(final, removepunct=True)
             grade, ease, words = st.columns(3)
             grade.metric("Flesch-Kincaid grade", f"{scores.grade:.2f}")
-            ease.metric("Flesch reading ease", f"{scores.reading_ease:.2f}")
-            words.metric("Words", scores.word_count)
+            ease.metric("Flesch reading ease", f"{reading_ease:.2f}")
+            words.metric("Words", word_count)
             if scores.grade <= 8:
                 st.success("The estimated grade meets the project's grade 8 or below target.")
             else:
                 st.warning("The estimated grade is above the project's grade 8 target.")
-            if scores.word_count < 30:
+            if word_count < 30:
                 st.caption("Short passages can produce less reliable readability estimates.")
             st.caption(
                 "Grade estimates US school reading level; for reading ease, higher is generally easier. "

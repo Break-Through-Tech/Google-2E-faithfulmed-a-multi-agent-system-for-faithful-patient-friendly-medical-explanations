@@ -10,11 +10,11 @@ from typing import AsyncGenerator
 from asyncio import to_thread
 
 import pandas as pd
-import textstat
+from textstat import textstat
 
 from google.adk.runners import Runner
 from google.adk.sessions import InMemorySessionService
-from google.adk.agents import SequentialAgent, LlmAgent, BaseAgent
+from google.adk.agents import SequentialAgent, BaseAgent
 from google.adk.agents.invocation_context import InvocationContext
 from google.adk.events import Event, EventActions
 from google.genai import types
@@ -37,7 +37,7 @@ from faithfulmed.adk_pipeline import (
     faithfulmed,
     ExtractAtomsStep,
     SimplifyStep,
-    readability_agent,
+    ReadabilityStep,
     MODEL,
 )
 
@@ -104,13 +104,7 @@ class RefinerWithoutVerifier(BaseAgent):
 # Experiment 1: Remove Verifier AND Refiner
 # --------------------------------------------------
 
-readability_ablation = LlmAgent(
-    name="ReadabilityAblation",
-    model=MODEL,
-    description=readability_agent.description,
-    instruction=readability_agent.instruction,
-    output_key="text",
-)
+readability_ablation = ReadabilityStep(name="ReadabilityAblation")
 
 faithfulmed_no_verification_loop = SequentialAgent(
     name="FaithfulMedNoVerificationLoop",
@@ -135,12 +129,8 @@ faithfulmed_no_verifier = SequentialAgent(
         SimplifyStep(
             name="SimplifierWithoutVerifier"
         ),
-        LlmAgent(
-            name="ReadabilityWithoutVerifier",
-            model=MODEL,
-            description=readability_agent.description,
-            instruction=readability_agent.instruction,
-            output_key="text",
+        ReadabilityStep(
+            name="ReadabilityWithoutVerifier"
         ),
         RefinerWithoutVerifier(
             name="RefinerWithoutVerifier"
@@ -199,6 +189,12 @@ async def run_pipeline(agent, medical_text):
         user_id=user_id,
         session_id=session_id,
     )
+
+    # get_session returns None when the session is missing, so check before reading state.
+    if session is None:
+        raise RuntimeError(
+            "The session was not found after the run."
+        )
 
     return {
         "output": session.state.get("text", ""),

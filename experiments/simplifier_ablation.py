@@ -22,7 +22,7 @@ from typing import AsyncGenerator
 from asyncio import to_thread
 
 import pandas as pd
-import textstat
+from textstat import textstat
 import nltk
 
 # Bypass macOS Python SSL certificate verification for NLTK downloads
