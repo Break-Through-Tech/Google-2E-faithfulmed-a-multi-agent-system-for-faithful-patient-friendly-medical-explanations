@@ -141,6 +141,7 @@ class RefineStep(BaseAgent):
                 "text": result.refined_text,
                 "refiner_changes": [c.model_dump() for c in result.changes],
                 "refiner_unresolved": result.unresolved,
+                "refiner_warnings": result.warnings,
             }),
         )
 
@@ -201,7 +202,10 @@ refiner = RefineStep(name="Refiner")
 # Each iteration runs Verifier, then Refiner unless Verifier stops the loop early.
 # The cap prevents endless repairs. At the cap, the last Refiner output may leave
 # without another Verifier check. Loop completion alone does not mean approval.
-# Nothing in this loop measures the final reading grade after a Refiner rewrite.
+# The Refiner now measures the reading grade of its own rewrite and keeps the original
+# text when a fix would push a compliant text back over the target. It still does not
+# re-simplify: a text already over target stays over target until Readability's own
+# policy accepts a rewrite.
 refine_loop = LoopAgent(
     name="RefineLoop",
     sub_agents=[verifier, refiner],
