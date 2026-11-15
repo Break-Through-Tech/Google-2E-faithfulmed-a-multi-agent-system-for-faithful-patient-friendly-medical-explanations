@@ -134,6 +134,10 @@ endpoint or timeframe, and saying nothing about this comparison, is silence. Lab
 it unsupported, not distorted. A different group is not a contradiction of the
 claim.
 
+The direction test runs both ways, including through a negation. A claim that
+something does not happen is contradicted when SOURCE says it does happen. A claim
+that a risk is raised is contradicted when SOURCE reports no difference.
+
 STEP 3. Label every claim that STEP 2 did not contradict.
 - supported: SOURCE states the claim, or a strictly weaker form of it.
 - unsupported: SOURCE says nothing about this comparison, so it can neither be
@@ -146,7 +150,12 @@ STEP 4. Give evidence.
   passage. Never quote the EXPLANATION back as its own evidence, and never cite a
   FACTS line as evidence.
 - For a distorted claim, quote the words in SOURCE that conflict with it.
-- For an unsupported claim, write "Not mentioned in the original source."
+- For an unsupported claim, quote the sentence in SOURCE that comes closest to the
+  claim, even when that sentence does not support it. Reading it back is the check: if
+  it reports the claim's outcome with a different result, or reports the opposite
+  direction, the claim is distorted, not unsupported.
+- Write "Not mentioned in the original source." only when no sentence in SOURCE
+  discusses the claim's subject at all.
 
 STEP 5. List omissions.
 - If no numbered facts were supplied, return an empty omissions list.
