@@ -5,7 +5,7 @@ This file provides three ways to request them:
 
     retrieve_passages: return passages with their titles, links, and other details.
     retrieve_medical_context: return reference text for the Simplifier.
-    get_source_context: return the same reference text for use by a Verifier.
+    get_source_context: alternate name for the same text interface.
 
 First, look for a known article title, alternate name, or abbreviation.
 If one matches, return up to three passages from that article in reading order.
@@ -19,6 +19,9 @@ These checks help reject unrelated results, including made-up medical terms.
 Finding no match is different from a failed lookup. The text tools return a
 different message for each case. retrieve_passages raises an error if the lookup
 fails, so the calling code can stop instead of continuing without references.
+
+These filters check similarity and word overlap. They can reject useful synonyms and cannot retrieve definitions absent from the
+saved dataset. No retrieval-quality rate is established by this module alone.
 """
 
 from __future__ import annotations
@@ -27,6 +30,7 @@ import json
 import logging
 import os
 import re
+from collections.abc import Mapping
 from functools import lru_cache
 from pathlib import Path
 from typing import Any
@@ -68,19 +72,25 @@ _genai_client: genai.Client | None = None
 
 
 def _client() -> genai.Client:
+    """Create the API client once, with a few retries for temporary failures."""
     global _genai_client
-    if _genai_client is None:
-        _genai_client = genai.Client(
-            api_key=os.environ["GEMINI_API_KEY"],
-            http_options=types.HttpOptions(
-                retry_options=types.HttpRetryOptions(
-                    attempts=3,
-                    initial_delay=0.5,
-                    max_delay=2.0,
-                    http_status_codes=[408, 429, 500, 502, 503, 504],
-                )
-            ),
-        )
+
+    if _genai_client is not None:
+        return _genai_client
+
+    # Retry temporary network and rate-limit failures before giving up.
+    retry_options = types.HttpRetryOptions(
+        attempts=3,
+        initial_delay=0.5,
+        max_delay=2.0,
+        http_status_codes=[408, 429, 500, 502, 503, 504],
+    )
+    http_options = types.HttpOptions(retry_options=retry_options)
+
+    _genai_client = genai.Client(
+        api_key=os.environ["GEMINI_API_KEY"],
+        http_options=http_options,
+    )
     return _genai_client
 
 
@@ -106,7 +116,12 @@ def _embedding(query: str) -> tuple[float, ...]:
             output_dimensionality=EMBED_DIM,
         ),
     )
-    return tuple(response.embeddings[0].values or [])
+    # The service can answer with no embedding. Treat that as a failed lookup, so the
+    # caller reports a retrieval error instead of comparing an empty vector.
+    embeddings = response.embeddings or []
+    if not embeddings:
+        raise RuntimeError("The embedding service returned no embedding.")
+    return tuple(embeddings[0].values or [])
 
 
 def _normalize(term: str) -> str:
@@ -154,14 +169,36 @@ def _known_term(query: str) -> str | None:
     return terms[max(contained, key=len)]
 
 
+def _chunk_index(metadata: Mapping[str, Any] | None) -> int:
+    """Return a saved chunk number as an int, defaulting to 1 so sorting still works."""
+    value = (metadata or {}).get("chunk_index")
+    if isinstance(value, int) and not isinstance(value, bool):
+        return value
+    return 1
+
+
+def _title(metadata: Mapping[str, Any] | None, default: str = "") -> str:
+    """Return a saved title as text, or `default` when it is missing or not text."""
+    value = (metadata or {}).get("title")
+    if isinstance(value, str) and value.strip():
+        return value
+    return default
+
+
 def _passage(
-    metadata: dict[str, Any], document: str | None, distance: float | None
+    metadata: Mapping[str, Any] | None, document: str | None, distance: float | None
 ) -> dict[str, Any]:
+    """Turn one saved row into the passage dictionary the callers use.
+
+    The saved metadata is loosely typed, so the fields are narrowed to plain text
+    before they leave this module.
+    """
+    fields = dict(metadata or {})
     return {
         "text": document or "",
-        "title": metadata.get("title") or "MedlinePlus",
-        "url": metadata.get("url"),
-        "section": metadata.get("section"),
+        "title": _title(fields, "MedlinePlus"),
+        "url": fields.get("url"),
+        "section": fields.get("section"),
         "distance": distance,
     }
 
@@ -173,10 +210,8 @@ def _article_passages(title: str, limit: int) -> list[dict[str, Any]]:
     stored = _collection().get(where={"title": title}, include=["documents", "metadatas"])
     documents = stored.get("documents") or []
     metadatas = stored.get("metadatas") or []
-    rows = sorted(
-        zip(documents, metadatas),
-        key=lambda row: (row[1] or {}).get("chunk_index") or 1,
-    )
+    # Sort by the saved chunk number so the article is read in order.
+    rows = sorted(zip(documents, metadatas), key=lambda row: _chunk_index(row[1]))
     return [_passage(metadata, document, None) for document, metadata in rows][:limit]
 
 
@@ -248,18 +283,22 @@ def _similarity_passages(query: str, limit: int) -> list[dict[str, Any]]:
     # Each accepted row keeps: title, distance, chunk number, metadata, passage text.
     # Lower distance means a closer match. All three filters below must pass.
     accepted: list[tuple[str, float, int, dict[str, Any], str]] = []
-    for document, metadata, distance in zip(documents, metadatas, distances):
-        metadata = metadata or {}
+    for document, raw_metadata, distance_maybe in zip(documents, metadatas, distances):
+        # The store's metadata type is loose, so copy it into a plain dict and read
+        # the fields through the helpers that guarantee a real str or int.
+        metadata: dict[str, Any] = dict(raw_metadata or {})
+        title = _title(metadata)
+        text = document or ""
+        distance = float(distance_maybe)
+
         if distance > DISTANCE_CUTOFF:
             continue
-        if not _title_matches_query(query, metadata.get("title") or ""):
+        if not _title_matches_query(query, title):
             continue
-        if not _tokens_present(query, f"{metadata.get('title', '')} {document}"):
+        if not _tokens_present(query, f"{title} {text}"):
             continue
-        chunk_index = metadata.get("chunk_index") or 1
-        accepted.append(
-            (metadata.get("title") or "", float(distance), chunk_index, metadata, document)
-        )
+
+        accepted.append((title, distance, _chunk_index(metadata), metadata, text))
 
     # Rank articles by their best accepted match, then put their accepted chunks in
     # reading order. This does not fill in chunks that failed the filters.
