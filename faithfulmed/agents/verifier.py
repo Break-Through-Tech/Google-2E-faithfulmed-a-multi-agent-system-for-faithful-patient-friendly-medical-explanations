@@ -109,9 +109,6 @@ STEP 1. Split the explanation into claims.
 - Keep one comparison inside one claim. "As effective as", "no worse than" and
   "more than" are a single claim and may not be split across two, because neither
   half can be checked against the source on its own.
-- A list that shares one assertion is ONE claim. "NSAIDs, steroids and some
-  antidepressants can raise blood pressure" states one thing about a list, so do not
-  split it into one claim per item.
 - A claim carries the number, the direction and the negation the explanation gave
   it. "The risk fell" and "the risk fell by 30%" are different claims, and
   dropping a "not" changes what has to be verified.
@@ -186,21 +183,8 @@ CONTRADICTION_INSTRUCTION = """
 You answer one question about a SOURCE and an EXPLANATION written from it: does the
 source contradict the explanation?
 
-FIRST decide which of three things SOURCE does about the explanation's main claim. If
-the explanation makes several points, its main claim is the one the sentence exists to
-state, and that is the one you judge.
-- AGREES: SOURCE states the same finding, or a weaker form of it.
-- DISAGREES: SOURCE states a finding the explanation cannot both be true with.
-- SILENT: SOURCE does not address that claim.
-
-Only DISAGREES sets contradicted = true. When it does, copy two short verbatim
-quotes: the words in the explanation that conflict, and the words in SOURCE that
-conflict with them. Both must be copied from the text, never paraphrased. A conflict
-you cannot quote is not one you can report.
-
-AGREES and SILENT both set contradicted = false and leave both quotes empty.
-
-A DISAGREES finding is one of these:
+Answer contradicted = true only when the source makes a statement that the
+explanation cannot both be true with:
 - a different number, dose, threshold, date or timeframe for the same comparison;
 - the opposite direction: more or fewer, higher or lower, increased or decreased,
   associated or not associated;
@@ -209,9 +193,15 @@ A DISAGREES finding is one of these:
 - the same outcome restated as its opposite: present described as absent, a risk
   described as safe, a possibility described as certain.
 
-SILENT covers a neighbouring population, dose, endpoint or timeframe, a source that
-discusses the topic without addressing the claim, and a claim the source leaves
-unproven. None of those is contradiction.
+Answer contradicted = false when the source discusses a related but different
+population, dose, endpoint or timeframe, and when the source says nothing about the
+explanation at all. Silence is not contradiction. A neighbouring topic is not
+contradiction. Being unproven is not contradiction.
+
+When contradicted is true, copy two short verbatim quotes: the words in the
+explanation that conflict, and the words in the source that conflict with them.
+Both must be copied from the text, never paraphrased. A conflict you cannot quote
+is not one you can report. When contradicted is false, leave both quotes empty.
 
 Return only the structured output that matches the schema.
 """
