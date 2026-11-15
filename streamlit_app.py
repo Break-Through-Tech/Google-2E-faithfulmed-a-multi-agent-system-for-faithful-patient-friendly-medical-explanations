@@ -23,6 +23,36 @@ STAGE_DESCRIPTIONS = {
     "Refiner": "Revises the draft using verifier feedback.",
 }
 
+VERIFIER_FIELD_DEFINITIONS = (
+    ("Faithfulness", "Fraction of claims marked supported or background."),
+    ("Additions", "Claims marked background or unsupported."),
+    (
+        "Omissions",
+        "Facts judged absent. A fact the text restates incorrectly is listed "
+        "separately and not counted here.",
+    ),
+    ("Total facts", "Number of extractor atoms."),
+    ("Major hallucination flagged", "A major unsupported or distorted claim."),
+    (
+        "Revision needed",
+        "Any unsupported or distorted claim, or any omission, minor or major.",
+    ),
+    (
+        "False coverage",
+        "One-based fact positions the Simplifier marked covered but the "
+        "Verifier judged missing or stated incorrectly.",
+    ),
+)
+
+
+def build_method_definitions_html() -> str:
+    """Definition list for the verifier method popover."""
+    rows = "".join(
+        f"<div><dt>{term}</dt><dd>{definition}</dd></div>"
+        for term, definition in VERIFIER_FIELD_DEFINITIONS
+    )
+    return f'<dl class="fm-method">{rows}</dl>'
+
 
 def display_value(value: object, *, formatted_text: bool = False) -> None:
     # Pydantic results expose model_dump. getattr keeps the call type-safe.
@@ -173,7 +203,7 @@ def display_verifier_report(result: PipelineResult) -> None:
         return
     st.subheader("Verifier results")
     st.caption(
-        "Latest verifier report; these are model judgments, not proof of clinical accuracy. "
+        "Latest verifier report; these are model judgments, not a proof of clinical accuracy. "
         "The refiner runs only when the verifier requests revision."
     )
     if result.current_text is None or result.current_text != result.last_verified_text:
@@ -229,17 +259,9 @@ def display_verifier_report(result: PipelineResult) -> None:
         )
     else:
         st.write("False coverage: Unavailable")
-    with st.expander("How verifier fields are calculated"):
-        st.write(
-            "Faithfulness is the fraction of claims marked supported or background. "
-            "Additions count claims marked background or unsupported. Omissions count facts "
-            "judged absent; a fact the text restates incorrectly is listed separately and not "
-            "counted here. Total facts is the number of extractor atoms. A major hallucination "
-            "is flagged for a major unsupported or distorted claim. Revision is needed for any "
-            "unsupported or distorted claim, or any omission, minor or major. False coverage "
-            "lists one-based fact positions the Simplifier marked covered but the Verifier "
-            "judged missing or stated incorrectly."
-        )
+    with st.container(key="verifier_method"):
+        with st.popover("How these are calculated"):
+            st.markdown(build_method_definitions_html(), unsafe_allow_html=True)
 
 
 def display_results(result: PipelineResult) -> None:
@@ -271,7 +293,6 @@ def display_results(result: PipelineResult) -> None:
                 st.caption("Short passages can produce less reliable readability estimates.")
             st.caption(
                 "Grade estimates US school reading level; for reading ease, higher is generally easier. "
-                "These are automated estimates of the final output, including headings. "
                 "The target comparison uses the unrounded grade. "
                 "They do not assess medical jargon, accuracy, or whether a patient understands the text."
             )
@@ -349,5 +370,4 @@ if "pipeline_result" in st.session_state:
         display_progress(result)
     if st.session_state.get("pipeline_error"):
         st.error(f"Pipeline failed: {st.session_state['pipeline_error']}")
-        st.caption("Any outputs below are partial and should not be treated as a completed run.")
     display_results(result)

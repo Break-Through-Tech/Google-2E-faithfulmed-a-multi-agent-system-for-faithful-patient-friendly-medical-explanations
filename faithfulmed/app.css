@@ -13,8 +13,11 @@
     --fm-accent: #2563eb;
     --fm-accent-strong: #1d4ed8;
     --fm-danger: #b42318;
-    --fm-warning: #efd282;
-    --fm-warning-ink: #775400;
+
+    --fm-success: oklch(0.532 0.145 148);
+    --fm-success-tint: oklch(0.967 0.022 156);
+    --fm-warning: oklch(0.532 0.105 80);
+    --fm-warning-tint: oklch(0.962 0.031 79);
 
     --fm-font-sans: Inter, "Inter Fallback", sans-serif;
     --fm-font-size: 1rem;
@@ -51,6 +54,10 @@
     --fm-shadow-cta: inset 0 1px 0 rgb(255 255 255 / 0.25),
         0 2px 2px rgb(0 0 0 / 0.04),
         0 0 0 1px var(--fm-accent);
+
+    --fm-shadow-float: 0 0 0 1px var(--fm-border-subtle),
+        0 1px 2px rgb(17 19 24 / 0.06),
+        0 12px 32px -8px rgb(17 19 24 / 0.18);
 
     --fm-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
     --fm-dur-fast: 150ms;
@@ -350,6 +357,110 @@ p {
     align-items: center;
 }
 
+/* Verifier method popover. */
+.st-key-verifier_method button[data-testid="stPopoverButton"] {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 28px;
+    min-height: 28px;
+    padding: 0 10px;
+    border: 1px solid var(--fm-border-strong);
+    border-radius: var(--fm-radius-pill);
+    background: var(--fm-surface-1);
+    color: var(--fm-text-muted);
+    font-size: var(--fm-font-size-caption);
+    font-weight: 500;
+    line-height: 1;
+    box-shadow: none;
+    transition: color var(--fm-dur-fast) var(--fm-ease-out),
+        border-color var(--fm-dur-fast) var(--fm-ease-out),
+        background-color var(--fm-dur-fast) var(--fm-ease-out);
+}
+
+/* The pill stays small; the touch target still reaches 44px. */
+.st-key-verifier_method button[data-testid="stPopoverButton"]::after {
+    content: "";
+    position: absolute;
+    inset: -8px -4px;
+}
+
+.st-key-verifier_method button[data-testid="stPopoverButton"] p {
+    margin: 0;
+    font-size: var(--fm-font-size-caption);
+    font-weight: 500;
+    line-height: 1;
+    color: inherit;
+}
+
+.st-key-verifier_method button[data-testid="stPopoverButton"] svg {
+    width: 12px;
+    height: 12px;
+}
+
+/* A control needs a visible edge at rest, so the pill sits on the strong border
+   step; hover adds the surface tint and ink text instead of changing the line. */
+.st-key-verifier_method button[data-testid="stPopoverButton"]:hover {
+    color: var(--fm-text);
+    border-color: var(--fm-border-strong);
+    background: var(--fm-surface-2);
+}
+
+.st-key-verifier_method button[data-testid="stPopoverButton"]:focus-visible {
+    outline: 2px solid var(--fm-accent);
+    outline-offset: 2px;
+}
+
+[data-testid="stPopoverBody"] {
+    max-width: min(44rem, calc(100vw - 32px));
+    /* Streamlit caps popovers at 45vh, which is shorter than seven definitions. */
+    max-height: min(80vh, 40rem);
+    overflow: auto;
+    /* The bottom padding carries 16px of slack: Streamlit under-measures the
+       panel contents by one line, and the extra room keeps the last row whole. */
+    padding: var(--fm-space-4) var(--fm-space-4) var(--fm-space-6);
+    border: 0;
+    border-radius: var(--fm-radius-lg);
+    background: var(--fm-surface-1);
+    color: var(--fm-text);
+    box-shadow: var(--fm-shadow-float);
+}
+
+/* Streamlit paints the theme background on an inner wrapper; let the panel
+   above own the surface so the popover is identical in either theme. */
+[data-testid="stPopoverBody"] > div {
+    background: transparent;
+    border-radius: inherit;
+}
+
+.fm-method {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--fm-space-4);
+    row-gap: var(--fm-space-2);
+    margin: 0;
+}
+
+/* Term weight matches the metric labels above; the definition takes the
+   caption's muted ink and the alert's reading line-height. */
+.fm-method dt {
+    font-weight: 500;
+    color: var(--fm-text);
+}
+
+.fm-method dd {
+    margin: 2px 0 0;
+    line-height: 1.55;
+    color: var(--fm-text-muted);
+}
+
+@media (max-width: 560px) {
+    .fm-method {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
 [data-testid="stAlert"] {
     border: 1px solid var(--fm-border-subtle);
     border-radius: var(--fm-radius-md);
@@ -362,17 +473,33 @@ p {
 }
 
 [data-testid="stAlert"]:has([data-testid="stAlertContentWarning"]) {
-    background: var(--fm-warning);
+    background: var(--fm-warning-tint);
+    border: 0;
+}
+
+[data-testid="stAlert"]:has([data-testid="stAlertContentSuccess"]) {
+    background: var(--fm-success-tint);
     border: 0;
 }
 
 [data-testid="stAlert"]:has([data-testid="stAlertContentWarning"])
+    [data-testid="stAlertContainer"],
+[data-testid="stAlert"]:has([data-testid="stAlertContentSuccess"])
     [data-testid="stAlertContainer"] {
     display: flex;
     align-items: flex-start;
     gap: var(--fm-space-3);
     background: transparent;
-    color: var(--fm-warning-ink);
+}
+
+[data-testid="stAlert"]:has([data-testid="stAlertContentWarning"])
+    [data-testid="stAlertContainer"] {
+    color: var(--fm-warning);
+}
+
+[data-testid="stAlert"]:has([data-testid="stAlertContentSuccess"])
+    [data-testid="stAlertContainer"] {
+    color: var(--fm-success);
 }
 
 [data-testid="stAlert"]:has([data-testid="stAlertContentWarning"])
@@ -381,19 +508,12 @@ p {
     min-width: 0;
 }
 
-[data-testid="stAlert"]:has([data-testid="stAlertContentWarning"])
-    [data-testid="stAlertContainer"]::before {
-    content: "";
-    flex: 0 0 18px;
-    width: 18px;
-    height: 18px;
-    margin-top: 0.18em;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18'%3E%3Cpath opacity='0.55' d='M16.4364 12.5151L11.0101 3.11316C10.5902 2.39096 9.83872 1.96045 8.99982 1.96045C8.16092 1.96045 7.40952 2.39106 6.98952 3.11316C6.98902 3.11366 6.98902 3.11473 6.98852 3.11523L1.56272 12.5156C1.14332 13.2436 1.14332 14.1128 1.56372 14.8398C1.98362 15.5664 2.73562 16 3.57492 16H14.4245C15.2639 16 16.0158 15.5664 16.4357 14.8398C16.8561 14.1127 16.8563 13.2436 16.4364 12.5151Z' fill='%23775400'/%3E%3Cpath d='M9 10.5C8.5859 10.5 8.25 10.1641 8.25 9.75V6.75C8.25 6.3359 8.5859 6 9 6C9.4141 6 9.75 6.3359 9.75 6.75V9.75C9.75 10.1641 9.4141 10.5 9 10.5Z' fill='%23775400'/%3E%3Cpath d='M9 13.5C8.448 13.5 8 13.05 8 12.5C8 11.95 8.448 11.5 9 11.5C9.552 11.5 10 11.9501 10 12.5C10 13.0499 9.552 13.5 9 13.5Z' fill='%23775400'/%3E%3C/svg%3E")
-        no-repeat center / 18px 18px;
+[data-testid="stAlert"]:has([data-testid="stAlertContentWarning"]) p {
+    color: var(--fm-warning);
 }
 
-[data-testid="stAlert"]:has([data-testid="stAlertContentWarning"]) p {
-    color: var(--fm-warning-ink);
+[data-testid="stAlert"]:has([data-testid="stAlertContentSuccess"]) p {
+    color: var(--fm-success);
 }
 
 /* Controls */

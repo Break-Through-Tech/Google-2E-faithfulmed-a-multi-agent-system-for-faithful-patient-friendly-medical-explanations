@@ -102,7 +102,7 @@ class PipelineRunnerTests(unittest.IsolatedAsyncioTestCase):
         from faithfulmed.agents.extractor import ExtractionRecord, StoredAtom
         from faithfulmed.agents.refiner import Change, RefinedOutput
         from faithfulmed.agents.simplifier import SimplifiedOutput
-        from faithfulmed.agents.verifier import VerifierJudgment, build_report
+        from faithfulmed.agents.verifier import ClaimCheck, VerifierJudgment, build_report
 
         atom = StoredAtom(
             text="No nausea.", source_quote="No nausea.", type="symptom",
@@ -110,7 +110,13 @@ class PipelineRunnerTests(unittest.IsolatedAsyncioTestCase):
         )
         extraction = ExtractionRecord(atoms=[atom])
         draft = SimplifiedOutput(simplified_text="No nausea.", source_metadata=[])
-        judgment = VerifierJudgment(claims=[], omissions=[])
+        judgment = VerifierJudgment(
+            claims=[ClaimCheck(
+                claim="No nausea.", label="supported",
+                evidence="No nausea.", severity="minor",
+            )],
+            omissions=[],
+        )
         report = build_report(judgment, 1, [])
         report.needs_revision = True
         pipeline = SequentialAgent(name="TestIntegrated", sub_agents=[
