@@ -233,10 +233,12 @@ def display_verifier_report(result: PipelineResult) -> None:
         st.write(
             "Faithfulness is the fraction of claims marked supported or background. "
             "Additions count claims marked background or unsupported. Omissions count facts "
-            "judged missing. Total facts is the number of extractor atoms. A major hallucination "
-            "is flagged for a major unsupported or distorted claim. Revision is needed for a "
-            "major hallucination or major omission. False coverage lists one-based fact positions "
-            "the Simplifier marked covered but the Verifier judged missing."
+            "judged absent; a fact the text restates incorrectly is listed separately and not "
+            "counted here. Total facts is the number of extractor atoms. A major hallucination "
+            "is flagged for a major unsupported or distorted claim. Revision is needed for any "
+            "unsupported or distorted claim, or any omission, minor or major. False coverage "
+            "lists one-based fact positions the Simplifier marked covered but the Verifier "
+            "judged missing or stated incorrectly."
         )
 
 

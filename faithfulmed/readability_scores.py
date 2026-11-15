@@ -14,7 +14,11 @@ class ReadabilityScores:
     smog: float
 
 def score_readability(text: str) -> ReadabilityScores:
-    """Score the original output using the evaluation harness's Flesch-Kincaid grade level and SMOG index."""
+    """Score a text with the Flesch-Kincaid grade level and the SMOG index.
+
+    These are the definitions the evaluation harness in `notebooks/eval_harness.py`
+    reports, so an exported evaluation grade and an app grade are the same number.
+    """
     word_count = textstat.lexicon_count(text, removepunct=True)
     if word_count == 0:
         raise ValueError("The final explanation contains no words to score.")

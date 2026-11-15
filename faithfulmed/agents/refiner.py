@@ -1,16 +1,81 @@
 """Refiner agent: patient text + Verifier report -> text with only the flagged passages fixed."""
 import json
+import re
 from pathlib import Path
 from typing import Callable, Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
+from faithfulmed.agents.readability import TARGET_GRADE
 from faithfulmed.agents.simplifier import FactRewrite, assess_fact_rewrite, format_atoms, normalize_atoms, numbers_in
+from faithfulmed.readability_scores import score_readability
 
 MODEL = "gemini-3.5-flash-lite"
 
 # Claims with these labels get fixed. Background claims are fine, so they are left alone.
 FLAGGED_LABELS = ("unsupported", "distorted")
+
+# Words a fix may use: the passage it replaces, the note, and the evidence the
+# Verifier quoted. A fix that names something none of those mention is inventing a
+# clinical detail, which the number check cannot see. This is the rule that catches
+# "you have never smoked" riding along inside an unrelated fix.
+STOPWORDS = frozenset(
+    """
+    about above after again against also although among another around because been
+    before being below between both came come could does doing done down during each
+    even ever every from further have having here hers him his how however into its
+    itself just like made make many more most much must near need needs never none
+    not only other otherwise our ours out over own same she should since some such
+    than that their theirs them then there these they this those through under until
+    upon very was were what when where which while who whom why will with within
+    without would your yours
+    """.split()
+)
+
+# Dosing and instruction verbs a fix may legitimately introduce and a note will not
+# spell out. Everything else has to appear in the text, the note, or the evidence.
+FIX_VERBS = frozenset(
+    """
+    add apply avoid call change check continue decrease drink eat follow increase
+    keep limit measure reduce repeat rest return start stop switch take tell use visit
+    weigh
+    """.split()
+)
+
+
+def stem_word(word: str) -> str:
+    """Crude suffix strip, enough to match smoked/smoking/smoker and pill/pills."""
+    for suffix in ("ing", "ed", "es", "s", "er"):
+        if word.endswith(suffix) and len(word) - len(suffix) >= 4:
+            return word[: -len(suffix)]
+    return word
+
+
+def word_map(text: str) -> Dict[str, str]:
+    """Map each stem to the first word it came from, so warnings quote real words."""
+    mapping: Dict[str, str] = {}
+    for word in re.findall(r"[a-z]{4,}", (text or "").lower()):
+        if word in STOPWORDS:
+            continue
+        mapping.setdefault(stem_word(word), word)
+    return mapping
+
+
+def content_words(text: str) -> set:
+    """The stems worth comparing: four letters or more, lower case, minus stopwords."""
+    return set(word_map(text))
+
+
+ALLOWED_WORDS = frozenset(stem_word(word) for word in FIX_VERBS)
+
+
+def unseen_words(new_text: str, known_texts) -> List[str]:
+    """Words in the new wording that none of the known texts mention."""
+    known = set()
+    for text in known_texts:
+        known |= content_words(text)
+    new_words = word_map(new_text)
+    return sorted(new_words[stem] for stem in set(new_words) - known - ALLOWED_WORDS)
 
 
 class RefinerError(Exception):
@@ -156,6 +221,15 @@ def check_changes(text: str, source: str, changes: List[Change], problems: Dict[
             invented = numbers_in(c.new_text) - numbers_in(source)
             if invented:
                 flag(c.problem_id, f"numbers not in the source: {', '.join(sorted(invented))}")
+            # The claim is checked as strictly as an omission now. Before this, a claim
+            # fix was gated on numbers alone, so it could add a symptom name that no
+            # part of the note mentioned and still be applied.
+            unseen = unseen_words(
+                c.new_text,
+                (c.old_text, p.get("claim", ""), p.get("evidence") or "", source),
+            )
+            if unseen:
+                flag(c.problem_id, f"words the source and evidence do not mention: {', '.join(unseen)}")
         else:
             if not c.new_text.strip():
                 flag(c.problem_id, "an omitted fact can't be fixed by removing text")
@@ -164,6 +238,14 @@ def check_changes(text: str, source: str, changes: List[Change], problems: Dict[
                 atom = p["atom"]
                 for message in assess_fact_rewrite(atom, FactRewrite(fact_id=atom["fact_id"], text=c.new_text)):
                     flag(c.problem_id, message)
+                # A new sentence can ride along with the fix. The atom check only looks
+                # at the fact it was given, so the extra wording is checked here.
+                unseen = unseen_words(
+                    c.new_text,
+                    (atom["text"], atom["source_quote"], source, c.old_text),
+                )
+                if unseen:
+                    flag(c.problem_id, f"words the source and fact do not mention: {', '.join(unseen)}")
 
     # Two changes can't touch the same words
     for i, (s1, e1, id1) in enumerate(spans):
@@ -208,6 +290,16 @@ def apply_changes(text: str, changes: List[Change]) -> str:
     return "\n".join(lines).strip()
 
 
+def grade_of(text: str) -> Optional[float]:
+    """Flesch-Kincaid grade of the text, or None when there is nothing to score."""
+    if not text or not text.strip():
+        return None
+    try:
+        return score_readability(text).grade
+    except ValueError:
+        return None
+
+
 def refine(
     source: str,
     text: str,
@@ -241,12 +333,55 @@ def refine(
         warnings.append(f"{pid} left unchanged: {'; '.join(msgs)}")
     kept = [c for c in changes if c.problem_id in problems and c.problem_id not in issues]
 
+    refined_text = apply_changes(text, kept)
+    guard_warnings, refined_text, refused = keep_reading_target(text, refined_text, kept)
+    warnings.extend(guard_warnings)
+
+    # A refused refinement is unresolved, so the next Verifier pass still sees it.
+    unresolved = set(issues)
+    if refused:
+        unresolved |= {change.problem_id for change in kept}
+
     return RefinedOutput(
-        refined_text=apply_changes(text, kept),
-        changes=kept,
-        unresolved=list(issues),
+        refined_text=refined_text,
+        changes=kept if refined_text != text else [],
+        unresolved=sorted(unresolved),
         warnings=warnings,
     )
+
+
+def keep_reading_target(text: str, refined_text: str, changes: List[Change]) -> tuple:
+    """Refuse a fix that takes a text which MET the target and pushes it back over it.
+
+    The Readability agent runs before the Verifier loop, so nothing else notices when a
+    refinement costs reading level. Without this guard, a text that was within target could
+    leave the pipeline above it with no warning anywhere.
+
+    The rule is deliberately narrow: it fires only when the original was at or below
+    TARGET_GRADE and the fixed text is above it. A text that was ALREADY over target is
+    left free to improve or worsen, because faithfulness outranks the score there. When
+    such a fix nevertheless raises the grade, the fix is kept and the change is reported as
+    a warning instead.
+
+    Returns the warnings, the text to keep, and whether the refinement was refused.
+    """
+    if not changes:
+        return [], refined_text, False
+    before, after = grade_of(text), grade_of(refined_text)
+    if before is None or after is None:
+        return [], refined_text, False
+    if before <= TARGET_GRADE < after:
+        return (
+            [
+                f"the fix raised the reading grade from {before:.2f} to {after:.2f}, "
+                f"over the {TARGET_GRADE:.0f} target, so the original text was kept"
+            ],
+            text,
+            True,
+        )
+    if after > before:
+        return ([f"the fix raised the reading grade from {before:.2f} to {after:.2f}"], refined_text, False)
+    return [], refined_text, False
 
 
 # Hand off the file
