@@ -1,108 +1,611 @@
-/* Keep the content readable on large displays without constraining small screens. */
-.stMainBlockContainer {
-    max-width: 90rem;
-    padding-top: 3rem;
-    padding-bottom: 5rem;
+/* FaithfulMed UI system
+   One set of tokens, one radius scale, one shadow stack, one motion curve. */
+
+:root {
+    --fm-surface-1: #ffffff;
+    --fm-surface-2: #f6f7f9;
+    --fm-surface-3: #eef0f4;
+    --fm-border-subtle: #11131814;
+    --fm-border-strong: #11131829;
+
+    --fm-text: #111318;
+    --fm-text-muted: #5b6472;
+    --fm-accent: #2563eb;
+    --fm-accent-strong: #1d4ed8;
+    --fm-danger: #b42318;
+
+    --fm-success: oklch(0.532 0.145 148);
+    --fm-success-tint: oklch(0.967 0.022 156);
+    --fm-warning: oklch(0.532 0.105 80);
+    --fm-warning-tint: oklch(0.962 0.031 79);
+
+    --fm-font-sans: Inter, "Inter Fallback", sans-serif;
+    --fm-font-size: 1rem;
+    --fm-font-size-caption: 0.8125rem;
+    --fm-display: clamp(2.25rem, 4.5vw, 3.25rem);
+
+    /* Inter's alternate 1 and stylistic set 3. */
+    --fm-font-features: "cv01", "ss03";
+
+    /* Spacing steps, used for every gap and inset. */
+    --fm-space-1: 0.25rem;
+    --fm-space-2: 0.5rem;
+    --fm-space-3: 0.75rem;
+    --fm-space-4: 1rem;
+    --fm-space-5: 1.5rem;
+    --fm-space-6: 2rem;
+    --fm-space-7: 3rem;
+
+    /* Radius: inner radius = outer radius - padding, so nests stay concentric. */
+    --fm-radius-lg: 14px;
+    --fm-radius-md: 10px;
+    --fm-radius-pill: 999px;
+
+    /* The CTA is the one element allowed a gradient and a shadow. Both are
+       derived from the accent, so the button cannot drift into a second blue.
+       The lit edge is directional: 0 1px 0 inset draws one 1px line just under
+       the top edge and nowhere else. The symmetric 0 0 1px 1px is
+       what closed that line into a rim around the whole pill. */
+    --fm-cta-gradient: linear-gradient(
+        in oklab,
+        color-mix(in oklch, var(--fm-accent) 72%, white) 0%,
+        var(--fm-accent) 100%
+    );
+    --fm-shadow-cta: inset 0 1px 0 rgb(255 255 255 / 0.25),
+        0 2px 2px rgb(0 0 0 / 0.04),
+        0 0 0 1px var(--fm-accent);
+
+    --fm-shadow-float: 0 0 0 1px var(--fm-border-subtle),
+        0 1px 2px rgb(17 19 24 / 0.06),
+        0 12px 32px -8px rgb(17 19 24 / 0.18);
+
+    --fm-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --fm-dur-fast: 150ms;
+}
+
+@font-face {
+    font-family: "Inter Fallback";
+    src: local("Arial"), local("Helvetica Neue"), local("Liberation Sans"),
+        local("Arimo");
+    ascent-override: 90.2%;
+    descent-override: 22.48%;
+    line-gap-override: 0%;
+    size-adjust: 107.4%;
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-synthesis: none;
 }
 
 .stApp {
-    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-family: var(--fm-font-sans);
+    font-feature-settings: var(--fm-font-features);
+    /* The reference kills ligatures everywhere, so fi and fl never fuse in text
+       people read or copy out of the interface. */
+    font-variant-ligatures: none;
+    color: var(--fm-text);
 }
 
-h1, h2, h3 {
-    letter-spacing: -0.035em;
+/* Streamlit sets "Source Sans" on body and again on every markdown container,
+   where the container rule beats inheritance from .stApp. Text we style by hand
+   lands in the right family; text we do not lands in a face that is not in the
+   type system at all. Put the app family back on the containers themselves. */
+.stApp [data-testid="stMarkdownContainer"],
+.stApp [data-testid="stWidgetLabel"] p {
+    font-family: var(--fm-font-sans);
 }
 
-.st-key-page_header h1 {
-    font-size: clamp(2.4rem, 5vw, 4rem);
-    line-height: 1.05;
-    font-weight: 750;
-    padding-bottom: 0.3rem;
+/* Text typed into the note is the page's main reading surface, so it keeps the
+   app family too. Streamlit sets the family on the bare element selector, and the
+   font shorthand it uses there also drops the feature settings, so both are
+   restated here; typed text should look like the text rendered back from it. */
+.stApp textarea {
+    font-family: var(--fm-font-sans);
+    font-feature-settings: var(--fm-font-features);
+    font-variant-ligatures: none;
 }
 
-.st-key-page_header [data-testid="stCaptionContainer"] p {
-    color: inherit;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+::selection {
+    background: color-mix(in oklch, var(--fm-accent) 35%, transparent);
+    color: var(--fm-text);
 }
 
-.st-key-page_header p {
-    font-size: 1.05rem;
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--fm-border-strong) transparent;
+}
+
+/* Layout */
+
+.stMainBlockContainer {
+    max-width: 78rem;
+    padding-top: calc(var(--fm-space-7) + var(--fm-space-4));
+    padding-bottom: var(--fm-space-7);
+}
+
+
+h1,
+h2,
+h3 {
+    /* Tracking belongs to the display size alone; the h1 rule below sets it. */
+    text-wrap: balance;
+}
+
+[data-testid="stHeading"] h2,
+[data-testid="stHeading"] h3 {
+    font-family: var(--fm-font-sans);
+    font-size: var(--fm-font-size);
+    /* 500, not 600: the reference keeps 600 for the page title, so a section
+       heading reads as a label instead of competing with the name of the app. */
+    font-weight: 500;
+    letter-spacing: normal;
+    margin-top: var(--fm-space-6);
+}
+
+p {
+    text-wrap: pretty;
+}
+
+.st-key-page_header [data-testid="stHeading"] h1 {
+    font-family: var(--fm-font-sans);
+    font-size: var(--fm-display);
+    line-height: 1.1;
+    font-weight: 600;
+    /* Tracking belongs to the display size only. The reference sets -0.05em on its
+       36px title and leaves every smaller heading at normal; -0.04em here because
+       our clamp reaches 52px, where the full -0.05em starts closing the counters. */
+    letter-spacing: -0.04em;
+    padding-bottom: var(--fm-space-2);
+}
+
+.st-key-page_header [data-testid="stMarkdownContainer"] p {
+    font-size: var(--fm-font-size);
     line-height: 1.6;
+    color: var(--fm-text-muted);
+    max-width: 60ch;
 }
 
-[data-testid="stForm"] {
-    border-radius: 1.1rem;
-    padding: 1.3rem;
-    border-color: color-mix(in srgb, currentColor 18%, transparent);
-    background: color-mix(in srgb, currentColor 3%, transparent);
+/* Pipeline journey  */
+
+.fm-meter-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--fm-space-3);
+    margin-bottom: var(--fm-space-3);
 }
 
-[data-testid="stTextArea"] textarea {
-    border-radius: 0.7rem;
-    line-height: 1.6;
+.fm-meter-stage {
+    display: flex;
+    align-items: center;
+    gap: var(--fm-space-2);
+    font-size: var(--fm-font-size);
+    font-weight: 600;
+    color: var(--fm-text);
 }
 
-[data-testid="stBaseButton-primaryFormSubmit"] {
-    border-radius: 0.65rem;
-    padding: 0.6rem 1.4rem;
-    font-weight: 650;
+.fm-meter-stage.is-live {
+    color: var(--fm-accent);
 }
 
-[data-testid="stAlert"] {
-    border-radius: 0.75rem;
+.fm-meter-stage.is-failed {
+    color: var(--fm-danger);
 }
 
-[data-testid="stHorizontalBlock"] {
-    gap: 0.8rem;
+/* The ui duo-tone icons are inlined markup. */
+.fm-icon {
+    display: block;
+    width: 1.125rem;
+    height: 1.125rem;
+    flex-shrink: 0;
 }
 
-[data-testid="stVerticalBlockBorderWrapper"] > div {
-    border-radius: 0.9rem;
-    background: color-mix(in srgb, currentColor 3%, transparent);
-    border-color: color-mix(in srgb, currentColor 16%, transparent);
-    height: 100%;
+.fm-meter-count {
+    font-size: var(--fm-font-size);
+    color: var(--fm-text-muted);
+    /* The count increments while it is on screen; tabular figures stop the
+       digits shuffling sideways as they change. */
+    font-variant-numeric: tabular-nums;
+}
+
+.fm-meter-bar {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+}
+
+.fm-meter-labels {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+    margin-top: var(--fm-space-2);
+}
+
+.fm-meter-label {
+    font-size: var(--fm-font-size-caption);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--fm-text-muted);
+}
+
+.fm-meter-seg {
+    position: relative;
+    height: 6px;
+    border-radius: var(--fm-radius-pill);
+    background: var(--fm-surface-2);
+    box-shadow: inset 0 0 0 1px var(--fm-border-subtle);
+}
+
+.fm-meter-seg.is-done {
+    background: var(--fm-accent);
+    box-shadow: none;
+}
+
+.fm-meter-seg.is-skipped {
+    background: repeating-linear-gradient(
+        -45deg,
+        color-mix(in oklch, var(--fm-text) 26%, white) 0 2px,
+        transparent 2px 4px
+    );
+    box-shadow: inset 0 0 0 1px var(--fm-border-subtle);
+}
+
+.fm-meter-seg.is-empty {
+    background: var(--fm-surface-3);
+    box-shadow: inset 0 0 0 1px var(--fm-border-subtle);
+}
+
+.fm-meter-seg.is-failed {
+    background: var(--fm-danger);
+    box-shadow: none;
+}
+
+.fm-meter-seg.is-live {
+    background: color-mix(in oklch, var(--fm-accent) 30%, white);
+    box-shadow: none;
+}
+
+.fm-meter-seg.is-live::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--fm-accent);
+    opacity: 0.18;
+    animation: fm-meter-pulse 1.9s var(--fm-ease-out) infinite;
+}
+
+@keyframes fm-meter-pulse {
+    0%,
+    100% {
+        opacity: 0.18;
+    }
+    50% {
+        opacity: 0.6;
+    }
 }
 
 [data-testid="stCaptionContainer"] {
-    line-height: 1.45;
+    line-height: 1.5;
+}
+
+[data-testid="stCaptionContainer"] p {
+    font-size: var(--fm-font-size-caption);
+    color: var(--fm-text-muted);
+    max-width: 68ch;
+}
+
+/* Surfaces  */
+
+[data-testid="stForm"] {
+    border: 1px solid var(--fm-border-subtle);
+    border-radius: var(--fm-radius-lg);
+    padding: var(--fm-space-5);
+    background: var(--fm-surface-1);
+}
+
+[data-testid="stVerticalBlockBorderWrapper"] > div {
+    height: 100%;
+    border: 1px solid var(--fm-border-subtle);
+    border-radius: var(--fm-radius-lg);
+    background: var(--fm-surface-1);
+    padding: var(--fm-space-4);
+    transition: border-color var(--fm-dur-fast) var(--fm-ease-out),
+        background-color var(--fm-dur-fast) var(--fm-ease-out);
+}
+
+[data-testid="stVerticalBlockBorderWrapper"] > div:hover {
+    border-color: var(--fm-border-strong);
+    background: var(--fm-surface-2);
 }
 
 [data-testid="stMetric"] {
-    border: 1px solid color-mix(in srgb, currentColor 16%, transparent);
-    border-radius: 0.85rem;
-    padding: 1rem 1.1rem;
-    background: color-mix(in srgb, currentColor 3%, transparent);
+    padding: 0;
+    background: transparent;
 }
 
+[data-testid="stMetricLabel"] p {
+    font-size: var(--fm-font-size);
+    font-weight: 500;
+    color: var(--fm-text-muted);
+}
+
+/* Tabular figures */
 [data-testid="stMetricValue"] {
-    font-weight: 650;
-    letter-spacing: -0.035em;
+    font-size: var(--fm-font-size);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    color: var(--fm-text);
 }
 
 [data-testid="stExpander"] {
-    border-radius: 0.75rem;
+    border: 1px solid var(--fm-border-subtle);
+    border-radius: var(--fm-radius-md);
+    background: var(--fm-surface-1);
+    transition: border-color var(--fm-dur-fast) var(--fm-ease-out);
 }
 
-@media (max-width: 1000px) {
+[data-testid="stExpander"]:hover {
+    border-color: var(--fm-border-strong);
+}
+
+[data-testid="stExpander"] summary {
+    min-height: 44px;
+    align-items: center;
+}
+
+/* Verifier method popover. */
+.st-key-verifier_method button[data-testid="stPopoverButton"] {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 28px;
+    min-height: 28px;
+    padding: 0 10px;
+    border: 1px solid var(--fm-border-strong);
+    border-radius: var(--fm-radius-pill);
+    background: var(--fm-surface-1);
+    color: var(--fm-text-muted);
+    font-size: var(--fm-font-size-caption);
+    font-weight: 500;
+    line-height: 1;
+    box-shadow: none;
+    transition: color var(--fm-dur-fast) var(--fm-ease-out),
+        border-color var(--fm-dur-fast) var(--fm-ease-out),
+        background-color var(--fm-dur-fast) var(--fm-ease-out);
+}
+
+/* The pill stays small; the touch target still reaches 44px. */
+.st-key-verifier_method button[data-testid="stPopoverButton"]::after {
+    content: "";
+    position: absolute;
+    inset: -8px -4px;
+}
+
+.st-key-verifier_method button[data-testid="stPopoverButton"] p {
+    margin: 0;
+    font-size: var(--fm-font-size-caption);
+    font-weight: 500;
+    line-height: 1;
+    color: inherit;
+}
+
+.st-key-verifier_method button[data-testid="stPopoverButton"] svg {
+    width: 12px;
+    height: 12px;
+}
+
+/* A control needs a visible edge at rest, so the pill sits on the strong border
+   step; hover adds the surface tint and ink text instead of changing the line. */
+.st-key-verifier_method button[data-testid="stPopoverButton"]:hover {
+    color: var(--fm-text);
+    border-color: var(--fm-border-strong);
+    background: var(--fm-surface-2);
+}
+
+.st-key-verifier_method button[data-testid="stPopoverButton"]:focus-visible {
+    outline: 2px solid var(--fm-accent);
+    outline-offset: 2px;
+}
+
+[data-testid="stPopoverBody"] {
+    max-width: min(44rem, calc(100vw - 32px));
+    /* Streamlit caps popovers at 45vh, which is shorter than seven definitions. */
+    max-height: min(80vh, 40rem);
+    overflow: auto;
+    /* The bottom padding carries 16px of slack: Streamlit under-measures the
+       panel contents by one line, and the extra room keeps the last row whole. */
+    padding: var(--fm-space-4) var(--fm-space-4) var(--fm-space-6);
+    border: 0;
+    border-radius: var(--fm-radius-lg);
+    background: var(--fm-surface-1);
+    color: var(--fm-text);
+    box-shadow: var(--fm-shadow-float);
+}
+
+/* Streamlit paints the theme background on an inner wrapper; let the panel
+   above own the surface so the popover is identical in either theme. */
+[data-testid="stPopoverBody"] > div {
+    background: transparent;
+    border-radius: inherit;
+}
+
+.fm-method {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--fm-space-4);
+    row-gap: var(--fm-space-2);
+    margin: 0;
+}
+
+/* Term weight matches the metric labels above; the definition takes the
+   caption's muted ink and the alert's reading line-height. */
+.fm-method dt {
+    font-weight: 500;
+    color: var(--fm-text);
+}
+
+.fm-method dd {
+    margin: 2px 0 0;
+    line-height: 1.55;
+    color: var(--fm-text-muted);
+}
+
+@media (max-width: 560px) {
+    .fm-method {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+[data-testid="stAlert"] {
+    border: 1px solid var(--fm-border-subtle);
+    border-radius: var(--fm-radius-md);
+    font-size: var(--fm-font-size);
+    line-height: 1.55;
+}
+
+[data-testid="stAlert"] p {
+    max-width: 68ch;
+}
+
+[data-testid="stAlert"]:has([data-testid="stAlertContentWarning"]) {
+    background: var(--fm-warning-tint);
+    border: 0;
+}
+
+[data-testid="stAlert"]:has([data-testid="stAlertContentSuccess"]) {
+    background: var(--fm-success-tint);
+    border: 0;
+}
+
+[data-testid="stAlert"]:has([data-testid="stAlertContentWarning"])
+    [data-testid="stAlertContainer"],
+[data-testid="stAlert"]:has([data-testid="stAlertContentSuccess"])
+    [data-testid="stAlertContainer"] {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--fm-space-3);
+    background: transparent;
+}
+
+[data-testid="stAlert"]:has([data-testid="stAlertContentWarning"])
+    [data-testid="stAlertContainer"] {
+    color: var(--fm-warning);
+}
+
+[data-testid="stAlert"]:has([data-testid="stAlertContentSuccess"])
+    [data-testid="stAlertContainer"] {
+    color: var(--fm-success);
+}
+
+[data-testid="stAlert"]:has([data-testid="stAlertContentWarning"])
+    [data-testid="stAlertContainer"] > div {
+    flex: 1;
+    min-width: 0;
+}
+
+[data-testid="stAlert"]:has([data-testid="stAlertContentWarning"]) p {
+    color: var(--fm-warning);
+}
+
+[data-testid="stAlert"]:has([data-testid="stAlertContentSuccess"]) p {
+    color: var(--fm-success);
+}
+
+/* Controls */
+
+button[data-testid="stBaseButton-primaryFormSubmit"] {
+    min-height: 44px;
+    padding: 0 var(--fm-space-5);
+    border: 0;
+    border-radius: var(--fm-radius-pill);
+    background-color: var(--fm-accent);
+    background-image: var(--fm-cta-gradient);
+    box-shadow: var(--fm-shadow-cta);
+    font-weight: 600;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform var(--fm-dur-fast) var(--fm-ease-out),
+        filter var(--fm-dur-fast) var(--fm-ease-out);
+}
+
+button[data-testid="stBaseButton-primaryFormSubmit"]:hover,
+button[data-testid="stBaseButton-primaryFormSubmit"]:focus-visible {
+    background-color: var(--fm-accent);
+}
+
+@media (hover: hover) {
+    button[data-testid="stBaseButton-primaryFormSubmit"]:hover {
+        filter: brightness(1.05);
+    }
+}
+
+button[data-testid="stBaseButton-primaryFormSubmit"]:not(:disabled):active {
+    transform: scale(0.97);
+}
+
+button[data-testid="stBaseButton-primaryFormSubmit"]:focus-visible {
+    outline: 2px solid var(--fm-text);
+    outline-offset: 3px;
+}
+
+[data-testid="stTextArea"] textarea {
+    border-radius: var(--fm-radius-md);
+    border-color: var(--fm-border-subtle);
+    background: var(--fm-surface-2);
+    font-size: var(--fm-font-size);
+    line-height: 1.6;
+    transition: border-color var(--fm-dur-fast) var(--fm-ease-out),
+        box-shadow var(--fm-dur-fast) var(--fm-ease-out);
+}
+
+[data-testid="stTextArea"] textarea:focus {
+    border-color: var(--fm-accent);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--fm-accent) 22%, transparent);
+}
+
+[data-testid="stHorizontalBlock"] {
+    gap: var(--fm-space-3);
+}
+
+/* Focus and motion */
+
+:focus-visible {
+    outline: 2px solid var(--fm-accent);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 1ms !important;
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+/* Responsive */
+
+@media (max-width: 760px) {
     [data-testid="stHorizontalBlock"] {
         flex-wrap: wrap;
     }
 
     [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {
-        flex: 1 1 12rem;
-        min-width: 12rem;
+        flex: 1 1 10rem;
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 520px) {
     .stMainBlockContainer {
-        padding: 2rem 1rem 3rem;
+        padding: var(--fm-space-5) var(--fm-space-4) var(--fm-space-6);
     }
 
     [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] {
         flex-basis: 100%;
-        min-width: 0;
     }
 }

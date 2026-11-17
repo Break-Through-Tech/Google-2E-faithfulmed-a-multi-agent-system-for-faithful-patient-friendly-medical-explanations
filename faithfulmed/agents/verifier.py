@@ -1,11 +1,16 @@
-"""Verifier agent: source + extracted facts + Simplifier draft -> faithfulness report.
+"""Verifier agent: source + facts + current patient text -> faithfulness report.
 
-Scores the draft with the advisor's four metrics (faithfulness, omission, addition,
-hallucination) and tells the Refiner whether the draft needs revision.
+The text judged is whatever the pipeline has selected at this point: the Readability
+rewrite when it accepted one, otherwise the Simplifier's draft, or a Refiner revision
+on later loop passes. Only the reference passages come from the Simplifier, because
+Readability and Refiner never retrieve material of their own.
+
+Scores that text with the four metrics (faithfulness, omission, addition, hallucination)
+and tells the Refiner whether it needs revision.
 """
 import json
 from pathlib import Path
-from typing import AsyncGenerator, List, Literal, Optional, Union
+from typing import AsyncGenerator, Callable, List, Literal, Optional, Union
 
 from pydantic import BaseModel, Field
 
@@ -33,6 +38,11 @@ class Omission(BaseModel):
     fact_number: int = Field(description="Number of the fact in FACTS that the explanation leaves out or states incorrectly")
     fact: str = Field(description="The text of that fact")
     severity: Severity = Field(description="The clinical importance of omission being made.")
+    stated_incorrectly: bool = Field(
+        default=False,
+        description="True when the explanation does mention this fact but gets it wrong, "
+                    "False when the fact is absent from the explanation altogether"
+    )
 
 
 class VerifierJudgment(BaseModel):
@@ -45,80 +55,155 @@ class VerifierJudgment(BaseModel):
 class VerifierReport(VerifierJudgment):
     """What we hand back: the judgment plus metrics computed in code."""
 
-    faithfulness_score: float = Field(description="Fraction of claims that are supported or background")
-    omission_count: int = Field(description="Facts missing")
+    faithfulness_score: float = Field(description="Fraction of claims labelled supported or background")
+    omission_count: int = Field(
+        description="Facts absent from the explanation. A fact the explanation states "
+                    "incorrectly is listed in omissions but not counted here."
+    )
     total_facts: int = Field(description="Number of Extractor facts")
-    addition_count: int = Field(description="Claims labelled background or unsupported")
-    hallucination: bool = Field(description="At least one major unsupported or distorted claim.")
-    needs_revision: bool = Field(description="Hallucination, or any major omission. Sent to refiner agent.")
-    false_coverage: List[int] = Field(description="Fact numbers the Simplifier reported as covered but are missing")
+    addition_count: int = Field(
+        description="Claims the source does not state: those labelled background or unsupported"
+    )
+    hallucination: bool = Field(
+        description="At least one major unsupported or distorted claim. Severity is the model's own judgement."
+    )
+    needs_revision: bool = Field(
+        description="Any unsupported or distorted claim, or any omission, minor or major. Sent to refiner agent."
+    )
+    false_coverage: List[int] = Field(
+        description="Fact numbers the Simplifier reported as covered that the judgement finds "
+                    "missing or stated incorrectly"
+    )
+
+
+MAX_ATTEMPTS = 2
+
+
+class ContradictionCheck(BaseModel):
+    """The answer to one narrow question, asked in its own call."""
+
+    contradicted: bool = Field(
+        description="True only when SOURCE states something the explanation cannot both be true with"
+    )
+    explanation_phrase: str = Field(
+        description="Verbatim words from EXPLANATION that conflict, or '' when contradicted is false"
+    )
+    source_quote: str = Field(
+        description="Verbatim words from SOURCE that conflict with it, or '' when contradicted is false"
+    )
 
 
 INSTRUCTION = """
-You are a medical verification agent.
+You are a medical verification agent. You decide whether a patient-facing
+explanation is faithful to the source it was written from.
 
-Your task is to compare a patient-friendly medical
-explanation against the original medical source.
+You get four blocks: SOURCE (the note or abstract), FACTS (numbered facts taken
+from the source, often empty), REFERENCE MATERIAL (background articles, often
+absent), and EXPLANATION (the text to judge).
 
-Check for:
-1. Incorrect or unsupported medical claims.
-2. Contradictions with the original source.
-3. Missing important medical information.
-4. Incorrect medication names, doses, or instructions.
-5. Incorrect numbers, test results, or follow-up dates.
-6. Changes in medical risk, severity, or uncertainty.
+STEP 1. Split the explanation into claims.
+- A claim is one thing that can be true or false on its own: one symptom, one
+  number, one dose, one timing, one cause, one recommendation.
+- A sentence that makes several statements becomes several claims. Do not merge
+  statements to keep the count down.
+- Keep one comparison inside one claim. "As effective as", "no worse than" and
+  "more than" are a single claim and may not be split across two, because neither
+  half can be checked against the source on its own.
+- A claim carries the number, the direction and the negation the explanation gave
+  it. "The risk fell" and "the risk fell by 30%" are different claims, and
+  dropping a "not" changes what has to be verified.
+- Write each claim with the words of the explanation.
 
-Break the patient-friendly explanation into individual
-factual medical claims.
+STEP 2. Test the claim for contradiction before you label it.
+A claim is contradicted when SOURCE says something about the SAME comparison that
+the claim cannot both be true with. Check these in order:
+- a different number, dose, threshold, date or timeframe for that comparison;
+- the opposite direction: more or fewer, higher or lower, increased or decreased,
+  associated or not associated;
+- no difference, no association, no benefit, or "not statistically significant"
+  for that comparison. A null result is a finding about the comparison, not
+  silence. If the claim says the thing works, helps or is linked, and SOURCE
+  reports no effect, the claim is contradicted;
+- the same outcome restated as its opposite: present described as absent, a risk
+  described as safe, a possibility described as certain.
+If one of these holds, label the claim distorted and quote SOURCE's conflicting
+words.
 
-Check every claim separately against the original source.
+Guard the other way. SOURCE discussing a related but different population, dose,
+endpoint or timeframe, and saying nothing about this comparison, is silence. Label
+it unsupported, not distorted. A different group is not a contradiction of the
+claim.
 
-Include all claims in your evaluation, even those that
-are correct. Label each claim as supported, background,
-unsupported, or distorted.
+The direction test runs both ways, including through a negation. A claim that
+something does not happen is contradicted when SOURCE says it does happen. A claim
+that a risk is raised is contradicted when SOURCE reports no difference.
 
-A claim that changes a fact from the source (a number,
-unit, timing, or a hedge turned into certainty) is
-distorted. General information not in the source is
-background only if a REFERENCE MATERIAL passage backs it.
+STEP 3. Label every claim that STEP 2 did not contradict.
+- supported: SOURCE states the claim, or a strictly weaker form of it.
+- unsupported: SOURCE says nothing about this comparison, so it can neither be
+  confirmed nor contradicted.
+- background: only when a REFERENCE MATERIAL passage states the claim. With no
+  reference passages, nothing is background.
 
-Each numbered fact is tagged with its type and assertion
-(for example present, absent, possible, family). Go through
-the FACTS one by one and list every fact the explanation
-leaves out or states incorrectly as an omission, using its
-number as fact_number.
+STEP 4. Give evidence.
+- evidence is a short verbatim quote from SOURCE or from a REFERENCE MATERIAL
+  passage. Never quote the EXPLANATION back as its own evidence, and never cite a
+  FACTS line as evidence.
+- For a distorted claim, quote the words in SOURCE that conflict with it.
+- For an unsupported claim, quote the sentence in SOURCE that comes closest to the
+  claim, even when that sentence does not support it. Reading it back is the check: if
+  it reports the claim's outcome with a different result, or reports the opposite
+  direction, the claim is distorted, not unsupported.
+- Write "Not mentioned in the original source." only when no sentence in SOURCE
+  discusses the claim's subject at all.
 
-Pay special attention to negation errors.
+STEP 5. List omissions.
+- If no numbered facts were supplied, return an empty omissions list.
+- Otherwise go through FACTS in order and list every fact the explanation leaves
+  out or states incorrectly, with its number as fact_number.
+- Set stated_incorrectly to true when the explanation does mention the fact but gets
+  it wrong: a changed number, a dropped hedge, a flipped negation, a family history
+  stated as the patient's. Set it to false when the fact is absent altogether. A fact
+  that is genuinely missing is not the same finding as a fact that was changed.
 
-Compare statements containing words such as
-"no", "not", "never", "without", and "negative"
-against the original source.
-
-If the source reports a symptom or finding,
-but the explanation says it is absent,
-mark the claim as distorted.
-
-A family member's condition stated as the patient's,
-or a possible condition stated as confirmed, is distorted.
-
-Check each part of a sentence separately when
-it contains multiple medical facts.
-
-For every unsupported or distorted claim,
-provide the relevant evidence from the original source.
-
-If the source does not mention the claim, clearly state:
-"Not mentioned in the original source."
-
-Important rules:
-- Use only the original medical source and the reference material to verify facts.
-- Do not invent medical information.
-- Do not treat suspected conditions as confirmed diagnoses.
-- Prioritize errors that could affect patient safety.
-- Check the entire explanation, not just a few claims.
-- Do not overlook a contradiction just because most
-  of the explanation is accurate.
+Rules that decide the rest:
+- Judge the idea, not the wording. Stating the same thing in different words is
+  still support: "high blood pressure" supports "hypertension", and "did not
+  reduce the risk" supports "had no effect on the risk". Sharing only a topic is
+  not support, but different wording is not a reason to call a claim unsupported.
+- A claim can be true in general and still be unsupported by this SOURCE. Label
+  it unsupported.
+- Never label a claim supported on the strength of the FACTS block. FACTS records
+  what was extracted, not what SOURCE proves.
 - Return only the structured output that matches the schema.
+"""
+
+
+CONTRADICTION_INSTRUCTION = """
+You answer one question about a SOURCE and an EXPLANATION written from it: does the
+source contradict the explanation?
+
+Answer contradicted = true only when the source makes a statement that the
+explanation cannot both be true with:
+- a different number, dose, threshold, date or timeframe for the same comparison;
+- the opposite direction: more or fewer, higher or lower, increased or decreased,
+  associated or not associated;
+- no difference, no association, no benefit, or "not statistically significant"
+  where the explanation says the thing works, helps, or is linked;
+- the same outcome restated as its opposite: present described as absent, a risk
+  described as safe, a possibility described as certain.
+
+Answer contradicted = false when the source discusses a related but different
+population, dose, endpoint or timeframe, and when the source says nothing about the
+explanation at all. Silence is not contradiction. A neighbouring topic is not
+contradiction. Being unproven is not contradiction.
+
+When contradicted is true, copy two short verbatim quotes: the words in the
+explanation that conflict, and the words in the source that conflict with them.
+Both must be copied from the text, never paraphrased. A conflict you cannot quote
+is not one you can report. When contradicted is false, leave both quotes empty.
+
+Return only the structured output that matches the schema.
 """
 
 
@@ -136,56 +221,101 @@ def format_references(draft: SimplifiedOutput) -> str:
 
 def build_report(judgment: VerifierJudgment, atom_count: int,
                  atoms_covered: Optional[List[int]] = None) -> VerifierReport:
-    """Computes the advisor's metrics in code from the model's judgment."""
+    """Computes the four metrics in code from the model's judgment.
+
+    The labels are the model's, the arithmetic is not: each score is a count over the
+    labels, so it cannot drift from the definitions in the scoring rubric.
+    """
     # The categories overlap on purpose: reference-backed background counts as
     # faithful, but also as an addition because it is not stated in the patient note.
     supported = [c for c in judgment.claims if c.label in ("supported", "background")]
     additions = [c for c in judgment.claims if c.label in ("background", "unsupported")]
     # Only major unsupported or distorted claims set the hallucination flag.
-    # A major omission can also require revision even when no claim was invented.
+    # An omission of any severity can also require revision even when no claim was invented.
     hallucinated = [c for c in judgment.claims if c.label in ("unsupported", "distorted") and c.severity == "major"]
-    serious_omissions = [o for o in judgment.omissions if o.severity == "major"]
+    # A fact the explanation gets wrong is a restated fact, not a missing one, so it is kept
+    # out of omission_count: the rubric scores a changed fact as neither an addition nor an
+    # omission. The entry itself is still reported so the Refiner can act on it.
+    missing = [o for o in judgment.omissions if not o.stated_incorrectly]
+    # Any invented claim, not only a major one. Severity is the model's own call, and an
+    # invented sentence left in a patient's text is not a severity question.
+    invented = [c for c in judgment.claims if c.label == "unsupported"]
+    # A distorted claim changes a fact from the source, so it always needs revisiting.
+    # Severity only decides whether it also counts as a hallucination. Before this,
+    # a minor distortion was reported and then left in the text, because a minor
+    # negation flip neither set the hallucination flag nor blocked the loop.
+    distorted = [c for c in judgment.claims if c.label == "distorted"]
 
     n = len(judgment.claims)
+    # A judgement with no claims has no faithfulness to report. Returning 1.0 here made an
+    # empty reply look like a perfect score to every caller that does not pass through
+    # verify(), which rejects the empty case earlier with a repair attempt.
+    if not n:
+        raise ValueError("Verifier judgement has no claims, so faithfulness is undefined")
+
     hallucination = len(hallucinated) > 0
     # These numbers are one-based fact positions, not IDs such as F007.
-    # Set intersection below finds facts claimed as covered but judged missing.
+    # This set is the lookup for false coverage: a fact the Simplifier claimed to cover is
+    # wrong whether it went missing or was restated incorrectly.
     omitted = {o.fact_number for o in judgment.omissions}
+    # Only genuinely absent facts are counted, and each fact only once.
+    missing_numbers = {o.fact_number for o in missing}
 
     # Scores summarize the model's labels. They are not human-verified accuracy.
-    # With no claims the formula returns 1.0, but verify rejects an empty judgment.
     return VerifierReport(
         **judgment.model_dump(),
-        faithfulness_score=len(supported) / n if n else 1.0,
-        omission_count=len(judgment.omissions),
+        faithfulness_score=len(supported) / n,
+        omission_count=len(missing_numbers),
         total_facts=atom_count,
         addition_count=len(additions),
         hallucination=hallucination,
-        needs_revision=hallucination or len(serious_omissions) > 0,
+        # The flag above stays severity-gated so it matches the rubric's "clinically
+        # meaningful" wording. The loop is deliberately stricter than the metric: any
+        # distortion, any invented claim and any omission send the text back, because
+        # severity is the model's own judgement and a defect that survives is a defect
+        # the patient reads.
+        needs_revision=(
+            hallucination
+            or bool(distorted)
+            or bool(invented)
+            or len(judgment.omissions) > 0
+        ),
         false_coverage=sorted(omitted & set(atoms_covered or [])),
     )
 
 
-def verify(
-    source: str,
-    atoms: List[dict],
-    draft: Union[SimplifiedOutput, dict],
-    model: str = MODEL,
-) -> VerifierReport:
-    """Check the Simplifier's draft against the source, the numbered facts and its references."""
+def format_facts(atoms: List[dict]) -> str:
+    """The numbered facts, or a plain statement that this judgement has none."""
     if not atoms:
-        raise ValueError("No facts to verify against. Run the Extractor first, or pass the atoms in.")
-    draft = as_draft(draft)
+        return "No numbered facts were supplied. Judge the explanation against SOURCE only."
+    return format_atoms(atoms)
 
-    from google import genai
-    from google.genai import types
 
-    prompt = (
+def build_prompt(source: str, atoms: List[dict], draft: SimplifiedOutput) -> str:
+    """The one prompt shape: source, numbered facts, reference passages, then the text."""
+    return (
         f"SOURCE:\n{source}\n\n"
-        f"FACTS:\n{format_atoms(atoms)}\n\n"
+        f"FACTS:\n{format_facts(atoms)}\n\n"
         f"REFERENCE MATERIAL:\n{format_references(draft)}\n\n"
         f"EXPLANATION:\n{draft.simplified_text}"
     )
+
+
+def repair_prompt(prompt: str, previous: str, issues: List[str]) -> str:
+    """Ask again, naming what was wrong with the reply we could not use."""
+    listed = "\n".join(f"- {message}" for message in issues)
+    return (
+        prompt
+        + "\n\nYOUR PREVIOUS REPLY:\n" + (previous or "(empty)")
+        + "\n\nWHAT WAS WRONG:\n" + listed
+        + "\n\nReturn a corrected judgement that follows the schema."
+    )
+
+
+def live_send(prompt: str, model: str) -> str:
+    """Send one prompt to Gemini and return the raw reply text."""
+    from google import genai
+    from google.genai import types
 
     client = genai.Client()
     response = client.models.generate_content(
@@ -198,20 +328,144 @@ def verify(
             temperature=0,
         ),
     )
+    return response.text or ""
 
-    if response.parsed is None:
-        raise ValueError("Verifier did not return a structured judgment.")
-    judgment = response.parsed
 
-    # A correctly shaped JSON reply can still refer to facts that do not exist.
-    # Reject those references before calculating metrics or asking for a repair.
+def build_contradiction_prompt(source: str, draft: SimplifiedOutput) -> str:
+    """The narrow question, given the same two texts the judgement was given."""
+    return f"SOURCE:\n{source}\n\nEXPLANATION:\n{draft.simplified_text}"
+
+
+def live_contradiction_send(prompt: str, model: str) -> str:
+    """Send the contradiction question to Gemini and return the raw reply text."""
+    from google import genai
+    from google.genai import types
+
+    client = genai.Client()
+    response = client.models.generate_content(
+        model=model,
+        contents=prompt,
+        config=types.GenerateContentConfig(
+            system_instruction=CONTRADICTION_INSTRUCTION,
+            response_mime_type="application/json",
+            response_schema=ContradictionCheck,
+            temperature=0,
+        ),
+    )
+    return response.text or ""
+
+
+def parse_contradiction(reply_text: str) -> Optional[ContradictionCheck]:
+    """Validate a contradiction reply, returning None when it does not parse."""
+    try:
+        return ContradictionCheck.model_validate_json(reply_text)
+    except Exception:
+        return None
+
+
+def find_contradiction(
+    source: str,
+    draft: SimplifiedOutput,
+    model: str = MODEL,
+    send: Optional[Callable[[str, str], str]] = None,
+) -> Optional[ContradictionCheck]:
+    """Ask the narrow question once and return the finding, or None when there is none.
+
+    An unparseable reply, a plain "no", and a "yes" that cannot quote both sides all
+    count as no finding. The quotes are the point of the pass: they make a reported
+    distortion cheap to check by hand and impossible to invent quietly.
+    """
+    checker = send or live_contradiction_send
+    finding = parse_contradiction(checker(build_contradiction_prompt(source, draft), model))
+    if finding is None or not finding.contradicted:
+        return None
+    if not finding.source_quote.strip() or not finding.explanation_phrase.strip():
+        return None
+    return finding
+
+
+def parse_reply(reply_text: str) -> Optional[VerifierJudgment]:
+    """Validate a reply against the schema, returning None when it does not parse."""
+    try:
+        return VerifierJudgment.model_validate_json(reply_text)
+    except Exception:
+        return None
+
+
+def judgment_problems(judgment: Optional[VerifierJudgment], atom_count: int) -> List[str]:
+    """The reasons this judgement cannot be used, as sentences a repair can act on."""
+    if judgment is None:
+        return ["the reply did not match the judgement schema"]
     issues = []
     if not judgment.claims:
         issues.append("no claims listed")
-    if check_fact_numbers(judgment, len(atoms)):
-        issues.append("omissions reference unknown fact numbers")
+    unknown = check_fact_numbers(judgment, atom_count)
+    if unknown:
+        numbers = ", ".join(str(number) for number in unknown)
+        issues.append(f"omissions reference unknown fact numbers: {numbers}")
+    return issues
+
+
+def verify(
+    source: str,
+    atoms: List[dict],
+    draft: Union[SimplifiedOutput, dict],
+    model: str = MODEL,
+    send: Optional[Callable[[str, str], str]] = None,
+    send_contradiction: Optional[Callable[[str, str], str]] = None,
+) -> VerifierReport:
+    """Check the current patient text against the source, the facts and the reference passages.
+
+    An empty `atoms` list is allowed and means the claim labels are the whole
+    judgement, which is how the MedAESQA calibration scores a sentence against an
+    abstract. The pipeline's own step still refuses to run without facts.
+
+    `send` can be swapped for a fake one so tests run without an API key. A fake `send`
+    does not cover the contradiction pass; pass `send_contradiction` for that.
+    """
+    atoms = list(atoms or [])
+    draft = as_draft(draft)
+    prompt = build_prompt(source, atoms, draft)
+    sender = send or live_send
+
+    # One repair attempt, the same shape the Extractor and the Simplifier use.
+    # Before this, a single unusable reply ended a run that had already produced text.
+    reply = sender(prompt, model)
+    judgment = parse_reply(reply)
+    issues = judgment_problems(judgment, len(atoms))
+    if issues:
+        reply = sender(repair_prompt(prompt, reply, issues), model)
+        judgment = parse_reply(reply)
+        issues = judgment_problems(judgment, len(atoms))
     if issues:
         raise ValueError("Verifier validation failed: " + ", ".join(issues))
+
+    assert judgment is not None  # judgment_problems rejects None
+
+    # Second pass, and the reason it exists: the five-label judgement found 10 of 27
+    # contradictions on the MedAESQA dev pairs, and seven prompt rewrites left that recall
+    # at 0.37. One call offered five labels takes the cheapest one. This asks the same
+    # model one narrower question in its own call, where the schema has room to say no.
+    # A missed contradiction is the expensive error, because "the source is silent" reads
+    # as harmless and leaves the text unchanged.
+    checker = send_contradiction
+    if checker is None and send is None:
+        checker = live_contradiction_send
+    # An injected `send` speaks one prompt shape, so it is never reused for this question.
+    # Requiring the caller to name a contradiction sender keeps an offline test off the
+    # network and keeps the provider explicit rather than silently falling back to Gemini.
+    if checker is not None and not any(c.label == "distorted" for c in judgment.claims):
+        found = find_contradiction(source, draft, model=model, send=checker)
+        if found is not None:
+            judgment.claims.append(
+                ClaimCheck(
+                    claim=found.explanation_phrase,
+                    label="distorted",
+                    evidence=found.source_quote,
+                    # A contradiction that can be quoted is a fidelity failure, not a nit.
+                    severity="major",
+                )
+            )
 
     return build_report(judgment, len(atoms), draft.atoms_covered)
 
@@ -225,7 +479,7 @@ def check_fact_numbers(judgment: VerifierJudgment, atom_count: int) -> List[int]
 def print_report(report: VerifierReport) -> None:
     print("Verifier Report")
     print(f"Faithfulness score: {report.faithfulness_score:.2f}")
-    print(f"Omissions: {report.omission_count} of {report.total_facts} | Additions: {report.addition_count}")
+    print(f"Omissions (missing): {report.omission_count} of {report.total_facts} | Additions: {report.addition_count}")
     print(f"Hallucination: {report.hallucination} | Needs revision: {report.needs_revision}")
     if report.false_coverage:
         print(f"Simplifier reported as covered but missing: {report.false_coverage}")

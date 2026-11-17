@@ -22,6 +22,10 @@ STAGE_OUTPUTS = {
 }
 STAGE_LABELS = {"readability": "Readability"}
 
+# State written by the pipeline that no stage card shows, kept for measurement. The
+# readability reports matter most: they are the only record of WHY a rewrite was refused.
+DIAGNOSTIC_KEYS = ("readability", "refine_readability", "text_grade", "refiner_warnings")
+
 
 @dataclass
 class PipelineResult:
@@ -30,6 +34,7 @@ class PipelineResult:
     last_verified_text: str | None = None
     phase: Literal["idle", "running", "completed", "failed"] = "running"
     active_stage: str | None = None
+    diagnostics: dict[str, list[Any]] = field(default_factory=dict)
 
     def record(self, author: str, state_delta: dict[str, Any]) -> bool:
         key = STAGE_OUTPUTS.get(author)
@@ -97,6 +102,10 @@ async def run_pipeline(
                         f"ADK reported an error ({event.error_code or 'unknown'}): "
                         f"{event.error_message or 'No details provided'}"
                     )
+                delta = event.actions.state_delta or {}
+                for key in DIAGNOSTIC_KEYS:
+                    if key in delta:
+                        result.diagnostics.setdefault(key, []).append(delta[key])
                 if result.record(event.author, event.actions.state_delta):
                     on_update(result)
     finally:

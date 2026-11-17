@@ -7,7 +7,7 @@ from streamlit.testing.v1 import AppTest
 import textstat
 
 from faithfulmed.pipeline_ui import PipelineResult, run_pipeline
-from faithfulmed.readability import ReadabilityScores, score_readability
+from faithfulmed.readability_scores import ReadabilityScores, score_readability
 
 
 class FixtureAgent(BaseAgent):
@@ -102,7 +102,7 @@ class PipelineRunnerTests(unittest.IsolatedAsyncioTestCase):
         from faithfulmed.agents.extractor import ExtractionRecord, StoredAtom
         from faithfulmed.agents.refiner import Change, RefinedOutput
         from faithfulmed.agents.simplifier import SimplifiedOutput
-        from faithfulmed.agents.verifier import VerifierJudgment, build_report
+        from faithfulmed.agents.verifier import ClaimCheck, VerifierJudgment, build_report
 
         atom = StoredAtom(
             text="No nausea.", source_quote="No nausea.", type="symptom",
@@ -110,7 +110,13 @@ class PipelineRunnerTests(unittest.IsolatedAsyncioTestCase):
         )
         extraction = ExtractionRecord(atoms=[atom])
         draft = SimplifiedOutput(simplified_text="No nausea.", source_metadata=[])
-        judgment = VerifierJudgment(claims=[], omissions=[])
+        judgment = VerifierJudgment(
+            claims=[ClaimCheck(
+                claim="No nausea.", label="supported",
+                evidence="No nausea.", severity="minor",
+            )],
+            omissions=[],
+        )
         report = build_report(judgment, 1, [])
         report.needs_revision = True
         pipeline = SequentialAgent(name="TestIntegrated", sub_agents=[
@@ -156,7 +162,7 @@ class StreamlitAppTests(unittest.TestCase):
         app = AppTest.from_file("streamlit_app.py").run()
         self.assertFalse(app.exception)
         self.assertFalse(app.metric)
-        self.assertIn("fictional", app.warning[0].value.lower())
+        self.assertIn("prototype", app.warning[0].value.lower())
         app.text_area[0].set_value("  ")
         app.button[0].click().run()
         self.assertIn("Enter a medical note", app.error[0].value)
@@ -174,8 +180,11 @@ class StreamlitAppTests(unittest.TestCase):
             app = AppTest.from_file("streamlit_app.py").run()
             app.button[0].click().run()
             self.assertFalse(app.exception)
-            self.assertTrue(any("Skipped" in item.value for item in app.markdown))
-            self.assertTrue(any("No revision requested." in item.value for item in app.caption))
+            meter = next(item.value for item in app.markdown if '"fm-meter-bar"' in item.value)
+            self.assertIn("fm-meter-seg is-skipped", meter)
+            self.assertIn("Refiner skipped", meter)
+            # A skipped stage is settled, not outstanding: two done plus the skip.
+            self.assertIn("3 of 5", meter)
 
     def test_failed_stage_and_unreached_refiner_are_not_shown_as_skipped(self):
         async def failed_run(note, result, on_update):
@@ -186,9 +195,12 @@ class StreamlitAppTests(unittest.TestCase):
         with patch("faithfulmed.pipeline_ui.run_pipeline", failed_run):
             app = AppTest.from_file("streamlit_app.py").run()
             app.button[0].click().run()
-            self.assertTrue(any("Failed" in item.value for item in app.markdown))
-            self.assertTrue(any("Not reached" in item.value for item in app.markdown))
-            self.assertFalse(any("Skipped" in item.value for item in app.markdown))
+            meter = next(item.value for item in app.markdown if '"fm-meter-bar"' in item.value)
+            self.assertIn("Stopped at Verifier", meter)
+            self.assertIn("fm-meter-seg is-failed", meter)
+            # Unreached stages stay waiting; only a completed run can skip the refiner.
+            self.assertNotIn("fm-meter-seg is-skipped", meter)
+            self.assertIn("Refiner waiting", meter)
 
     def test_success_and_failure_show_actual_outputs(self):
         explanation = (
@@ -208,10 +220,11 @@ class StreamlitAppTests(unittest.TestCase):
             app = AppTest.from_file("streamlit_app.py").run()
             app.button[0].click().run()
             self.assertFalse(app.exception)
-            self.assertTrue(app.success)
+            # The meter says a finished run is finished; there is no second banner.
+            meter = next(item.value for item in app.markdown if '"fm-meter-bar"' in item.value)
+            self.assertIn("fm-meter-stage is-live", meter)
+            self.assertIn(">Complete<", meter)
             self.assertIn(explanation, [item.value for item in app.markdown])
-            self.assertIn(explanation, [item.value for item in app.text])
-            self.assertIn("View original output", [item.label for item in app.expander])
             self.assertEqual(app.metric[0].value, f"{textstat.flesch_kincaid_grade(explanation):.2f}")
             self.assertEqual(app.metric[1].value, f"{textstat.flesch_reading_ease(explanation):.2f}")
             self.assertTrue(app.json)
@@ -235,10 +248,10 @@ class StreamlitAppTests(unittest.TestCase):
 
         with patch("faithfulmed.pipeline_ui.run_pipeline", successful_run):
             app = AppTest.from_file("streamlit_app.py").run()
-            with patch("faithfulmed.readability.score_readability", return_value=ReadabilityScores(8.0, 60.0, 30)):
+            with patch("faithfulmed.readability_scores.score_readability", return_value=ReadabilityScores(8.0, 6.0)):
                 app.button[0].click().run()
                 self.assertTrue(any("meets" in item.value for item in app.success))
-            with patch("faithfulmed.readability.score_readability", return_value=ReadabilityScores(8.001, 60.0, 30)):
+            with patch("faithfulmed.readability_scores.score_readability", return_value=ReadabilityScores(8.001, 6.0)):
                 app.button[0].click().run()
                 self.assertTrue(any("above" in item.value for item in app.warning))
 
@@ -283,7 +296,7 @@ class StreamlitAppTests(unittest.TestCase):
             self.assertEqual(metrics["Major hallucination flagged"], "No")
             self.assertEqual(metrics["Revision needed"], "Yes")
             self.assertTrue(any("changed after this report" in item.value for item in app.warning))
-            self.assertIn("Revised final explanation.", [item.value for item in app.text])
+            self.assertIn("Revised final explanation.", [item.value for item in app.markdown])
             self.assertTrue(any("2, 4" in item.value for item in app.markdown))
 
     def test_missing_or_invalid_verifier_fields_are_unavailable(self):
@@ -307,8 +320,7 @@ class ReadabilityTests(unittest.TestCase):
         text = "**Summary:**\n* The patient has a headache.\n* The patient can rest."
         scores = score_readability(text)
         self.assertEqual(scores.grade, textstat.flesch_kincaid_grade(text))
-        self.assertEqual(scores.reading_ease, textstat.flesch_reading_ease(text))
-        self.assertEqual(scores.word_count, textstat.lexicon_count(text, removepunct=True))
+        self.assertEqual(scores.smog, textstat.smog_index(text))
 
     def test_no_words_is_not_a_zero_score(self):
         with self.assertRaisesRegex(ValueError, "no words"):

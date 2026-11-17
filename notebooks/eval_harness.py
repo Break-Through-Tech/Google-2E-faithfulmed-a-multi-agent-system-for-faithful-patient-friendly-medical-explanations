@@ -15,32 +15,51 @@ Each agent owner plugs their agent's outputs into this harness.
 """
 from __future__ import annotations
 import json
+import sys
 from pathlib import Path
 
 from textstat import textstat
 from sklearn.metrics import cohen_kappa_score, accuracy_score
 
-DATA = Path(__file__).resolve().parent.parent / "data" / "medaesqa_v1.json"
+REPO = Path(__file__).resolve().parent.parent
+DATA = REPO / "data" / "medaesqa_v1.json"
+
+# The harness runs as a script from notebooks/, so the package root is not on the path.
+# Grade and SMOG come from the app's own readability module, which is the only place a
+# reading grade is defined; a second formula here is how the harness and the app end up
+# reporting different numbers for the same output.
+if str(REPO) not in sys.path:
+    sys.path.insert(0, str(REPO))
+
+from faithfulmed.readability_scores import score_readability
 
 
 def readability_scores(text: str) -> dict:
-    """Core readability metrics. Jargon density ~ fraction of 'difficult' (non-familiar) words.
+    """Readability metrics for one output.
 
-    difficult_words() uses the Dale-Chall familiar-word list as a proxy for jargon; swap in a
-    UMLS/medical-term lookup later for a clinically grounded jargon score.
+    Grade and SMOG come from `faithfulmed.readability_scores`, the same scorer the
+    pipeline, the Refiner and the Streamlit app use. Jargon density and word count are
+    measured here only.
+
+    Text with no words raises ValueError.
     """
-    words = max(textstat.lexicon_count(text, removepunct=True), 1)
+    scores = score_readability(text)
+    words = textstat.lexicon_count(text, removepunct=True)
     return {
-        "flesch_kincaid_grade": textstat.flesch_kincaid_grade(text),
-        "smog_index": textstat.smog_index(text),
+        "flesch_kincaid_grade": scores.grade,
+        "smog_index": scores.smog,
         "jargon_density": textstat.difficult_words(text) / words,
         "word_count": words,
     }
 
 
 def meets_readability_target(text: str, max_grade: float = 8.0) -> bool:
-    """Success criterion: <= 8th-grade reading level (Flesch-Kincaid)."""
-    return textstat.flesch_kincaid_grade(text) <= max_grade
+    """Success criterion: <= 8th-grade reading level (Flesch-Kincaid).
+
+    Goes through the same scorer as the app, so the gate cannot pass on a formula the
+    app does not use. Blank text raises rather than counting as a pass.
+    """
+    return score_readability(text).grade <= max_grade
 
 
 def load_medaesqa(path: Path = DATA) -> list[dict]:
