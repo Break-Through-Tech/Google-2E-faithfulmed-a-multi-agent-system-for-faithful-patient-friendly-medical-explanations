@@ -23,8 +23,9 @@ LLMs are naturally good at translating complex text into plain English, which ma
 
 ## Our solution
 
-FaithfulMed uses five specialized stages. It can skip readability rewrites or factual repairs when the draft does not need them. A finished explanation should be:
+Instead of asking a single model to do everything at once, FaithfulMed breaks the translation process into five narrow, specialized agents running in a fixed sequence. Because the path never branches unpredictably, every run is deterministic and every transformation can be audited.
 
+Our goal is to produce patient explanations that:
 1. readable at or below an 8th-grade level;
 2. faithful to the source note, with no claim the note does not support;
 3. better than a single prompted model on both counts.
@@ -39,11 +40,11 @@ FaithfulMed uses five specialized stages. It can skip readability rewrites or fa
 
 ## What we built
 
-Google's Agent Development Kit runs the Extractor, Simplifier, and Readability steps in a `SequentialAgent`, followed by a `LoopAgent` with up to two iterations. The stages are custom `BaseAgent` implementations. Each loop iteration starts with the Verifier and runs the Refiner only if the report calls for revision. If the second iteration ends with a repair, that text can exit without another Verifier pass. Reaching the limit does not certify the output.
+Google's Agent Development Kit runs the Extractor, Simplifier, and Readability steps in a `SequentialAgent`, followed by a `LoopAgent` with up to two iterations. The stages are custom `BaseAgent` implementations. Each loop iteration starts with the Verifier and runs the Refiner only if the report calls for revision. If the second iteration ends with a repair, that text can exit without another Verifier pass.
 
 Before rewriting, the Simplifier pulls reference passages out of a ChromaDB index built from MedlinePlus text and Gemini embeddings. When the note uses a word a patient would not know, the Simplifier has a definition to reach for instead of guessing one.
 
-The Verifier is an LLM judge. The evaluation scripts calibrate it against human-labeled MedAESQA claim/evidence pairs. That measures agreement on the calibration task, not the factual accuracy of an entire rewritten clinical note.
+The Verifier is an LLM judge. The evaluation scripts calibrate it against human-labeled MedAESQA claim/evidence pairs.
 
 ## Setup and installation
 
@@ -257,7 +258,7 @@ MIT. See [LICENSE](LICENSE).
 
 - AHRQ and CDC health-literacy material, which is where the 8th-grade target comes from.
 - FaithBench and the hallucination-detection work on abstractive summarization.
-- The Google ADK docs. LangGraph and CrewAI solve the same orchestration problem differently and are worth a look.
+- The Google ADK docs.
 - The MedAESQA, MedQA, and PubMedQA papers, plus anything on Cohen's κ for inter-rater agreement.
 
 ### Links
