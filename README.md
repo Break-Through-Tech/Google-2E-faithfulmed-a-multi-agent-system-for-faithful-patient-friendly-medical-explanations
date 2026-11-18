@@ -279,5 +279,3 @@ Samaneh Kazemi Nafchi, our Challenge Advisor from Google, reviewed the technical
 Google provided the Agent Development Kit, Gemini API access, and the Gemma open models, and framed the challenge around trustworthy AI and equitable access.
 
 Last updated November 2026.
-Status: in development, October to December 2026.
-Maintainers: @samueltuffour, @cjimenez909, @hoangngo-sudo, @saraa-siva, @katelynlouie, @KettyKay, @MilkaZek, @jaidenha
