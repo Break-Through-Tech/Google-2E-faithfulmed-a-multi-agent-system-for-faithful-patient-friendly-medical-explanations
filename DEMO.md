@@ -1,8 +1,8 @@
 # Run FaithfulMed locally
 
 Use this guide to run the Streamlit visualizer or ADK Web locally in your
-browser. Both are prototypes for development, not patient use or production.
-Use only fictional or approved de-identified notes; submitted text is sent to
+browser. Both are prototypes for development and not production-ready.
+Use only fictional or approved de-identified notes; submitted text will be sent to
 the configured model provider.
 
 ## Demo
