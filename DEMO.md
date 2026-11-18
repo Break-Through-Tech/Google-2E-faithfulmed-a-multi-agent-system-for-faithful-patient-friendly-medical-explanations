@@ -9,6 +9,8 @@ the configured model provider.
 
 https://github.com/user-attachments/assets/fda67231-eaf5-4f94-ba2d-e0eb15db6356
 
+https://github.com/user-attachments/assets/f2e23de4-1697-4884-84ef-42809a5a5653
+
 ## 1. Open the project
 
 Get the team's agreed code version and open the `Google-2E` folder in VS Code.
