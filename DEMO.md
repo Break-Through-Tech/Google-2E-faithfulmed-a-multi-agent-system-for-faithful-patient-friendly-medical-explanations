@@ -78,21 +78,52 @@ A tiny `chroma.sqlite3` (a few hundred KB) with no collections is an empty datab
 
 Expected layout:
 
-```text
+```
 Google-2E/
+├── README.md                     
+├── DEMO.md                        # This file
+├── Challenge-Project-Overview.md 
+├── SUCCESS_RUBRIC.md             
+├── requirements.txt              
 ├── .env
-├── requirements.txt
-├── chroma/
-│   ├── chroma.sqlite3
-│   └── ...other folders...
+├── streamlit_app.py
 │
-└── faithfulmed/
-    ├── __init__.py
-    ├── agent.py
-    ├── adk_pipeline.py
-    ├── retrieval_utils.py
-    ├── medlineplus_aliases.json
-    └── agents/
+├── faithfulmed/
+│   ├── agent.py 
+│   ├── adk_pipeline.py
+│   ├── retrieval_utils.py
+│   ├── readability_scores.py
+│   ├── pipeline_ui.py
+│   ├── app.css 
+│   ├── icons.py 
+│   ├── medlineplus_aliases.json 
+│   │
+│   └── agents/
+│       ├── extractor.py
+│       ├── simplifier.py
+│       ├── verifier.py
+│       ├── refiner.py
+│       └── readability.py
+│
+├── notebooks/ 
+│   ├── eval_harness.py  
+│   ├── eda_medaesqa.ipynb
+│   ├── medlineplus_eda.ipynb
+│   ├── mt_samples_eda.ipynb
+│   ├── final-single-gemini-baseline.ipynb
+│   └── ...
+│
+├── data/
+│   ├── README.md
+│   ├── medaesqa_v1.json
+│   └── retrieval_docs_medlineplus_chunked.jsonl
+│
+├── evaluation/
+│   └── ...
+│
+└── chroma/
+    ├── chroma.sqlite3
+    └── ...other folders...
 ```
 
 The default collection is `medical_docs`. Do not create an empty database or rebuild the index just to launch ADK Web.
