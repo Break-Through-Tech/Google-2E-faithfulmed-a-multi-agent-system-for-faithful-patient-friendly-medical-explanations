@@ -80,18 +80,19 @@ Expected layout:
 
 ```text
 Google-2E/
-  .env
-  requirements.txt
-  chroma/
-    chroma.sqlite3
-    ...other folders...
-  faithfulmed/
-    __init__.py
-    agent.py
-    adk_pipeline.py
-    retrieval_utils.py
-    medlineplus_aliases.json
-    agents/
+├── .env
+├── requirements.txt
+├── chroma/
+│   ├── chroma.sqlite3
+│   └── ...other folders...
+│
+└── faithfulmed/
+    ├── __init__.py
+    ├── agent.py
+    ├── adk_pipeline.py
+    ├── retrieval_utils.py
+    ├── medlineplus_aliases.json
+    └── agents/
 ```
 
 The default collection is `medical_docs`. Do not create an empty database or rebuild the index just to launch ADK Web.
